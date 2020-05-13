@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.qpros.authorization.LoginTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 42.005 sec <<< FAILURE!
+login2(com.qpros.authorization.LoginTest)  Time elapsed: 11.744 sec  <<< FAILURE!
+java.lang.AssertionError: expected [The email you’ve entered doesn’t match any account.] but found [The email you’ve entered doesn’t match any account. Sign up for an account.]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:513)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:135)
+	at org.testng.Assert.assertEquals(Assert.java:116)
+	at org.testng.Assert.assertEquals(Assert.java:190)
+	at org.testng.Assert.assertEquals(Assert.java:200)
+	at com.qpros.authorization.LoginTest.login2(LoginTest.java:26)
+
