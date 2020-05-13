@@ -1,5 +1,6 @@
 package com.qpros.common;
 
+
 import com.qpros.helpers.ReadWriteHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,9 +20,9 @@ public class Base {
     public OsValidator OsValidator;
 
 
+
     @BeforeMethod(enabled = true)
     public void setUpBrowser() {
-
         String OsType = OsValidator.getDeviceOs();
         DriverType browser = getBrowser();
         initiateDriver(OsType, browser);
@@ -136,15 +137,13 @@ public class Base {
     }
 
 
-
     @AfterMethod(enabled = true)
-    public static void stopDriver() {
+    public void stopDriver() {
         try {
             driver.quit();
         } catch (Throwable e) {
             e.getStackTrace();
         }
     }
-
 
 }

@@ -1,13 +1,14 @@
 package com.qpros.helpers;
 
 import com.qpros.common.Base;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -81,5 +82,12 @@ public class ActionsHelper extends Base {
         String path = System.getProperty("user.dir") + "/src/main/resources/xmlfiles/" + xmlFileName;
         return path;
     }
+
+    public static String getTodayDate() {
+        LocalDate localDate = LocalDate.now();
+        String GetTodayDate = localDate.toString();
+        return GetTodayDate;
+    }
+
 
 }
