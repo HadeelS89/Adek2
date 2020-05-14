@@ -17,7 +17,7 @@ public class Listeners extends TestListenerAdapter{
     public synchronized void onStart(ITestContext context) {
         if (CONSOLE == true) {
 
-            System.out.println("Winfooz Test Suite started!");
+            System.out.println("Test Suite started!");
         }
 
     }
@@ -25,7 +25,7 @@ public class Listeners extends TestListenerAdapter{
     @Override
     public synchronized void onFinish(ITestContext context) {
         if (CONSOLE == true) {
-            System.out.println(("Winfooz Test Suite is ending!"));
+            System.out.println(("Test Suite is ending!"));
 
         }
         extent.flush();
