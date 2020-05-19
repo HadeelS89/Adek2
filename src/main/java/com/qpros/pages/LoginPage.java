@@ -27,7 +27,6 @@ public class LoginPage extends Base {
     private WebElement alertMessage;
 
 
-
     public void signIn(String email, String password){
         ActionsHelper.waitVisibility( getEmail(), 5 );
         getEmail().sendKeys(email);
@@ -36,6 +35,7 @@ public class LoginPage extends Base {
         getLoginButton().click();
         ActionsHelper.waitVisibility( getAlertMessage(), 10 );
     }
+
 
 
 }
