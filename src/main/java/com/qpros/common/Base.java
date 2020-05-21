@@ -26,9 +26,8 @@ public class Base {
         String OsType = OsValidator.getDeviceOs();
         DriverType browser = getBrowser();
         initiateDriver(OsType, browser);
-        driver.navigate().to(ReadWriteHelper.ReadData("BaseURL"));
+        //driver.navigate().to(ReadWriteHelper.ReadData("ApplicantURL"));
     }
-
 
 
     public WebDriver initiateDriver(String deviceOsType, DriverType driverType) {
