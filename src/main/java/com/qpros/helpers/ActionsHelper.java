@@ -89,5 +89,24 @@ public class ActionsHelper extends Base {
         return GetTodayDate;
     }
 
+    public static WebElement getElement(WebDriver driver, String attribute, String locator) {
+
+        WebElement element = null;
+
+        try {
+            switch (attribute){
+                case "id":
+                    element = driver.findElement(By.id(locator));
+                case "name":
+                    element = driver.findElement(By.id(locator));
+                case "class":
+                    element = driver.findElement(By.className(locator));
+                case "xpath":
+                    element = driver.findElement(By.xpath(locator));
+            }
+        }catch (Exception e){}
+
+        return element;
+    }
 
 }

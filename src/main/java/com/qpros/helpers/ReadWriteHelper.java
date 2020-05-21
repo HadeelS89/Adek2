@@ -3,9 +3,7 @@ package com.qpros.helpers;
 
 import org.testng.Assert;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public class ReadWriteHelper {
@@ -33,6 +31,28 @@ public class ReadWriteHelper {
         }
 
         return Par = prop.getProperty(par);
+    }
+
+    public static String[][] readCSVFile(String path, int linesToRead, int columnsToRead) {
+        //Possible future implementation: Make separators as input. However this looks better for reusability
+        String line = "";
+        String csvSplitBy = ",";
+        String[][] finalResult = new String[linesToRead][columnsToRead];
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            int j=0;
+            while ((line = br.readLine()) != null) {
+                // use comma as separator
+                String[] currentLine = line.split(csvSplitBy);
+                for (int i=0; i<=columnsToRead; i++){
+                    finalResult[j][i] = currentLine[i];
+                }
+                //System.out.println("Linex [first clmn= " + currentLine[0] + " , 2nd clmn=" + currentLine[1] + "]");
+                j++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return finalResult;
     }
 
 
