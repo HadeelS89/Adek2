@@ -3,6 +3,7 @@ package com.qpros.helpers;
 import com.qpros.common.Base;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -27,8 +28,22 @@ public class ActionsHelper extends Base {
             wait.until(ExpectedConditions.visibilityOf(element));
             isElementPresent = element.isDisplayed();
         } catch (Exception e) {
+            throw e;
         }
         return isElementPresent;
+
+    }
+
+    public static boolean waitToBeClickable(WebElement element, int time) {
+        boolean isElementClickable = false;
+        try {
+            wait = new WebDriverWait(driver, time);
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            isElementClickable = element.isEnabled();
+        } catch (Exception e) {
+            throw e;
+        }
+        return isElementClickable;
 
     }
 
@@ -56,7 +71,7 @@ public class ActionsHelper extends Base {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", element);
     }
 
-    public void safeJavaScriptClick(WebElement element) throws Exception {
+    public static void safeJavaScriptClick(WebElement element) throws Exception {
         try {
             if (element.isEnabled() && element.isDisplayed()) {
 
@@ -73,7 +88,7 @@ public class ActionsHelper extends Base {
         }
     }
 
-    public String getImagePath(String imageName) {
+    public static String getImagePath(String imageName) {
         String path = System.getProperty("user.dir") + "/src/main/resources/images/" + imageName;
         return path;
     }
@@ -107,6 +122,15 @@ public class ActionsHelper extends Base {
         }catch (Exception e){}
 
         return element;
+    }
+
+    public static void actionsClick(WebElement element, String EnterText){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element);
+        actions.click();
+        actions.sendKeys(EnterText, Keys.ENTER);
+        actions.build().perform();
+
     }
 
 }
