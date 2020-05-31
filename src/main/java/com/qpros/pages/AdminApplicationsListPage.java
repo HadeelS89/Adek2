@@ -31,6 +31,10 @@ public class AdminApplicationsListPage extends Base{
     private List<WebElement> resultsCodes;
     @FindBy(id="btnApply")
     private WebElement btnApply;
+    @FindBy(xpath="//input[@type='checkbox']")
+    private WebElement cbAssignedToMe;
+    @FindBy(css="button[value='StartReview']")
+    private List<WebElement> btnStartReviews;
 
     public void searchByKeyWord_ApplicantCode(String keyWord) throws InterruptedException {
         ActionsHelper.waitVisibility(getSearchBox(), 20);
@@ -42,13 +46,15 @@ public class AdminApplicationsListPage extends Base{
 
     }
 
-    public void searchByStatus(String statusText){
+    public void searchByStatus(String statusText, Boolean isAssignedToMe){
         ActionsHelper.waitVisibility(getSearchBox(), 90);
-        //
         ActionsHelper.selectByValue(getStatusDDL(), statusText);
         ActionsHelper.waitVisibility(getBtnApply(), 90);
         ActionsHelper.waitToBeClickable(getBtnApply(), 90);
         ActionsHelper.waitForSeconds(90);
+        if (isAssignedToMe){
+            getCbAssignedToMe().click();
+        }
         getBtnApply().click();
 
     }
