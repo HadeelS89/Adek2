@@ -28,8 +28,22 @@ public class ActionsHelper extends Base {
             wait.until(ExpectedConditions.visibilityOf(element));
             isElementPresent = element.isDisplayed();
         } catch (Exception e) {
+            throw e;
         }
         return isElementPresent;
+
+    }
+
+    public static boolean waitToBeClickable(WebElement element, int time) {
+        boolean isElementClickable = false;
+        try {
+            wait = new WebDriverWait(driver, time);
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            isElementClickable = element.isEnabled();
+        } catch (Exception e) {
+            throw e;
+        }
+        return isElementClickable;
 
     }
 
