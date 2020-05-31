@@ -88,7 +88,7 @@ public class ActionsHelper extends Base {
         }
     }
 
-    public String getImagePath(String imageName) {
+    public static String getImagePath(String imageName) {
         String path = System.getProperty("user.dir") + "/src/main/resources/images/" + imageName;
         return path;
     }
