@@ -41,10 +41,15 @@ public class AdminApplicationsListTest  extends Base{
 
         loginPage = new LoginPage(driver);
 
-        loginPage.signInAsADEKEmployee("test.user3@adek.gov.ae", "Adek@12345");
+        loginPage.signInAsADEKEmployee("test.user2@adek.gov.ae", "Adek@12345");
 
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
-        adminApplicationsListPage.searchByStatus("New");
+        adminApplicationsListPage.searchByStatus("New", true);
         Thread.sleep(20000);
+        System.out.println(adminApplicationsListPage.getResultsCodes().size());
+        Assert.assertEquals(adminApplicationsListPage.getResultsCodes().get(0).getText(), "PS20043");
+        adminApplicationsListPage.getResultsCodes().get(0).click();
+        Assert.assertTrue(adminApplicationsListPage.getBtnStartReviews().get(0).isDisplayed());
+
     }
 }
