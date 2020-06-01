@@ -1,13 +1,11 @@
 package com.qpros.scholarship_admin;
 
-import com.qpros.authorization.LoginTest;
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
-import com.qpros.pages.AdminApplicationsListPage;
-import com.qpros.pages.AdminExternalLoginPage;
-import com.qpros.pages.LoginPage;
-import org.openqa.selenium.WebElement;
+import com.qpros.pages.scholarship_admin_pages.AdminApplicationsListPage;
+import com.qpros.pages.authorization_pages.AdminExternalLoginPage;
+import com.qpros.pages.authorization_pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -26,7 +24,8 @@ public class AdminApplicationsListTest  extends Base{
 
         loginPage = new LoginPage(driver);
 
-        loginPage.signInAsADEKEmployee("test.user3@adek.gov.ae", "Adek@12345");
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "username" ),
+                ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ));
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
         adminApplicationsListPage.searchByKeyWord_ApplicantCode("PS20074");
         Assert.assertTrue( ActionsHelper.waitVisibility( adminApplicationsListPage.getLblFirstResultCode(), 20 ) );
@@ -41,7 +40,8 @@ public class AdminApplicationsListTest  extends Base{
 
         loginPage = new LoginPage(driver);
 
-        loginPage.signInAsADEKEmployee("test.user2@adek.gov.ae", "Adek@12345");
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "username" ),
+                ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ));
 
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
         adminApplicationsListPage.searchByStatus("New", true);

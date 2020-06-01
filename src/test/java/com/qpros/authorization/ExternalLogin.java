@@ -1,7 +1,8 @@
 package com.qpros.authorization;
 
 import com.qpros.common.Base;
-import com.qpros.pages.AdminExternalLogin;
+import com.qpros.helpers.ReadWriteHelper;
+import com.qpros.pages.authorization_pages.AdminExternalLogin;
 import org.testng.annotations.Test;
 
 
@@ -14,7 +15,10 @@ public class ExternalLogin extends Base {
     public void externalAdminLogin(){
 
         adminExternalLogin = new AdminExternalLogin(driver);
-        adminExternalLogin.signInAsExternalUser( "leone.bulmaro@andyes.net", "Adek@123" );
+        adminExternalLogin.signInAsExternalUser( ReadWriteHelper.
+                readCredentialsXMLFile( "recruiterCredentials1", "username" ),
+                ReadWriteHelper.
+                        readCredentialsXMLFile( "recruiterCredentials1", "password" ) );
         //Assert.assertEquals(loginPage.getAlertMessage().getText(),
         //      "The email you’ve entered doesn’t match any account.");
     }
