@@ -4,7 +4,7 @@ package com.qpros.authorization;
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
-import com.qpros.pages.LoginPage;
+import com.qpros.pages.authorization_pages.LoginPage;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
@@ -24,7 +24,8 @@ public class LoginTest extends Base {
         driver.navigate().to( ReadWriteHelper.ReadData("ApplicantURL"));
 
         loginPage = new LoginPage(driver);
-        loginPage.signIn( "mohyounis83@gmail.com", "Test@123" );
+        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1", "username" ),
+                ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1", "password" ) );
         WebElement applicantLeftMenu = ActionsHelper.getElement( driver, "id", "Biographical" );
         Assert.assertTrue( ActionsHelper.waitVisibility( applicantLeftMenu, 20 ) );
     }
@@ -38,9 +39,10 @@ public class LoginTest extends Base {
         driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
 
         loginPage = new LoginPage(driver);
-        loginPage.signInAsADEKEmployee( "test.user2@adek.gov.ae", "Adek@12345" );
+        loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "username" ),
+                ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ) );
         WebElement adminLeftMenu = ActionsHelper.getElement( driver, "id", "div_air__menuLeft__list" );
-        Assert.assertTrue( ActionsHelper.waitVisibility( adminLeftMenu, 10 ) );
+        Assert.assertTrue( ActionsHelper.waitVisibility( adminLeftMenu, 20 ) );
     }
 
 

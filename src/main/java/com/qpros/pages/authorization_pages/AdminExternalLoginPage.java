@@ -1,4 +1,4 @@
-package com.qpros.pages;
+package com.qpros.pages.authorization_pages;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
