@@ -1,4 +1,4 @@
-package com.qpros.pages;
+package com.qpros.pages.scholarship_admin_pages;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
@@ -36,6 +36,8 @@ public class AdminApplicationsListPage extends Base{
     @FindBy(css="button[value='StartReview']")
     private List<WebElement> btnStartReviews;
 
+
+
     public void searchByKeyWord_ApplicantCode(String keyWord) throws InterruptedException {
         ActionsHelper.waitVisibility(getSearchBox(), 20);
         getSearchBox().sendKeys(keyWord);
@@ -58,4 +60,5 @@ public class AdminApplicationsListPage extends Base{
         getBtnApply().click();
 
     }
+
 }

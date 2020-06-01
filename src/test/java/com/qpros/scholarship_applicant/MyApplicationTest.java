@@ -3,11 +3,9 @@ package com.qpros.scholarship_applicant;
 
 import com.qpros.authorization.LoginTest;
 import com.qpros.common.Base;
-import com.qpros.pages.ApplyForProgremPage;
-import com.qpros.pages.LoginPage;
+import com.qpros.pages.authorization_pages.LoginPage;
 //import com.qpros.pages.MyApplications;
-import com.qpros.pages.MyApplicationsPage;
-import org.testng.Assert;
+import com.qpros.pages.sholarship_applicant_pages.MyApplicationsPage;
 import org.testng.annotations.Test;
 
 public class MyApplicationTest extends Base {
