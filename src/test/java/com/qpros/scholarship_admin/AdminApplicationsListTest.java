@@ -52,4 +52,19 @@ public class AdminApplicationsListTest  extends Base{
         Assert.assertTrue(adminApplicationsListPage.getBtnStartReviews().get(0).isDisplayed());
 
     }
+
+    @Test(description = "Search Applications by Applicant Code, Valid keyword",
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
+    public void searchApplicationsAndProcessThem() throws Exception {
+        //Navigate to Admin panel
+        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
+        loginPage = new LoginPage(driver);
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "username" ),
+                ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ));
+        adminApplicationsListPage = new AdminApplicationsListPage( driver );
+        adminApplicationsListPage.findProgram( "q-pros program" );
+        adminApplicationsListPage.searchByStatus("New", true);
+        adminApplicationsListPage.selectFirstResult();
+        adminApplicationsListPage.goNextStepProgram(2);
+    }
 }
