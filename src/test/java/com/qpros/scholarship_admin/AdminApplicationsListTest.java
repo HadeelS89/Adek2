@@ -7,6 +7,7 @@ import com.qpros.pages.scholarship_admin_pages.AdminApplicationsListPage;
 import com.qpros.pages.authorization_pages.AdminExternalLoginPage;
 import com.qpros.pages.authorization_pages.LoginPage;
 import org.testng.Assert;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -53,18 +54,48 @@ public class AdminApplicationsListTest  extends Base{
 
     }
 
-    @Test(description = "Search Applications by Applicant Code, Valid keyword",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
-    public void searchApplicationsAndProcessThem() throws Exception {
+    @Test(description = "Mark Application as Present from admin")
+    public void markApplicationAsPresent() throws Exception {
         //Navigate to Admin panel
-        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
+        driver.navigate().to(ReadWriteHelper.ReadData("AdminURL"));
         loginPage = new LoginPage(driver);
-        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "username" ),
-                ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ));
-        adminApplicationsListPage = new AdminApplicationsListPage( driver );
-        adminApplicationsListPage.findProgram( "q-pros program" );
-        adminApplicationsListPage.searchByStatus("New", true);
-        adminApplicationsListPage.selectFirstResult();
-        adminApplicationsListPage.goNextStepProgram(2);
+
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("adminCredentials1", "username"),
+                ReadWriteHelper.readCredentialsXMLFile
+                        ("recruiterCredentials2", "password"));
+        adminApplicationsListPage = new AdminApplicationsListPage(driver);
+        adminApplicationsListPage.applicantPresent(ReadWriteHelper.readApplicationsXMLFile(
+                "applicationId3", "title"));
+        WebElement presentButton = null;
+        try {
+            presentButton = ActionsHelper.getElement(driver, "xpath",
+                    "//button[@name='button']");
+        } catch (Exception e) {
+
+        }
+        Assert.assertTrue(presentButton == null);
+    }
+
+    @Test(description = "Mark Application as Absence from admin")
+    public void markApplicationAsAbsence() throws Exception {
+        //Navigate to Admin panel
+        driver.navigate().to(ReadWriteHelper.ReadData("AdminURL"));
+        loginPage = new LoginPage(driver);
+
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("adminCredentials1", "username"),
+                ReadWriteHelper.readCredentialsXMLFile
+                        ("recruiterCredentials2", "password"));
+        adminApplicationsListPage = new AdminApplicationsListPage(driver);
+        adminApplicationsListPage.applicantAbsent(ReadWriteHelper.readApplicationsXMLFile(
+                "applicationId2", "title"));
+        WebElement absenceButton = null;
+        try {
+            absenceButton = ActionsHelper.getElement(driver, "xpath",
+                    "//button[@name='button'][2]");
+        } catch (Exception e) {
+
+        }
+
+        Assert.assertTrue(absenceButton == null);
     }
 }
