@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 public class ProgramsPage {
 
-    public static String randomName = "Automation Test " +System.currentTimeMillis() % 100000;
+    public static String randomName = "";
     public static String createdProgram = "";
 
     public ProgramsPage(WebDriver driver) {
@@ -134,13 +134,15 @@ public class ProgramsPage {
 
 
 
-    public void addProgram() throws Exception{
+    public void addProgram(){
         ActionsHelper.waitForListExistance( getProgramsTab(), 50 );
         ActionsHelper.selectElementFromList( getProgramsTab(), "Programs" );
         //getProgramsTab().get( 1 ).click();
         System.out.println("Divs size: "+getProgramsDiv().size());
         ActionsHelper.waitForListExistance( getAddProgramButton(), 30 );
         getAddProgramButton().get( 0 ).click();
+        //Set unique name for the created program
+        randomName = "Automation Test " +System.currentTimeMillis() % 100000;
         ActionsHelper.waitForExistance( getNameEnglishField(), 30 );
         getNameEnglishField().sendKeys( randomName );
         getNameArabicField().sendKeys( randomName );
@@ -161,11 +163,21 @@ public class ProgramsPage {
         System.out.println("Program size: "+ getProgramsDiv().size());
         ActionsHelper.selectElementFromList( getProgramsDiv(), randomName );
 
+        //Save created program name for assertion
+        try {
+            for (int i = 0; i < getProgramsDiv().size(); i++){
+                if (getProgramsDiv().get( i ).getText().equalsIgnoreCase( randomName )){
+                    createdProgram = getProgramsDiv().get( i ).getText();
+                    break;
+                }
+            }
+        }catch (Exception e){}
+
     }
 
 
 
-    public void setProgramConfig() throws Exception{
+    public void setProgramConfig(){
         //Create new program
         addProgram();
 
