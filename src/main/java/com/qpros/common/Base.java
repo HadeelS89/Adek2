@@ -136,7 +136,7 @@ public class Base {
     }
 
 
-    //@AfterMethod(enabled = true)
+    @AfterMethod(enabled = true)
     public void stopDriver() {
         try {
             driver.quit();
