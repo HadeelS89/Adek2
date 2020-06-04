@@ -5,8 +5,10 @@ import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.pages.authorization_pages.LoginPage;
 import com.qpros.pages.scholarship_admin_pages.ProgramsPage;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(com.qpros.reporting.Listeners.class)
 public class ProgramsTest extends Base {
     LoginPage loginPage;
     ProgramsPage programsPage;
