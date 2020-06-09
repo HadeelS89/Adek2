@@ -1,5 +1,7 @@
 package com.qpros.pages.scholarship_admin_pages;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 import lombok.Getter;
@@ -10,7 +12,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 public class AdminApplicationsListPage extends Base{
@@ -42,6 +47,7 @@ public class AdminApplicationsListPage extends Base{
     private WebElement btnPresent;
     @FindBy(xpath = "//div[7]/div/button")
     private List <WebElement> btnSubmit;
+    //private List<WebElement> btnSubmit;
     @FindBy(xpath = "//button[contains(.,'OK')]")
     private WebElement btnOk;
     @FindBy(css = "div[row adek-table-row']")
@@ -58,7 +64,77 @@ public class AdminApplicationsListPage extends Base{
     private WebElement firstResult;
     @FindBy(css=".btn-success:nth-child(2)")
     private WebElement secondThing;
+    @FindBy(xpath = "//button[3]")
+    private WebElement btnScheduleInterview;
 
+    @FindBy(css=".ml-2:nth-child(1)")
+    private WebElement firstButton;
+    @FindBy(css=".ml-2:nth-child(2)")
+    private WebElement secondButton;
+    @FindBy(css=".ml-2:nth-child(3)")
+    private WebElement thirdButton;
+
+    @FindBy(id="Comment")
+    private WebElement rejectionComment;
+    @FindBy(id="adekFlowCommandParamSubmit")
+    private WebElement rejectionButton;
+
+    /**
+     * @param buttonName Buttons: Delegate, ApplicationReviewCompleted, ApplicationDocumentsVerified, ApproveAndProceedToAcknowledgement, StartReview, RejectApplication, RequestForChange, ScheduleInterview
+     */
+    public void clickApplicationButton(String buttonName){
+        ListMultimap<String, Integer> buttonList = ArrayListMultimap.create();
+        //Map of buttons by their names
+        buttonList.put("Delegate",1);
+        buttonList.put("ApplicationReviewCompleted",1);
+        buttonList.put("ApplicationDocumentsVerified",1);
+        buttonList.put("ApproveAndProceedToAcknowledgement",1);
+        buttonList.put("StartReview",2);
+        buttonList.put("RejectApplication",2);
+        buttonList.put("RequestForChange",3);
+        buttonList.put("ScheduleInterview",3);
+
+        //Get button location value
+        List<Integer> x = buttonList.get(buttonName);
+        System.out.println(x.get(0));
+
+        //Do the button process
+        if (x.get(0) == 1){
+            System.out.println("Hitting button 1");
+            ActionsHelper.waitVisibility(getNextStepButton(), 90);
+            getFirstButton().click();
+            ActionsHelper.waitVisibility(getNextStepButton(), 90);
+            getNextStepButton().click();
+            ActionsHelper.waitVisibility(getConfirmButton(), 90);
+            getConfirmButton().click();
+        }
+        else if (x.get(0) == 2){
+            if (buttonName != "RejectApplication"){
+                ActionsHelper.waitVisibility(getNextStepButton(), 90);
+                getSecondButton().click();
+                ActionsHelper.waitVisibility(getNextStepButton(), 90);
+                getNextStepButton().click();
+                ActionsHelper.waitVisibility(getConfirmButton(), 90);
+                getConfirmButton().click();
+            }
+            else if (buttonName == "Reject Application"){
+                ActionsHelper.waitVisibility(getRejectionComment(), 90);
+                getRejectionComment().sendKeys("Automated Rejection Reason");
+                ActionsHelper.waitVisibility(getRejectionButton(), 90);
+                getRejectionButton().click();
+
+            }
+
+        }
+        else if (x.get(0) == 3){
+            ActionsHelper.waitVisibility(getNextStepButton(), 90);
+            getThirdButton().click();
+            ActionsHelper.waitVisibility(getNextStepButton(), 90);
+            getNextStepButton().click();
+            ActionsHelper.waitVisibility(getConfirmButton(), 90);
+            getConfirmButton().click();
+        }
+    }
 
     public void searchByKeyWord_ApplicantCode(String keyWord) throws InterruptedException {
         ActionsHelper.waitVisibility(getSearchBox(), 20);
@@ -66,49 +142,64 @@ public class AdminApplicationsListPage extends Base{
         ActionsHelper.waitVisibility(getBtnApply(), 20);
         ActionsHelper.waitVisibility(getBtnSearch(), 20);
         getBtnSearch().click();
-
-
     }
 
     public void searchByStatus(String statusText, Boolean isAssignedToMe){
         ActionsHelper.waitVisibility(getSearchBox(), 90);
-        ActionsHelper.selectByValue(getStatusDDL(), statusText);
+        ActionsHelper.waitVisibility(getCbAssignedToMe(), 90);
+        ActionsHelper.waitVisibility(getBtnApply(), 90);
+        System.out.println("Status selected is " + statusText );
+        //ActionsHelper.selectByValue(getStatusDDL(), statusText);
+        ActionsHelper.actionsClick(getStatusDDL(),statusText);
         ActionsHelper.waitVisibility(getBtnApply(), 90);
         ActionsHelper.waitToBeClickable(getBtnApply(), 90);
         ActionsHelper.waitForSeconds(90);
         if (isAssignedToMe){
             getCbAssignedToMe().click();
         }
-        getBtnApply().click();
+        ActionsHelper.waitForExistance(getBtnApply(),90);
 
     }
 
-    //this method to mark applicant as absence
-    public void applicantAbsent(String ApplicantName) throws Exception {
-        searchByKeyWord_ApplicantCode(ApplicantName);
-        Thread.sleep(10000);
+    // this method to schedule interview from admin side
+    public void scheduleInterview() throws Exception {
+        ActionsHelper.safeJavaScriptClick(getBtnApply());// after select program then select apply filter
         System.out.println("after search display results " + getLblFirstResultCode().getText());
-        ActionsHelper.waitVisibility(getLblFirstResultCode(), 30);
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
         System.out.println(getResultsCodes().size());
         getResultsCodes().get(0).click();
-        ActionsHelper.waitVisibility(getBtnAbsence(), 30);
+        ActionsHelper.scrollTo(getBtnScheduleInterview());
+        ActionsHelper.waitForExistance(getBtnScheduleInterview(),90);
+        getBtnScheduleInterview().click();
+        ActionsHelper.waitForExistance(getBtnSubmit().get(0), 90);
+        System.out.println("Submit size " + getBtnSubmit().size());
+        ActionsHelper.safeJavaScriptClick(getBtnSubmit().get(0));
+        ActionsHelper.waitForExistance(getBtnOk(), 90);
+        getBtnOk().click();
+        Thread.sleep(3000);
+    }
+
+    //this method to mark applicant as absence
+    public void applicantAbsent() throws Exception {
+        System.out.println("after search display results " + getLblFirstResultCode().getText());
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), 90);
+        System.out.println(getResultsCodes().size());
+        getResultsCodes().get(0).click();
+        ActionsHelper.waitForExistance(getBtnAbsence(), 90);
         ActionsHelper.scrollTo(getBtnAbsence());
         ActionsHelper.waitVisibility(getBtnAbsence(), 30);
         getBtnAbsence().click();
-        Thread.sleep(4000);
-        ActionsHelper.waitVisibility(getBtnSubmit().get(0), 10);
-        System.out.println("Submit size "+ getBtnSubmit().size());
+        ActionsHelper.waitForExistance(getBtnSubmit().get(0), 90);
+        System.out.println("Submit size " + getBtnSubmit().size());
         ActionsHelper.safeJavaScriptClick(getBtnSubmit().get(0));
-        Thread.sleep(4000);
-        ActionsHelper.waitVisibility(getBtnOk(), 50);
+        ActionsHelper.waitForExistance(getBtnOk(), 90);
         getBtnOk().click();
         Thread.sleep(3000);
 
     }
 
     //this method to mark applicant as present
-    public void applicantPresent(String ApplicantName) throws Exception {
-        searchByKeyWord_ApplicantCode(ApplicantName);
+    public void applicantPresent() throws Exception {
         Thread.sleep(10000);
         System.out.println("after search display results " + getLblFirstResultCode().getText());
         ActionsHelper.waitVisibility(getLblFirstResultCode(), 30);
@@ -120,15 +211,16 @@ public class AdminApplicationsListPage extends Base{
         getBtnPresent().click();
         Thread.sleep(4000);
         ActionsHelper.waitVisibility(getBtnSubmit().get(0), 10);
-        System.out.println("Submit size on present "+ getBtnSubmit().size());
+        System.out.println("Submit size on present " + getBtnSubmit().size());
         ActionsHelper.safeJavaScriptClick(getBtnSubmit().get(0));
         Thread.sleep(4000);
         ActionsHelper.waitVisibility(getBtnOk(), 50);
         getBtnOk().click();
         Thread.sleep(3000);
     }
-    public void findProgram(String programName) {
-        ActionsHelper.waitVisibility(getProgramsList().get( 0 ), 50);
+    public void findProgram(String programName) throws Exception {
+        System.out.println("program Name:"+ programName );
+        ActionsHelper.waitForExistance(getProgramsList().get( 0 ), 60);
         System.out.println("List size:"+ getProgramsList().size());
         getProgramsList().get( 0 ).click();
         ActionsHelper.waitVisibility(getProgramsIndex().get( 0 ), 30);
@@ -138,7 +230,10 @@ public class AdminApplicationsListPage extends Base{
                 getProgramsIndex().get( i ).click();
             }
         }
+
+
     }
+
     public void goNextStepProgram(int iterations){
         for (int i=0; i<iterations; i++) {
             System.out.println("Iteration start");
