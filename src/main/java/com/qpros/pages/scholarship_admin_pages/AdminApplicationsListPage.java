@@ -1,5 +1,7 @@
 package com.qpros.pages.scholarship_admin_pages;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 import lombok.Getter;
@@ -10,7 +12,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 public class AdminApplicationsListPage extends Base{
@@ -63,6 +68,74 @@ public class AdminApplicationsListPage extends Base{
     private WebElement btnScheduleInterview;
 
 
+    @FindBy(css=".ml-2:nth-child(1)")
+    private WebElement firstButton;
+    @FindBy(css=".ml-2:nth-child(2)")
+    private WebElement secondButton;
+    @FindBy(css=".ml-2:nth-child(3)")
+    private WebElement thirdButton;
+
+    @FindBy(id="Comment")
+    private WebElement rejectionComment;
+    @FindBy(id="adekFlowCommandParamSubmit")
+    private WebElement rejectionButton;
+
+    /**
+     * @param buttonName Buttons: Delegate, ApplicationReviewCompleted, ApplicationDocumentsVerified, ApproveAndProceedToAcknowledgement, StartReview, RejectApplication, RequestForChange, ScheduleInterview
+     */
+    public void clickApplicationButton(String buttonName){
+        ListMultimap<String, Integer> buttonList = ArrayListMultimap.create();
+        //Map of buttons by their names
+        buttonList.put("Delegate",1);
+        buttonList.put("ApplicationReviewCompleted",1);
+        buttonList.put("ApplicationDocumentsVerified",1);
+        buttonList.put("ApproveAndProceedToAcknowledgement",1);
+        buttonList.put("StartReview",2);
+        buttonList.put("RejectApplication",2);
+        buttonList.put("RequestForChange",3);
+        buttonList.put("ScheduleInterview",3);
+
+        //Get button location value
+        List<Integer> x = buttonList.get(buttonName);
+        System.out.println(x.get(0));
+
+        //Do the button process
+        if (x.get(0) == 1){
+            System.out.println("Hitting button 1");
+            ActionsHelper.waitVisibility(getNextStepButton(), 90);
+            getFirstButton().click();
+            ActionsHelper.waitVisibility(getNextStepButton(), 90);
+            getNextStepButton().click();
+            ActionsHelper.waitVisibility(getConfirmButton(), 90);
+            getConfirmButton().click();
+        }
+        else if (x.get(0) == 2){
+            if (buttonName != "RejectApplication"){
+                ActionsHelper.waitVisibility(getNextStepButton(), 90);
+                getSecondButton().click();
+                ActionsHelper.waitVisibility(getNextStepButton(), 90);
+                getNextStepButton().click();
+                ActionsHelper.waitVisibility(getConfirmButton(), 90);
+                getConfirmButton().click();
+            }
+            else if (buttonName == "Reject Application"){
+                ActionsHelper.waitVisibility(getRejectionComment(), 90);
+                getRejectionComment().sendKeys("Automated Rejection Reason");
+                ActionsHelper.waitVisibility(getRejectionButton(), 90);
+                getRejectionButton().click();
+
+            }
+
+        }
+        else if (x.get(0) == 3){
+            ActionsHelper.waitVisibility(getNextStepButton(), 90);
+            getThirdButton().click();
+            ActionsHelper.waitVisibility(getNextStepButton(), 90);
+            getNextStepButton().click();
+            ActionsHelper.waitVisibility(getConfirmButton(), 90);
+            getConfirmButton().click();
+        }
+    }
 
     public void searchByKeyWord_ApplicantCode(String keyWord) throws InterruptedException {
         ActionsHelper.waitVisibility(getSearchBox(), 20);
