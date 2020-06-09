@@ -39,25 +39,25 @@ public class LoginPage extends Base {
 
 
     public void signIn(String email, String password){
-        ActionsHelper.waitVisibility( getEmail(), 20);
+        ActionsHelper.waitVisibility( getEmail(), 50);
         getEmail().sendKeys(email);
         getPassword().sendKeys(password);
         ActionsHelper.waitVisibility( getLoginButton(), 10 );
         getLoginButton().click();
-        ActionsHelper.waitVisibility( getAddressTab(), 20 );
+        ActionsHelper.waitVisibility( getAddressTab(), 50 );
 
     }
 
     public void signInAsADEKEmployee(String email, String password){
-        ActionsHelper.waitVisibility( getLoginAsAdekEmployee(), 20);
+        ActionsHelper.waitVisibility( getLoginAsAdekEmployee(), 50);
         getLoginAsAdekEmployee().click();
-        ActionsHelper.waitVisibility( getMsEmail(), 20);
+        ActionsHelper.waitVisibility( getMsEmail(), 50);
         getMsEmail().sendKeys( email );
         getMsNextButton().click();
-        ActionsHelper.waitVisibility( getMsPassword(), 20);
+        ActionsHelper.waitVisibility( getMsPassword(), 50);
         getMsPassword().sendKeys( password );
         getMsNextButton().click();
-        if (ActionsHelper.waitVisibility( getStaySignedInNoButton(), 30)){
+        if (ActionsHelper.waitVisibility( getStaySignedInNoButton(), 50)){
             getStaySignedInNoButton().click();
         }
 
