@@ -27,7 +27,7 @@ public class ConfirmInterviewTest extends Base {
 
         myApplication1 = new MyApplicationsPage(driver);
         myApplication1.confirmInterview(ReadWriteHelper.readProgramsXMLFile(
-                "program19"
+                "User4Program"
         ,"title"));
 
         Assert.assertTrue(myApplication1.getCancelInterview().isDisplayed());
