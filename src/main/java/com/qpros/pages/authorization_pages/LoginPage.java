@@ -57,7 +57,7 @@ public class LoginPage extends Base {
         ActionsHelper.waitVisibility( getMsPassword(), 20);
         getMsPassword().sendKeys( password );
         getMsNextButton().click();
-        if (ActionsHelper.waitVisibility( getStaySignedInNoButton(), 10)){
+        if (ActionsHelper.waitVisibility( getStaySignedInNoButton(), 30)){
             getStaySignedInNoButton().click();
         }
 

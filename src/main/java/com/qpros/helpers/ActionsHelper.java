@@ -9,7 +9,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -132,5 +138,81 @@ public class ActionsHelper extends Base {
         actions.build().perform();
 
     }
+
+    public static String getFutureDate(int addedYears, int addedMonths, int addedDays){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date currentDate = new Date();
+        //System.out.println(dateFormat.format(currentDate));
+
+        // convert date to calendar
+        Calendar c = Calendar.getInstance();
+        c.setTime(currentDate);
+
+        // manipulate date
+        c.add(Calendar.YEAR, addedYears);
+        c.add(Calendar.MONTH, addedMonths);
+        c.add(Calendar.DATE, addedDays); //same with c.add(Calendar.DAY_OF_MONTH, 1);
+
+        // convert calendar to date
+        Date currentDatePlus = c.getTime();
+
+        //System.out.println(dateFormat.format(currentDatePlus));
+        String finalDate = dateFormat.format(currentDatePlus);
+
+        return finalDate;
+    }
+
+
+    public static void selectElementFromList(List<WebElement> element, String value){
+        for (int i = 0; i < element.size(); i++){
+            if (element.get( i ).getText().equalsIgnoreCase( value )){
+                element.get( i ).click();
+                break;
+            }
+        }
+    }
+
+    public static boolean waitForExistance(WebElement element, int seconds){
+        boolean isExist = false;
+
+        int count = 1;
+        while (count<=seconds){
+            try {
+                Thread.sleep( 1000 );
+                if (element.isDisplayed()){
+                    isExist = true;
+                    break;
+                }
+            }catch (Exception e){
+                System.out.println("Exception message: " + e.getMessage());
+            }
+            count++;
+        }
+
+        return isExist;
+    }
+
+    public static boolean waitForListExistance(List<WebElement> element, int seconds){
+        boolean isExist = false;
+
+        int count = 1;
+        while (count<=seconds){
+            try {
+                Thread.sleep( 1000 );
+                if (element.size() != 0 || element.get( count ).isDisplayed()){
+                    isExist = true;
+                    break;
+                }
+            }catch (Exception e){
+                System.out.println("Exception message: " + e.getMessage());
+            }
+
+            count++;
+        }
+
+        return isExist;
+    }
+
 
 }

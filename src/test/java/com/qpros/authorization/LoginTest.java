@@ -24,8 +24,10 @@ public class LoginTest extends Base {
         driver.navigate().to( ReadWriteHelper.ReadData("ApplicantURL"));
 
         loginPage = new LoginPage(driver);
-        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1", "username" ),
-                ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1", "password" ) );
+        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1"
+                , "username" ),
+                ReadWriteHelper.readCredentialsXMLFile(
+                        "applicantCredentials1", "password" ) );
         WebElement applicantLeftMenu = ActionsHelper.getElement( driver, "id", "Biographical" );
         Assert.assertTrue( ActionsHelper.waitVisibility( applicantLeftMenu, 20 ) );
     }

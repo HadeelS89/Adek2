@@ -67,6 +67,7 @@ public class AdminApplicationsListPage extends Base{
     @FindBy(xpath = "//button[3]")
     private WebElement btnScheduleInterview;
 
+
     @FindBy(css=".ml-2:nth-child(1)")
     private WebElement firstButton;
     @FindBy(css=".ml-2:nth-child(2)")
@@ -142,6 +143,7 @@ public class AdminApplicationsListPage extends Base{
         ActionsHelper.waitVisibility(getBtnApply(), 20);
         ActionsHelper.waitVisibility(getBtnSearch(), 20);
         getBtnSearch().click();
+
     }
 
     public void searchByStatus(String statusText, Boolean isAssignedToMe){

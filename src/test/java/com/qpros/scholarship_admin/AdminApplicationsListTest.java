@@ -17,8 +17,9 @@ public class AdminApplicationsListTest  extends Base{
     AdminApplicationsListPage adminApplicationsListPage;
     LoginPage loginPage;
 
-    @Test(description = "Search Applications by Applicant Code, Valid keyword",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
+    @Test(description = "Search Applications by Applicant Code, Valid keyword"
+
+            ,retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
     public void searchApplicationsByKeyword_ValidResult() throws InterruptedException {
         //Navigate to Admin panel
         driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
@@ -34,8 +35,8 @@ public class AdminApplicationsListTest  extends Base{
         Assert.assertEquals(adminApplicationsListPage.getResultsCodes().get(0).getText(), "PS20074");
     }
 
-    @Test(description = "Search Applications by Status: [New] ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
+    @Test(description = "Search Applications by Status: [New] ")
+           // ,retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
     public void searchApplicationsByStatusDDL() throws InterruptedException {
         driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
 
@@ -74,13 +75,16 @@ public class AdminApplicationsListTest  extends Base{
         //Navigate to Admin panel
         driver.navigate().to(ReadWriteHelper.ReadData("AdminURL"));
         loginPage = new LoginPage(driver);
-
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("adminCredentials1", "username"),
                 ReadWriteHelper.readCredentialsXMLFile
                         ("recruiterCredentials2", "password"));
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
-        adminApplicationsListPage.applicantPresent(ReadWriteHelper.readApplicationsXMLFile(
+        adminApplicationsListPage.findProgram(ReadWriteHelper.readApplicationsXMLFile(
                 "applicationId3", "title"));
+        adminApplicationsListPage.searchByStatus(
+                ReadWriteHelper.readProgramStatusXMLFile("applicationStatus3",
+                        "status"), true);
+        adminApplicationsListPage.applicantPresent();
         WebElement presentButton = null;
         try {
             presentButton = ActionsHelper.getElement(driver, "xpath",
@@ -96,13 +100,16 @@ public class AdminApplicationsListTest  extends Base{
         //Navigate to Admin panel
         driver.navigate().to(ReadWriteHelper.ReadData("AdminURL"));
         loginPage = new LoginPage(driver);
-
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("adminCredentials1", "username"),
                 ReadWriteHelper.readCredentialsXMLFile
                         ("recruiterCredentials2", "password"));
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
-        adminApplicationsListPage.applicantAbsent(ReadWriteHelper.readApplicationsXMLFile(
+        adminApplicationsListPage.findProgram(ReadWriteHelper.readApplicationsXMLFile(
                 "applicationId2", "title"));
+        adminApplicationsListPage.searchByStatus
+                (ReadWriteHelper.readProgramStatusXMLFile("applicationStatus3",
+                        "status"), true);
+        adminApplicationsListPage.applicantAbsent();
         WebElement absenceButton = null;
         try {
             absenceButton = ActionsHelper.getElement(driver, "xpath",
@@ -112,5 +119,33 @@ public class AdminApplicationsListTest  extends Base{
         }
 
         Assert.assertTrue(absenceButton == null);
+    }
+
+    @Test(description = "Schedule interview from recruiter")
+    public void scheduleInterview() throws Exception {
+        //Navigate to Admin panel
+        driver.navigate().to(ReadWriteHelper.ReadData("AdminURL"));
+        loginPage = new LoginPage(driver);
+
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile
+                        ("recruiterCredentials3", "username"),
+                ReadWriteHelper.readCredentialsXMLFile
+                        ("recruiterCredentials3", "password"));
+        adminApplicationsListPage = new AdminApplicationsListPage(driver);
+        adminApplicationsListPage.findProgram(ReadWriteHelper.readApplicationsXMLFile(
+                "applicationIName1","title"));
+        adminApplicationsListPage.searchByStatus(
+                ReadWriteHelper.readProgramStatusXMLFile("applicationStatus2",
+                        "status"), true);
+        adminApplicationsListPage.scheduleInterview();
+        WebElement scheduleIntervButton = null;
+        try {
+            scheduleIntervButton = ActionsHelper.getElement(driver, "xpath",
+                    "//button[@name='button'][3]");
+        } catch (Exception e) {
+
+        }
+
+        Assert.assertTrue(!ActionsHelper.waitForExistance(adminApplicationsListPage.getBtnOk(),5));
     }
 }
