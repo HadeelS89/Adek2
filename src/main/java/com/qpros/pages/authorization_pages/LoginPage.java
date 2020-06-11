@@ -3,6 +3,7 @@ package com.qpros.pages.authorization_pages;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
+import com.qpros.helpers.ReadWriteHelper;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,6 +40,9 @@ public class LoginPage extends Base {
 
 
     public void signIn(String email, String password){
+        //Navigate to Application
+        driver.navigate().to( ReadWriteHelper.ReadData("ApplicantURL"));
+
         ActionsHelper.waitVisibility( getEmail(), 50);
         getEmail().sendKeys(email);
         getPassword().sendKeys(password);
@@ -49,6 +53,9 @@ public class LoginPage extends Base {
     }
 
     public void signInAsADEKEmployee(String email, String password){
+        //Navigate to Admin panel
+        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
+
         ActionsHelper.waitVisibility( getLoginAsAdekEmployee(), 50);
         getLoginAsAdekEmployee().click();
         ActionsHelper.waitVisibility( getMsEmail(), 50);

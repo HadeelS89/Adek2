@@ -21,34 +21,40 @@ public class ApplicantActionsTest extends Base {
 
     @Test(description = "Save one program as draft ")// one programe
     public void saveToDraft() throws Exception {
-        String programTitle = "New Scholarships for Distinguished Students SDS";
-        LoginTest applicantLoginTest;
-        applicantLoginTest = new LoginTest();
-        applicantLoginTest.loginAsApplicant();
+        loginPage = new LoginPage(driver);
+        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1"
+                , "username" ),
+                ReadWriteHelper.readCredentialsXMLFile(
+                        "applicantCredentials1", "password" ) );
         applyForProgremPage = new ApplyForProgremPage(driver);
-        applyForProgremPage.saveAsDrat(programTitle);
-        Assert.assertTrue(ApplyForProgremPage.programTilteLabel.equalsIgnoreCase(programTitle));
+        applyForProgremPage.saveAsDrat(ReadWriteHelper.getCreatedProgram());
+        Assert.assertTrue(ApplyForProgremPage.programTilteLabel.equalsIgnoreCase(ReadWriteHelper.getCreatedProgram()));
 
     }
 
     @Test(description = "Apply for one program")// one programe
     public void applyForOne() throws Exception {
-        LoginTest applicantLoginTest;
-        applicantLoginTest = new LoginTest();
-        applicantLoginTest.loginAsApplicant();
+        loginPage = new LoginPage(driver);
+        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1"
+                , "username" ),
+                ReadWriteHelper.readCredentialsXMLFile(
+                        "applicantCredentials1", "password" ) );
         applyForProgremPage = new ApplyForProgremPage(driver);
-        applyForProgremPage.applyForProgram("Scholarships for Distinguished Students");
+        applyForProgremPage.applyForProgram(ReadWriteHelper.getCreatedProgram());
         Assert.assertEquals(applyForProgremPage.getStep1().getText(),
                 "Step 1");
     }
 
     @Test(description = "Submit Application")// one programe
     public void submitProgram() throws Exception {
-        LoginTest applicantLoginTest;
-        applicantLoginTest = new LoginTest();
-        applicantLoginTest.loginAsApplicant();
+        loginPage = new LoginPage(driver);
+        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1"
+                , "username" ),
+                ReadWriteHelper.readCredentialsXMLFile(
+                        "applicantCredentials1", "password" ) );
+        //Apply for a program
         applyForProgremPage = new ApplyForProgremPage(driver);
-        applyForProgremPage.submitProgram("Scholarships for Distinguished Students");
+        applyForProgremPage.submitProgram(ReadWriteHelper.getCreatedProgram());
         Thread.sleep(5000);
         //verify the final results ; submit button is not displayed
         WebElement submitButton = null;

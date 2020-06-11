@@ -185,8 +185,8 @@ public class ReadWriteHelper {
     }
 
     public static void writeIntoXMLFile(String programTitle){
-          String xmlFilePath = System.getProperty( "user.dir" ) +
-                  "/src/main/resources/DataProvider/createdProgram.xml";
+        String xmlFilePath = System.getProperty( "user.dir" ) +
+                "/src/main/resources/DataProvider/createdProgram.xml";
 
 
         try {
