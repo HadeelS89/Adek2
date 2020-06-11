@@ -30,7 +30,7 @@ public class Test extends Base {
 //        String program = ReadWriteHelper.readProgramsXMLFile("program15","title");
 //        System.out.println("Get record using xml reader: " + program);
 
-
+        ReadWriteHelper.writeIntoXMLFile( "123" );
 
         System.out.println(ActionsHelper.getFutureDate( 1,0,0 ));
 
