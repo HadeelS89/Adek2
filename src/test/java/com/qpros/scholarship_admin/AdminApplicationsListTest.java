@@ -21,13 +21,10 @@ public class AdminApplicationsListTest  extends Base{
 
             ,retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
     public void searchApplicationsByKeyword_ValidResult() throws InterruptedException {
-        //Navigate to Admin panel
-        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
-
         loginPage = new LoginPage(driver);
-
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "username" ),
                 ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ));
+
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
         adminApplicationsListPage.searchByKeyWord_ApplicantCode("PS20074");
         Assert.assertTrue( ActionsHelper.waitVisibility( adminApplicationsListPage.getLblFirstResultCode(), 20 ) );
@@ -38,10 +35,7 @@ public class AdminApplicationsListTest  extends Base{
     @Test(description = "Search Applications by Status: [New] ")
            // ,retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
     public void searchApplicationsByStatusDDL() throws InterruptedException {
-        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
-
         loginPage = new LoginPage(driver);
-
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "username" ),
                 ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ));
 
@@ -58,11 +52,10 @@ public class AdminApplicationsListTest  extends Base{
     @Test(description = "Search Applications by Applicant Code, Valid keyword",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
     public void searchApplicationsAndProcessThem() throws Exception {
-        //Navigate to Admin panel
-        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "username" ),
                 ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ));
+
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.findProgram( "q-pros program" );
         adminApplicationsListPage.searchByStatus("New", true);
@@ -73,11 +66,10 @@ public class AdminApplicationsListTest  extends Base{
     @Test(description = "Approves a new application",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
     public void approveNewApplication() throws Exception {
-        //Navigate to Admin panel
-        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "interviewer1", "username" ),
                 ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ));
+
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.clearFilters();
         adminApplicationsListPage.findProgram( "Automation Test 51221" );
@@ -92,11 +84,10 @@ public class AdminApplicationsListTest  extends Base{
     @Test(description = "Rejects a new application",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
     public void rejectNewApplication() throws Exception {
-        //Navigate to Admin panel
-        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "interviewer1", "username" ),
                 ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ));
+
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.clearFilters();
         adminApplicationsListPage.findProgram( "Automation Test 51221" );
@@ -108,12 +99,11 @@ public class AdminApplicationsListTest  extends Base{
 
     @Test(description = "Mark Application as Present from admin")
     public void markApplicationAsPresent() throws Exception {
-        //Navigate to Admin panel
-        driver.navigate().to(ReadWriteHelper.ReadData("AdminURL"));
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("adminCredentials1", "username"),
                 ReadWriteHelper.readCredentialsXMLFile
                         ("recruiterCredentials2", "password"));
+
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
         adminApplicationsListPage.findProgram(ReadWriteHelper.readApplicationsXMLFile(
                 "applicationId3", "title"));
@@ -133,12 +123,11 @@ public class AdminApplicationsListTest  extends Base{
 
     @Test(description = "Mark Application as Absence from admin")
     public void markApplicationAsAbsence() throws Exception {
-        //Navigate to Admin panel
-        driver.navigate().to(ReadWriteHelper.ReadData("AdminURL"));
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("adminCredentials1", "username"),
                 ReadWriteHelper.readCredentialsXMLFile
                         ("recruiterCredentials2", "password"));
+
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
         adminApplicationsListPage.findProgram(ReadWriteHelper.readApplicationsXMLFile(
                 "applicationId2", "title"));
@@ -159,13 +148,12 @@ public class AdminApplicationsListTest  extends Base{
 
     @Test(description = "Schedule interview from recruiter")
     public void scheduleInterview() throws Exception {
-        //Navigate to Admin panel
-        driver.navigate().to(ReadWriteHelper.ReadData("AdminURL"));
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile
                         ("recruiterCredentials3", "username"),
                 ReadWriteHelper.readCredentialsXMLFile
                         ("recruiterCredentials3", "password"));
+
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
         adminApplicationsListPage.findProgram(ReadWriteHelper.readApplicationsXMLFile(
                 "applicationIName1","title"));
@@ -186,13 +174,12 @@ public class AdminApplicationsListTest  extends Base{
 
     @Test(description = "Request change from recruiter")
     public void requestForChange() throws Exception {
-        //Navigate to Admin panel
-        driver.navigate().to(ReadWriteHelper.ReadData("AdminURL"));
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile
                         ("recruiterCredentials3", "username"),
                 ReadWriteHelper.readCredentialsXMLFile
                         ("recruiterCredentials3", "password"));
+
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
         adminApplicationsListPage.findProgram("Automation Test 45971");
         adminApplicationsListPage.searchByStatus(

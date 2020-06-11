@@ -70,12 +70,12 @@ public class ApplicantActionsTest extends Base {
     //this method comes after approved application from admin,acknowledge button enabled
     @Test(description = "acknowledge button displaying test for approved applications ")// one programe
     public void acknowledgeApplication() throws Exception {
-        driver.navigate().to(ReadWriteHelper.ReadData("ApplicantURL"));
         loginPage = new LoginPage(driver);
         loginPage.signIn(ReadWriteHelper.readCredentialsXMLFile("applicantCredentials2"
                 , "username"),
                 ReadWriteHelper.readCredentialsXMLFile(
                         "applicantCredentials2", "password"));
+
         myApplicationsPage = new MyApplicationsPage(driver);
         ActionsHelper.waitForExistance(myApplicationsPage.getMyApplication(), 100);
         myApplicationsPage.acknowledgeApplicantion("Q-PROS INTERVIEW1");
@@ -85,12 +85,12 @@ public class ApplicantActionsTest extends Base {
     @Test(description = "check validation message when click decline by leaving " +
             "the message area empty ")
     public void declineApplicationEmptyMessage() throws Exception {
-        driver.navigate().to(ReadWriteHelper.ReadData("ApplicantURL"));
         loginPage = new LoginPage(driver);
         loginPage.signIn(ReadWriteHelper.readCredentialsXMLFile("applicantCredentials2"
                 , "username"),
                 ReadWriteHelper.readCredentialsXMLFile(
                         "applicantCredentials2", "password"));
+
         myApplicationsPage = new MyApplicationsPage(driver);
         myApplicationsPage.declineApplicationEmpty("Q-PROS INTERVIEW1");
         Assert.assertTrue(myApplicationsPage.getDeclineValidation().isDisplayed());
@@ -98,12 +98,12 @@ public class ApplicantActionsTest extends Base {
 
     @Test(description = "Check decline application using acknowledgement ")
     public void declineApplicationWithMessage() throws Exception {
-        driver.navigate().to(ReadWriteHelper.ReadData("ApplicantURL"));
         loginPage = new LoginPage(driver);
         loginPage.signIn(ReadWriteHelper.readCredentialsXMLFile("applicantCredentials2"
                 , "username"),
                 ReadWriteHelper.readCredentialsXMLFile(
                         "applicantCredentials2", "password"));
+
         myApplicationsPage = new MyApplicationsPage(driver);
         myApplicationsPage.declineApplicationWithMessage("Automation Test 52232");
         Assert.assertTrue(myApplicationsPage.declineResults== false);
@@ -111,7 +111,6 @@ public class ApplicantActionsTest extends Base {
 
     @Test(description = "Accept application using acknowledgement ")
     public void acceptApplication() throws Exception {
-        driver.navigate().to(ReadWriteHelper.ReadData("ApplicantURL"));
         loginPage = new LoginPage(driver);
         loginPage.signIn(ReadWriteHelper.readCredentialsXMLFile("applicantCredentials2"
                 , "username"),
@@ -139,12 +138,12 @@ public class ApplicantActionsTest extends Base {
     }
     @Test(description = "Submit Application after request for change ")
     public void reSubmitApplicationAfterChange() throws Exception {
-        driver.navigate().to(ReadWriteHelper.ReadData("ApplicantURL"));
         loginPage = new LoginPage(driver);
         loginPage.signIn(ReadWriteHelper.readCredentialsXMLFile("applicantCredentials2"
                 , "username"),
                 ReadWriteHelper.readCredentialsXMLFile(
                         "applicantCredentials2", "password"));
+
         myApplicationsPage = new MyApplicationsPage(driver);
         myApplicationsPage.applicationSubmitionAfterChanges("AUTOMATION TEST 45971");
 
