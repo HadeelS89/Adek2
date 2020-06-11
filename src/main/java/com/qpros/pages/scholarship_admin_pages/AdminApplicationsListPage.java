@@ -15,7 +15,7 @@ import org.testng.Assert;
 import java.util.*;
 
 @Getter
-public class AdminApplicationsListPage extends Base{
+public class AdminApplicationsListPage extends Base {
 
     public AdminApplicationsListPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -23,58 +23,63 @@ public class AdminApplicationsListPage extends Base{
 
     @FindBy(id = "searchbox")
     private WebElement searchBox;
-    @FindBy(id="btnGroupAddon2")
+    @FindBy(id = "btnGroupAddon2")
     private WebElement btnSearch;
-    @FindBy(xpath="//*[@id=\"mainDiv\"]/div[3]/div[1]/div[2]/div[1]/div[1]")
+    @FindBy(xpath = "//*[@id=\"mainDiv\"]/div[3]/div[1]/div[2]/div[1]/div[1]")
     private WebElement lblFirstResultCode;
     //TODO: Locate Status Drop down list
-    @FindBy(xpath="//div[@id='filterContainer']/div/div[3]/select")
+    @FindBy(xpath = "//div[@id='filterContainer']/div/div[3]/select")
     private WebElement statusDDL;
-    @FindBy(css="div[class='col-md-auto']")
+    @FindBy(css = "div[class='col-md-auto']")
     private List<WebElement> resultsCodes;
-    @FindBy(id="btnApply")
+    @FindBy(id = "btnApply")
     private WebElement btnApply;
-    @FindBy(xpath="//input[@type='checkbox']")
+    @FindBy(xpath = "//input[@type='checkbox']")
     private WebElement cbAssignedToMe;
-    @FindBy(css="button[value='StartReview']")
+    @FindBy(css = "button[value='StartReview']")
     private List<WebElement> btnStartReviews;
     @FindBy(xpath = "(//button[@name='button'])[2]")
     private WebElement btnAbsence;
     @FindBy(xpath = "//button[@name='button']")
     private WebElement btnPresent;
     @FindBy(xpath = "//div[7]/div/button")
-    private List <WebElement> btnSubmit;
+    private List<WebElement> btnSubmit;
     //private List<WebElement> btnSubmit;
     @FindBy(xpath = "//button[contains(.,'OK')]")
     private WebElement btnOk;
+    @FindBy(id = "timeline")
+    private WebElement workflowArea;
     @FindBy(css = "div[row adek-table-row']")
     private List<WebElement> resultsApplicant;
-    @FindBy(css="ul[class='select2-selection__rendered']")
+    @FindBy(css = "ul[class='select2-selection__rendered']")
     private List<WebElement> programsList;
-    @FindBy(css="li[class='select2-results__option']")
+    @FindBy(css = "li[class='select2-results__option']")
     private List<WebElement> programsIndex;
-    @FindBy(css=".confirm")
+    @FindBy(css = ".confirm")
     private WebElement nextStepButton;
-    @FindBy(css=".ml-2:nth-child(1)")
+    @FindBy(css = ".ml-2:nth-child(1)")
     private WebElement confirmButton;
-    @FindBy(css=".font-weight-bold > .col-md-auto:nth-child(3)")
+    @FindBy(css = ".font-weight-bold > .col-md-auto:nth-child(3)")
     private WebElement firstResult;
-    @FindBy(css=".btn-success:nth-child(2)")
+    @FindBy(css = ".btn-success:nth-child(2)")
     private WebElement secondThing;
     @FindBy(xpath = "//button[3]")
     private WebElement btnScheduleInterview;
-
-
-    @FindBy(css=".ml-2:nth-child(1)")
+    @FindBy(xpath = "//button[3]")
+    private WebElement btnRequestForChange;
+    @FindBy(id = "Comment")
+    private WebElement requesChangeComment;
+    @FindBy(id = "adekFlowCommandParamSubmit")
+    private WebElement requesChangeSubmit;
+    @FindBy(css = ".ml-2:nth-child(1)")
     private WebElement firstButton;
-    @FindBy(css=".ml-2:nth-child(2)")
+    @FindBy(css = ".ml-2:nth-child(2)")
     private WebElement secondButton;
-    @FindBy(css=".ml-2:nth-child(3)")
+    @FindBy(css = ".ml-2:nth-child(3)")
     private WebElement thirdButton;
-
-    @FindBy(id="Comment")
+    @FindBy(id = "Comment")
     private WebElement rejectionComment;
-    @FindBy(id="adekFlowCommandParamSubmit")
+    @FindBy(id = "adekFlowCommandParamSubmit")
     private WebElement rejectionButton;
 
     @FindBy(id="btnClear")
@@ -166,32 +171,29 @@ public class AdminApplicationsListPage extends Base{
 
     }
 
-    public void searchByStatus(String statusText, Boolean isAssignedToMe){
+    public void searchByStatus(String statusText, Boolean isAssignedToMe) {
         ActionsHelper.waitVisibility(getSearchBox(), 90);
         ActionsHelper.waitVisibility(getCbAssignedToMe(), 90);
         ActionsHelper.waitVisibility(getBtnApply(), 90);
-        System.out.println("Status selected is " + statusText );
-        //ActionsHelper.selectByValue(getStatusDDL(), statusText);
-        ActionsHelper.actionsClick(getStatusDDL(),statusText);
+        System.out.println("Status selected is " + statusText);
+        ActionsHelper.actionsClick(getStatusDDL(), statusText);
         ActionsHelper.waitVisibility(getBtnApply(), 90);
         ActionsHelper.waitToBeClickable(getBtnApply(), 90);
         ActionsHelper.waitForSeconds(90);
-        if (isAssignedToMe){
+        if (isAssignedToMe) {
             getCbAssignedToMe().click();
         }
-        ActionsHelper.waitForExistance(getBtnApply(),90);
-
+        ActionsHelper.waitForExistance(getBtnApply(), 90);
+        getBtnApply().click();
     }
 
     // this method to schedule interview from admin side
     public void scheduleInterview() throws Exception {
-        ActionsHelper.safeJavaScriptClick(getBtnApply());// after select program then select apply filter
-        System.out.println("after search display results " + getLblFirstResultCode().getText());
         ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
         System.out.println(getResultsCodes().size());
         getResultsCodes().get(0).click();
         ActionsHelper.scrollTo(getBtnScheduleInterview());
-        ActionsHelper.waitForExistance(getBtnScheduleInterview(),90);
+        ActionsHelper.waitForExistance(getBtnScheduleInterview(), 90);
         getBtnScheduleInterview().click();
         ActionsHelper.waitForExistance(getBtnSubmit().get(0), 90);
         System.out.println("Submit size " + getBtnSubmit().size());
@@ -224,40 +226,38 @@ public class AdminApplicationsListPage extends Base{
     public void applicantPresent() throws Exception {
         Thread.sleep(10000);
         System.out.println("after search display results " + getLblFirstResultCode().getText());
-        ActionsHelper.waitVisibility(getLblFirstResultCode(), 30);
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), 50);
         System.out.println(getResultsCodes().size());
         getResultsCodes().get(0).click();
-        ActionsHelper.waitVisibility(getBtnPresent(), 30);
+        ActionsHelper.waitForExistance(getBtnPresent(), 50);
         ActionsHelper.scrollTo(getBtnPresent());
-        ActionsHelper.waitVisibility(getBtnPresent(), 30);
+        ActionsHelper.waitForExistance(getBtnPresent(), 50);
         getBtnPresent().click();
-        Thread.sleep(4000);
-        ActionsHelper.waitVisibility(getBtnSubmit().get(0), 10);
+        ActionsHelper.waitForExistance(getBtnSubmit().get(0), 10);
         System.out.println("Submit size on present " + getBtnSubmit().size());
         ActionsHelper.safeJavaScriptClick(getBtnSubmit().get(0));
-        Thread.sleep(4000);
-        ActionsHelper.waitVisibility(getBtnOk(), 50);
+        ActionsHelper.waitForExistance(getBtnOk(), 50);
         getBtnOk().click();
         Thread.sleep(3000);
     }
     public void findProgram(String programName) throws Exception {
-        System.out.println("program Name:"+ programName );
-        ActionsHelper.waitForExistance(getProgramsList().get( 0 ), 10);
-        System.out.println("List size:"+ getProgramsList().size());
-        getProgramsList().get( 0 ).click();
-        ActionsHelper.waitVisibility(getProgramsIndex().get( 0 ), 30);
-        System.out.println("program list size:"+ getProgramsIndex().size());
-        for (int i = 0; i<getProgramsIndex().size(); i++){
-            if (getProgramsIndex().get( i ).getText().equalsIgnoreCase( programName )){
-                getProgramsIndex().get( i ).click();
+        System.out.println("program Name:" + programName);
+        ActionsHelper.waitForExistance(getProgramsList().get(0), 60);
+        System.out.println("List size:" + getProgramsList().size());
+        getProgramsList().get(0).click();
+        ActionsHelper.waitVisibility(getProgramsIndex().get(0), 30);
+        System.out.println("program list size:" + getProgramsIndex().size());
+        for (int i = 0; i < getProgramsIndex().size(); i++) {
+            if (getProgramsIndex().get(i).getText().equalsIgnoreCase(programName)) {
+                getProgramsIndex().get(i).click();
             }
         }
 
 
     }
 
-    public void goNextStepProgram(int iterations){
-        for (int i=0; i<iterations; i++) {
+    public void goNextStepProgram(int iterations) {
+        for (int i = 0; i < iterations; i++) {
             System.out.println("Iteration start");
             ActionsHelper.waitVisibility(getNextStepButton(), 90);
             getNextStepButton().click();
@@ -270,10 +270,34 @@ public class AdminApplicationsListPage extends Base{
             System.out.println("Button3 hit");
         }
     }
-    public void selectFirstResult(){
+
+    public void selectFirstResult() {
         ActionsHelper.waitVisibility(getFirstResult(), 90);
         getFirstResult().click();
         System.out.println("Clicked first result");
     }
 
+    public void requestForChange() throws Exception {
+        System.out.println("after search display results " + getLblFirstResultCode().getText());
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
+        System.out.println(getResultsCodes().size());
+        getResultsCodes().get(0).click();
+        ActionsHelper.scrollTo(getBtnScheduleInterview());
+        ActionsHelper.waitForExistance(getBtnRequestForChange(), 90);
+        getBtnRequestForChange().click();
+        ActionsHelper.waitForExistance(getRejectionComment(), 50);
+        getRejectionComment().sendKeys("change 123");
+        ActionsHelper.safeJavaScriptClick(getRequesChangeSubmit());
+        ActionsHelper.waitForExistance(getConfirmButton(), 90);
+        ActionsHelper.safeJavaScriptClick(getBtnSubmit().get(0));
+        ActionsHelper.waitForExistance(getBtnOk(), 90);
+        getBtnOk().click();
+        ActionsHelper.scrollTo(getLblFirstResultCode());
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
+        getResultsCodes().get(0).click();
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
+        getResultsCodes().get(0).click();
+        ActionsHelper.scrollTo(getWorkflowArea());
+        ActionsHelper.waitForExistance(getWorkflowArea(), 10);
+    }
 }

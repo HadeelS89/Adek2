@@ -73,7 +73,7 @@ public class ApplicantActionsTest extends Base {
         myApplicationsPage = new MyApplicationsPage(driver);
         ActionsHelper.waitForExistance(myApplicationsPage.getMyApplication(), 100);
         myApplicationsPage.acknowledgeApplicantion("Q-PROS INTERVIEW1");
-        Assert.assertTrue(myApplicationsPage.result);
+        Assert.assertTrue(myApplicationsPage.acknowledgeresult==false);
     }
 
     @Test(description = "check validation message when click decline by leaving " +
@@ -100,7 +100,7 @@ public class ApplicantActionsTest extends Base {
                         "applicantCredentials2", "password"));
         myApplicationsPage = new MyApplicationsPage(driver);
         myApplicationsPage.declineApplicationWithMessage("Automation Test 52232");
-        Assert.assertTrue(myApplicationsPage.result);
+        Assert.assertTrue(myApplicationsPage.declineResults== false);
     }
 
     @Test(description = "Accept application using acknowledgement ")
@@ -113,6 +113,37 @@ public class ApplicantActionsTest extends Base {
                         "applicantCredentials2", "password"));
         myApplicationsPage = new MyApplicationsPage(driver);
         myApplicationsPage.acceptApplication("AUTOMATION TEST 49024");
-        Assert.assertTrue(myApplicationsPage.result);
+        Assert.assertTrue(myApplicationsPage.result == false);
+    }
+
+    @Test(description = "withdraw Application ")
+    public void withdrawApplication() throws Exception {
+        driver.navigate().to(ReadWriteHelper.ReadData("ApplicantURL"));
+        loginPage = new LoginPage(driver);
+        loginPage.signIn(ReadWriteHelper.readCredentialsXMLFile("applicantCredentials2"
+                , "username"),
+                ReadWriteHelper.readCredentialsXMLFile(
+                        "applicantCredentials2", "password"));
+        myApplicationsPage = new MyApplicationsPage(driver);
+        myApplicationsPage.withdrawApplication("AUTOMATION TEST 49024");
+
+            Assert.assertTrue(myApplicationsPage.withdrawResults == false);
+
+
+    }
+    @Test(description = "Submit Application after request for change ")
+    public void reSubmitApplicationAfterChange() throws Exception {
+        driver.navigate().to(ReadWriteHelper.ReadData("ApplicantURL"));
+        loginPage = new LoginPage(driver);
+        loginPage.signIn(ReadWriteHelper.readCredentialsXMLFile("applicantCredentials2"
+                , "username"),
+                ReadWriteHelper.readCredentialsXMLFile(
+                        "applicantCredentials2", "password"));
+        myApplicationsPage = new MyApplicationsPage(driver);
+        myApplicationsPage.applicationSubmitionAfterChanges("AUTOMATION TEST 45971");
+
+       Assert.assertTrue(myApplicationsPage.getReSubmitMsg().isDisplayed());
+
+
     }
 }

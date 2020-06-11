@@ -162,7 +162,6 @@ public class AdminApplicationsListTest  extends Base{
         //Navigate to Admin panel
         driver.navigate().to(ReadWriteHelper.ReadData("AdminURL"));
         loginPage = new LoginPage(driver);
-
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile
                         ("recruiterCredentials3", "username"),
                 ReadWriteHelper.readCredentialsXMLFile
@@ -182,6 +181,35 @@ public class AdminApplicationsListTest  extends Base{
 
         }
 
-        Assert.assertTrue(!ActionsHelper.waitForExistance(adminApplicationsListPage.getBtnOk(),5));
+        Assert.assertTrue(scheduleIntervButton == null);
+    }
+
+    @Test(description = "Request change from recruiter")
+    public void requestForChange() throws Exception {
+        //Navigate to Admin panel
+        driver.navigate().to(ReadWriteHelper.ReadData("AdminURL"));
+        loginPage = new LoginPage(driver);
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile
+                        ("recruiterCredentials3", "username"),
+                ReadWriteHelper.readCredentialsXMLFile
+                        ("recruiterCredentials3", "password"));
+        adminApplicationsListPage = new AdminApplicationsListPage(driver);
+        adminApplicationsListPage.findProgram("Automation Test 45971");
+        adminApplicationsListPage.searchByStatus(
+                ReadWriteHelper.readProgramStatusXMLFile("applicationStatus4",
+                        "status"), true);
+        adminApplicationsListPage.requestForChange();
+        WebElement changeButton = null;
+        boolean isVisable = false;
+        try {
+            changeButton = ActionsHelper.getElement(driver, "xpath",
+                    "//button[@name='button'][3]");
+            isVisable = ActionsHelper.waitForExistance(changeButton, 10);
+
+        } catch (Exception e) {
+
+        }
+        Assert.assertTrue(isVisable == false);
+
     }
 }
