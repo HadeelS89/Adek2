@@ -70,6 +70,42 @@ public class AdminApplicationsListTest  extends Base{
         adminApplicationsListPage.goNextStepProgram(2);
     }
 
+    @Test(description = "Approves a new application",
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
+    public void approveNewApplication() throws Exception {
+        //Navigate to Admin panel
+        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
+        loginPage = new LoginPage(driver);
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "interviewer1", "username" ),
+                ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ));
+        adminApplicationsListPage = new AdminApplicationsListPage( driver );
+        adminApplicationsListPage.clearFilters();
+        adminApplicationsListPage.findProgram( "Automation Test 51221" );
+        adminApplicationsListPage.searchByStatus("New", true);
+        adminApplicationsListPage.selectFirstResult();
+        adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.StartReview);
+        adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.ApplicationReviewCompleted);
+        adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.ApplicationDocumentsVerified);
+        adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.ApproveAndProceedToAcknowledgement);
+    }
+
+    @Test(description = "Rejects a new application",
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
+    public void rejectNewApplication() throws Exception {
+        //Navigate to Admin panel
+        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
+        loginPage = new LoginPage(driver);
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "interviewer1", "username" ),
+                ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ));
+        adminApplicationsListPage = new AdminApplicationsListPage( driver );
+        adminApplicationsListPage.clearFilters();
+        adminApplicationsListPage.findProgram( "Automation Test 51221" );
+        adminApplicationsListPage.searchByStatus("New", true);
+        adminApplicationsListPage.selectFirstResult();
+        adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.StartReview);
+        adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.RejectApplication);
+    }
+
     @Test(description = "Mark Application as Present from admin")
     public void markApplicationAsPresent() throws Exception {
         //Navigate to Admin panel

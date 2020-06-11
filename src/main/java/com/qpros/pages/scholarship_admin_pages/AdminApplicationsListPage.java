@@ -8,14 +8,11 @@ import lombok.Getter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.internal.MouseAction;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Getter
 public class AdminApplicationsListPage extends Base{
@@ -80,61 +77,84 @@ public class AdminApplicationsListPage extends Base{
     @FindBy(id="adekFlowCommandParamSubmit")
     private WebElement rejectionButton;
 
+    @FindBy(id="btnClear")
+    private WebElement clearFiltersButton;
+    public enum ButtonsList {
+        Delegate, ApplicationReviewCompleted, ApplicationDocumentsVerified, ApproveAndProceedToAcknowledgement,
+        StartReview,RejectApplication,RequestForChange ,ScheduleInterview
+    }
+    EnumMap<ButtonsList, Integer> buttonTarget = new EnumMap<ButtonsList, Integer>(ButtonsList.class);
+
+    public void clearFilters(){
+        ActionsHelper.waitVisibility(getClearFiltersButton(), 90);
+        getClearFiltersButton().click();
+    }
     /**
-     * @param buttonName Buttons: Delegate, ApplicationReviewCompleted, ApplicationDocumentsVerified, ApproveAndProceedToAcknowledgement, StartReview, RejectApplication, RequestForChange, ScheduleInterview
+     * @param button Buttons: Delegate, ApplicationReviewCompleted, ApplicationDocumentsVerified, ApproveAndProceedToAcknowledgement, StartReview, RejectApplication, RequestForChange, ScheduleInterview
      */
-    public void clickApplicationButton(String buttonName){
-        ListMultimap<String, Integer> buttonList = ArrayListMultimap.create();
+    public void clickApplicationButton(ButtonsList button){
+
         //Map of buttons by their names
-        buttonList.put("Delegate",1);
-        buttonList.put("ApplicationReviewCompleted",1);
-        buttonList.put("ApplicationDocumentsVerified",1);
-        buttonList.put("ApproveAndProceedToAcknowledgement",1);
-        buttonList.put("StartReview",2);
-        buttonList.put("RejectApplication",2);
-        buttonList.put("RequestForChange",3);
-        buttonList.put("ScheduleInterview",3);
+        buttonTarget.put(ButtonsList.Delegate,1);
+        buttonTarget.put(ButtonsList.ApplicationReviewCompleted,1);
+        buttonTarget.put(ButtonsList.ApplicationDocumentsVerified,1);
+        buttonTarget.put(ButtonsList.ApproveAndProceedToAcknowledgement,1);
+        buttonTarget.put(ButtonsList.StartReview,2);
+        buttonTarget.put(ButtonsList.RejectApplication,2);
+        buttonTarget.put(ButtonsList.RequestForChange,3);
+        buttonTarget.put(ButtonsList.ScheduleInterview,3);
 
         //Get button location value
-        List<Integer> x = buttonList.get(buttonName);
-        System.out.println(x.get(0));
-
-        //Do the button process
-        if (x.get(0) == 1){
-            System.out.println("Hitting button 1");
-            ActionsHelper.waitVisibility(getNextStepButton(), 90);
+        if (button == ButtonsList.RejectApplication){
+            System.out.println("Reject button");
+            ActionsHelper.waitVisibility(getThirdButton(), 90);
+            getThirdButton().click();
+            ActionsHelper.waitVisibility(getRejectionComment(), 90);
+            getRejectionComment().sendKeys("RejectionReason123");
+            ActionsHelper.waitVisibility(getRejectionButton(), 90);
+            getRejectionButton().click();
+            ActionsHelper.waitVisibility(getConfirmButton(), 90);
+            getConfirmButton().click();
+        }
+        else if (button == ButtonsList.RequestForChange){
+            System.out.println("Request for Change button");
+            ActionsHelper.waitVisibility(getSecondButton(), 90);
+            getSecondButton().click();
+            ActionsHelper.waitVisibility(getRejectionComment(), 90);
+            getRejectionComment().sendKeys("RejectionReason123");
+            ActionsHelper.waitVisibility(getRejectionButton(), 90);
+            getRejectionButton().click();
+            ActionsHelper.waitVisibility(getConfirmButton(), 90);
+            getConfirmButton().click();
+        }
+        else if (buttonTarget.get(button) == 1){
+            System.out.println("Button1 ");
+            ActionsHelper.waitVisibility(getFirstButton(), 90);
             getFirstButton().click();
             ActionsHelper.waitVisibility(getNextStepButton(), 90);
             getNextStepButton().click();
             ActionsHelper.waitVisibility(getConfirmButton(), 90);
             getConfirmButton().click();
         }
-        else if (x.get(0) == 2){
-            if (buttonName != "RejectApplication"){
-                ActionsHelper.waitVisibility(getNextStepButton(), 90);
-                getSecondButton().click();
-                ActionsHelper.waitVisibility(getNextStepButton(), 90);
-                getNextStepButton().click();
-                ActionsHelper.waitVisibility(getConfirmButton(), 90);
-                getConfirmButton().click();
-            }
-            else if (buttonName == "Reject Application"){
-                ActionsHelper.waitVisibility(getRejectionComment(), 90);
-                getRejectionComment().sendKeys("Automated Rejection Reason");
-                ActionsHelper.waitVisibility(getRejectionButton(), 90);
-                getRejectionButton().click();
-
-            }
-
-        }
-        else if (x.get(0) == 3){
+        else if (buttonTarget.get(button) == 2){
+            System.out.println("Button2");
+            ActionsHelper.waitVisibility(getSecondButton(), 90);
+            getSecondButton().click();
             ActionsHelper.waitVisibility(getNextStepButton(), 90);
+            getNextStepButton().click();
+            ActionsHelper.waitVisibility(getConfirmButton(), 90);
+            getConfirmButton().click();
+        }
+        else if (buttonTarget.get(button) == 3){
+            System.out.println("Button3");
+            ActionsHelper.waitVisibility(getThirdButton(), 90);
             getThirdButton().click();
             ActionsHelper.waitVisibility(getNextStepButton(), 90);
             getNextStepButton().click();
             ActionsHelper.waitVisibility(getConfirmButton(), 90);
             getConfirmButton().click();
         }
+
     }
 
     public void searchByKeyWord_ApplicantCode(String keyWord) throws InterruptedException {
@@ -222,7 +242,7 @@ public class AdminApplicationsListPage extends Base{
     }
     public void findProgram(String programName) throws Exception {
         System.out.println("program Name:"+ programName );
-        ActionsHelper.waitForExistance(getProgramsList().get( 0 ), 60);
+        ActionsHelper.waitForExistance(getProgramsList().get( 0 ), 10);
         System.out.println("List size:"+ getProgramsList().size());
         getProgramsList().get( 0 ).click();
         ActionsHelper.waitVisibility(getProgramsIndex().get( 0 ), 30);
