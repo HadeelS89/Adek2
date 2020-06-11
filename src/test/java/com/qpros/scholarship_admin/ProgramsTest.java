@@ -15,11 +15,7 @@ public class ProgramsTest extends Base {
 
     @Test(description = "Create new program from admin panel",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
-    public void createProgram() throws Exception {
-
-        //Navigate to Admin panel
-        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
-
+    public void createProgram() {
         //Login as Program Manager
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "programManager1",
@@ -35,11 +31,7 @@ public class ProgramsTest extends Base {
 
     @Test(description = "Set program configurations",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
-    public void setConfigurations() throws Exception {
-
-        //Navigate to Admin panel
-        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
-
+    public void setConfigurations() {
         //Login as Program Manager
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "programManager1",
@@ -55,10 +47,6 @@ public class ProgramsTest extends Base {
     @Test(description = "Set Program Team",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
     public void setProgramTeam() throws Exception {
-
-        //Navigate to Admin panel
-        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
-
         //Login as Program Manager
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "programManager1",
@@ -70,9 +58,6 @@ public class ProgramsTest extends Base {
         programsPage.setProgramTeam();
 
     }
-
-
-
 
 
 }

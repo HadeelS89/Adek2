@@ -159,7 +159,6 @@ public class AdminApplicationsListPage extends Base {
             ActionsHelper.waitVisibility(getConfirmButton(), 90);
             getConfirmButton().click();
         }
-
     }
 
     public void searchByKeyWord_ApplicantCode(String keyWord) throws InterruptedException {

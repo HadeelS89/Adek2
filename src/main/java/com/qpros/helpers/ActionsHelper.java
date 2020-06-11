@@ -140,7 +140,13 @@ public class ActionsHelper extends Base {
     }
 
     public static String getFutureDate(int addedYears, int addedMonths, int addedDays){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat dateFormat;
+        if (ReadWriteHelper.ReadData("browser").equalsIgnoreCase( "chrome" )){
+             dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        }else {
+             dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        }
+
 
         Date currentDate = new Date();
         //System.out.println(dateFormat.format(currentDate));
@@ -212,6 +218,20 @@ public class ActionsHelper extends Base {
         }
 
         return isExist;
+    }
+
+    public static String reverseString(String value){
+
+        String reverse = "";
+
+
+        for(int i = value.length() - 1; i >= 0; i--)
+        {
+            reverse = reverse + value.charAt(i);
+        }
+
+        return reverse;
+
     }
 
 
