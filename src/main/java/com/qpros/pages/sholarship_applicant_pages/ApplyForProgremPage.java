@@ -23,8 +23,8 @@ public class ApplyForProgremPage extends Base {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//span[contains(.,'Programs')]")
-    private WebElement programs;
+//    @FindBy(xpath = "//span[contains(.,'Programs')]")
+//    private WebElement programs;
     @FindBy(xpath = "//div/div/div/button")
     private WebElement applyBtn;
     @FindBy(xpath = "//*[@class='btn ml-auto mb-0 btn-primary']//*[text()='Apply']")
@@ -108,6 +108,10 @@ public class ApplyForProgremPage extends Base {
     private List<WebElement> applicantProgramTilte;
 
 
+    @FindBy(xpath = "//a[starts-with(@class,'ng-star-inserted')]")
+    private List<WebElement> programs;
+
+
     public void saveAsDrat(String programTitle) throws Exception {
         programeSharedSteps(programTitle);
         ActionsHelper.waitVisibility(getSaveAsDraft(), 10);
@@ -135,22 +139,24 @@ public class ApplyForProgremPage extends Base {
     }
     // to apply for one program
     public void applyForProgram(String ProgrameTitle) throws InterruptedException {
-        ActionsHelper.waitVisibility(getPrograms(), 30);
-        getPrograms().click();
+        ActionsHelper.waitForListExistance(getPrograms(), 30);
+        ActionsHelper.selectElementFromList( getPrograms(), "Programs" );
+        //getPrograms().click();
         selectProgram(ProgrameTitle);
         ActionsHelper.waitVisibility(getStep1(), 15);
     }
 
     public void programeSharedSteps(String programTitle) throws Exception {
         System.out.println("Current Date: " + ActionsHelper.getTodayDate());
-        ActionsHelper.waitVisibility(getPrograms(), 15);
-        getPrograms().click();
-        Thread.sleep(10000);
-        ActionsHelper.waitVisibility(getProgramTilte().get(0), 50);
+        ActionsHelper.waitForListExistance(getPrograms(), 30);
+        ActionsHelper.selectElementFromList( getPrograms(), "Programs" );
+        Thread.sleep(5000);
+        ActionsHelper.waitForListExistance(getProgramTilte(), 30);
         System.out.println("Program Size: " + getProgramDiv().size());
         System.out.println("Title Size: " + getProgramTilte().size());
         System.out.println("Button Size: " + getProgramButton().size());
         for (int i = 0; i < getProgramDiv().size(); i++) {
+            ActionsHelper.waitForListExistance(getPrograms(), 30);
             String programTilte = getProgramTilte().get(i).getText();
             String programDate = getProgramDate().get(i).getText();
             String programButton = getProgramButton().get(i).getText();
@@ -161,31 +167,19 @@ public class ApplyForProgremPage extends Base {
                     ("apply")
                     && getProgramButton().get(i).isEnabled()) {
                 getProgramButton().get(i).click();
-                Thread.sleep(5000);
-                ActionsHelper.scrollTo(getAcademicLevel());
+                ActionsHelper.waitForExistance(getAcademicLevel(), 30);
                 ActionsHelper.actionsClick(getAcademicLevel(), "Doctorate");
                 ActionsHelper.actionsClick(getPreferredUniversity(), "Aarhus University");
-                ActionsHelper.actionsClick(getPreferredMajor(), "Botany");
-                ActionsHelper.actionsClick(getUniversity(), "Brown University");
-                ActionsHelper.actionsClick(getMajor(), "test H");
-                ActionsHelper.waitVisibility(getAdmissionTerm(), 5);
-                ActionsHelper.actionsClick(getAdmissionTerm(), "2021-2022 Summer");
-                ActionsHelper.actionsClick(getAdmissionType(), "Other");
-                ActionsHelper.scrollTo(getAdmissionLetter());
-                ActionsHelper.waitVisibility(getAdmissionLetter(), 15);
-                getAdmissionLetter().click();
-                ActionsHelper.waitVisibility(getUploadLetter(), 15);
-                ActionsHelper.safeJavaScriptClick(getUploadLetter());
-                getUploadLetter().sendKeys(ActionsHelper.getImagePath("image.PNG"));
-                //getUploadLetter().sendKeys("C:\\Users\\HadeelSalameh\\Pictures\\image.PNG");
-                ActionsHelper.safeJavaScriptClick(getUploadButton());
+                ActionsHelper.actionsClick(getPreferredMajor(), "Biology");
                 ActionsHelper.actionsClick(getAchievements(), "test33");
                 ActionsHelper.actionsClick(getStatementPurpose(), "test363");
                 ActionsHelper.scrollTo(getBtnNext1());
                 getBtnNext1().click();// step 1
-                ActionsHelper.waitVisibility(getBtnNext1(), 20);// step 2
+                Thread.sleep( 3000 );
+                ActionsHelper.waitForExistance(getBtnNext1(), 20);// step 2
                 getBtnNext1().click();
-                ActionsHelper.waitVisibility(getBtnNext1(), 20);
+                Thread.sleep( 3000 );
+                ActionsHelper.waitForExistance(getBtnNext1(), 20);
                 getBtnNext1().click();// step 3
                 break;
             } else if (programTilte.equalsIgnoreCase(programTitle) && programButton.equalsIgnoreCase
@@ -225,12 +219,11 @@ public class ApplyForProgremPage extends Base {
             }
         }
     }
+
 // to check whether the program status is drafted (go to my application) or new (apply)
     public void selectProgram(String programTitle) throws InterruptedException {
-        System.out.println("Current Date: " + ActionsHelper.getTodayDate());
-        ActionsHelper.waitVisibility(getPrograms(), 15);
-        getPrograms().click();
-        Thread.sleep(10000);
+        ActionsHelper.waitForListExistance(getProgramDiv(), 30);
+        ActionsHelper.selectElementFromList( getProgramDiv(), "Programs" );
         System.out.println("Program Size: " + getProgramDiv().size());
         System.out.println("Title Size: " + getProgramTilte().size());
         System.out.println("Button Size: " + getProgramButton().size());

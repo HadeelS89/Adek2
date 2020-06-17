@@ -17,9 +17,7 @@ public class ConfirmInterviewTest extends Base {
 
     @Test (description = "Confirm interview for applicant " )
     public void confirmInerview() throws Exception {
-        driver.navigate().to( ReadWriteHelper.ReadData("ApplicantURL"));
         LoginPage loginPage = new LoginPage(driver);
-
         loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials2"
                 , "username" ),
                 ReadWriteHelper.readCredentialsXMLFile(
@@ -27,14 +25,10 @@ public class ConfirmInterviewTest extends Base {
 
         myApplication1 = new MyApplicationsPage(driver);
         myApplication1.confirmInterview(ReadWriteHelper.readProgramsXMLFile(
-                "program19"
+                "User4Program"
         ,"title"));
 
         Assert.assertTrue(myApplication1.getCancelInterview().isDisplayed());
-
-
-
-
 
     }
 }

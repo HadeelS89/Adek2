@@ -48,8 +48,8 @@ public class ProgramsPage {
     private List<WebElement> programNameLabel;
     @FindBy(css = "li[class='nav-item']")
     private List<WebElement> programTabs; // Select configurations using this locator
-    @FindBy(xpath = "/html/body/div[5]/div[7]/div/button")
-    private WebElement okButton;
+//    @FindBy(xpath = "/html/body/div[5]/div[7]/div/button")
+//    private WebElement okButton;
     @FindBy(className = "col-md-auto")
     private List<WebElement> programsDiv;
     @FindBy(id = "home-tab")
@@ -128,7 +128,8 @@ public class ProgramsPage {
     @FindBy(xpath = "//input[starts-with(@class,'select2-search__field')]")
     private List<WebElement> userSearchField;
 
-
+    @FindBy(xpath = "//button[@class='confirm btn btn-lg btn-primary' and contains(text(), 'OK')]")
+    private List<WebElement> okButton;
 
 
 
@@ -152,8 +153,10 @@ public class ProgramsPage {
         getDueApplicationDateField().sendKeys( ActionsHelper.getFutureDate( 3,
                 0,0 ) );
         getSubmitButton().click();
-        ActionsHelper.waitForExistance( getOkButton(), 30 );
-        getOkButton().click();
+        ActionsHelper.waitForListExistance( getOkButton(), 30 );
+        System.out.println("OK: "+ getOkButton().size());
+        //getOkButton().get( 0 ).click();
+        ActionsHelper.selectElementFromList( getOkButton(), "OK" );
 
         ActionsHelper.waitForExistance( getSearchField(), 30 );
         getSearchField().sendKeys( randomName );
@@ -162,16 +165,6 @@ public class ProgramsPage {
         ActionsHelper.waitForListExistance( getProgramsDiv(), 50 );
         System.out.println("Program size: "+ getProgramsDiv().size());
         ActionsHelper.selectElementFromList( getProgramsDiv(), randomName );
-
-        //Save created program name for assertion
-        try {
-            for (int i = 0; i < getProgramsDiv().size(); i++){
-                if (getProgramsDiv().get( i ).getText().equalsIgnoreCase( randomName )){
-                    createdProgram = getProgramsDiv().get( i ).getText();
-                    break;
-                }
-            }
-        }catch (Exception e){}
 
     }
 
@@ -196,6 +189,7 @@ public class ProgramsPage {
         getUserSearchField().get( 0 ).sendKeys( "Doctorate" );
         ActionsHelper.waitForListExistance( getDivList(), 50 );
         ActionsHelper.selectElementFromList( getDivList(), "Doctorate" );
+        getSelectionCountList().get( 0 ).clear();
         getSelectionCountList().get( 0 ).sendKeys( "1" );
         getMandatoryCheckListList().get( 0 ).click();
         getSaveButton().get( 0 ).click();
@@ -219,6 +213,7 @@ public class ProgramsPage {
         getUserSearchField().get( 1 ).sendKeys( "United Arab Emirates" );
         ActionsHelper.waitForListExistance( getDivList(), 30 );
         ActionsHelper.selectElementFromList( getDivList(), "United Arab Emirates" );
+        getSelectionCountList().get( 1 ).clear();
         getSelectionCountList().get( 1 ).sendKeys( "1" );
         getMandatoryCheckListList().get( 1 ).click();
         getSaveButton().get( 2 ).click();
@@ -245,6 +240,7 @@ public class ProgramsPage {
         getAcademicCareersField().get( 2 ).click();
         getUserSearchField().get( 2 ).sendKeys( "Brown University" );
         ActionsHelper.selectElementFromList( getDivList(), "Brown University" );
+        getSelectionCountList().get( 2 ).clear();
         getSelectionCountList().get( 2 ).sendKeys( "1" );
         getMandatoryCheckListList().get( 2 ).click();
         getSaveButton().get( 4 ).click();
@@ -263,6 +259,7 @@ public class ProgramsPage {
         getAcademicCareersField().get( 3 ).click();
         getUserSearchField().get( 3 ).sendKeys( "Software Engineering" );
         ActionsHelper.selectElementFromList( getDivList(), "Software Engineering" );
+        getSelectionCountList().get( 3 ).clear();
         getSelectionCountList().get( 3 ).sendKeys( "1" );
         getMandatoryCheckListList().get( 3 ).click();
         getSaveButton().get( 5 ).click();
@@ -342,6 +339,18 @@ public class ProgramsPage {
         getProgramSubmitButton().click();
         ActionsHelper.waitForListExistance( getProgramOkButton(), 50 );
         ActionsHelper.selectElementFromList( getProgramOkButton(), "OK" );
+
+        //Save created program name for assertion
+        try {
+            for (int i = 0; i < getProgramsDiv().size(); i++){
+                if (getProgramsDiv().get( i ).getText().equalsIgnoreCase( randomName )){
+                    createdProgram = getProgramsDiv().get( i ).getText();
+                    ReadWriteHelper.writeIntoXMLFile( createdProgram );
+                    break;
+                }
+            }
+        }catch (Exception e){}
+
 
     }
 

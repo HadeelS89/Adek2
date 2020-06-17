@@ -20,12 +20,11 @@ public class LoginTest extends Base {
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, enabled = true)
     public void loginAsApplicant(){
 
-        //Navigate to Application
-        driver.navigate().to( ReadWriteHelper.ReadData("ApplicantURL"));
-
         loginPage = new LoginPage(driver);
-        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1", "username" ),
-                ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1", "password" ) );
+        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1"
+                , "username" ),
+                ReadWriteHelper.readCredentialsXMLFile(
+                        "applicantCredentials1", "password" ) );
         WebElement applicantLeftMenu = ActionsHelper.getElement( driver, "id", "Biographical" );
         Assert.assertTrue( ActionsHelper.waitVisibility( applicantLeftMenu, 20 ) );
     }
@@ -34,9 +33,6 @@ public class LoginTest extends Base {
     @Test(description = "Login as ADEK employee successfully",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
     public void loginAsADEKEmployee(){
-
-        //Navigate to Admin panel
-        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
 
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "username" ),
