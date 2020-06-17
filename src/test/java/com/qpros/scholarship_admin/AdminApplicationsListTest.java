@@ -176,12 +176,12 @@ public class AdminApplicationsListTest  extends Base{
     public void requestForChange() throws Exception {
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile
-                        ("recruiterCredentials3", "username"),
+                        ("interviewer1", "username"),
                 ReadWriteHelper.readCredentialsXMLFile
-                        ("recruiterCredentials3", "password"));
+                        ("interviewer1", "password"));
 
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
-        adminApplicationsListPage.findProgram("Automation Test 45971");
+        adminApplicationsListPage.findProgram("Automation Test 51221");
         adminApplicationsListPage.searchByStatus(
                 ReadWriteHelper.readProgramStatusXMLFile("applicationStatus4",
                         "status"), true);
@@ -197,6 +197,26 @@ public class AdminApplicationsListTest  extends Base{
 
         }
         Assert.assertTrue(isVisable == false);
+
+    }
+
+    @Test(description = "Activate Form ")
+    public void activationForm() throws Exception {
+
+        loginPage = new LoginPage(driver);
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile
+                        ("interviewer1", "username"),
+                ReadWriteHelper.readCredentialsXMLFile
+                        ("interviewer1", "password"));
+
+        adminApplicationsListPage = new AdminApplicationsListPage(driver);
+        adminApplicationsListPage.findProgram("Automation Test 51221");
+        adminApplicationsListPage.searchByStatus(
+                ReadWriteHelper.readProgramStatusXMLFile("applicationStatus5",
+                        "status"), true);
+        adminApplicationsListPage.activationForm();
+        Assert.assertTrue(adminApplicationsListPage.getSuccess().isDisplayed());
+       // adminApplicationsListPage.getBtnOK().click();
 
     }
 }

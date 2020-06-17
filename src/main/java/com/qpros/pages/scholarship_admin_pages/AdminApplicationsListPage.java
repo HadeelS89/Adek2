@@ -8,10 +8,12 @@ import lombok.Getter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.internal.MouseAction;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+
 import java.util.*;
 
 @Getter
@@ -51,7 +53,7 @@ public class AdminApplicationsListPage extends Base {
     private WebElement workflowArea;
     @FindBy(css = "div[row adek-table-row']")
     private List<WebElement> resultsApplicant;
-    @FindBy(css = "ul[class='select2-selection__rendered']")
+    @FindBy(css = "ul[starts-with(@class,'select2-selection')]")
     private List<WebElement> programsList;
     @FindBy(css = "li[class='select2-results__option']")
     private List<WebElement> programsIndex;
@@ -81,36 +83,69 @@ public class AdminApplicationsListPage extends Base {
     private WebElement rejectionComment;
     @FindBy(id = "adekFlowCommandParamSubmit")
     private WebElement rejectionButton;
-
-    @FindBy(id="btnClear")
+    @FindBy(id = "btnClear")
     private WebElement clearFiltersButton;
+    //TODO: Locators for activation form
+    @FindBy(id = "UniversityStartDate")
+    private WebElement startDateUnv;
+    @FindBy(id = "UniversityId")
+    private WebElement university;
+    @FindBy(id = "MajorId")
+    private WebElement major;
+    @FindBy(id = "ExpectedGraduationTermId")
+    private WebElement expectedGradTerm;
+    @FindBy(id = "ExpectedGraduationDate")
+    private WebElement expectedGraduationDate;
+    @FindBy(id = "TotalCreditsForGraduation")
+    private WebElement totalCreditsGraduation;
+    @FindBy(id = "ErppayStartDate")
+    private WebElement erpStartDate;
+    @FindBy(id = "AcademicProgramId")
+    private WebElement AcademicProgramId;
+    //    @FindBy(id = "btnSubmit")
+//    private WebElement saveActivationForm;
+    @FindBy(xpath = "//input[@class='btn btn-success']")
+    private List<WebElement> saveButtons;
+
+    @FindBy(xpath = "//label[@class='filter-container-label' and contains(text(), 'Programs')]")
+    private WebElement programsLabel;
+    @FindBy(xpath = "//span[starts-with(@class,'select2-selection')]")
+    private List<WebElement> programsList1;
+    @FindBy(xpath = "//p[contains(.,'Success')]")
+    private WebElement success;
+    @FindBy(xpath = "//button[contains(.,'OK')]")
+    private WebElement btnOK;
+
+
     public enum ButtonsList {
         Delegate, ApplicationReviewCompleted, ApplicationDocumentsVerified, ApproveAndProceedToAcknowledgement,
-        StartReview,RejectApplication,RequestForChange ,ScheduleInterview
+        StartReview, RejectApplication, RequestForChange, ScheduleInterview
     }
+
     EnumMap<ButtonsList, Integer> buttonTarget = new EnumMap<ButtonsList, Integer>(ButtonsList.class);
 
-    public void clearFilters(){
+    public void clearFilters() {
         ActionsHelper.waitVisibility(getClearFiltersButton(), 90);
         getClearFiltersButton().click();
     }
+
     /**
      * @param button Buttons: Delegate, ApplicationReviewCompleted, ApplicationDocumentsVerified, ApproveAndProceedToAcknowledgement, StartReview, RejectApplication, RequestForChange, ScheduleInterview
      */
-    public void clickApplicationButton(ButtonsList button){
+    public void clickApplicationButton(ButtonsList button) {
 
         //Map of buttons by their names
-        buttonTarget.put(ButtonsList.Delegate,1);
-        buttonTarget.put(ButtonsList.ApplicationReviewCompleted,1);
-        buttonTarget.put(ButtonsList.ApplicationDocumentsVerified,1);
-        buttonTarget.put(ButtonsList.ApproveAndProceedToAcknowledgement,1);
-        buttonTarget.put(ButtonsList.StartReview,2);
-        buttonTarget.put(ButtonsList.RejectApplication,2);
-        buttonTarget.put(ButtonsList.RequestForChange,3);
-        buttonTarget.put(ButtonsList.ScheduleInterview,3);
+        buttonTarget.put(ButtonsList.Delegate, 1);
+        buttonTarget.put(ButtonsList.ApplicationReviewCompleted, 1);
+        buttonTarget.put(ButtonsList.ApplicationDocumentsVerified, 1);
+        buttonTarget.put(ButtonsList.ApproveAndProceedToAcknowledgement, 1);
+        buttonTarget.put(ButtonsList.StartReview, 2);
+        buttonTarget.put(ButtonsList.RejectApplication, 2);
+        buttonTarget.put(ButtonsList.RequestForChange, 3);
+        buttonTarget.put(ButtonsList.ScheduleInterview, 3);
 
         //Get button location value
-        if (button == ButtonsList.RejectApplication){
+        if (button == ButtonsList.RejectApplication) {
             System.out.println("Reject button");
             ActionsHelper.waitVisibility(getThirdButton(), 90);
             getThirdButton().click();
@@ -120,8 +155,7 @@ public class AdminApplicationsListPage extends Base {
             getRejectionButton().click();
             ActionsHelper.waitVisibility(getConfirmButton(), 90);
             getConfirmButton().click();
-        }
-        else if (button == ButtonsList.RequestForChange){
+        } else if (button == ButtonsList.RequestForChange) {
             System.out.println("Request for Change button");
             ActionsHelper.waitVisibility(getSecondButton(), 90);
             getSecondButton().click();
@@ -131,8 +165,7 @@ public class AdminApplicationsListPage extends Base {
             getRejectionButton().click();
             ActionsHelper.waitVisibility(getConfirmButton(), 90);
             getConfirmButton().click();
-        }
-        else if (buttonTarget.get(button) == 1){
+        } else if (buttonTarget.get(button) == 1) {
             System.out.println("Button1 ");
             ActionsHelper.waitVisibility(getFirstButton(), 90);
             getFirstButton().click();
@@ -140,8 +173,7 @@ public class AdminApplicationsListPage extends Base {
             getNextStepButton().click();
             ActionsHelper.waitVisibility(getConfirmButton(), 90);
             getConfirmButton().click();
-        }
-        else if (buttonTarget.get(button) == 2){
+        } else if (buttonTarget.get(button) == 2) {
             System.out.println("Button2");
             ActionsHelper.waitVisibility(getSecondButton(), 90);
             getSecondButton().click();
@@ -149,8 +181,7 @@ public class AdminApplicationsListPage extends Base {
             getNextStepButton().click();
             ActionsHelper.waitVisibility(getConfirmButton(), 90);
             getConfirmButton().click();
-        }
-        else if (buttonTarget.get(button) == 3){
+        } else if (buttonTarget.get(button) == 3) {
             System.out.println("Button3");
             ActionsHelper.waitVisibility(getThirdButton(), 90);
             getThirdButton().click();
@@ -239,12 +270,13 @@ public class AdminApplicationsListPage extends Base {
         getBtnOk().click();
         Thread.sleep(3000);
     }
+
     public void findProgram(String programName) throws Exception {
         System.out.println("program Name:" + programName);
-        ActionsHelper.waitForExistance(getProgramsList().get(0), 60);
-        System.out.println("List size:" + getProgramsList().size());
-        getProgramsList().get(0).click();
-        ActionsHelper.waitVisibility(getProgramsIndex().get(0), 30);
+        ActionsHelper.waitForExistance(getProgramsLabel(), 50);
+        System.out.println("List size:" + getProgramsList1().size());
+        getProgramsList1().get(0).click();
+        ActionsHelper.waitForListExistance(getProgramsIndex(), 50);
         System.out.println("program list size:" + getProgramsIndex().size());
         for (int i = 0; i < getProgramsIndex().size(); i++) {
             if (getProgramsIndex().get(i).getText().equalsIgnoreCase(programName)) {
@@ -299,4 +331,26 @@ public class AdminApplicationsListPage extends Base {
         ActionsHelper.scrollTo(getWorkflowArea());
         ActionsHelper.waitForExistance(getWorkflowArea(), 10);
     }
+
+
+    public void activationForm() throws Exception {
+        System.out.println("after search display results " + getLblFirstResultCode().getText());
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
+        System.out.println(getResultsCodes().size());
+        getResultsCodes().get(0).click();
+        ActionsHelper.waitForExistance(getStartDateUnv(), 50);
+        getStartDateUnv().sendKeys(ActionsHelper.getFutureDate(0, 0, 2));
+        getUniversity().sendKeys("Boston University");
+        getMajor().sendKeys("Accounting");
+        getExpectedGradTerm().sendKeys("2021-2022 Fall");
+        getExpectedGraduationDate().sendKeys(ActionsHelper.getFutureDate(0, 2, 3));
+        getTotalCreditsGraduation().sendKeys("10");
+        getErpStartDate().sendKeys(ActionsHelper.getFutureDate(0, 0, 5));
+        getAcademicProgramId().sendKeys("Board");
+        ActionsHelper.waitForListExistance(getSaveButtons(), 30);
+        System.out.println("buttons save " + getSaveButtons().size());
+        getSaveButtons().get(1).click();
+
+    }
+
 }
