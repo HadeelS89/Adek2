@@ -151,8 +151,10 @@ public class EmailHelper extends Base {
                 }
                 messages = unreadMessages.toArray(new Message[]{});
             }
-
-            return messages;
+            List listOfProducts = Arrays.asList(messages);
+            Collections.reverse(listOfProducts);
+            Message[] messagesf = (Message[])listOfProducts.toArray(messages);
+            return messagesf;
         }
 
         /**
@@ -206,7 +208,7 @@ public class EmailHelper extends Base {
          */
 
         public String getVerificationCode(String emailName, String search, int lettersToRead) throws Exception {
-            Message email = getMessagesBySubject(emailName, false, 0)[0];
+            Message email = getMessagesBySubject(emailName, false, 5)[0];
             BufferedReader reader = new BufferedReader(new InputStreamReader(email.getInputStream()));
 
             String line;
@@ -319,7 +321,7 @@ public class EmailHelper extends Base {
         }
 
     }
-    /*public static void main(String args[]) throws MessagingException, GeneralSecurityException {
+    public static void main(String args[]) throws MessagingException, GeneralSecurityException {
             EmailHelper testHelper = new EmailHelper();
             try {
                 System.out.println(testHelper.getVerificationCode("DSG Notification for Txn No", "G Transaction No -  ", 9));
@@ -331,7 +333,7 @@ public class EmailHelper extends Base {
                 e.printStackTrace();
             }
 
-    }*/
+    }
 }
 
 
