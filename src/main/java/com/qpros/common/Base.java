@@ -26,7 +26,6 @@ public class Base {
         String OsType = OsValidator.getDeviceOs();
         DriverType browser = getBrowser();
         initiateDriver(OsType, browser);
-        //driver.navigate().to(ReadWriteHelper.ReadData("ApplicantURL"));
     }
 
 
@@ -136,7 +135,7 @@ public class Base {
     }
 
 
-    @AfterMethod(enabled = true)
+    //@AfterMethod(enabled = true)
     public void stopDriver() {
         try {
             driver.quit();
