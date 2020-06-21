@@ -11,8 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AppsDocsVerifiedTest extends Base {
-
+public class ScheduleInterviewTest extends Base {
     LoginPage loginPage;
     ProgramsPage programsPage;
     ApplyForProgremPage applyForProgremPage;
@@ -77,28 +76,28 @@ public class AppsDocsVerifiedTest extends Base {
     @Test(description = "Schedule interview from recruiter",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 3)
     public void scheduleInterview() throws Exception {
-        loginPage = new LoginPage(driver);
-        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile
-                        ("recruiterCredentials3", "username"),
+        loginPage = new LoginPage( driver );
+        loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile
+                        ( "recruiterCredentials3", "username" ),
                 ReadWriteHelper.readCredentialsXMLFile
-                        ("recruiterCredentials3", "password"));
+                        ( "recruiterCredentials3", "password" ) );
 
-        adminApplicationsListPage = new AdminApplicationsListPage(driver);
-        adminApplicationsListPage.findProgram(ReadWriteHelper.readApplicationsXMLFile(
-                "applicationIName1","title"));
+        adminApplicationsListPage = new AdminApplicationsListPage( driver );
+        adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
         adminApplicationsListPage.searchByStatus(
-                ReadWriteHelper.readProgramStatusXMLFile("applicationStatus2",
-                        "status"), true);
+                ReadWriteHelper.readProgramStatusXMLFile( "applicationStatus2",
+                        "status" ), true );
         adminApplicationsListPage.scheduleInterview();
         WebElement scheduleIntervButton = null;
         try {
-            scheduleIntervButton = ActionsHelper.getElement(driver, "xpath",
-                    "//button[@name='button'][3]");
+            scheduleIntervButton = ActionsHelper.getElement( driver, "xpath",
+                    "//button[@name='button'][3]" );
         } catch (Exception e) {
 
         }
 
-        Assert.assertTrue(scheduleIntervButton == null);
+        Assert.assertTrue( scheduleIntervButton == null );
     }
+
 
 }

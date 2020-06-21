@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AppsDocsVerifiedTest extends Base {
+public class RequestForChangeTest extends Base {
 
     LoginPage loginPage;
     ProgramsPage programsPage;
@@ -56,10 +56,9 @@ public class AppsDocsVerifiedTest extends Base {
 
     }
 
-
-    @Test(description = "Approves a new application",
+    @Test(description = "Start review a new application",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 2)
-    public void approveNewApplication() throws Exception {
+    public void startReviewNewApplication() throws Exception {
         loginPage = new LoginPage( driver );
         loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "username" ),
                 ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "password" ) );
@@ -70,35 +69,37 @@ public class AppsDocsVerifiedTest extends Base {
         adminApplicationsListPage.searchByStatus( "New", true );
         adminApplicationsListPage.selectFirstResult();
         adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.StartReview );
-        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.ApplicationReviewCompleted );
-        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.ApplicationDocumentsVerified );
     }
 
-    @Test(description = "Schedule interview from recruiter",
+    @Test(description = "Request change from recruiter",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 3)
-    public void scheduleInterview() throws Exception {
-        loginPage = new LoginPage(driver);
-        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile
-                        ("recruiterCredentials3", "username"),
+    public void requestForChange() throws Exception {
+        //Request for change reviewed application
+        loginPage = new LoginPage( driver );
+        loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile
+                        ( "recruiterCredentials3", "username" ),
                 ReadWriteHelper.readCredentialsXMLFile
-                        ("recruiterCredentials3", "password"));
+                        ( "recruiterCredentials3", "password" ) );
 
-        adminApplicationsListPage = new AdminApplicationsListPage(driver);
-        adminApplicationsListPage.findProgram(ReadWriteHelper.readApplicationsXMLFile(
-                "applicationIName1","title"));
+        adminApplicationsListPage = new AdminApplicationsListPage( driver );
+        adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
         adminApplicationsListPage.searchByStatus(
-                ReadWriteHelper.readProgramStatusXMLFile("applicationStatus2",
-                        "status"), true);
-        adminApplicationsListPage.scheduleInterview();
-        WebElement scheduleIntervButton = null;
+                ReadWriteHelper.readProgramStatusXMLFile( "applicationStatus4",
+                        "status" ), true );
+        adminApplicationsListPage.requestForChange();
+        WebElement changeButton = null;
+        boolean isVisable = false;
         try {
-            scheduleIntervButton = ActionsHelper.getElement(driver, "xpath",
-                    "//button[@name='button'][3]");
+            changeButton = ActionsHelper.getElement( driver, "xpath",
+                    "//button[@name='button'][3]" );
+            isVisable = ActionsHelper.waitForExistance( changeButton, 10 );
+
         } catch (Exception e) {
 
         }
+        Assert.assertTrue( isVisable == false );
 
-        Assert.assertTrue(scheduleIntervButton == null);
     }
+
 
 }

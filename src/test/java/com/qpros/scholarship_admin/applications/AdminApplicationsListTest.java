@@ -192,11 +192,6 @@ public class AdminApplicationsListTest  extends Base{
 
     @Test(description = "Request change from recruiter")
     public void requestForChange() throws Exception {
-        //Start review submitted application
-        //
-        // startReviewNewApplication();
-
-        //Request for change reviewed application
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile
                         ("recruiterCredentials3", "username"),
@@ -220,6 +215,26 @@ public class AdminApplicationsListTest  extends Base{
 
         }
         Assert.assertTrue(isVisable == false);
+
+    }
+
+    @Test(description = "Activate Form ")
+    public void activationForm() throws Exception {
+
+        loginPage = new LoginPage(driver);
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile
+                        ("interviewer1", "username"),
+                ReadWriteHelper.readCredentialsXMLFile
+                        ("interviewer1", "password"));
+
+        adminApplicationsListPage = new AdminApplicationsListPage(driver);
+        adminApplicationsListPage.findProgram("Automation Test 51221");
+        adminApplicationsListPage.searchByStatus(
+                ReadWriteHelper.readProgramStatusXMLFile("applicationStatus5",
+                        "status"), true);
+        adminApplicationsListPage.activationForm();
+        Assert.assertTrue(adminApplicationsListPage.getSuccess().isDisplayed());
+       // adminApplicationsListPage.getBtnOK().click();
 
     }
 }

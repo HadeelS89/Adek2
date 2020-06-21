@@ -8,11 +8,11 @@ import lombok.Getter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.internal.MouseAction;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
 import java.util.*;
 
 @Getter
@@ -54,7 +54,7 @@ public class AdminApplicationsListPage extends Base {
     private WebElement workflowArea;
     @FindBy(css = "div[row adek-table-row']")
     private List<WebElement> resultsApplicant;
-    @FindBy(css = "ul[class='select2-selection__rendered']")
+    @FindBy(css = "ul[starts-with(@class,'select2-selection')]")
     private List<WebElement> programsList;
     @FindBy(css = "li[class='select2-results__option']")
     private List<WebElement> programsIndex;
@@ -116,6 +116,34 @@ public class AdminApplicationsListPage extends Base {
     private List<WebElement> sucessLabel;
 
 
+    //TODO: Locators for activation form
+    @FindBy(id = "UniversityStartDate")
+    private WebElement startDateUnv;
+    @FindBy(id = "UniversityId")
+    private WebElement university;
+    @FindBy(id = "MajorId")
+    private WebElement major;
+    @FindBy(id = "ExpectedGraduationTermId")
+    private WebElement expectedGradTerm;
+    @FindBy(id = "ExpectedGraduationDate")
+    private WebElement expectedGraduationDate;
+    @FindBy(id = "TotalCreditsForGraduation")
+    private WebElement totalCreditsGraduation;
+    @FindBy(id = "ErppayStartDate")
+    private WebElement erpStartDate;
+    @FindBy(id = "AcademicProgramId")
+    private WebElement AcademicProgramId;
+    //    @FindBy(id = "btnSubmit")
+//    private WebElement saveActivationForm;
+    @FindBy(xpath = "//input[@class='btn btn-success']")
+    private List<WebElement> saveButtons;
+
+    @FindBy(xpath = "//p[contains(.,'Success')]")
+    private WebElement success;
+    @FindBy(xpath = "//button[contains(.,'OK')]")
+    private WebElement btnOK;
+
+
     public enum ButtonsList {
         Delegate, ApplicationReviewCompleted, ApplicationDocumentsVerified, ApproveAndProceedToAcknowledgement,
         StartReview, RejectApplication, RequestForChange, ScheduleInterview
@@ -128,7 +156,6 @@ public class AdminApplicationsListPage extends Base {
         ActionsHelper.waitForExistance( getApplyButton(), waitTime );
         getClearFiltersButton().click();
     }
-
     /**
      * @param button Buttons: Delegate, ApplicationReviewCompleted, ApplicationDocumentsVerified, ApproveAndProceedToAcknowledgement, StartReview, RejectApplication, RequestForChange, ScheduleInterview
      */
@@ -397,4 +424,26 @@ public class AdminApplicationsListPage extends Base {
         ActionsHelper.scrollTo( getWorkflowArea() );
         ActionsHelper.waitForExistance( getWorkflowArea(), 10 );
     }
+
+
+    public void activationForm() throws Exception {
+        System.out.println("after search display results " + getLblFirstResultCode().getText());
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
+        System.out.println(getResultsCodes().size());
+        getResultsCodes().get(0).click();
+        ActionsHelper.waitForExistance(getStartDateUnv(), 50);
+        getStartDateUnv().sendKeys(ActionsHelper.getFutureDate(0, 0, 2));
+        getUniversity().sendKeys("Boston University");
+        getMajor().sendKeys("Accounting");
+        getExpectedGradTerm().sendKeys("2021-2022 Fall");
+        getExpectedGraduationDate().sendKeys(ActionsHelper.getFutureDate(0, 2, 3));
+        getTotalCreditsGraduation().sendKeys("10");
+        getErpStartDate().sendKeys(ActionsHelper.getFutureDate(0, 0, 5));
+        getAcademicProgramId().sendKeys("Board");
+        ActionsHelper.waitForListExistance(getSaveButtons(), 30);
+        System.out.println("buttons save " + getSaveButtons().size());
+        getSaveButtons().get(1).click();
+
+    }
+
 }
