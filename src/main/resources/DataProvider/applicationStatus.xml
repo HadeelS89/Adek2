@@ -15,6 +15,10 @@
     <applicationStatus4>
         <status>Under Review</status>
     </applicationStatus4>
+
+    <applicationStatus5>
+        <status>Pending Activation</status>
+    </applicationStatus5>
 </class>
 
 

@@ -41,6 +41,12 @@ public class LoginTest extends Base {
         Assert.assertTrue( ActionsHelper.waitVisibility( adminLeftMenu, 20 ) );
     }
 
+    @Test(description = "Login as ADEK employee successfully",
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
+    public void Looog(){
+        System.out.println("Login 1");
+    }
+
 
 
 

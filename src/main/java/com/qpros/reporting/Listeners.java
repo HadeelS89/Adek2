@@ -13,6 +13,7 @@ public class Listeners extends TestListenerAdapter{
     ExceptionListner exceptionListener = new ExceptionListner();
     public static boolean CONSOLE;
 
+
     @Override
     public synchronized void onStart(ITestContext context) {
         if (CONSOLE == true) {
@@ -24,6 +25,7 @@ public class Listeners extends TestListenerAdapter{
 
     @Override
     public synchronized void onFinish(ITestContext context) {
+
         if (CONSOLE == true) {
             System.out.println(("Test Suite is ending!"));
 

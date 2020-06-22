@@ -15,9 +15,10 @@ public class ProgramsPage {
 
     public static String randomName = "";
     public static String createdProgram = "";
+    WebElement createdProgramName = null;
 
     public ProgramsPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements( driver, this );
     }
 
     @FindBy(css = "a[class='air__menuLeft__link']")
@@ -48,7 +49,7 @@ public class ProgramsPage {
     private List<WebElement> programNameLabel;
     @FindBy(css = "li[class='nav-item']")
     private List<WebElement> programTabs; // Select configurations using this locator
-//    @FindBy(xpath = "/html/body/div[5]/div[7]/div/button")
+    //    @FindBy(xpath = "/html/body/div[5]/div[7]/div/button")
 //    private WebElement okButton;
     @FindBy(className = "col-md-auto")
     private List<WebElement> programsDiv;
@@ -132,58 +133,59 @@ public class ProgramsPage {
     private List<WebElement> okButton;
 
 
-
-
-
-    public void addProgram(){
+    public void addProgram() {
         ActionsHelper.waitForListExistance( getProgramsTab(), 50 );
         ActionsHelper.selectElementFromList( getProgramsTab(), "Programs" );
         //getProgramsTab().get( 1 ).click();
-        System.out.println("Divs size: "+getProgramsDiv().size());
+        System.out.println( "Divs size: " + getProgramsDiv().size() );
         ActionsHelper.waitForListExistance( getAddProgramButton(), 30 );
         getAddProgramButton().get( 0 ).click();
         //Set unique name for the created program
-        randomName = "Automation Test " +System.currentTimeMillis() % 100000;
+        randomName = "AUTOMATION TEST " + System.currentTimeMillis() % 100000;
         ActionsHelper.waitForExistance( getNameEnglishField(), 30 );
         getNameEnglishField().sendKeys( randomName );
         getNameArabicField().sendKeys( randomName );
-        getStartDateField().sendKeys( ActionsHelper.getTodayDate() );
+        getStartDateField().sendKeys( ActionsHelper.getFutureDate( 0,
+                0, 0 ) );
         getEndDateField().sendKeys( ActionsHelper.getFutureDate( 10,
-                0,0 ) );
+                0, 0 ) );
         getDueApplicationDateField().sendKeys( ActionsHelper.getFutureDate( 3,
-                0,0 ) );
+                0, 0 ) );
         getSubmitButton().click();
         ActionsHelper.waitForListExistance( getOkButton(), 30 );
-        System.out.println("OK: "+ getOkButton().size());
+        System.out.println( "OK: " + getOkButton().size() );
         //getOkButton().get( 0 ).click();
         ActionsHelper.selectElementFromList( getOkButton(), "OK" );
+        getCreatedProgram();
+        createdProgramName.click();
+        //Save created program name for assertion
+        try {
+            for (int i = 0; i < getProgramsDiv().size(); i++) {
+                if (getProgramsDiv().get( i ).getText().equalsIgnoreCase( randomName )) {
+                    createdProgram = getProgramsDiv().get( i ).getText();
+                    ReadWriteHelper.writeIntoXMLFile( createdProgram );
+                    break;
+                }
+            }
+        } catch (Exception e) {
+        }
 
-        ActionsHelper.waitForExistance( getSearchField(), 30 );
-        getSearchField().sendKeys( randomName );
-        ActionsHelper.waitForExistance( getSearchButton(), 30 );
-        getSearchButton().click();
-        ActionsHelper.waitForListExistance( getProgramsDiv(), 50 );
-        System.out.println("Program size: "+ getProgramsDiv().size());
-        ActionsHelper.selectElementFromList( getProgramsDiv(), randomName );
 
     }
 
 
-
-    public void setProgramConfig(){
-        //Create new program
-        addProgram();
-
+    public void setProgramConfig() {
         //Select configurations tab
         ActionsHelper.waitForExistance( getMainInfoLabels(), 50 );
         ActionsHelper.waitForListExistance( getProgramOptions(), 50 );
-        getProgramOptions().get( 7 ).click();
+        ActionsHelper.selectElementFromList( getProgramOptions(), "Configuration" );
+        //getProgramOptions().get( 7 ).click();
 
         //Academic Level
         ActionsHelper.waitForListExistance( getConfigurationsList(), 50 );
         ActionsHelper.selectElementFromList( getConfigurationsList(), "Academic Level" );
         ActionsHelper.waitForListExistance( getAcademicCareersField(), 50 );
-        System.out.println("Fields List size: " + getAcademicCareersField().size());
+        System.out.println( "Fields List size: " + getAcademicCareersField().size() );
         getAcademicCareersField().get( 0 ).click();
         ActionsHelper.waitForListExistance( getUserSearchField(), 20 );
         getUserSearchField().get( 0 ).sendKeys( "Doctorate" );
@@ -312,13 +314,11 @@ public class ProgramsPage {
     }
 
 
-    public void setProgramTeam() throws Exception{
-        //set config
-        setProgramConfig();
-
+    public void setProgramTeam() throws Exception {
         //select Program Team tab
         ActionsHelper.waitForListExistance( getProgramOptions(), 50 );
-        getProgramOptions().get( 8 ).click();
+        ActionsHelper.selectElementFromList( getProgramOptions(), "Program Team" );
+        //getProgramOptions().get( 8 ).click();
 
         //User Type
         ActionsHelper.waitForListExistance( getUserType(), 50 );
@@ -328,7 +328,7 @@ public class ProgramsPage {
         ActionsHelper.waitForExistance( getChooseUserField(), 30 );
         getChooseUserField().click();
         ActionsHelper.waitForListExistance( getUserSearchField(), 20 );
-        getUserSearchField().get( 0 ).sendKeys( ReadWriteHelper.readCredentialsXMLFile( "interviewer1",
+        getUserSearchField().get( 0 ).sendKeys( ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3",
                 "username" ) );
         ActionsHelper.waitForListExistance( getUserEmail(), 20 );
         ActionsHelper.selectElementFromList( getUserEmail(),
@@ -338,23 +338,29 @@ public class ProgramsPage {
         getRuleCheckbox().get( 2 ).click();
         getProgramSubmitButton().click();
         ActionsHelper.waitForListExistance( getProgramOkButton(), 50 );
-        ActionsHelper.selectElementFromList( getProgramOkButton(), "OK" );
-
-        //Save created program name for assertion
-        try {
-            for (int i = 0; i < getProgramsDiv().size(); i++){
-                if (getProgramsDiv().get( i ).getText().equalsIgnoreCase( randomName )){
-                    createdProgram = getProgramsDiv().get( i ).getText();
-                    ReadWriteHelper.writeIntoXMLFile( createdProgram );
-                    break;
-                }
-            }
-        }catch (Exception e){}
-
+        //ActionsHelper.selectElementFromList( getProgramOkButton(), "OK" );
+        getProgramOkButton().get( 0 ).click();
 
     }
 
+    public void getCreatedProgram(){
+        ActionsHelper.waitForExistance( getSearchField(), 30 );
+        getSearchField().sendKeys( randomName );
+        ActionsHelper.waitForExistance( getSearchButton(), 30 );
+        getSearchButton().click();
+        ActionsHelper.waitForListExistance( getProgramsDiv(), 50 );
+        createdProgramName = ActionsHelper.getElementFromList( getProgramsDiv(), randomName );
+    }
 
+
+    public void createFullProgram() throws Exception {
+        //Create new program
+        addProgram();
+        //Set program configurations
+        setProgramConfig();
+        //Set program team
+        setProgramTeam();
+    }
 
 
 }
