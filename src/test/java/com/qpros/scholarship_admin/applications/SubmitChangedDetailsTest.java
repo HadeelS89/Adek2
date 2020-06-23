@@ -36,7 +36,7 @@ public class SubmitChangedDetailsTest extends Base {
     }
 
     @Test(description = "Submit Application",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 1)// one programe
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 1)// one program
     public void submitProgram() throws Exception {
         loginPage = new LoginPage( driver );
         loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1"
@@ -58,8 +58,8 @@ public class SubmitChangedDetailsTest extends Base {
 
     }
 
-    @Test(description = "Start review a new application",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 2)
+   @Test(description = "Start review a new application",
+           retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 2)
     public void startReviewNewApplication() throws Exception {
         loginPage = new LoginPage( driver );
         loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "username" ),
@@ -68,13 +68,13 @@ public class SubmitChangedDetailsTest extends Base {
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.clearFilters();
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
-        adminApplicationsListPage.searchByStatus( "New", true );
+        //adminApplicationsListPage.searchByStatus( "New", true );
         adminApplicationsListPage.selectFirstResult();
         adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.StartReview );
     }
 
-    @Test(description = "Request change from recruiter",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 3)
+    @Test(description = "Request change from recruiter")
+           // retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 3)
     public void requestForChange() throws Exception {
         //Request for change reviewed application
         loginPage = new LoginPage( driver );
@@ -85,10 +85,10 @@ public class SubmitChangedDetailsTest extends Base {
 
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
-        adminApplicationsListPage.searchByStatus(
-                ReadWriteHelper.readProgramStatusXMLFile( "applicationStatus4",
-                        "status" ), true );
-        adminApplicationsListPage.requestForChange();
+        adminApplicationsListPage.selectFirstResult();
+        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.RequestForChange );
+        adminApplicationsListPage.selectFirstResult();//close grid
+        adminApplicationsListPage.selectFirstResult();//open grid
         WebElement changeButton = null;
         boolean isVisable = false;
         try {
@@ -108,15 +108,16 @@ public class SubmitChangedDetailsTest extends Base {
     public void reSubmitApplicationAfterChange() throws Exception {
 
         loginPage = new LoginPage(driver);
-        loginPage.signIn(ReadWriteHelper.readCredentialsXMLFile("applicantCredentials2"
+        // same applicant credentials used on submit program should be used
+        loginPage.signIn(ReadWriteHelper.readCredentialsXMLFile("applicantCredentials1"
                 , "username"),
                 ReadWriteHelper.readCredentialsXMLFile(
-                        "applicantCredentials2", "password"));
+                        "applicantCredentials1", "password"));
 
         myApplicationsPage = new MyApplicationsPage(driver);
         myApplicationsPage.applicationSubmitionAfterChanges(ReadWriteHelper.getCreatedProgram());
 
-        //   Assert.assertTrue(myApplicationsPage.getReSubmitMsg().isDisplayed());
+           Assert.assertTrue(myApplicationsPage.getReSubmitMsg().isDisplayed());
 
 
     }

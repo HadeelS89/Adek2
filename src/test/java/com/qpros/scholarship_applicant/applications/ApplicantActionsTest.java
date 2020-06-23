@@ -121,7 +121,7 @@ public class ApplicantActionsTest extends Base {
         Assert.assertTrue(myApplicationsPage.result == false);
     }
 
-    @Test(description = "withdraw Application ")
+    @Test(description = "withdraw Application [2694] [2692]")
     public void withdrawApplication() throws Exception {
         driver.navigate().to(ReadWriteHelper.ReadData("ApplicantURL"));
         loginPage = new LoginPage(driver);

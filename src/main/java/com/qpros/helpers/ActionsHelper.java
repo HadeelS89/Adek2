@@ -20,18 +20,18 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 public class ActionsHelper extends Base {
-    protected static Logger LOGGER = Logger.getLogger( Thread.currentThread().getStackTrace()[0].getClassName() );
+    protected static Logger LOGGER = Logger.getLogger(Thread.currentThread().getStackTrace()[0].getClassName());
     public static WebDriverWait wait;
 
     public static void waitForSeconds(Integer timeWait) {
-        driver.manage().timeouts().implicitlyWait( timeWait, TimeUnit.SECONDS );
+        driver.manage().timeouts().implicitlyWait(timeWait, TimeUnit.SECONDS);
     }
 
     public static boolean waitVisibility(WebElement element, int time) {
         boolean isElementPresent = false;
         try {
-            wait = new WebDriverWait( driver, time );
-            wait.until( ExpectedConditions.visibilityOf( element ) );
+            wait = new WebDriverWait(driver, time);
+            wait.until(ExpectedConditions.visibilityOf(element));
             isElementPresent = element.isDisplayed();
         } catch (Exception e) {
             throw e;
@@ -43,8 +43,8 @@ public class ActionsHelper extends Base {
     public static boolean waitToBeClickable(WebElement element, int time) {
         boolean isElementClickable = false;
         try {
-            wait = new WebDriverWait( driver, time );
-            wait.until( ExpectedConditions.elementToBeClickable( element ) );
+            wait = new WebDriverWait(driver, time);
+            wait.until(ExpectedConditions.elementToBeClickable(element));
             isElementClickable = element.isEnabled();
         } catch (Exception e) {
             throw e;
@@ -55,52 +55,52 @@ public class ActionsHelper extends Base {
 
     public static void selectByIndex(WebElement element, int index) {
         try {
-            org.openqa.selenium.support.ui.Select make = new org.openqa.selenium.support.ui.Select( element );
-            make.selectByIndex( index );
+            org.openqa.selenium.support.ui.Select make = new org.openqa.selenium.support.ui.Select(element);
+            make.selectByIndex(index);
         } catch (Exception e) {
-            throw new RuntimeException( "Element is: " + element );
+            throw new RuntimeException("Element is: " + element);
 
         }
     }
 
     public static void selectByValue(WebElement element, String value) {
         try {
-            org.openqa.selenium.support.ui.Select make = new org.openqa.selenium.support.ui.Select( element );
-            make.selectByValue( value );
+            org.openqa.selenium.support.ui.Select make = new org.openqa.selenium.support.ui.Select(element);
+            make.selectByValue(value);
         } catch (Exception e) {
-            throw new RuntimeException( "Element is: " + element );
+            throw new RuntimeException("Element is: " + element);
 
         }
     }
 
     public static void scrollTo(WebElement element) {
-        ((JavascriptExecutor) driver).executeScript( "arguments[0].scrollIntoView(false);", element );
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", element);
     }
 
     public static void safeJavaScriptClick(WebElement element) throws Exception {
         try {
             if (element.isEnabled() && element.isDisplayed()) {
 
-                ((JavascriptExecutor) driver).executeScript( "arguments[0].click();", element );
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
             } else {
-                LOGGER.info( "Unable to click on element" );
+                LOGGER.info("Unable to click on element");
             }
         } catch (StaleElementReferenceException e) {
-            LOGGER.info( "Element is not attached to the page document " + e.getStackTrace() );
+            LOGGER.info("Element is not attached to the page document " + e.getStackTrace());
         } catch (NoSuchElementException e) {
-            LOGGER.info( "Element was not found in DOM " + e.getStackTrace() );
+            LOGGER.info("Element was not found in DOM " + e.getStackTrace());
         } catch (Exception e) {
-            LOGGER.info( "Unable to click on element " + e.getStackTrace() );
+            LOGGER.info("Unable to click on element " + e.getStackTrace());
         }
     }
 
     public static String getImagePath(String imageName) {
-        String path = System.getProperty( "user.dir" ) + "/src/main/resources/images/" + imageName;
+        String path = System.getProperty("user.dir") + "/src/main/resources/images/" + imageName;
         return path;
     }
 
     public String getXMLPath(String xmlFileName) {
-        String path = System.getProperty( "user.dir" ) + "/src/main/resources/xmlfiles/" + xmlFileName;
+        String path = System.getProperty("user.dir") + "/src/main/resources/xmlfiles/" + xmlFileName;
         return path;
     }
 
@@ -115,37 +115,36 @@ public class ActionsHelper extends Base {
         WebElement element = null;
 
         try {
-            switch (attribute) {
+            switch (attribute){
                 case "id":
-                    element = driver.findElement( By.id( locator ) );
+                    element = driver.findElement(By.id(locator));
                 case "name":
-                    element = driver.findElement( By.id( locator ) );
+                    element = driver.findElement(By.id(locator));
                 case "class":
-                    element = driver.findElement( By.className( locator ) );
+                    element = driver.findElement(By.className(locator));
                 case "xpath":
-                    element = driver.findElement( By.xpath( locator ) );
+                    element = driver.findElement(By.xpath(locator));
             }
-        } catch (Exception e) {
-        }
+        }catch (Exception e){}
 
         return element;
     }
 
-    public static void actionsClick(WebElement element, String EnterText) {
-        Actions actions = new Actions( driver );
-        //actions.moveToElement( element );
+    public static void actionsClick(WebElement element, String EnterText){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element);
         actions.click();
-        actions.sendKeys( EnterText, Keys.ENTER );
+        actions.sendKeys(EnterText, Keys.ENTER);
         actions.build().perform();
 
     }
 
-    public static String getFutureDate(int addedYears, int addedMonths, int addedDays) {
+    public static String getFutureDate(int addedYears, int addedMonths, int addedDays){
         DateFormat dateFormat;
-        if (ReadWriteHelper.ReadData( "browser" ).equalsIgnoreCase( "chrome" )) {
-            dateFormat = new SimpleDateFormat( "MM-dd-yyyy" );
-        } else {
-            dateFormat = new SimpleDateFormat( "yyyy-MM-dd" );
+        if (ReadWriteHelper.ReadData("browser").equalsIgnoreCase( "chrome" )){
+             dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        }else {
+             dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         }
 
 
@@ -154,45 +153,45 @@ public class ActionsHelper extends Base {
 
         // convert date to calendar
         Calendar c = Calendar.getInstance();
-        c.setTime( currentDate );
+        c.setTime(currentDate);
 
         // manipulate date
-        c.add( Calendar.YEAR, addedYears );
-        c.add( Calendar.MONTH, addedMonths );
-        c.add( Calendar.DATE, addedDays ); //same with c.add(Calendar.DAY_OF_MONTH, 1);
+        c.add(Calendar.YEAR, addedYears);
+        c.add(Calendar.MONTH, addedMonths);
+        c.add(Calendar.DATE, addedDays); //same with c.add(Calendar.DAY_OF_MONTH, 1);
 
         // convert calendar to date
         Date currentDatePlus = c.getTime();
 
         //System.out.println(dateFormat.format(currentDatePlus));
-        String finalDate = dateFormat.format( currentDatePlus );
+        String finalDate = dateFormat.format(currentDatePlus);
 
         return finalDate;
     }
 
 
-    public static void selectElementFromList(List<WebElement> element, String value) {
-        for (int i = 0; i < element.size(); i++) {
-            if (element.get( i ).getText().equalsIgnoreCase( value )) {
+    public static void selectElementFromList(List<WebElement> element, String value){
+        for (int i = 0; i < element.size(); i++){
+            if (element.get( i ).getText().equalsIgnoreCase( value )){
                 element.get( i ).click();
                 break;
             }
         }
     }
 
-    public static boolean waitForExistance(WebElement element, int seconds) {
+    public static boolean waitForExistance(WebElement element, int seconds){
         boolean isExist = false;
 
         int count = 1;
-        while (count <= seconds) {
+        while (count<=seconds){
             try {
                 Thread.sleep( 1000 );
-                if (element.isDisplayed()) {
+                if (element.isDisplayed()){
                     isExist = true;
                     break;
                 }
-            } catch (Exception e) {
-                System.out.println( "Exception message: " + e.getMessage() );
+            }catch (Exception e){
+                System.out.println("Exception message: " + e.getMessage());
             }
             count++;
         }
@@ -200,46 +199,39 @@ public class ActionsHelper extends Base {
         return isExist;
     }
 
-    public static boolean waitForListExistance(List<WebElement> element, int seconds) {
+    public static boolean waitForListExistance(List<WebElement> element, int seconds){
         boolean isExist = false;
+
         int count = 1;
-        while (count <= seconds) {
+        while (count<=seconds){
             try {
                 Thread.sleep( 1000 );
-                if (element.size() != 0 || element.get( count ).isDisplayed() && element.get( count ).isEnabled()) {
+                if (element.size() != 0 || element.get( count ).isDisplayed()){
                     isExist = true;
                     break;
                 }
-            } catch (Exception e) {
-                System.out.println( "Exception message: " + e.getMessage() );
+            }catch (Exception e){
+                System.out.println("Exception message: " + e.getMessage());
             }
+
             count++;
         }
+
         return isExist;
     }
 
-    public static String reverseString(String value) {
+    public static String reverseString(String value){
 
         String reverse = "";
 
 
-        for (int i = value.length() - 1; i >= 0; i--) {
-            reverse = reverse + value.charAt( i );
+        for(int i = value.length() - 1; i >= 0; i--)
+        {
+            reverse = reverse + value.charAt(i);
         }
 
         return reverse;
 
-    }
-
-    public static WebElement getElementFromList(List<WebElement> element, String value) {
-        WebElement elmnt = null;
-        for (int i = 0; i < element.size(); i++) {
-            if (element.get( i ).getText().equalsIgnoreCase( value )) {
-                elmnt = element.get( i );
-                break;
-            }
-        }
-        return elmnt;
     }
 
 
