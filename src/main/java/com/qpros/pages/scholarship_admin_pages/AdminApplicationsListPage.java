@@ -143,6 +143,13 @@ public class AdminApplicationsListPage extends Base {
     @FindBy(xpath = "//button[contains(.,'OK')]")
     private WebElement btnOK;
 
+    @FindBy(xpath = "//input[@type='search']")
+    private WebElement programNameInput;
+
+
+
+
+
 
     public enum ButtonsList {
         Delegate, ApplicationReviewCompleted, ApplicationDocumentsVerified, ApproveAndProceedToAcknowledgement,
@@ -371,6 +378,17 @@ public class AdminApplicationsListPage extends Base {
     }
 
     public void findProgram(String programName) throws InterruptedException {
+        ActionsHelper.waitForExistance( getProgramsLabel(), waitTime );
+        //Thread.sleep( 3000 );
+        ActionsHelper.waitForListExistance( getProgramsList1(), waitTime );
+        getProgramsList1().get( 0 ).click();
+        getProgramNameInput().sendKeys(programName);
+        getProgramNameInput().sendKeys(Keys.ENTER);
+        ActionsHelper.waitForExistance( getBtnApply(), 100 );
+        getBtnApply().click();
+    }
+
+    public void findProgram2(String programName) throws InterruptedException {
         ActionsHelper.waitForExistance( getProgramsLabel(), 50 );
         Thread.sleep( 3000 );
         ActionsHelper.waitForListExistance( getProgramsList1(), 20 );

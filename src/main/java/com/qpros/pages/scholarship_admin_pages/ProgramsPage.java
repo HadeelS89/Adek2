@@ -337,6 +337,7 @@ public class ProgramsPage {
         getRuleCheckbox().get( 1 ).click();
         getRuleCheckbox().get( 2 ).click();
         getProgramSubmitButton().click();
+        Thread.sleep( 1000 );
         ActionsHelper.waitForListExistance( getProgramOkButton(), 50 );
         //ActionsHelper.selectElementFromList( getProgramOkButton(), "OK" );
         getProgramOkButton().get( 0 ).click();

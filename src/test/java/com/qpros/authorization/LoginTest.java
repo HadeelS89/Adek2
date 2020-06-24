@@ -26,7 +26,7 @@ public class LoginTest extends Base {
                 ReadWriteHelper.readCredentialsXMLFile(
                         "applicantCredentials1", "password" ) );
         WebElement applicantLeftMenu = ActionsHelper.getElement( driver, "id", "Biographical" );
-        Assert.assertTrue( ActionsHelper.waitForExistance( applicantLeftMenu, 20 ) );
+        Assert.assertTrue( ActionsHelper.waitForExistance( applicantLeftMenu, 50 ) );
     }
 
 
@@ -38,7 +38,7 @@ public class LoginTest extends Base {
         loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "username" ),
                 ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ) );
         WebElement adminLeftMenu = ActionsHelper.getElement( driver, "id", "div_air__menuLeft__list" );
-        Assert.assertTrue( ActionsHelper.waitForExistance( adminLeftMenu, 20 ) );
+        Assert.assertTrue( ActionsHelper.waitForExistance( adminLeftMenu, 50 ) );
     }
 
 }

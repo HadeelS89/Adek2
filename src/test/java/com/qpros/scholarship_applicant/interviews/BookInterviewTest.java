@@ -1,7 +1,5 @@
 package com.qpros.scholarship_applicant.interviews;
 
-
-//import com.qpros.authorization.LoginTest;
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
@@ -15,15 +13,14 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-//import com.qpros.pages.MyApplications;
+public class BookInterviewTest extends Base {
 
-public class ConfirmInterviewTest extends Base {
     LoginPage loginPage;
     ProgramsPage programsPage;
     ApplyForProgremPage applyForProgremPage;
     AdminApplicationsListPage adminApplicationsListPage;
     InterviewsPage interviewsPage;
-    MyApplicationsPage myApplication1;
+    MyApplicationsPage myApplicationsPage;
 
     @Test(description = "Create new Program",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
@@ -41,7 +38,7 @@ public class ConfirmInterviewTest extends Base {
     }
 
     @Test(description = "Submit Application",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 1)
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 1)// one programe
     public void submitProgram() throws Exception {
         loginPage = new LoginPage( driver );
         loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1"
@@ -78,7 +75,6 @@ public class ConfirmInterviewTest extends Base {
         adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.StartReview );
         adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.ApplicationReviewCompleted );
         adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.ApplicationDocumentsVerified );
-        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.ApproveAndProceedToAcknowledgement );
     }
 
     @Test(description = "Create new interview from admin panel",
@@ -97,19 +93,48 @@ public class ConfirmInterviewTest extends Base {
         interviewsPage.getBtnOK().click();
     }
 
-    @Test (description = "Confirm interview for applicant ",
+    @Test(description = "Schedule interview from recruiter",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 4)
+    public void scheduleInterview() throws Exception {
+        loginPage = new LoginPage( driver );
+        loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile
+                        ( "recruiterCredentials3", "username" ),
+                ReadWriteHelper.readCredentialsXMLFile
+                        ( "recruiterCredentials3", "password" ) );
+
+        adminApplicationsListPage = new AdminApplicationsListPage( driver );
+        adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
+        adminApplicationsListPage.searchByStatus(
+                ReadWriteHelper.readProgramStatusXMLFile( "applicationStatus2",
+                        "status" ), true );
+        adminApplicationsListPage.scheduleInterview();
+        WebElement scheduleIntervButton = null;
+        try {
+            scheduleIntervButton = ActionsHelper.getElement( driver, "xpath",
+                    "//button[@name='button'][3]" );
+        } catch (Exception e) {
+
+        }
+
+        Assert.assertTrue( scheduleIntervButton == null );
+    }
+
+    @Test (description = "Confirm interview for applicant ",
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 5)
     public void confirmInerview() throws Exception {
         loginPage = new LoginPage(driver);
-        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials2"
+        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1"
                 , "username" ),
                 ReadWriteHelper.readCredentialsXMLFile(
-                        "applicantCredentials2", "password" ) );
+                        "applicantCredentials1", "password" ) );
 
-        myApplication1 = new MyApplicationsPage(driver);
-        myApplication1.confirmInterview(ReadWriteHelper.getCreatedProgram());
+        myApplicationsPage = new MyApplicationsPage(driver);
+        myApplicationsPage.confirmInterview(ReadWriteHelper.getCreatedProgram());
 
-        Assert.assertTrue(myApplication1.getCancelInterview().isDisplayed());
+        Assert.assertTrue(myApplicationsPage.getCancelInterview().isDisplayed());
 
     }
+
+
+
 }
