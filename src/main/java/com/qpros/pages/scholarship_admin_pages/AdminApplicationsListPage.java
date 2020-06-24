@@ -215,6 +215,7 @@ public class AdminApplicationsListPage extends Base {
             submitButton.click();
             //Confirm
             ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
+            Thread.sleep( 1000 );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
             okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
             ActionsHelper.waitForExistance( okButton, waitTime );
@@ -241,6 +242,7 @@ public class AdminApplicationsListPage extends Base {
             submitButton.click();
             //Confirm
             ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
+            Thread.sleep( 1000 );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
             okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
             System.out.println( "OK button: " + okButton.getText() );
@@ -260,6 +262,7 @@ public class AdminApplicationsListPage extends Base {
             submitButton.click();
             //Confirm
             ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
+            Thread.sleep( 1000 );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
             okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
             System.out.println( "OK button: " + okButton.getText() );
@@ -279,6 +282,7 @@ public class AdminApplicationsListPage extends Base {
             submitButton.click();
             //Confirm
             ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
+            Thread.sleep( 1000 );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
             okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
             System.out.println( "OK button: " + okButton.getText() );

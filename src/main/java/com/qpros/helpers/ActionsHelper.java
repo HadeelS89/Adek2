@@ -133,7 +133,7 @@ public class ActionsHelper extends Base {
 
     public static void actionsClick(WebElement element, String EnterText) {
         Actions actions = new Actions( driver );
-        //actions.moveToElement( element );
+        actions.moveToElement( element );
         actions.click();
         actions.sendKeys( EnterText, Keys.ENTER );
         actions.build().perform();
@@ -240,6 +240,12 @@ public class ActionsHelper extends Base {
             }
         }
         return elmnt;
+    }
+
+    public static void sendText(String locator, String value){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("document.getElementById('"+locator+"').value='"+value+"';");
+
     }
 
 
