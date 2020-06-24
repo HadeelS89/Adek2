@@ -244,7 +244,7 @@ public class MyApplicationsPage extends Base {
         for (int i = 0; i < getApplicationDiv().size(); i++) {
             String programTilte = getApplicationTilte().get(i).getText();
             System.out.println("Program Title: " + programTilte);
-            if ((programTilte.equalsIgnoreCase(programTilte)
+            if ((programTilte.equalsIgnoreCase(progarmTitle)
                     && getBookInterview().isEnabled())) {
                 System.out.println("Program Title inside if: " + programTilte);
                 getBookInterview().click();

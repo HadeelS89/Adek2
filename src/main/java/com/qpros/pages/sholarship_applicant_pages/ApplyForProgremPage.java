@@ -111,7 +111,7 @@ public class ApplyForProgremPage extends Base {
     private List<WebElement> applicantProgramTilte;
 
 
-    @FindBy(xpath = "//a[starts-with(@class,'ng-star-inserted')]")
+    @FindBy(xpath = "//span[starts-with(@class,'menu-title')]")
     private List<WebElement> programs;
     @FindBy(xpath = "//div[starts-with(@class, 'ng-value-container')]")
     private List<WebElement> step1EducationLists;
@@ -144,14 +144,14 @@ public class ApplyForProgremPage extends Base {
         ActionsHelper.waitForExistance( getStep4GuardianName(), 30 );
         ActionsHelper.scrollTo( getStep4GuardianName() );
         ActionsHelper.waitForExistance( getStep4GuardianName(), 30 );
-        getStep4GuardianName().clear();
-        ActionsHelper.actionsClick( getStep4GuardianName(), ("1234Test") );
-        getStep4GuardianRelation().clear();
-        ActionsHelper.actionsClick( getStep4GuardianRelation(), "Aunt" );
-        getStep4Phone().clear();
-        ActionsHelper.actionsClick( getStep4Phone(), "0975669899" );
-        getStep4Email().clear();
-        ActionsHelper.actionsClick( getStep4Email(), "Hadeel@gmail.com" );
+//        getStep4GuardianName().clear();
+//        ActionsHelper.actionsClick( getStep4GuardianName(), ("1234Test") );
+//        getStep4GuardianRelation().clear();
+//        ActionsHelper.actionsClick( getStep4GuardianRelation(), "Aunt" );
+//        getStep4Phone().clear();
+//        ActionsHelper.actionsClick( getStep4Phone(), "0975669899" );
+//        getStep4Email().clear();
+//        ActionsHelper.actionsClick( getStep4Email(), "Hadeel@gmail.com" );
         ActionsHelper.waitForExistance( getSubmitApplication(), 30 );
         getSubmitApplication().click();
         ActionsHelper.waitForExistance( getConfirm(), 30 );

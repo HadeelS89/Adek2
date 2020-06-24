@@ -60,12 +60,12 @@ public class LoginPage extends Base {
         driver.navigate().to( ReadWriteHelper.ReadData( "AdminURL" ) );
         //securedAccess();
 
-        ActionsHelper.waitVisibility( getLoginAsAdekEmployee(), 50 );
+        ActionsHelper.waitForExistance( getLoginAsAdekEmployee(), 50 );
         getLoginAsAdekEmployee().click();
-        ActionsHelper.waitVisibility( getMsEmail(), 50 );
+        ActionsHelper.waitForExistance( getMsEmail(), 50 );
         getMsEmail().sendKeys( email );
         getMsNextButton().click();
-        ActionsHelper.waitVisibility( getMsPassword(), 50 );
+        ActionsHelper.waitForExistance( getMsPassword(), 50 );
         getMsPassword().sendKeys( password );
         getMsNextButton().click();
         if (ActionsHelper.waitVisibility( getStaySignedInNoButton(), 50 )) {
