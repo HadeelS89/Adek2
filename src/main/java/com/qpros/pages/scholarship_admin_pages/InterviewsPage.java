@@ -93,7 +93,7 @@ public class InterviewsPage {
         getProvideVenue().sendKeys("room 123");
         getDescriptionEnglish().sendKeys("1234");
         getDescriptionArabic().sendKeys("3444");
-        getDate().sendKeys(ActionsHelper.getFutureDate(0, 0, 3));
+        getDate().sendKeys(ActionsHelper.getFutureDate(0, 1, 3));
         ActionsHelper.actionsClick( getStartTime(), "10:30A" );
         ActionsHelper.actionsClick( getEndTime(), "11:00A" );
         getCapacity().sendKeys("1");

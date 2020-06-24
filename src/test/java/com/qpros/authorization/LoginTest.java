@@ -26,28 +26,19 @@ public class LoginTest extends Base {
                 ReadWriteHelper.readCredentialsXMLFile(
                         "applicantCredentials1", "password" ) );
         WebElement applicantLeftMenu = ActionsHelper.getElement( driver, "id", "Biographical" );
-        Assert.assertTrue( ActionsHelper.waitVisibility( applicantLeftMenu, 20 ) );
+        Assert.assertTrue( ActionsHelper.waitForExistance( applicantLeftMenu, 20 ) );
     }
 
 
     @Test(description = "Login as ADEK employee successfully",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 1)
     public void loginAsADEKEmployee(){
 
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "username" ),
                 ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ) );
         WebElement adminLeftMenu = ActionsHelper.getElement( driver, "id", "div_air__menuLeft__list" );
-        Assert.assertTrue( ActionsHelper.waitVisibility( adminLeftMenu, 20 ) );
+        Assert.assertTrue( ActionsHelper.waitForExistance( adminLeftMenu, 20 ) );
     }
-
-    @Test(description = "Login as ADEK employee successfully",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
-    public void Looog(){
-        System.out.println("Login 1");
-    }
-
-
-
 
 }
