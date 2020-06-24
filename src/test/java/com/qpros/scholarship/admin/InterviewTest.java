@@ -1,18 +1,17 @@
-package com.qpros.scholarship_admin;
+package com.qpros.scholarship.admin;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.pages.authorization_pages.LoginPage;
 import com.qpros.pages.scholarship_admin_pages.InterviewsPage;
-import com.qpros.pages.scholarship_admin_pages.ProgramsPage;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 @Listeners(com.qpros.reporting.Listeners.class)
 public class InterviewTest extends Base {
-    LoginPage loginPage;
-    InterviewsPage interviewsPage;
+    private LoginPage loginPage;
+    private InterviewsPage interviewsPage;
 
     @Test(description = "Create new interview from admin panel",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)

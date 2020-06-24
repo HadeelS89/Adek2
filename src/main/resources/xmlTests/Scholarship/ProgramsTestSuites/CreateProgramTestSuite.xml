@@ -12,7 +12,7 @@
 
     <test name="Create new program Test">
         <classes>
-            <class name="com.qpros.scholarship_admin.programs.CreateProgramTest"></class>
+            <class name="com.qpros.scholarship.admin.programs.CreateProgramTest"></class>
         </classes>
     </test>
 </suite>

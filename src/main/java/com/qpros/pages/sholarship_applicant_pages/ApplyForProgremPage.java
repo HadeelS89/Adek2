@@ -3,18 +3,13 @@ package com.qpros.pages.sholarship_applicant_pages;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
-import com.qpros.helpers.ReadWriteHelper;
 import lombok.Getter;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 @Getter
@@ -170,7 +165,7 @@ public class ApplyForProgremPage extends Base {
     }
 
 
-    public void findDraftApplication(String programTitle) throws InterruptedException {
+    private void findDraftApplication(String programTitle) throws InterruptedException {
         System.out.println( "Current Date: " + ActionsHelper.getTodayDate() );
         ActionsHelper.waitVisibility( getMyApplication(), 15 );
         Thread.sleep( 10000 );
@@ -188,7 +183,7 @@ public class ApplyForProgremPage extends Base {
     }
 
     // to check whether the program status is drafted (go to my application) or new (apply)
-    public void selectProgram(String programTitle) throws InterruptedException {
+    private void selectProgram(String programTitle) throws InterruptedException {
         ActionsHelper.waitForListExistance( getProgramDiv(), 30 );
         ActionsHelper.selectElementFromList( getProgramDiv(), "Programs" );
         System.out.println( "Program Size: " + getProgramDiv().size() );
@@ -211,8 +206,8 @@ public class ApplyForProgremPage extends Base {
     }
 
 
-    public void getProgram(String value) {
-        HashMap<String, WebElement> map = new HashMap();
+    private void getProgram(String value) {
+        HashMap<String, WebElement> map = new HashMap<>(  );
 
         for (int i = 0; i < getProgramDiv().size(); i++) {
             if (getProgramButton().get( i ).getText().equalsIgnoreCase( "apply" )) {
@@ -233,7 +228,7 @@ public class ApplyForProgremPage extends Base {
     }
 
 
-    public void programeSharedSteps(String programTitle) throws Exception {
+    private void programeSharedSteps(String programTitle) throws Exception {
         System.out.println( "Current Date: " + ActionsHelper.getTodayDate() );
         Thread.sleep( 5000 );
         ActionsHelper.waitForListExistance( getPrograms(), 50 );

@@ -1,4 +1,4 @@
-package com.qpros.scholarship_admin.applications;
+package com.qpros.scholarship.admin.applications;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
@@ -6,7 +6,7 @@ import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.pages.scholarship_admin_pages.AdminApplicationsListPage;
 import com.qpros.pages.authorization_pages.AdminExternalLoginPage;
 import com.qpros.pages.authorization_pages.LoginPage;
-import com.qpros.scholarship_applicant.applications.ApplicantActionsTest;
+import com.qpros.scholarship.applicant.applications.ApplicantActionsTest;
 import org.testng.Assert;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Listeners;
@@ -15,8 +15,8 @@ import org.testng.annotations.Test;
 @Listeners(com.qpros.reporting.Listeners.class)
 public class AdminApplicationsListTest  extends Base{
     AdminExternalLoginPage adminExternalLoginPage;
-    AdminApplicationsListPage adminApplicationsListPage;
-    LoginPage loginPage;
+    private AdminApplicationsListPage adminApplicationsListPage;
+    private LoginPage loginPage;
     ApplicantActionsTest applicantActionsTest;
 
     @Test(description = "Search Applications by Applicant Code, Valid keyword"
@@ -199,7 +199,7 @@ public class AdminApplicationsListTest  extends Base{
                 ReadWriteHelper.readProgramStatusXMLFile("applicationStatus4",
                         "status"), true);
         adminApplicationsListPage.requestForChange();
-        WebElement changeButton = null;
+        WebElement changeButton;
         boolean isVisable = false;
         try {
             changeButton = ActionsHelper.getElement(driver, "xpath",
@@ -209,7 +209,7 @@ public class AdminApplicationsListTest  extends Base{
         } catch (Exception e) {
 
         }
-        Assert.assertTrue(isVisable == false);
+        Assert.assertTrue(!isVisable);
 
     }
 

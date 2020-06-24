@@ -1,10 +1,7 @@
 package com.qpros.pages.scholarship_admin_pages;
 
 import com.qpros.helpers.ActionsHelper;
-import com.qpros.helpers.ReadWriteHelper;
 import lombok.Getter;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -121,7 +118,7 @@ public class InterviewsPage {
         ActionsHelper.waitForListExistance(getApplicantSummary(), 60);
         getApplicantSummary().get(0).click();
        // Thread.sleep(10000);
-        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        ArrayList<String> tabs2 = new ArrayList<>( driver.getWindowHandles() );
         driver.switchTo().window(tabs2.get(1));
         ActionsHelper.waitForListExistance(getGoodBtn(), 60);
         System.out.println("GoodBtn size " + getGoodBtn().size());

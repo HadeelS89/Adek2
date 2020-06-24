@@ -1,4 +1,4 @@
-package com.qpros.scholarship_applicant.programs;
+package com.qpros.scholarship.applicant.programs;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
