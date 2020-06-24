@@ -60,9 +60,7 @@ public class AdminApplicationsListPage extends Base {
     private List<WebElement> programsIndex;
     @FindBy(css = ".confirm")
     private WebElement nextStepButton;
-//    @FindBy(css = ".ml-2:nth-child(1)")
-//    private WebElement confirmButton;
-    @FindBy(css = "//button[contains(.,'Submit')]")
+    @FindBy(css = ".ml-2:nth-child(1)")
     private WebElement confirmButton;
     @FindBy(css = ".font-weight-bold > .col-md-auto:nth-child(3)")
     private WebElement firstResult;
@@ -96,8 +94,7 @@ public class AdminApplicationsListPage extends Base {
     private WebElement programsLabel;
     @FindBy(xpath = "//span[starts-with(@class,'select2-selection')]")
     private List<WebElement> programsList1;
-    @FindBy(xpath = "//input[@type='search']")
-    private WebElement programNameInput;
+
     //=====================================
 
     @FindBy(xpath = "//button[starts-with(@class,'btn btn-success')]")
@@ -146,6 +143,13 @@ public class AdminApplicationsListPage extends Base {
     @FindBy(xpath = "//button[contains(.,'OK')]")
     private WebElement btnOK;
 
+    @FindBy(xpath = "//input[@type='search']")
+    private WebElement programNameInput;
+
+
+
+
+
 
     public enum ButtonsList {
         Delegate, ApplicationReviewCompleted, ApplicationDocumentsVerified, ApproveAndProceedToAcknowledgement,
@@ -188,17 +192,13 @@ public class AdminApplicationsListPage extends Base {
         } else if (button == ButtonsList.RequestForChange) {
             System.out.println( "Request for Change button" );
             ActionsHelper.waitVisibility( getSecondButton(), waitTime );
-            getThirdButton().click();
+            getSecondButton().click();
             ActionsHelper.waitVisibility( getRejectionComment(), waitTime );
-            getRejectionComment().sendKeys( "ChangeReason123" );
+            getRejectionComment().sendKeys( "RejectionReason123" );
             ActionsHelper.waitVisibility( getRejectionButton(), waitTime );
             getRejectionButton().click();
-            //to confirm hadeel changes //////
-            ActionsHelper.waitForListExistance( getBtnSubmit(), waitTime );
-            ActionsHelper.safeJavaScriptClick( getBtnSubmit().get( 0) );
-            ActionsHelper.waitForExistance( getBtnOk(), waitTime );
-            getBtnOk().click();
-            ///////
+            ActionsHelper.waitVisibility( getConfirmButton(), waitTime );
+            getConfirmButton().click();
         } else if (buttonTarget.get( button ) == 1) {
             System.out.println( "Button1 " );
             ActionsHelper.waitVisibility( getFirstButton(), waitTime );
@@ -222,6 +222,7 @@ public class AdminApplicationsListPage extends Base {
             submitButton.click();
             //Confirm
             ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
+            Thread.sleep( 1000 );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
             okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
             ActionsHelper.waitForExistance( okButton, waitTime );
@@ -248,6 +249,7 @@ public class AdminApplicationsListPage extends Base {
             submitButton.click();
             //Confirm
             ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
+            Thread.sleep( 1000 );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
             okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
             System.out.println( "OK button: " + okButton.getText() );
@@ -267,6 +269,7 @@ public class AdminApplicationsListPage extends Base {
             submitButton.click();
             //Confirm
             ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
+            Thread.sleep( 1000 );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
             okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
             System.out.println( "OK button: " + okButton.getText() );
@@ -286,6 +289,7 @@ public class AdminApplicationsListPage extends Base {
             submitButton.click();
             //Confirm
             ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
+            Thread.sleep( 1000 );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
             okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
             System.out.println( "OK button: " + okButton.getText() );
@@ -328,17 +332,11 @@ public class AdminApplicationsListPage extends Base {
         ActionsHelper.waitForExistance( getBtnScheduleInterview(), waitTime );
         getBtnScheduleInterview().click();
         ActionsHelper.waitForExistance( getBtnSubmit().get( 0 ), waitTime );
+        System.out.println( "Submit size " + getBtnSubmit().size() );
         ActionsHelper.safeJavaScriptClick( getBtnSubmit().get( 0 ) );
         ActionsHelper.waitForExistance( getBtnOk(), waitTime );
         getBtnOk().click();
-        ActionsHelper.scrollTo( getLblFirstResultCode() );
-        ActionsHelper.waitForExistance( getLblFirstResultCode(), waitTime );
-        getResultsCodes().get( 0 ).click();
-        ActionsHelper.waitForExistance( getLblFirstResultCode(), waitTime );
-        getResultsCodes().get( 0 ).click();
-        ActionsHelper.scrollTo( getWorkflowArea() );
-        ActionsHelper.waitForExistance( getWorkflowArea(), waitTime );
-
+        Thread.sleep( 3000 );
     }
 
     //this method to mark applicant as absence
@@ -356,13 +354,7 @@ public class AdminApplicationsListPage extends Base {
         ActionsHelper.safeJavaScriptClick( getBtnSubmit().get( 0 ) );
         ActionsHelper.waitForExistance( getBtnOk(), waitTime );
         getBtnOk().click();
-        ActionsHelper.scrollTo( getLblFirstResultCode() );
-        ActionsHelper.waitForExistance( getLblFirstResultCode(), 100 );
-        getResultsCodes().get( 0 ).click();
-        ActionsHelper.waitForExistance( getLblFirstResultCode(), 100 );
-        getResultsCodes().get( 0 ).click();
-        ActionsHelper.scrollTo( getWorkflowArea() );
-        ActionsHelper.waitForExistance( getWorkflowArea(), 10 );
+        Thread.sleep( 3000 );
 
     }
 
@@ -385,34 +377,29 @@ public class AdminApplicationsListPage extends Base {
         Thread.sleep( 3000 );
     }
 
-    public void findProgram1(String programName) throws InterruptedException {
+    public void findProgram(String programName) throws InterruptedException {
+        ActionsHelper.waitForExistance( getProgramsLabel(), waitTime );
+        //Thread.sleep( 3000 );
+        ActionsHelper.waitForListExistance( getProgramsList1(), waitTime );
+        getProgramsList1().get( 0 ).click();
+        getProgramNameInput().sendKeys(programName);
+        getProgramNameInput().sendKeys(Keys.ENTER);
+        ActionsHelper.waitForExistance( getBtnApply(), 100 );
+        getBtnApply().click();
+    }
+
+    public void findProgram2(String programName) throws InterruptedException {
         ActionsHelper.waitForExistance( getProgramsLabel(), 50 );
         Thread.sleep( 3000 );
-       ActionsHelper.waitForListExistance( getProgramsList1(), 20 );
-
+        ActionsHelper.waitForListExistance( getProgramsList1(), 20 );
         getProgramsList1().get( 0 ).click();
         ActionsHelper.waitForListExistance( getProgramsIndex(), 50 );
         for (int i = 0; i < getProgramsIndex().size(); i++) {
             if (getProgramsIndex().get( i ).getText().equalsIgnoreCase( programName )) {
                 getProgramsIndex().get( i ).click();
-
             }
         }
 
-        ActionsHelper.waitForExistance( getBtnApply(), waitTime );
-        getBtnApply().click();
-    }
-//new method
-    public void findProgram(String programName) throws InterruptedException {
-        ActionsHelper.waitForExistance( getProgramsLabel(), waitTime );
-        //Thread.sleep( 3000 );
-        ActionsHelper.waitForListExistance( getProgramsList1(), waitTime );
-
-        getProgramsList1().get( 0 ).click();
-        getProgramNameInput().sendKeys(programName);
-        getProgramNameInput().sendKeys(Keys.ENTER);
-        ActionsHelper.waitForExistance( getBtnApply(), waitTime );
-        getBtnApply().click();
     }
 
     public void goNextStepProgram(int iterations) {
@@ -436,7 +423,7 @@ public class AdminApplicationsListPage extends Base {
         System.out.println( "Clicked first result" );
     }
 
-    public void requestForChange1() throws Exception {
+    public void requestForChange() throws Exception {
         System.out.println( "after search display results " + getLblFirstResultCode().getText() );
         ActionsHelper.waitForExistance( getLblFirstResultCode(), 100 );
         System.out.println( getResultsCodes().size() );
@@ -460,27 +447,6 @@ public class AdminApplicationsListPage extends Base {
         ActionsHelper.waitForExistance( getWorkflowArea(), 10 );
     }
 
-
-    public void requestForChange() throws Exception {
-        selectFirstResult();
-        ActionsHelper.scrollTo( getBtnScheduleInterview() );
-        ActionsHelper.waitForExistance( getBtnRequestForChange(), waitTime );
-        getBtnRequestForChange().click();
-        ActionsHelper.waitForExistance( getRejectionComment(), 50 );
-        getRejectionComment().sendKeys( "change 123" );
-        ActionsHelper.safeJavaScriptClick( getRequesChangeSubmit() );
-        ActionsHelper.waitForExistance( getConfirmButton(), waitTime );
-        ActionsHelper.safeJavaScriptClick( getBtnSubmit().get( 0 ) );
-        ActionsHelper.waitForExistance( getBtnOk(), waitTime );
-        getBtnOk().click();
-        ActionsHelper.scrollTo( getLblFirstResultCode() );
-        ActionsHelper.waitForExistance( getLblFirstResultCode(), 100 );
-        getResultsCodes().get( 0 ).click();
-        ActionsHelper.waitForExistance( getLblFirstResultCode(), 100 );
-        getResultsCodes().get( 0 ).click();
-        ActionsHelper.scrollTo( getWorkflowArea() );
-        ActionsHelper.waitForExistance( getWorkflowArea(), 10 );
-    }
 
     public void activationForm() throws Exception {
         System.out.println("after search display results " + getLblFirstResultCode().getText());

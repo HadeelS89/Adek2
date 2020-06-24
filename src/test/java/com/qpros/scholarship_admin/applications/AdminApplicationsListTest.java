@@ -42,7 +42,6 @@ public class AdminApplicationsListTest  extends Base{
                 ReadWriteHelper.readCredentialsXMLFile( "adminCredentials1", "password" ));
 
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
-        adminApplicationsListPage.searchByStatus("New", true);
         Thread.sleep(20000);
         System.out.println(adminApplicationsListPage.getResultsCodes().size());
         Assert.assertEquals(adminApplicationsListPage.getResultsCodes().get(0).getText(), "PS20043");
@@ -60,7 +59,6 @@ public class AdminApplicationsListTest  extends Base{
 
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
-        adminApplicationsListPage.searchByStatus("New", false);
         adminApplicationsListPage.selectFirstResult();
         adminApplicationsListPage.goNextStepProgram(2);
     }
@@ -75,7 +73,6 @@ public class AdminApplicationsListTest  extends Base{
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.clearFilters();
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram());
-        adminApplicationsListPage.searchByStatus("New", true);
         adminApplicationsListPage.selectFirstResult();
         adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.StartReview);
     }
@@ -91,7 +88,6 @@ public class AdminApplicationsListTest  extends Base{
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.clearFilters();
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram());
-        adminApplicationsListPage.searchByStatus("New", true);
         adminApplicationsListPage.selectFirstResult();
         adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.StartReview);
         adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.ApplicationReviewCompleted);
@@ -109,7 +105,6 @@ public class AdminApplicationsListTest  extends Base{
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.clearFilters();
         adminApplicationsListPage.findProgram( "Automation Test 51221" );
-        adminApplicationsListPage.searchByStatus("New", true);
         adminApplicationsListPage.selectFirstResult();
         adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.StartReview);
         adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.RejectApplication);

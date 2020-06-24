@@ -3,6 +3,7 @@ package com.qpros.pages.scholarship_admin_pages;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
 import lombok.Getter;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,7 +39,7 @@ public class InterviewsPage {
     private WebElement descriptionArabic;
     @FindBy(id = "Date")
     private WebElement date;
-    @FindBy(id = "StartTime")
+    @FindBy(xpath = "//*[@id=\"StartTime\"]")
     private WebElement startTime;
     @FindBy(id = "EndTime")
     private WebElement endTime;
@@ -86,14 +87,15 @@ public class InterviewsPage {
         // System.out.println("Divs size: "+getProgramsDiv().size());
         ActionsHelper.waitForListExistance(getAddInterviewButton(), 30);
         getAddInterviewButton().get(0).click();
+        Thread.sleep( 2000 );
         ActionsHelper.waitForExistance(getProgramDDL(), 50);
         getProgramDDL().sendKeys(programTitle);
         getProvideVenue().sendKeys("room 123");
         getDescriptionEnglish().sendKeys("1234");
         getDescriptionArabic().sendKeys("3444");
-        getDate().sendKeys(ActionsHelper.getFutureDate(0, 0, 3));
-        getStartTime().sendKeys("10:30", Keys.ARROW_UP);
-        getEndTime().sendKeys("11:00", Keys.ARROW_UP);
+        getDate().sendKeys(ActionsHelper.getFutureDate(0, 1, 3));
+        ActionsHelper.actionsClick( getStartTime(), "10:30A" );
+        ActionsHelper.actionsClick( getEndTime(), "11:00A" );
         getCapacity().sendKeys("1");
         getSubmitInterView().click();
         ActionsHelper.waitForExistance(getSuccess(), 20);

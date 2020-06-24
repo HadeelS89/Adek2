@@ -101,8 +101,6 @@ public class ApplyForProgremPage extends Base {
     //------- for program lists
     @FindBy(css = "div[class='card-body']")
     private List<WebElement> programDiv;
-    @FindBy(xpath = "/html/body/app-root/app-layout-admin/div[1]/div[2]/div/app-user-header/div/div/div/div")
-    private WebElement testH;
     @FindBy(css = "h5[class='card-title']")
     private List<WebElement> programTilte;
     @FindBy(css = "p[class='card-text text-muted']")
@@ -113,10 +111,7 @@ public class ApplyForProgremPage extends Base {
     private List<WebElement> applicantProgramTilte;
 
 
-//    @FindBy(xpath = "//a[starts-with(@class,'ng-star-inserted')]")
-//    private List<WebElement> programs;
-    //locators changed from a to li
-    @FindBy(xpath = "//li[starts-with(@class,'ng-star-inserted')]")
+    @FindBy(xpath = "//span[starts-with(@class,'menu-title')]")
     private List<WebElement> programs;
     @FindBy(xpath = "//div[starts-with(@class, 'ng-value-container')]")
     private List<WebElement> step1EducationLists;
@@ -146,8 +141,17 @@ public class ApplyForProgremPage extends Base {
     public void submitProgram(String ProgramTitle) throws Exception {
         programeSharedSteps( ProgramTitle );
         Thread.sleep( 5000 );
-        ActionsHelper.waitForExistance( getStep4Email(), 10 );
         ActionsHelper.waitForExistance( getStep4GuardianName(), 30 );
+        ActionsHelper.scrollTo( getStep4GuardianName() );
+        ActionsHelper.waitForExistance( getStep4GuardianName(), 30 );
+//        getStep4GuardianName().clear();
+//        ActionsHelper.actionsClick( getStep4GuardianName(), ("1234Test") );
+//        getStep4GuardianRelation().clear();
+//        ActionsHelper.actionsClick( getStep4GuardianRelation(), "Aunt" );
+//        getStep4Phone().clear();
+//        ActionsHelper.actionsClick( getStep4Phone(), "0975669899" );
+//        getStep4Email().clear();
+//        ActionsHelper.actionsClick( getStep4Email(), "Hadeel@gmail.com" );
         ActionsHelper.waitForExistance( getSubmitApplication(), 30 );
         getSubmitApplication().click();
         ActionsHelper.waitForExistance( getConfirm(), 30 );
@@ -229,9 +233,6 @@ public class ApplyForProgremPage extends Base {
     }
 
 
-
-
-
     public void programeSharedSteps(String programTitle) throws Exception {
         System.out.println( "Current Date: " + ActionsHelper.getTodayDate() );
         Thread.sleep( 5000 );
@@ -261,7 +262,7 @@ public class ApplyForProgremPage extends Base {
         ActionsHelper.waitForListExistance( getStep1EducationLists(), 20 );
         getStep1EducationLists().get( 2 ).click();
         ActionsHelper.waitForListExistance( getStep1Lists(), 50 );
-        ActionsHelper.selectElementFromList( getStep1Lists(), "Accounting" );
+        ActionsHelper.selectElementFromList( getStep1Lists(), "Biology" );
 
         ActionsHelper.waitForExistance( getAchievements(), 30 );
         getAchievements().sendKeys( "test33" );

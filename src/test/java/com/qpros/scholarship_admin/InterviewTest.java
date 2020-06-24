@@ -17,10 +17,6 @@ public class InterviewTest extends Base {
     @Test(description = "Create new interview from admin panel",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
     public void createInterview() throws Exception {
-
-        //Navigate to Admin panel
-        driver.navigate().to( ReadWriteHelper.ReadData("AdminURL"));
-
         //Login as Program Manager
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "programManager1",
@@ -29,7 +25,7 @@ public class InterviewTest extends Base {
 
         //Create new interview
         interviewsPage = new InterviewsPage( driver );
-        interviewsPage.addNewInterview("Automation Test 79756");
+        interviewsPage.addNewInterview(ReadWriteHelper.getCreatedProgram());
         Assert.assertTrue(interviewsPage.getSuccess().isDisplayed());
         interviewsPage.getBtnOK().click();
     }
