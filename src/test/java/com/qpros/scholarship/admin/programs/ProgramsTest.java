@@ -1,4 +1,4 @@
-package com.qpros.scholarship_admin.programs;
+package com.qpros.scholarship.admin.programs;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ReadWriteHelper;
@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 @Listeners(com.qpros.reporting.Listeners.class)
 public class ProgramsTest extends Base {
-    LoginPage loginPage;
-    ProgramsPage programsPage;
+    private LoginPage loginPage;
+    private ProgramsPage programsPage;
 
     @Test(description = "Create new Program",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)

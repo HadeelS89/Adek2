@@ -1,18 +1,15 @@
 package com.qpros.helpers;
 
 import com.qpros.common.Base;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.File;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -20,8 +17,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 public class ActionsHelper extends Base {
-    protected static Logger LOGGER = Logger.getLogger( Thread.currentThread().getStackTrace()[0].getClassName() );
-    public static WebDriverWait wait;
+    private static Logger LOGGER = Logger.getLogger( Thread.currentThread().getStackTrace()[0].getClassName() );
+    private static WebDriverWait wait;
 
     public static void waitForSeconds(Integer timeWait) {
         driver.manage().timeouts().implicitlyWait( timeWait, TimeUnit.SECONDS );
@@ -41,7 +38,7 @@ public class ActionsHelper extends Base {
     }
 
     public static boolean waitToBeClickable(WebElement element, int time) {
-        boolean isElementClickable = false;
+        boolean isElementClickable;
         try {
             wait = new WebDriverWait( driver, time );
             wait.until( ExpectedConditions.elementToBeClickable( element ) );
@@ -86,28 +83,25 @@ public class ActionsHelper extends Base {
                 LOGGER.info( "Unable to click on element" );
             }
         } catch (StaleElementReferenceException e) {
-            LOGGER.info( "Element is not attached to the page document " + e.getStackTrace() );
+            LOGGER.info( "Element is not attached to the page document " + Arrays.toString( e.getStackTrace() ) );
         } catch (NoSuchElementException e) {
-            LOGGER.info( "Element was not found in DOM " + e.getStackTrace() );
+            LOGGER.info( "Element was not found in DOM " + Arrays.toString( e.getStackTrace() ) );
         } catch (Exception e) {
-            LOGGER.info( "Unable to click on element " + e.getStackTrace() );
+            LOGGER.info( "Unable to click on element " + Arrays.toString( e.getStackTrace() ) );
         }
     }
 
     public static String getImagePath(String imageName) {
-        String path = System.getProperty( "user.dir" ) + "/src/main/resources/images/" + imageName;
-        return path;
+        return System.getProperty( "user.dir" ) + "/src/main/resources/images/" + imageName;
     }
 
     public String getXMLPath(String xmlFileName) {
-        String path = System.getProperty( "user.dir" ) + "/src/main/resources/xmlfiles/" + xmlFileName;
-        return path;
+        return System.getProperty( "user.dir" ) + "/src/main/resources/xmlfiles/" + xmlFileName;
     }
 
     public static String getTodayDate() {
         LocalDate localDate = LocalDate.now();
-        String GetTodayDate = localDate.toString();
-        return GetTodayDate;
+        return localDate.toString();
     }
 
     public static WebElement getElement(WebDriver driver, String attribute, String locator) {
@@ -165,9 +159,8 @@ public class ActionsHelper extends Base {
         Date currentDatePlus = c.getTime();
 
         //System.out.println(dateFormat.format(currentDatePlus));
-        String finalDate = dateFormat.format( currentDatePlus );
 
-        return finalDate;
+        return dateFormat.format( currentDatePlus );
     }
 
 
@@ -220,15 +213,13 @@ public class ActionsHelper extends Base {
 
     public static String reverseString(String value) {
 
-        String reverse = "";
-
+        StringBuilder reverse = new StringBuilder();
 
         for (int i = value.length() - 1; i >= 0; i--) {
-            reverse = reverse + value.charAt( i );
+            reverse.append( value.charAt( i ) );
         }
 
-        return reverse;
-
+        return reverse.toString();
     }
 
     public static WebElement getElementFromList(List<WebElement> element, String value) {
@@ -242,9 +233,9 @@ public class ActionsHelper extends Base {
         return elmnt;
     }
 
-    public static void sendText(String locator, String value){
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("document.getElementById('"+locator+"').value='"+value+"';");
+    public static void sendText(String locator, String value) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript( "document.getElementById('" + locator + "').value='" + value + "';" );
 
     }
 

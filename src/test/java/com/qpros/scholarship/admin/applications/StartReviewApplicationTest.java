@@ -1,4 +1,4 @@
-package com.qpros.scholarship_admin.applications;
+package com.qpros.scholarship.admin.applications;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
@@ -11,12 +11,11 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class RequestForChangeTest extends Base {
-
-    LoginPage loginPage;
-    ProgramsPage programsPage;
-    ApplyForProgremPage applyForProgremPage;
-    AdminApplicationsListPage adminApplicationsListPage;
+public class StartReviewApplicationTest extends Base {
+    private LoginPage loginPage;
+    private ProgramsPage programsPage;
+    private ApplyForProgremPage applyForProgremPage;
+    private AdminApplicationsListPage adminApplicationsListPage;
 
     @Test(description = "Create new Program",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
@@ -69,36 +68,4 @@ public class RequestForChangeTest extends Base {
         adminApplicationsListPage.selectFirstResult();
         adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.StartReview );
     }
-
-    @Test(description = "Request change from recruiter",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 3)
-    public void requestForChange() throws Exception {
-        //Request for change reviewed application
-        loginPage = new LoginPage( driver );
-        loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile
-                        ( "recruiterCredentials3", "username" ),
-                ReadWriteHelper.readCredentialsXMLFile
-                        ( "recruiterCredentials3", "password" ) );
-
-        adminApplicationsListPage = new AdminApplicationsListPage( driver );
-        adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
-        adminApplicationsListPage.searchByStatus(
-                ReadWriteHelper.readProgramStatusXMLFile( "applicationStatus4",
-                        "status" ), true );
-        adminApplicationsListPage.requestForChange();
-        WebElement changeButton = null;
-        boolean isVisable = false;
-        try {
-            changeButton = ActionsHelper.getElement( driver, "xpath",
-                    "//button[@name='button'][3]" );
-            isVisable = ActionsHelper.waitForExistance( changeButton, 10 );
-
-        } catch (Exception e) {
-
-        }
-        Assert.assertTrue( isVisable == false );
-
-    }
-
-
 }

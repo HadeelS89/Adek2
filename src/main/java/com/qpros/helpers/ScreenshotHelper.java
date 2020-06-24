@@ -9,10 +9,6 @@ import org.openqa.selenium.TakesScreenshot;
 
 import org.openqa.selenium.WebDriver;
 
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import org.testng.annotations.Test;
-
 public class ScreenshotHelper {
 
     public static void takeSnapShot(WebDriver webdriver,String fileWithPath) throws Exception{
