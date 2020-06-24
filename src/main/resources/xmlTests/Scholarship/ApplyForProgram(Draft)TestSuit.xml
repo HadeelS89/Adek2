@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+
+<suite name=" Create and submit program Test">
+
+    <listeners>
+        <listener class-name="com.qpros.reporting.Listeners" />
+    </listeners>
+
+
+    <test name="Program Test">
+        <classes>
+            <class name="com.qpros.scholarship_admin.programs.ProgramsTest">
+                <methods>
+                    <include name="setProgramTeam" />
+                </methods>
+            </class>
+            <class name="com.qpros.scholarship_applicant.applications.ApplicantActionsTest">
+                <methods>
+                    <include name="saveToDraft" />
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>

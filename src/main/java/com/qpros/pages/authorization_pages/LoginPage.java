@@ -3,6 +3,8 @@ package com.qpros.pages.authorization_pages;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
+import com.qpros.helpers.ReadWriteHelper;
+import com.qpros.pages.SecurePage;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +16,7 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage extends Base {
 
     public LoginPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements( driver, this );
     }
 
     @FindBy(id = "Input_Email")
@@ -37,32 +39,55 @@ public class LoginPage extends Base {
     private WebElement addressTab;
 
 
+    SecurePage securePage;
 
-    public void signIn(String email, String password){
-        ActionsHelper.waitVisibility( getEmail(), 20);
-        getEmail().sendKeys(email);
-        getPassword().sendKeys(password);
+    public void signIn(String email, String password) {
+        //Navigate to Application
+        driver.navigate().to( ReadWriteHelper.ReadData( "ApplicantURL" ) );
+        //securedAccess();
+
+        ActionsHelper.waitVisibility( getEmail(), 50 );
+        getEmail().sendKeys( email );
+        getPassword().sendKeys( password );
         ActionsHelper.waitVisibility( getLoginButton(), 10 );
         getLoginButton().click();
-        ActionsHelper.waitVisibility( getAddressTab(), 20 );
+        ActionsHelper.waitVisibility( getAddressTab(), 50 );
 
     }
 
-    public void signInAsADEKEmployee(String email, String password){
-        ActionsHelper.waitVisibility( getLoginAsAdekEmployee(), 20);
+    public void signInAsADEKEmployee(String email, String password) {
+        //Navigate to Admin panel
+        driver.navigate().to( ReadWriteHelper.ReadData( "AdminURL" ) );
+        //securedAccess();
+
+        ActionsHelper.waitForExistance( getLoginAsAdekEmployee(), 50 );
         getLoginAsAdekEmployee().click();
-        ActionsHelper.waitVisibility( getMsEmail(), 20);
+        ActionsHelper.waitForExistance( getMsEmail(), 50 );
         getMsEmail().sendKeys( email );
         getMsNextButton().click();
-        ActionsHelper.waitVisibility( getMsPassword(), 20);
+        ActionsHelper.waitForExistance( getMsPassword(), 50 );
         getMsPassword().sendKeys( password );
         getMsNextButton().click();
-        if (ActionsHelper.waitVisibility( getStaySignedInNoButton(), 30)){
+        if (ActionsHelper.waitVisibility( getStaySignedInNoButton(), 50 )) {
             getStaySignedInNoButton().click();
         }
 
     }
 
+    public void securedAccess() {
+
+        try {
+            WebElement element = ActionsHelper.getElement( driver, "id", "details-button" );
+
+            if (ActionsHelper.waitForExistance( element, 2 )) {
+                securePage = new SecurePage( driver );
+                securePage.redirectToURL();
+            }
+        } catch (Exception e) {
+
+        }
+
+    }
 
 
 }

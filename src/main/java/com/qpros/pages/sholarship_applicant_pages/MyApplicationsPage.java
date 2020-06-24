@@ -19,16 +19,18 @@ public class MyApplicationsPage extends Base {
         PageFactory.initElements(driver, this);
     }
 
+    //buttons enabed by default
+    public boolean result = true;
+    public boolean withdrawResults = true;
+    public boolean declineResults = true;
+    public boolean acknowledgeresult = true;
+
     @FindBy(xpath = "//span[contains(.,'My Applications')]")
     private WebElement myApplication;
-
-
     @FindBy(css = "div[class='card shadow-sm']")
     private List<WebElement> applicationDiv;
     @FindBy(css = "h4[class='card-title']")
     private List<WebElement> applicationTilte;
-    //    @FindBy(css = "p[class='card-text text-muted']")
-//    private List<WebElement> programDate;
     @FindBy(xpath = "//div[2]/div/div[2]/div[2]/div/div[3]/button/i")
     private WebElement editAdmission;
     @FindBy(xpath = "(//input[@type='text'])[2]")
@@ -45,8 +47,24 @@ public class MyApplicationsPage extends Base {
     private WebElement uploadIELTS;
     @FindBy(xpath = "//div[3]/div[2]/button")
     private WebElement uploadButton;
-    @FindBy(xpath = "(//button[@type='button'])[11]")
-    private WebElement goToMyApp;
+    //    @FindBy(xpath = "(//button[@type='button'])[11]")
+//    private WebElement goToMyApp;
+    @FindBy(xpath = "//button[contains(text(), 'Go To Application')]")
+    private List<WebElement> goToMyApp;
+    //    @FindBy(xpath = "(//button[contains(text(), 'Next')]")
+//    private List<WebElement> btnNext;
+    @FindBy(xpath = "(//button[@type='button'])[29]")
+    private WebElement btnNext1;
+    @FindBy(xpath = "(//button[@type='button'])[6]")
+    private WebElement btnNext2;
+    @FindBy(xpath = "(//button[@type='button'])[4]")
+    private WebElement btnNext3;
+    @FindBy(xpath = "(//button[@type='button'])[5]")
+    private WebElement submitApp;
+    @FindBy(xpath = "(//button[@type='button'])[8]")
+    private WebElement confirmBtn;
+    @FindBy(xpath = "//div[@id='toast-container']/div/div")
+    private WebElement reSubmitMsg;
     // confirm interview locators
     @FindBy(xpath = "//button[contains(.,'Book Interview')]")
     private WebElement bookInterview;
@@ -54,29 +72,179 @@ public class MyApplicationsPage extends Base {
     private WebElement interviewTime;
     @FindBy(xpath = "//span[contains(.,'Confirm Interview')]")
     private WebElement confirmInterview;
-    //@FindBy(xpath = "//button[contains(.,'Confirm')]")
     @FindBy(css = "button[class='swal2-confirm swal2-styled']")
     private List<WebElement> confirm;
     @FindBy(xpath = "//span[contains(.,'Cancel Interview')]")
     private WebElement cancelInterview;
+    @FindBy(xpath = "//button[contains(text(), 'Acknowledge Application')]")
+    private List<WebElement> acknowledge;
+    @FindBy(xpath = "//button[contains(text(), 'Withdraw Application')]")
+    private List<WebElement> withdraw;
+    @FindBy(xpath = "//button[contains(.,'confirm')]")
+    private WebElement confirmWithdraw;
+    @FindBy(xpath = "//span[contains(.,'Decline')]")
+    private WebElement declineAcc;
+    @FindBy(xpath = "//div[@id='toast-container']/div/div[2]")
+    private WebElement declineValidation;
+    @FindBy(xpath = "//textarea[@placeholder='Comments']")
+    private WebElement declineTextArea;
+    @FindBy(xpath = "//span[contains(.,'Accept')]")
+    private WebElement acceptAcc;
+
+
+    public void acknowledgeApplicantion(String programTitle) throws Exception {
+        ActionsHelper.waitForExistance(getMyApplication(), 100);
+        getMyApplication().click();
+        ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
+        System.out.println("Program Size: " + getApplicationDiv().size());
+        System.out.println("Title Size: " + getApplicationTilte().size());
+        ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
+        for (int i = 0; i < getApplicationDiv().size(); i++) {
+            String programTilte = getApplicationTilte().get(i).getText();
+            System.out.println("Program Title: " + programTilte);
+            System.out.println("check name2: " + getAcknowledge().get(i).getText());
+            if ((programTilte.equalsIgnoreCase(programTitle)
+                    && getAcknowledge().get(i).isEnabled())) {
+                System.out.println("Program Title inside if: " + programTilte);
+                System.out.println("Program Title inside if222: " +
+                        getAcknowledge().get(i).getText());
+                acknowledgeresult = true;
+                break;
+            }
+        }
+    }
+
+    // this method to decline application by leaving the message filed empty
+    public void declineApplicationEmpty(String programTitle) throws Exception {
+        ActionsHelper.waitForExistance(getMyApplication(), 100);
+        getMyApplication().click();
+        ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
+        System.out.println("Program Size: " + getApplicationDiv().size());
+        System.out.println("Title Size: " + getApplicationTilte().size());
+        ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
+        for (int i = 0; i < getApplicationDiv().size(); i++) {
+            String programTilte = getApplicationTilte().get(i).getText();
+            System.out.println("Program Title: " + programTilte);
+            // System.out.println("check size in for: " + getAcknowledge().size());
+            if ((programTilte.equalsIgnoreCase(programTitle)
+                    && getAcknowledge().get(i).isEnabled())) {
+                System.out.println("Program Title inside if: " + programTilte);
+                System.out.println("Program Title inside if222: " +
+                        getAcknowledge().get(i).getText());
+                ActionsHelper.scrollTo(getAcknowledge().get(i));
+                ActionsHelper.waitForExistance(getAcknowledge().get(i), 50);
+                getAcknowledge().get(i).click();
+                ActionsHelper.waitForExistance(getDeclineAcc(), 50);
+                getDeclineAcc().click();
+                break;
+
+            }
+        }
+    }
+
+    // this method to decline application by entering valid text
+    public void declineApplicationWithMessage(String programTitle) throws Exception {
+        ActionsHelper.waitForExistance(getMyApplication(), 100);
+        getMyApplication().click();
+        ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
+        System.out.println("Program Size: " + getApplicationDiv().size());
+        System.out.println("Title Size: " + getApplicationTilte().size());
+        ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
+        for (int i = 0; i < getApplicationDiv().size(); i++) {
+            String programTilte = getApplicationTilte().get(i).getText();
+            System.out.println("Program Title: " + programTilte);
+            // System.out.println("check size in for: " + getAcknowledge().size());
+            if ((programTilte.equalsIgnoreCase(programTitle)
+                    && getAcknowledge().get(i).isEnabled())) {
+                System.out.println("Program Title inside if: " + programTilte);
+                System.out.println("Program Title inside if222: " +
+                        getAcknowledge().get(i).getText());
+                ActionsHelper.scrollTo(getAcknowledge().get(i));
+                ActionsHelper.waitForExistance(getAcknowledge().get(i), 50);
+                getAcknowledge().get(i).click();
+                ActionsHelper.waitForExistance(getDeclineAcc(), 50);
+                getDeclineTextArea().sendKeys("1235");
+                getDeclineAcc().click();
+                ActionsHelper.waitForListExistance(getAcknowledge(), 50);
+                declineResults = true;
+                break;
+
+            }
+        }
+    }
+
+    // this method to accept application
+    public void acceptApplication(String programTitle) throws Exception {
+        ActionsHelper.waitForExistance(getMyApplication(), 100);
+        getMyApplication().click();
+        ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
+        System.out.println("Program Size: " + getApplicationDiv().size());
+        System.out.println("Title Size: " + getApplicationTilte().size());
+        ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
+        for (int i = 0; i < getApplicationDiv().size(); i++) {
+            String programTilte = getApplicationTilte().get(i).getText();
+            System.out.println("Program Title: " + programTilte);
+            // System.out.println("check size in for: " + getAcknowledge().size());
+            if ((programTilte.equalsIgnoreCase(programTitle)
+                    && getAcknowledge().get(i).isEnabled())) {
+                System.out.println("Program Title inside if: " + programTilte);
+                System.out.println("Program Title inside if222: " +
+                        getAcknowledge().get(i).getText());
+                ActionsHelper.scrollTo(getAcknowledge().get(i));
+                ActionsHelper.waitForExistance(getAcknowledge().get(i), 50);
+                getAcknowledge().get(i).click();
+                ActionsHelper.waitForExistance(getDeclineAcc(), 50);
+                getDeclineTextArea().sendKeys("1235");
+                getAcceptAcc().click();
+                ActionsHelper.waitForListExistance(getAcknowledge(), 50);
+                result = true;
+                break;
+            }
+        }
+    }
+
+    // this method to accept application
+    public void withdrawApplication(String programTitle) throws Exception {
+        ActionsHelper.waitForExistance(getMyApplication(), 100);
+        getMyApplication().click();
+        ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
+        System.out.println("Program Size: " + getApplicationDiv().size());
+        System.out.println("Title Size: " + getApplicationTilte().size());
+        ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
+        for (int i = 0; i < getApplicationDiv().size(); i++) {
+            String programTilte = getApplicationTilte().get(i).getText();
+            System.out.println("Program Title: " + programTilte);
+            if ((programTilte.equalsIgnoreCase(programTitle)
+                    && getWithdraw().get(i).isEnabled())) {
+                System.out.println("Program Title inside if: " + programTilte);
+                System.out.println("Program Title inside if222: " +
+                        getWithdraw().get(i).getText());
+                ActionsHelper.scrollTo(getWithdraw().get(i));
+                ActionsHelper.waitForExistance(getWithdraw().get(i), 50);
+                getWithdraw().get(i).click();
+                ActionsHelper.waitForExistance(getConfirmWithdraw(), 50);
+                getConfirmWithdraw().click();
+                ActionsHelper.waitForExistance(getMyApplication(), 90);
+                getMyApplication().click();
+                ActionsHelper.waitForListExistance(getWithdraw(), 50);
+                //getWithdraw().get(i).isEnabled();
+                withdrawResults = true;
+                break;
+            }
+        }
+    }
 
     // to confirm interview for applicant:mdamati@outlook.com - Test@123
     public void confirmInterview(String progarmTitle) throws Exception {
-       // System.out.println("Current Date: " + ActionsHelper.getTodayDate())
         ActionsHelper.waitVisibility(getMyApplication(), 50);
-       // Thread.sleep(20000);
         getMyApplication().click();
-       Thread.sleep(10000);
-        ActionsHelper.waitVisibility(getApplicationDiv().get(0),30);
+        ActionsHelper.waitForListExistance(getApplicationDiv(), 90);
         System.out.println("Program Size: " + getApplicationDiv().size());
         System.out.println("Title Size: " + getApplicationTilte().size());
-        //System.out.println("Button Size: "+ getApplicationButton().size());
         for (int i = 0; i < getApplicationDiv().size(); i++) {
-
             String programTilte = getApplicationTilte().get(i).getText();
-
             System.out.println("Program Title: " + programTilte);
-            if ((programTilte.equalsIgnoreCase(programTilte)
+            if ((programTilte.equalsIgnoreCase(progarmTitle)
                     && getBookInterview().isEnabled())) {
                 System.out.println("Program Title inside if: " + programTilte);
                 getBookInterview().click();
@@ -85,14 +253,12 @@ public class MyApplicationsPage extends Base {
                 ActionsHelper.waitVisibility(getConfirmInterview(), 30);
                 getConfirmInterview().click();
                 ActionsHelper.waitVisibility(getConfirm().get(0), 30);
-                System.out.println("Button size: "+getConfirm().size());
+                System.out.println("Button size: " + getConfirm().size());
                 getConfirm().get(0).click();
                 break;
 
             }
         }
-
-
     }
 
 
@@ -110,12 +276,9 @@ public class MyApplicationsPage extends Base {
         Thread.sleep(10000);
         System.out.println("Program Size: " + getApplicationDiv().size());
         System.out.println("Title Size: " + getApplicationTilte().size());
-        //System.out.println("Button Size: "+ getApplicationButton().size());
         for (int i = 0; i < getApplicationDiv().size(); i++) {
             String programTilte = getApplicationTilte().get(i).getText();
-
             System.out.println("Program Title: " + programTilte);
-
             if (programTilte.equalsIgnoreCase(programTitle)
                     && getEditAdmission().isEnabled()) {
                 System.out.println("Program Title inside if: " + programTilte);
@@ -137,16 +300,53 @@ public class MyApplicationsPage extends Base {
                 ActionsHelper.safeJavaScriptClick(getUploadButton());
                 ActionsHelper.waitVisibility(getEditSaveBtn(), 15);
                 getEditSaveBtn().click();
-                // ActionsHelper.waitVisibility(getGoToMyApp(),15);
-
-
                 break;
 
             }
 
         }
 
+    }
+
+    public void applicationSubmitionAfterChanges(String programTitle) throws Exception {
+        System.out.println("Current Date: " + ActionsHelper.getTodayDate());
+        ActionsHelper.waitVisibility(getMyApplication(), 15);
+        getMyApplication().click();
+        Thread.sleep(10000);
+        System.out.println("Program Size: " + getApplicationDiv().size());
+        System.out.println("Title Size: " + getApplicationTilte().size());
+        for (int i = 0; i < getApplicationDiv().size(); i++) {
+            String programetitle1 = getApplicationTilte().get(i).getText();
+            System.out.println("Program Title: " + programetitle1);
+            if (programetitle1.equalsIgnoreCase(programTitle)
+                    && getGoToMyApp().get(i).isEnabled()) {
+                System.out.println("Program Title inside if: " + programTitle);
+                ActionsHelper.waitForExistance(getGoToMyApp().get(i), 50);
+                getGoToMyApp().get(i).click();
+                ActionsHelper.scrollTo(getBtnNext1());
+                ActionsHelper.waitForExistance(getBtnNext1(), 90);
+                getBtnNext1().click();
+                ActionsHelper.scrollTo(getBtnNext2());
+                ActionsHelper.waitForExistance(getBtnNext2(), 90);
+                getBtnNext2().click();
+                ActionsHelper.scrollTo(getBtnNext3());
+                ActionsHelper.waitForExistance(getBtnNext3(), 90);
+                getBtnNext3().click();
+                //ActionsHelper.scrollTo(getSubmitApp());
+                ActionsHelper.waitForExistance(getSubmitApp(), 90);
+                getSubmitApp().click();
+                ActionsHelper.waitForExistance(getConfirmBtn(), 90);
+                getConfirmBtn().click();
+                break;
+
+            }
+
+        }
 
     }
+
+
+
+
 
 }

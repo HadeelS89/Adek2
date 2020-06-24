@@ -1,12 +1,16 @@
 package com.qpros.common;
 
 
+import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -21,30 +25,43 @@ public class Base {
 
 
 
+    @Parameters({"browserType"})
     @BeforeMethod(enabled = true)
-    public void setUpBrowser() {
+    public void setUpBrowser(@Optional("optional") String browserType) {
         String OsType = OsValidator.getDeviceOs();
-        DriverType browser = getBrowser();
-        initiateDriver(OsType, browser);
-        //driver.navigate().to(ReadWriteHelper.ReadData("ApplicantURL"));
+        //DriverType browser = getBrowser();
+        if (!browserType.equals( "optional" )){
+            initiateDriver(OsType, browserType);
+        }else {
+            initiateDriver(OsType, ReadWriteHelper.ReadData( "browser" ) );
+        }
+
     }
 
 
-    public WebDriver initiateDriver(String deviceOsType, DriverType driverType) {
+    public WebDriver initiateDriver(String deviceOsType, String driverType) {
+        String browser = driverType.toLowerCase();
 
-        switch (driverType) {
-            case FIREFOX:
+        switch (browser) {
+            case "firefox":
                 try {
 
                     setFireFoxBrowser(deviceOsType);
-                    driver = new FirefoxDriver();
+                    FirefoxOptions options = new FirefoxOptions(  );
+                    options.setAcceptInsecureCerts( true );
+                    if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
+                        options.addArguments("--headless");
+                    }
+                    driver = new FirefoxDriver(options);
                 } catch (Throwable e) {
                     e.printStackTrace(System.out);
                     Assert.fail("Please check Browser is exist Browser Unable to start");
                 }
                 break;
-            case CHROME:
+            case "chrome":
                 try {
+                    DesiredCapabilities handlSSLErr = DesiredCapabilities.chrome ();
+                    handlSSLErr.setCapability ( CapabilityType.ACCEPT_SSL_CERTS, true);
                     setChromeBrowser(deviceOsType);
                     Map<String, Object> prefs = new HashMap<String, Object>();
                     //Put this into prefs map to switch off browser notification
@@ -54,6 +71,10 @@ public class Base {
                     options.setExperimentalOption("prefs", prefs);
                     options.addArguments("--disable-web-security");
                     options.addArguments("--allow-running-insecure-content");
+                    options.setAcceptInsecureCerts( true );
+                    if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
+                        options.addArguments("--headless");
+                    }
                     driver = new ChromeDriver(options);
                     //Dimension targetSize = new Dimension(1920, 1080); //your screen resolution here
                     //driver.manage().window().setSize(targetSize);
@@ -63,7 +84,7 @@ public class Base {
                     Assert.fail("Please check Browser is exist Browser Unable to start");
                 }
                 break;
-            case INTERNETEXPLORER:
+            case "ie":
 
             {
                 try {
@@ -76,7 +97,7 @@ public class Base {
                 }
                 break;
             }
-            case Safari: {
+            case "safari": {
                 try {
                     System.setProperty(ReadWriteHelper.ReadData("SafariDriverPath"),
                             ReadWriteHelper.ReadData("SafariBrowserPath"));
@@ -136,7 +157,7 @@ public class Base {
     }
 
 
-    @AfterMethod(enabled = true)
+    //@AfterMethod(enabled = true)
     public void stopDriver() {
         try {
             driver.quit();
