@@ -17,8 +17,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 public class ActionsHelper extends Base {
-    private static Logger LOGGER = Logger.getLogger( Thread.currentThread().getStackTrace()[0].getClassName() );
-    private static WebDriverWait wait;
+    protected static Logger LOGGER = Logger.getLogger( Thread.currentThread().getStackTrace()[0].getClassName() );
+    public static WebDriverWait wait;
 
     public static void waitForSeconds(Integer timeWait) {
         driver.manage().timeouts().implicitlyWait( timeWait, TimeUnit.SECONDS );
@@ -83,20 +83,22 @@ public class ActionsHelper extends Base {
                 LOGGER.info( "Unable to click on element" );
             }
         } catch (StaleElementReferenceException e) {
-            LOGGER.info( "Element is not attached to the page document " + Arrays.toString( e.getStackTrace() ) );
+            LOGGER.info( "Element is not attached to the page document " + e.getStackTrace() );
         } catch (NoSuchElementException e) {
-            LOGGER.info( "Element was not found in DOM " + Arrays.toString( e.getStackTrace() ) );
+            LOGGER.info( "Element was not found in DOM " + e.getStackTrace() );
         } catch (Exception e) {
-            LOGGER.info( "Unable to click on element " + Arrays.toString( e.getStackTrace() ) );
+            LOGGER.info( "Unable to click on element " + e.getStackTrace() );
         }
     }
 
     public static String getImagePath(String imageName) {
-        return System.getProperty( "user.dir" ) + "/src/main/resources/images/" + imageName;
+        String path = System.getProperty( "user.dir" ) + "/src/main/resources/images/" + imageName;
+        return path;
     }
 
     public String getXMLPath(String xmlFileName) {
-        return System.getProperty( "user.dir" ) + "/src/main/resources/xmlfiles/" + xmlFileName;
+        String path = System.getProperty( "user.dir" ) + "/src/main/resources/xmlfiles/" + xmlFileName;
+        return path;
     }
 
     public static String getTodayDate() {
@@ -165,12 +167,11 @@ public class ActionsHelper extends Base {
 
 
     public static void selectElementFromList(List<WebElement> element, String value) {
-        for (int i = 0; i < element.size(); i++) {
-            if (element.get( i ).getText().equalsIgnoreCase( value )) {
-                element.get( i ).click();
-                break;
+        element.parallelStream().forEach(element1 -> {
+            if (element1.getText().equalsIgnoreCase(value)) {
+                element1.click();
             }
-        }
+        });
     }
 
     public static boolean waitForExistance(WebElement element, int seconds) {
