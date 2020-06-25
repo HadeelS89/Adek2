@@ -3,16 +3,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 
-<suite name="Approve - Without interview Test">
+<suite name="Interviews Tests">
 
     <listeners>
         <listener class-name="com.qpros.reporting.Listeners"/>
     </listeners>
 
 
-    <test name="Approve - Without interview Test">
+    <test name="Create interview Test">
         <classes>
-            <class name="com.qpros.scholarship.admin.applications.ScheduleInterviewTest"></class>
+            <class name="com.qpros.scholarship.applicant.interviews.BookInterviewTest"></class>
         </classes>
     </test>
 </suite>

@@ -1,4 +1,4 @@
-package com.qpros.scholarship_applicant.applications;
+package com.qpros.scholarship.applicant.applications;
 
 
 import com.qpros.authorization.LoginTest;
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class MyApplicationTest extends Base {
     LoginPage loginPage;
-    MyApplicationsPage myApplication1;
+    private MyApplicationsPage myApplication1;
 
 
     @Test (description = "Perform some edits on drafted application on my application page " )

@@ -1,4 +1,4 @@
-package com.qpros.scholarship_admin.applications;
+package com.qpros.scholarship.admin.applications;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
@@ -11,11 +11,12 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class StartReviewApplicationTest extends Base {
-    LoginPage loginPage;
-    ProgramsPage programsPage;
-    ApplyForProgremPage applyForProgremPage;
-    AdminApplicationsListPage adminApplicationsListPage;
+public class AppsDocsVerifiedTest extends Base {
+
+    private LoginPage loginPage;
+    private ProgramsPage programsPage;
+    private ApplyForProgremPage applyForProgremPage;
+    private AdminApplicationsListPage adminApplicationsListPage;
 
     @Test(description = "Create new Program",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
@@ -55,9 +56,10 @@ public class StartReviewApplicationTest extends Base {
 
     }
 
-    @Test(description = "Start review a new application",
+
+    @Test(description = "Approves a new application",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 2)
-    public void startReviewNewApplication() throws Exception {
+    public void approveNewApplication() throws Exception {
         loginPage = new LoginPage( driver );
         loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "username" ),
                 ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "password" ) );
@@ -65,8 +67,37 @@ public class StartReviewApplicationTest extends Base {
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.clearFilters();
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
-        adminApplicationsListPage.searchByStatus( "New", true );
         adminApplicationsListPage.selectFirstResult();
         adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.StartReview );
+        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.ApplicationReviewCompleted );
+        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.ApplicationDocumentsVerified );
     }
+
+    @Test(description = "Schedule interview from recruiter",
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 3)
+    public void scheduleInterview() throws Exception {
+        loginPage = new LoginPage(driver);
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile
+                        ("recruiterCredentials3", "username"),
+                ReadWriteHelper.readCredentialsXMLFile
+                        ("recruiterCredentials3", "password"));
+
+        adminApplicationsListPage = new AdminApplicationsListPage(driver);
+        adminApplicationsListPage.findProgram(ReadWriteHelper.readApplicationsXMLFile(
+                "applicationIName1","title"));
+        adminApplicationsListPage.searchByStatus(
+                ReadWriteHelper.readProgramStatusXMLFile("applicationStatus2",
+                        "status"), true);
+        adminApplicationsListPage.scheduleInterview();
+        WebElement scheduleIntervButton = null;
+        try {
+            scheduleIntervButton = ActionsHelper.getElement(driver, "xpath",
+                    "//button[@name='button'][3]");
+        } catch (Exception e) {
+
+        }
+
+        Assert.assertTrue(scheduleIntervButton == null);
+    }
+
 }

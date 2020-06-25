@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class ExternalLogin extends Base {
 
-    AdminExternalLogin adminExternalLogin;
+    private AdminExternalLogin adminExternalLogin;
 
     @Test(description = "Try login using external recruiter", priority = 1,
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)

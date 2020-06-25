@@ -12,7 +12,7 @@
 
     <test name="Application Docs verified Test">
         <classes>
-            <class name="com.qpros.scholarship_admin.applications.AppsDocsVerifiedTest"></class>
+            <class name="com.qpros.scholarship.admin.applications.AppsDocsVerifiedTest"></class>
         </classes>
     </test>
 </suite>

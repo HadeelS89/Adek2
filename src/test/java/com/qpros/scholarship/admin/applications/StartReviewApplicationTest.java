@@ -1,4 +1,4 @@
-package com.qpros.scholarship_admin.applications;
+package com.qpros.scholarship.admin.applications;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
@@ -11,11 +11,11 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ApproveAndProceedToAcknowlageTest extends Base {
-    LoginPage loginPage;
-    ProgramsPage programsPage;
-    ApplyForProgremPage applyForProgremPage;
-    AdminApplicationsListPage adminApplicationsListPage;
+public class StartReviewApplicationTest extends Base {
+    private LoginPage loginPage;
+    private ProgramsPage programsPage;
+    private ApplyForProgremPage applyForProgremPage;
+    private AdminApplicationsListPage adminApplicationsListPage;
 
     @Test(description = "Create new Program",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
@@ -55,22 +55,17 @@ public class ApproveAndProceedToAcknowlageTest extends Base {
 
     }
 
-    @Test(description = "Approves a new application",
+    @Test(description = "Start review a new application",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 2)
-    public void approveNewApplication() throws Exception {
-        loginPage = new LoginPage(driver);
-        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "username" ),
-                ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "password" ));
+    public void startReviewNewApplication() throws Exception {
+        loginPage = new LoginPage( driver );
+        loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "username" ),
+                ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "password" ) );
 
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.clearFilters();
-        adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram());
-        adminApplicationsListPage.searchByStatus("New", true);
+        adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
         adminApplicationsListPage.selectFirstResult();
-        adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.StartReview);
-        adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.ApplicationReviewCompleted);
-        adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.ApplicationDocumentsVerified);
-        adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.ApproveAndProceedToAcknowledgement);
+        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.StartReview );
     }
-
 }

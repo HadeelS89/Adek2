@@ -66,8 +66,8 @@ public class MyApplicationsPage extends Base {
     @FindBy(xpath = "//div[@id='toast-container']/div/div")
     private WebElement reSubmitMsg;
     // confirm interview locators
-    @FindBy(xpath = "//button[contains(.,'Book Interview')]")
-    private WebElement bookInterview;
+    @FindBy(xpath = "//button[contains(text(), 'Book Interview')]")
+    private List <WebElement> bookInterview;
     @FindBy(xpath = "//label")
     private WebElement interviewTime;
     @FindBy(xpath = "//span[contains(.,'Confirm Interview')]")
@@ -242,12 +242,12 @@ public class MyApplicationsPage extends Base {
         System.out.println("Program Size: " + getApplicationDiv().size());
         System.out.println("Title Size: " + getApplicationTilte().size());
         for (int i = 0; i < getApplicationDiv().size(); i++) {
-            String programTilte = getApplicationTilte().get(i).getText();
-            System.out.println("Program Title: " + programTilte);
-            if ((programTilte.equalsIgnoreCase(programTilte)
-                    && getBookInterview().isEnabled())) {
-                System.out.println("Program Title inside if: " + programTilte);
-                getBookInterview().click();
+            String programTitle1 = getApplicationTilte().get(i).getText();
+            System.out.println("Program Title: " + programTitle1);
+            if ((programTitle1.equalsIgnoreCase(progarmTitle)
+                    && getBookInterview().get(i).isEnabled())) {
+                System.out.println("Program Title inside if: " + programTitle1);
+                getBookInterview().get(i).click();
                 ActionsHelper.waitVisibility(getInterviewTime(), 30);
                 getInterviewTime().click();
                 ActionsHelper.waitVisibility(getConfirmInterview(), 30);
@@ -256,10 +256,10 @@ public class MyApplicationsPage extends Base {
                 System.out.println("Button size: " + getConfirm().size());
                 getConfirm().get(0).click();
                 break;
-
             }
         }
     }
+
 
 
     public void myApplication() throws InterruptedException {

@@ -1,10 +1,8 @@
-package com.qpros.scholarship_admin;
+package com.qpros.scholarship.admin;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.pages.authorization_pages.LoginPage;
-import com.qpros.pages.scholarship_admin_pages.AdminApplicationsListPage;
-import com.qpros.pages.scholarship_admin_pages.InterviewsPage;
 import com.qpros.pages.scholarship_admin_pages.ScholarshipsPage;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
@@ -12,8 +10,8 @@ import org.testng.annotations.Test;
 
 @Listeners(com.qpros.reporting.Listeners.class)
 public class ScholarshipsTest extends Base {
-    LoginPage loginPage;
-    ScholarshipsPage scholarshipsPage;
+    private LoginPage loginPage;
+    private ScholarshipsPage scholarshipsPage;
 
 
     @Test(description = "add new pay element",

@@ -1,13 +1,11 @@
-package com.qpros.scholarship_applicant.applications;
+package com.qpros.scholarship.applicant.applications;
 
 
-import com.qpros.authorization.LoginTest;
 import com.qpros.common.Base;
 //import com.qpros.pages.ApplicantLoginPage;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.pages.authorization_pages.LoginPage;
-import com.qpros.pages.scholarship_admin_pages.ProgramsPage;
 import com.qpros.pages.sholarship_applicant_pages.ApplyForProgremPage;
 import com.qpros.pages.sholarship_applicant_pages.MyApplicationsPage;
 import org.openqa.selenium.WebElement;
@@ -15,9 +13,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ApplicantActionsTest extends Base {
-    ApplyForProgremPage applyForProgremPage;
-    LoginPage loginPage;
-    MyApplicationsPage myApplicationsPage;
+    private ApplyForProgremPage applyForProgremPage;
+    private LoginPage loginPage;
+    private MyApplicationsPage myApplicationsPage;
 
     @Test(description = "Save one program as draft ")// one programe
     public void saveToDraft() throws Exception {
@@ -61,7 +59,7 @@ public class ApplicantActionsTest extends Base {
         try {
             submitButton = ActionsHelper.getElement(driver, "xpath",
                     "//button[contains(.,'Submit Application')]");
-        } catch (Exception e) {
+        } catch (NullPointerException e) {
             Assert.assertTrue(!submitButton.isDisplayed());
         }
 
@@ -79,7 +77,7 @@ public class ApplicantActionsTest extends Base {
         myApplicationsPage = new MyApplicationsPage(driver);
         ActionsHelper.waitForExistance(myApplicationsPage.getMyApplication(), 100);
         myApplicationsPage.acknowledgeApplicantion("Q-PROS INTERVIEW1");
-        Assert.assertTrue(myApplicationsPage.acknowledgeresult==false);
+        Assert.assertTrue(!myApplicationsPage.acknowledgeresult);
     }
 
     @Test(description = "check validation message when click decline by leaving " +
@@ -106,7 +104,7 @@ public class ApplicantActionsTest extends Base {
 
         myApplicationsPage = new MyApplicationsPage(driver);
         myApplicationsPage.declineApplicationWithMessage("Automation Test 52232");
-        Assert.assertTrue(myApplicationsPage.declineResults== false);
+        Assert.assertTrue(!myApplicationsPage.declineResults);
     }
 
     @Test(description = "Accept application using acknowledgement ")
@@ -118,7 +116,7 @@ public class ApplicantActionsTest extends Base {
                         "applicantCredentials2", "password"));
         myApplicationsPage = new MyApplicationsPage(driver);
         myApplicationsPage.acceptApplication("AUTOMATION TEST 49024");
-        Assert.assertTrue(myApplicationsPage.result == false);
+        Assert.assertTrue(!myApplicationsPage.result);
     }
 
     @Test(description = "withdraw Application ")
@@ -132,7 +130,7 @@ public class ApplicantActionsTest extends Base {
         myApplicationsPage = new MyApplicationsPage(driver);
         myApplicationsPage.withdrawApplication("AUTOMATION TEST 49024");
 
-            Assert.assertTrue(myApplicationsPage.withdrawResults == false);
+            Assert.assertTrue(!myApplicationsPage.withdrawResults);
 
 
     }

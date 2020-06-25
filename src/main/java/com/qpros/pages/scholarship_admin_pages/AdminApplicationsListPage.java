@@ -1,18 +1,14 @@
 package com.qpros.pages.scholarship_admin_pages;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ListMultimap;
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 import lombok.Getter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.internal.MouseAction;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
+
 import java.util.*;
 
 @Getter
@@ -143,13 +139,20 @@ public class AdminApplicationsListPage extends Base {
     @FindBy(xpath = "//button[contains(.,'OK')]")
     private WebElement btnOK;
 
+    @FindBy(xpath = "//input[@type='search']")
+    private WebElement programNameInput;
+
+
+
+
+
 
     public enum ButtonsList {
         Delegate, ApplicationReviewCompleted, ApplicationDocumentsVerified, ApproveAndProceedToAcknowledgement,
         StartReview, RejectApplication, RequestForChange, ScheduleInterview
     }
 
-    EnumMap<ButtonsList, Integer> buttonTarget = new EnumMap<ButtonsList, Integer>( ButtonsList.class );
+    EnumMap<ButtonsList, Integer> buttonTarget = new EnumMap<>( ButtonsList.class );
 
     public void clearFilters() {
         ActionsHelper.waitForExistance( getClearFiltersButton(), waitTime );
@@ -215,6 +218,7 @@ public class AdminApplicationsListPage extends Base {
             submitButton.click();
             //Confirm
             ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
+            Thread.sleep( 1000 );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
             okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
             ActionsHelper.waitForExistance( okButton, waitTime );
@@ -241,6 +245,7 @@ public class AdminApplicationsListPage extends Base {
             submitButton.click();
             //Confirm
             ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
+            Thread.sleep( 1000 );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
             okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
             System.out.println( "OK button: " + okButton.getText() );
@@ -260,6 +265,7 @@ public class AdminApplicationsListPage extends Base {
             submitButton.click();
             //Confirm
             ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
+            Thread.sleep( 1000 );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
             okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
             System.out.println( "OK button: " + okButton.getText() );
@@ -279,6 +285,7 @@ public class AdminApplicationsListPage extends Base {
             submitButton.click();
             //Confirm
             ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
+            Thread.sleep( 1000 );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
             okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
             System.out.println( "OK button: " + okButton.getText() );
@@ -314,18 +321,23 @@ public class AdminApplicationsListPage extends Base {
 
     // this method to schedule interview from admin side
     public void scheduleInterview() throws Exception {
-        ActionsHelper.waitForExistance( getLblFirstResultCode(), 100 );
-        System.out.println( getResultsCodes().size() );
-        getResultsCodes().get( 0 ).click();
-        ActionsHelper.scrollTo( getBtnScheduleInterview() );
-        ActionsHelper.waitForExistance( getBtnScheduleInterview(), waitTime );
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
+        System.out.println(getResultsCodes().size());
+        getResultsCodes().get(0).click();
+        ActionsHelper.scrollTo(getBtnScheduleInterview());
+        ActionsHelper.waitForExistance(getBtnScheduleInterview(), waitTime);
         getBtnScheduleInterview().click();
-        ActionsHelper.waitForExistance( getBtnSubmit().get( 0 ), waitTime );
-        System.out.println( "Submit size " + getBtnSubmit().size() );
-        ActionsHelper.safeJavaScriptClick( getBtnSubmit().get( 0 ) );
-        ActionsHelper.waitForExistance( getBtnOk(), waitTime );
+        ActionsHelper.waitForExistance(getBtnSubmit().get(0), waitTime);
+        System.out.println("Submit size " + getBtnSubmit().size());
+        ActionsHelper.safeJavaScriptClick(getBtnSubmit().get(0));
+        ActionsHelper.waitForExistance(getBtnOk(), waitTime);
         getBtnOk().click();
-        Thread.sleep( 3000 );
+        ActionsHelper.scrollTo(getLblFirstResultCode());
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), waitTime);
+        getResultsCodes().get(0).click();
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), waitTime);
+        getResultsCodes().get(0).click();
+        ActionsHelper.scrollTo(getWorkflowArea());
     }
 
     //this method to mark applicant as absence
@@ -367,6 +379,17 @@ public class AdminApplicationsListPage extends Base {
     }
 
     public void findProgram(String programName) throws InterruptedException {
+        ActionsHelper.waitForExistance( getProgramsLabel(), waitTime );
+        //Thread.sleep( 3000 );
+        ActionsHelper.waitForListExistance( getProgramsList1(), waitTime );
+        getProgramsList1().get( 0 ).click();
+        getProgramNameInput().sendKeys(programName);
+        getProgramNameInput().sendKeys(Keys.ENTER);
+        ActionsHelper.waitForExistance( getBtnApply(), 100 );
+        getBtnApply().click();
+    }
+
+    public void findProgram2(String programName) throws InterruptedException {
         ActionsHelper.waitForExistance( getProgramsLabel(), 50 );
         Thread.sleep( 3000 );
         ActionsHelper.waitForListExistance( getProgramsList1(), 20 );
