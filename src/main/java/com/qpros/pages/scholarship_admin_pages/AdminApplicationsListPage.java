@@ -28,7 +28,9 @@ public class AdminApplicationsListPage extends Base {
     private WebElement searchBox;
     @FindBy(id = "btnGroupAddon2")
     private WebElement btnSearch;
-    @FindBy(xpath = "//*[@id=\"mainDiv\"]/div[3]/div[1]/div[2]/div[1]/div[1]")
+//    @FindBy(xpath = "//*[@id=\"mainDiv\"]/div[3]/div[1]/div[2]/div[1]/div[1]")
+//    private WebElement lblFirstResultCode;
+    @FindBy( css=".list-inline-item:nth-child(1) > b")
     private WebElement lblFirstResultCode;
     //TODO: Locate Status Drop down list
     @FindBy(xpath = "//div[@id='filterContainer']/div/div[3]/select")
@@ -47,7 +49,6 @@ public class AdminApplicationsListPage extends Base {
     private WebElement btnPresent;
     @FindBy(xpath = "//div[7]/div/button")
     private List<WebElement> btnSubmit;
-    //private List<WebElement> btnSubmit;
     @FindBy(xpath = "//button[contains(.,'OK')]")
     private WebElement btnOk;
     @FindBy(id = "timeline")
@@ -62,7 +63,7 @@ public class AdminApplicationsListPage extends Base {
     private WebElement nextStepButton;
     @FindBy(css = ".ml-2:nth-child(1)")
     private WebElement confirmButton;
-    @FindBy(css = ".font-weight-bold > .col-md-auto:nth-child(3)")
+    @FindBy(css = ".list-inline-item:nth-child(1) > b")
     private WebElement firstResult;
     @FindBy(css = ".btn-success:nth-child(2)")
     private WebElement secondThing;
@@ -142,7 +143,6 @@ public class AdminApplicationsListPage extends Base {
     private WebElement success;
     @FindBy(xpath = "//button[contains(.,'OK')]")
     private WebElement btnOK;
-
     @FindBy(xpath = "//input[@type='search']")
     private WebElement programNameInput;
 
@@ -187,14 +187,14 @@ public class AdminApplicationsListPage extends Base {
             getRejectionComment().sendKeys( "RejectionReason123" );
             ActionsHelper.waitVisibility( getRejectionButton(), waitTime );
             getRejectionButton().click();
-            ActionsHelper.waitVisibility( getConfirmButton(), waitTime );
+            ActionsHelper.waitForExistance( getConfirmButton(), waitTime );
             getConfirmButton().click();
         } else if (button == ButtonsList.RequestForChange) {
             System.out.println( "Request for Change button" );
             ActionsHelper.waitVisibility( getSecondButton(), waitTime );
-            getSecondButton().click();
+            getThirdButton().click();
             ActionsHelper.waitVisibility( getRejectionComment(), waitTime );
-            getRejectionComment().sendKeys( "RejectionReason123" );
+            getRejectionComment().sendKeys( "Reason123" );
             ActionsHelper.waitVisibility( getRejectionButton(), waitTime );
             getRejectionButton().click();
             ActionsHelper.waitVisibility( getConfirmButton(), waitTime );
@@ -235,6 +235,7 @@ public class AdminApplicationsListPage extends Base {
             getNextStepButton().click();
             ActionsHelper.waitVisibility( getConfirmButton(), waitTime );
             getConfirmButton().click();
+
         } else if (buttonTarget.get( button ) == 4) {
             ActionsHelper.waitForListExistance( getApplicationButtons(), waitTime );
             ActionsHelper.waitForListExistance( getApplicationButtons(), waitTime );
@@ -326,17 +327,20 @@ public class AdminApplicationsListPage extends Base {
     // this method to schedule interview from admin side
     public void scheduleInterview() throws Exception {
         ActionsHelper.waitForExistance( getLblFirstResultCode(), 100 );
-        System.out.println( getResultsCodes().size() );
-        getResultsCodes().get( 0 ).click();
-        ActionsHelper.scrollTo( getBtnScheduleInterview() );
-        ActionsHelper.waitForExistance( getBtnScheduleInterview(), waitTime );
+        getLblFirstResultCode().click();
+        ActionsHelper.waitForExistance( getBtnPresent(), 100 );
         getBtnScheduleInterview().click();
-        ActionsHelper.waitForExistance( getBtnSubmit().get( 0 ), waitTime );
-        System.out.println( "Submit size " + getBtnSubmit().size() );
+        Thread.sleep(3000);
+        ActionsHelper.waitForListExistance( getBtnSubmit(),100 );
         ActionsHelper.safeJavaScriptClick( getBtnSubmit().get( 0 ) );
-        ActionsHelper.waitForExistance( getBtnOk(), waitTime );
+        ActionsHelper.waitForExistance( getBtnOk(), 50 );
         getBtnOk().click();
-        Thread.sleep( 3000 );
+        ActionsHelper.waitForExistance( getLblFirstResultCode(), 100 );
+        getLblFirstResultCode().click();
+        ActionsHelper.waitForExistance( getLblFirstResultCode(), 100 );
+        getLblFirstResultCode().click();
+        ActionsHelper.waitForExistance( getWorkflowArea(), waitTime );
+
     }
 
     //this method to mark applicant as absence
@@ -360,21 +364,22 @@ public class AdminApplicationsListPage extends Base {
 
     //this method to mark applicant as present
     public void applicantPresent() throws Exception {
-        Thread.sleep( 10000 );
-        System.out.println( "after search display results " + getLblFirstResultCode().getText() );
-        ActionsHelper.waitForExistance( getLblFirstResultCode(), 50 );
-        System.out.println( getResultsCodes().size() );
-        getResultsCodes().get( 0 ).click();
-        ActionsHelper.waitForExistance( getBtnPresent(), 50 );
-        ActionsHelper.scrollTo( getBtnPresent() );
-        ActionsHelper.waitForExistance( getBtnPresent(), 50 );
+       // System.out.println( "after search display results " + getLblFirstResultCode().getText() );
+        ActionsHelper.waitForExistance( getLblFirstResultCode(), 100 );
+        getLblFirstResultCode().click();
+        ActionsHelper.waitForExistance( getBtnPresent(), 100 );
         getBtnPresent().click();
-        ActionsHelper.waitForExistance( getBtnSubmit().get( 0 ), 10 );
-        System.out.println( "Submit size on present " + getBtnSubmit().size() );
+        Thread.sleep(3000);
+        ActionsHelper.waitForListExistance( getBtnSubmit(),100 );
+        System.out.println( "Submit size " + getBtnSubmit().size() );
         ActionsHelper.safeJavaScriptClick( getBtnSubmit().get( 0 ) );
         ActionsHelper.waitForExistance( getBtnOk(), 50 );
         getBtnOk().click();
-        Thread.sleep( 3000 );
+        ActionsHelper.waitForExistance( getLblFirstResultCode(), 100 );
+        getLblFirstResultCode().click();
+        ActionsHelper.waitForExistance( getLblFirstResultCode(), 100 );
+        getLblFirstResultCode().click();
+        ActionsHelper.waitForExistance( getWorkflowArea(), waitTime );
     }
 
     public void findProgram(String programName) throws InterruptedException {
@@ -389,7 +394,7 @@ public class AdminApplicationsListPage extends Base {
     }
 
     public void findProgram2(String programName) throws InterruptedException {
-        ActionsHelper.waitForExistance( getProgramsLabel(), 50 );
+        ActionsHelper.waitForExistance( getProgramsLabel(), 1000 );
         Thread.sleep( 3000 );
         ActionsHelper.waitForListExistance( getProgramsList1(), 20 );
         getProgramsList1().get( 0 ).click();

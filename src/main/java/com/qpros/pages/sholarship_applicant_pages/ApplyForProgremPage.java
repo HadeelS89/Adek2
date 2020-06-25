@@ -262,7 +262,7 @@ public class ApplyForProgremPage extends Base {
         ActionsHelper.waitForListExistance( getStep1EducationLists(), 20 );
         getStep1EducationLists().get( 2 ).click();
         ActionsHelper.waitForListExistance( getStep1Lists(), 50 );
-        ActionsHelper.selectElementFromList( getStep1Lists(), "Biology" );
+        ActionsHelper.selectElementFromList( getStep1Lists(), "Accounting" );
 
         ActionsHelper.waitForExistance( getAchievements(), 30 );
         getAchievements().sendKeys( "test33" );
