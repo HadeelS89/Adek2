@@ -10,8 +10,9 @@ import com.qpros.pages.sholarship_applicant_pages.ApplyForProgremPage;
 import com.qpros.pages.sholarship_applicant_pages.MyApplicationsPage;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+@Listeners(com.qpros.reporting.Listeners.class)
 public class SubmitChangedDetailsTest extends Base {
 
     LoginPage loginPage;
@@ -68,13 +69,12 @@ public class SubmitChangedDetailsTest extends Base {
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.clearFilters();
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
-        //adminApplicationsListPage.searchByStatus( "New", true );
         adminApplicationsListPage.selectFirstResult();
         adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.StartReview );
     }
 
-    @Test(description = "Request change from recruiter")
-           // retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 3)
+    @Test(description = "Request change from recruiter",
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 3)
     public void requestForChange() throws Exception {
         //Request for change reviewed application
         loginPage = new LoginPage( driver );
@@ -86,22 +86,18 @@ public class SubmitChangedDetailsTest extends Base {
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
         adminApplicationsListPage.selectFirstResult();
-        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.RequestForChange );
-        adminApplicationsListPage.selectFirstResult();//close grid
-        adminApplicationsListPage.selectFirstResult();//open grid
+        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.RequestForChange);
+        ActionsHelper.waitForExistance(adminApplicationsListPage.getWorkflowArea(),60);
         WebElement changeButton = null;
-        boolean isVisable = false;
         try {
-            changeButton = ActionsHelper.getElement( driver, "xpath",
-                    "//button[@name='button'][3]" );
-            isVisable = ActionsHelper.waitForExistance( changeButton, 10 );
-
+            changeButton = ActionsHelper.getElementFromList( adminApplicationsListPage.getApplicationButtons(),
+                    "Request For Change" );
         } catch (Exception e) {
 
         }
-        Assert.assertTrue( isVisable == false );
-
+        Assert.assertTrue(changeButton == null);
     }
+
 
     @Test(description = "Submit Application after request for change ",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 4)
@@ -113,11 +109,10 @@ public class SubmitChangedDetailsTest extends Base {
                 , "username"),
                 ReadWriteHelper.readCredentialsXMLFile(
                         "applicantCredentials1", "password"));
-
         myApplicationsPage = new MyApplicationsPage(driver);
         myApplicationsPage.applicationSubmitionAfterChanges(ReadWriteHelper.getCreatedProgram());
-
-           Assert.assertTrue(myApplicationsPage.getReSubmitMsg().isDisplayed());
+        ActionsHelper.waitVisibility(myApplicationsPage.getReSubmitMsg(),50);
+        Assert.assertTrue(myApplicationsPage.getReSubmitMsg().isDisplayed());
 
 
     }

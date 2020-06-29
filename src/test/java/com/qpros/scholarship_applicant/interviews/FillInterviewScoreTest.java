@@ -11,10 +11,11 @@ import com.qpros.pages.sholarship_applicant_pages.ApplyForProgremPage;
 import com.qpros.pages.sholarship_applicant_pages.MyApplicationsPage;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+@Listeners(com.qpros.reporting.Listeners.class)
 public class FillInterviewScoreTest extends Base {
-
+    int waitTime = 50;
     LoginPage loginPage;
     ProgramsPage programsPage;
     ApplyForProgremPage applyForProgremPage;
@@ -22,8 +23,8 @@ public class FillInterviewScoreTest extends Base {
     InterviewsPage interviewsPage;
     MyApplicationsPage myApplicationsPage;
 
-    @Test(description = "Create new Program",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
+   // @Test(description = "Create new Program",
+     //       retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
     public void createProgram() throws Exception {
         //Login as Program Manager
         loginPage = new LoginPage( driver );
@@ -41,10 +42,10 @@ public class FillInterviewScoreTest extends Base {
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 1)// one programe
     public void submitProgram() throws Exception {
         loginPage = new LoginPage( driver );
-        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1"
+        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials2"
                 , "username" ),
                 ReadWriteHelper.readCredentialsXMLFile(
-                        "applicantCredentials1", "password" ) );
+                        "applicantCredentials2", "password" ) );
         //Apply for a program
         applyForProgremPage = new ApplyForProgremPage( driver );
         applyForProgremPage.submitProgram( ReadWriteHelper.getCreatedProgram() );
@@ -103,11 +104,13 @@ public class FillInterviewScoreTest extends Base {
 
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
-        adminApplicationsListPage.scheduleInterview();
+        adminApplicationsListPage.selectFirstResult();
+        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.ScheduleInterview );
+      ActionsHelper.waitForExistance(adminApplicationsListPage.getWorkflowArea(),waitTime);
         WebElement scheduleIntervButton = null;
         try {
-            scheduleIntervButton = ActionsHelper.getElement( driver, "xpath",
-                    "//button[@name='button'][3]" );
+            scheduleIntervButton = ActionsHelper.getElementFromList( adminApplicationsListPage.getApplicationButtons(),
+                    "Schedule Interview" );
         } catch (Exception e) {
 
         }
@@ -115,18 +118,18 @@ public class FillInterviewScoreTest extends Base {
         Assert.assertTrue( scheduleIntervButton == null );
     }
 
-    @Test (description = "Confirm interview for applicant ",
+    @Test (description = "Book and Confirm interview for applicant ",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 5)
-    public void confirmInerview() throws Exception {
+    public void bookInterview() throws Exception {
         loginPage = new LoginPage(driver);
-        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1"
+        loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials2"
                 , "username" ),
                 ReadWriteHelper.readCredentialsXMLFile(
-                        "applicantCredentials1", "password" ) );
+                        "applicantCredentials2", "password" ) );
 
         myApplicationsPage = new MyApplicationsPage(driver);
         myApplicationsPage.confirmInterview(ReadWriteHelper.getCreatedProgram());
-
+        ActionsHelper.waitForExistance(myApplicationsPage.getCancelInterview(),waitTime);
         Assert.assertTrue(myApplicationsPage.getCancelInterview().isDisplayed());
 
     }
@@ -139,15 +142,20 @@ public class FillInterviewScoreTest extends Base {
 
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
         adminApplicationsListPage.findProgram(ReadWriteHelper.getCreatedProgram());
-        adminApplicationsListPage.applicantPresent();
+        adminApplicationsListPage.selectFirstResult();
+        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage
+                        .ButtonsList.ApplicantPresent);
+        ActionsHelper.waitForExistance(adminApplicationsListPage.getWorkflowArea(),waitTime);
+
         WebElement presentButton = null;
         try {
-            presentButton = ActionsHelper.getElement(driver, "xpath",
-                    "//button[@name='button']");
+            presentButton = ActionsHelper.getElementFromList( adminApplicationsListPage.getApplicationButtons(),
+                    "Applicant Present" );
         } catch (Exception e) {
 
         }
         Assert.assertTrue(presentButton == null);
+
     }
 
     @Test(description = "Add interview Score from admin panel",
@@ -162,11 +170,9 @@ public class FillInterviewScoreTest extends Base {
 
         //Create new interview
         interviewsPage = new InterviewsPage( driver );
-        interviewsPage.searchInterview(ReadWriteHelper.getCreatedProgram());
+        interviewsPage.searchInterview(ReadWriteHelper.getInterviewProgram());
         interviewsPage.addScore(driver);
-        Assert.assertTrue(interviewsPage.getSuccess().isDisplayed());
-        interviewsPage.getBtnOK().click();
+        Assert.assertTrue(interviewsPage.getScoreSuccessText().isDisplayed());
     }
-
 
 }

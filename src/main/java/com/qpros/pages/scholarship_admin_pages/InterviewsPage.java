@@ -76,9 +76,10 @@ public class InterviewsPage {
     private WebElement calculateScore;
     @FindBy(id = "btnGroupAddon2")
     private WebElement searchBtn;
+    @FindBy(id = "SpanScoreAlreadySubmitted")
+    private WebElement scoreSuccessText;
 //    @FindBy(xpath = "//h2[contains(.,'Success')]")
 //    private WebElement successScore;
-
 
 
     public void addNewInterview(String programTitle) throws InterruptedException {
@@ -87,15 +88,15 @@ public class InterviewsPage {
         // System.out.println("Divs size: "+getProgramsDiv().size());
         ActionsHelper.waitForListExistance(getAddInterviewButton(), 30);
         getAddInterviewButton().get(0).click();
-        Thread.sleep( 2000 );
+        Thread.sleep(2000);
         ActionsHelper.waitForExistance(getProgramDDL(), 50);
         getProgramDDL().sendKeys(programTitle);
         getProvideVenue().sendKeys("room 123");
         getDescriptionEnglish().sendKeys("1234");
         getDescriptionArabic().sendKeys("3444");
-        getDate().sendKeys(ActionsHelper.getFutureDate(0, 1, 3));
-        ActionsHelper.actionsClick( getStartTime(), "10:30A" );
-        ActionsHelper.actionsClick( getEndTime(), "11:00A" );
+        getDate().sendKeys(ActionsHelper.getFutureDate(0, 2, 3));
+        ActionsHelper.actionsClick(getStartTime(), "4:30P");
+        ActionsHelper.actionsClick(getEndTime(), "6:00P");
         getCapacity().sendKeys("1");
         getSubmitInterView().click();
         ActionsHelper.waitForExistance(getSuccess(), 20);
@@ -107,7 +108,7 @@ public class InterviewsPage {
         ActionsHelper.selectElementFromList(getInterviewsTab(), "Interviews");
         ActionsHelper.waitForExistance(getInterviewSearchBox(), 90);
         getInterviewSearchBox().sendKeys(programName);
-        ActionsHelper.waitForExistance(getSearchBtn(),30);
+        ActionsHelper.waitForExistance(getSearchBtn(), 30);
         getSearchBtn().click();
         ActionsHelper.waitForListExistance(getFirstRecord(), 100);
 
@@ -120,7 +121,6 @@ public class InterviewsPage {
         System.out.println("applicant summary " + getApplicantSummary().size());
         ActionsHelper.waitForListExistance(getApplicantSummary(), 60);
         getApplicantSummary().get(0).click();
-       // Thread.sleep(10000);
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         ActionsHelper.waitForListExistance(getGoodBtn(), 60);
@@ -135,7 +135,8 @@ public class InterviewsPage {
         getInterviewComment().sendKeys("121322");
         getCalculateScore().click();
         getBtnSubmit().click();
-        ActionsHelper.waitForExistance(getSuccess(), 20);
+        ActionsHelper.waitForExistance(getScoreSuccessText(), 20);
+
     }
 }
 

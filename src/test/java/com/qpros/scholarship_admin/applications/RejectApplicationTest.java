@@ -9,9 +9,10 @@ import com.qpros.pages.scholarship_admin_pages.ProgramsPage;
 import com.qpros.pages.sholarship_applicant_pages.ApplyForProgremPage;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
-public class ScheduleInterviewTest extends Base {
+@Listeners(com.qpros.reporting.Listeners.class)
+public class RejectApplicationTest extends Base {
     LoginPage loginPage;
     ProgramsPage programsPage;
     ApplyForProgremPage applyForProgremPage;
@@ -55,45 +56,17 @@ public class ScheduleInterviewTest extends Base {
 
     }
 
-
-    @Test(description = "Approves a new application",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 2)
-    public void approveNewApplication() throws Exception {
-        loginPage = new LoginPage( driver );
-        loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "username" ),
-                ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "password" ) );
-
-        adminApplicationsListPage = new AdminApplicationsListPage( driver );
-        adminApplicationsListPage.clearFilters();
-        adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
-        adminApplicationsListPage.selectFirstResult();
-        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.StartReview );
-        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.ApplicationReviewCompleted );
-        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.ApplicationDocumentsVerified );
-    }
-
-    @Test(description = "Schedule interview from recruiter",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 3)
-    public void scheduleInterview() throws Exception {
-        loginPage = new LoginPage( driver );
-        loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile
-                        ( "recruiterCredentials3", "username" ),
-                ReadWriteHelper.readCredentialsXMLFile
-                        ( "recruiterCredentials3", "password" ) );
+    @Test(description = "Rejects a new application test case id [2658 , 2658 and 2841]",
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
+    public void rejectNewApplication() throws Exception {
+        loginPage = new LoginPage(driver);
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "username" ),
+                ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "password" ));
 
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
-        adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
+        adminApplicationsListPage.findProgram(ReadWriteHelper.getCreatedProgram());
         adminApplicationsListPage.selectFirstResult();
-        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.ScheduleInterview );
-        ActionsHelper.waitForExistance(adminApplicationsListPage.getWorkflowArea(),60);
-        WebElement scheduleIntervButton = null;
-        try {
-            scheduleIntervButton = ActionsHelper.getElementFromList( adminApplicationsListPage.getApplicationButtons(),
-                    "Schedule Interview" );
-        } catch (Exception e) {
-
-        }
-
-        Assert.assertTrue( scheduleIntervButton == null );
+       adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.StartReview);
+        adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.RejectApplication);
     }
 }

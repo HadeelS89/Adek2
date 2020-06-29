@@ -31,7 +31,7 @@ public class ScholarshipsPage {
     private List<WebElement> programsIndex;
     //    @FindBy(xpath = "//input[starts-with(@class,'select2-selection')]")
 //    private List<WebElement> programsIndex;
-    @FindBy(xpath = "//*[@id=\"mainDiv\"]/div[3]/div[1]/div[2]/div[1]/div[1]")
+    @FindBy(css= ".font-weight-bold > .col-md-auto:nth-child(1)")
     private WebElement lblFirstResultCode;
     @FindBy(css = "div[class='col-md-auto']")
     private List<WebElement> resultsCodes;
@@ -45,7 +45,7 @@ public class ScholarshipsPage {
     private List<WebElement> addPayElementBtn;
     @FindBy(id = "EffectiveDate")
     private WebElement effectiveDate;
-    @FindBy(id = "ErpPayrollElementId")
+    @FindBy(id = "select2-ErpPayrollElementId-container")
     private WebElement payrollElement;
     @FindBy(id = "Amount")
     private WebElement amount;
@@ -77,40 +77,57 @@ public class ScholarshipsPage {
     private WebElement IABN;
     @FindBy(xpath = "//button[contains(.,'Yes')]")
     private WebElement yesButton;
-
-
+    @FindBy(xpath = "//input[@type='search']")
+    private WebElement programNameInput;
+    @FindBy(id = "btnApply")
+    private WebElement btnApply;
+    @FindBy(css = "input[class='select2-search__field']")
+    private List <WebElement> payElementNameInput;
+    @FindBy(xpath = "//p[starts-with(@class,'lead ')]")
+    private List<WebElement> sucessLabel;
 
 
     public void clearFilters() {
         ActionsHelper.waitVisibility(getClearFiltersButton(), 90);
         getClearFiltersButton().click();
     }
-
+    public void findProgram(String programName) throws InterruptedException {
+        ActionsHelper.waitForListExistance(getScholarshipsTab(), 50);
+        ActionsHelper.selectElementFromList(getScholarshipsTab(), "Scholarships");
+        ActionsHelper.waitForExistance( getProgramsLabel(), 50 );
+        //Thread.sleep( 3000 );
+        ActionsHelper.waitForListExistance( getProgramsList1(), 50 );
+        getProgramsList1().get( 0 ).click();
+        getProgramNameInput().sendKeys(programName);
+        getProgramNameInput().sendKeys(Keys.ENTER);
+        ActionsHelper.waitForExistance( getBtnApply(), 100 );
+        getBtnApply().click();
+    }
     public void addPayElement() throws InterruptedException {
-        getApplyFilterBtn().click();
-        ActionsHelper.waitForExistance(getLblFirstResultCode(), 60);
-        System.out.println(getResultsCodes().size());
-        getResultsCodes().get(0).click();
+
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
+        getLblFirstResultCode().click();
         ActionsHelper.waitForExistance(getTimeLine(), 60);
         ActionsHelper.waitForListExistance(getApplicationTabs(), 60);
         System.out.println("check 1 " + getApplicationTabs().size());
-        System.out.println("text  " + getApplicationTabs().get(4).getText());
-        getApplicationTabs().get(10).click();
+        getApplicationTabs().get(11).click();
         ActionsHelper.waitForListExistance(getAddPayElementBtn(), 60);
         System.out.println("text2 " + getAddPayElementBtn().size());
         getAddPayElementBtn().get(0).click();
         ActionsHelper.waitForExistance(getEffectiveDate(), 60);
-        getEffectiveDate().sendKeys(ActionsHelper.getFutureDate(0, 0, 1));//error when add days =10
-        getPayrollElement().sendKeys("Scholarship Earning Adj AED");
+        getEffectiveDate().sendKeys(ActionsHelper.getFutureDate(2, 0, 1));//error when add days =10
+        getPayrollElement().click();
+        getPayElementNameInput().get(0).sendKeys("Scholarship Earning Adj AED"+ Keys.ENTER);
         getAmount().sendKeys("500");
         ActionsHelper.waitForExistance(getSubmitBtn(), 30);
         getSubmitBtn().click();
-        ActionsHelper.waitForExistance(getSuccess(), 60);
+        ActionsHelper.waitForListExistance( getSucessLabel(), 60 );
+        //Thread.sleep( 1000 );
     }
 
 
     //this method for find program is scholar ship page
-    public void findProgram(String programName) throws Exception {
+    public void findProgram1(String programName) throws Exception {
         ActionsHelper.waitForListExistance(getScholarshipsTab(), 50);
         ActionsHelper.selectElementFromList(getScholarshipsTab(), "Scholarships");
         System.out.println("program Name:" + programName);
@@ -136,15 +153,14 @@ public class ScholarshipsPage {
     }
 
     public void addBankDetails() throws InterruptedException {
-        getApplyFilterBtn().click();
-        ActionsHelper.waitForExistance(getLblFirstResultCode(), 60);
-        System.out.println(getResultsCodes().size());
-        getResultsCodes().get(0).click();
+
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
+        getLblFirstResultCode().click();
         ActionsHelper.waitForExistance(getTimeLine(), 60);
         ActionsHelper.waitForListExistance(getApplicationTabs(), 60);
         System.out.println("check 1 " + getApplicationTabs().size());
         System.out.println("text  " + getApplicationTabs().get(4).getText());
-        getApplicationTabs().get(9).click();
+        getApplicationTabs().get(10).click();
         ActionsHelper.waitForExistance(getRecordHeader(), 30);
         if (getAddBankDetailsBtn().get(0).isDisplayed()) {
             ActionsHelper.waitForListExistance(getAddBankDetailsBtn(), 30);
