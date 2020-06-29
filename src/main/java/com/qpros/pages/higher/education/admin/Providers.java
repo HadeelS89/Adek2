@@ -2,7 +2,8 @@ package com.qpros.pages.higher.education.admin;
 
 import com.github.javafaker.Faker;
 import com.qpros.helpers.ActionsHelper;
-import com.qpros.helpers.ReadWriteHelper;
+import com.qpros.pages.Data;
+import com.qpros.pages.Locators;
 import lombok.Getter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.Optional;
 
 @Getter
 public class Providers {
@@ -20,93 +22,95 @@ public class Providers {
     WebElement createdProviderName = null;
 
     public Providers(WebDriver driver) {
-        PageFactory.initElements( driver, this );
+        PageFactory.initElements(driver, this);
     }
-    @FindBy(css = "a[class='air__menuLeft__link']")
+
+    @FindBy(css = Locators.PROVIDER_TAB)
     private List<WebElement> providerTab;
-    @FindBy(className = "col-md-auto")
+    @FindBy(className = Locators.PROVIDER_DIV)
     private List<WebElement> providerDiv;
-    @FindBy(css = "i[class='btn-addon-icon fe fe-plus-circle']")
+    @FindBy(css = Locators.ADD_PROVIDER_BUTTON)
     private List<WebElement> addProviderButton;
-    @FindBy(id = "NameEnglish")
+    @FindBy(id = Locators.NAME_ENGLISH_FIELD)
     private WebElement nameEnglishField;
-    @FindBy(id = "NameArabic")
+    @FindBy(id = Locators.NAME_ARABIC_FIELD)
     private WebElement nameArabicField;
-    @FindBy(id = "RegNumber")
+    @FindBy(id = Locators.REFERENCE_NUMBER_FIELD)
     private WebElement referenceNumberField;
-    @FindBy(id = "ProviderTypeId")
+    @FindBy(id = Locators.PROVIDER_TYPE_ID_LIST)
     private List<WebElement> providerTypeIdList;
-    @FindBy(id = "ProviderCategoryId")
+    @FindBy(id = Locators.PROVIDER_CATEGORY_ID_LIST)
     private List<WebElement> providerCategoryIdList;
-    @FindBy(id = "ProviderUnitId")
+    @FindBy(id = Locators.PROVIDER_UNIT_ID_LIST)
     private List<WebElement> providerUnitIdList;
-    @FindBy(id = "ProviderZoneId")
+    @FindBy(id = Locators.PROVIDER_ZONE_ID_LIST)
     private List<WebElement> ProviderZoneIdList;
-    @FindBy(id = "Website")
+    @FindBy(id = Locators.WEBSITE)
     private WebElement website;
-    @FindBy(id = "ProviderStatusId")
+    @FindBy(id = Locators.PROVIDER_STATUS_ID)
     private List<WebElement> ProviderStatusId;
-    @FindBy(id = "AuthorizationReference")
+    @FindBy(id = Locators.AUTHORIZATION_REFERENCE)
     private WebElement authorizationReference;
-    @FindBy(id = "AuthorizationIssuancediv")
+    @FindBy(id = Locators.ISSUANCE_ON)
     private WebElement issuanceOn;
-    @FindBy(id = "AuthorizationExpirydiv")
+    @FindBy(id = Locators.EXPIRY_ON)
     private WebElement expiryOn;
-    @FindBy(id = "ProviderZoneId")
+    @FindBy(id = Locators.PROVIDER_ZONE_ID)
     private WebElement providerZoneId;
-    @FindBy(id = "AddressEnglish")
+    @FindBy(id = Locators.ADDRESS_ENGLISH)
     private WebElement addressEnglish;
-    @FindBy(id = "AddressArabic")
+    @FindBy(id = Locators.ADDRESS_ARABIC)
     private WebElement addressArabic;
-    @FindBy(id = "Longitude")
+    @FindBy(id = Locators.LONGITUDE)
     private WebElement longitude;
-    @FindBy(id = "Latitude")
+    @FindBy(id = Locators.LATITUDE)
     private WebElement latitude;
-    @FindBy(xpath = "//a[contains(text(),'Save')]")
+    @FindBy(xpath = Locators.PROVIDER_SAVE_BUTTON)
     private WebElement providerSaveButton;
-    @FindBy(xpath = "//button[contains(.,'Yes')]")
+    @FindBy(xpath = Locators.PROVIDER_YES_BUTTON)
     private WebElement providerYesButton;
-    @FindBy(xpath = "//button[contains(.,'Cancel')]")
+    @FindBy(xpath = Locators.PROVIDER_CANCEL_BUTTON)
     private WebElement providerCancelButton;
-    @FindBy(xpath = "//button[contains(.,'OK')]")
+    @FindBy(xpath = Locators.PROVIDER_OK_BUTTON)
     private WebElement providerOKButton;
-    @FindBy(xpath = "//input[@type='search']")
+    @FindBy(xpath = Locators.PROVIDER_TOKEN_SEARCH)
     private WebElement providerTokenSearch;
-    @FindBy(xpath = "xpath=//input[contains(text(),'Send']")
+    @FindBy(xpath = Locators.PROVIDER_TOKEN_SEND)
     private WebElement providerTokenSend;
-    @FindBy(xpath = "//button[contains(.,' Send Token for Existing Provider')]")
+    @FindBy(xpath = Locators.PROVIDER_TOKEN_SEND_TOKEN_EXISTING_BUTTON)
     private WebElement providerTokenSendTokenExistingButton;
-    @FindBy(id = "TokenProviderRegNumberDLL")
+    @FindBy(id = Locators.PROVIDER_TOKEN_REG_NUMBER)
     private List<WebElement> providerTokenRegNumber;
-    @FindBy(id = "select2-TokenProviderRegNumberDLL-container")
+    @FindBy(id = Locators.PROVIDER_TOKEN_REG_NUMBER_CONTAINER)
     private List<WebElement> providerTokenRegNumberContainer;
-    @FindBy(id = "TokenEmailAddress")
+    @FindBy(id = Locators.PROVIDER_TOKEN_EMAIL)
     private WebElement providerTokenEmail;
-    @FindBy(css = ".select2-container--below .select2-selection__arrow")
+    @FindBy(css = Locators.PROVIDER_TOKEN_SELECT_FROM_LIST)
     private WebElement providerTokenSelectFromList;
-    @FindBy(css = ".select2-search__field")
+    @FindBy(css = Locators.PROVIDER_TOKEN_SELECT_FROM_LIST_SEARCH_BOX)
     private WebElement providerTokenSelectFromListSearchBox;
-    @FindBy(id = "searchbox")
+    @FindBy(id = Locators.SEARCH_BOX)
     private WebElement searchBox;
-    @FindBy(id = "ddlPageSize")
+    @FindBy(id = Locators.ddl_Page_Size)
     private WebElement ddlPageSize;
+    @FindBy(css = Locators.EMAIL_URL_BODY)
+    private WebElement emailUrlBody;
 
-    Faker faker= new Faker();
+    Faker faker = new Faker();
 
-    public void addProvider() throws InterruptedException {
-        ActionsHelper.waitForListExistance( getProviderTab(), 50 );
-        ActionsHelper.selectElementFromList( getProviderTab(), "Providers");
-        System.out.println( "Divs size: " + getProviderTab().size() );
-        ActionsHelper.waitForListExistance( getAddProviderButton(), 50 );
+    public void addProvider() throws Exception {
+        ActionsHelper.waitForListExistance(getProviderTab(), 50);
+        ActionsHelper.selectElementFromList(getProviderTab(), Data.PROVIDERS);
+        ActionsHelper.waitForListExistance(getAddProviderButton(), 50);
         getAddProviderButton().get(0).click();
-        randomName = "AUTOMATION TEST " + System.currentTimeMillis() % 100000;
-        ActionsHelper.waitForListExistance( getProviderTypeIdList(), 30 );
+        randomName = Data.RANDOM_NAME;
+        ActionsHelper.waitForListExistance(getProviderTypeIdList(), 30);
         getProviderTypeIdList().get(0).sendKeys("Federal");
         //ActionsHelper.selectElementFromList(getProviderTypeIdList(),"Federal");
 
-        ActionsHelper.waitForExistance( getNameEnglishField(), 30 );
-        getNameEnglishField().sendKeys( randomName );
-        getNameArabicField().sendKeys( randomName );
+        ActionsHelper.waitForExistance(getNameEnglishField(), 30);
+        getNameEnglishField().sendKeys(randomName);
+        getNameArabicField().sendKeys(randomName);
         getReferenceNumberField().sendKeys(randomName);
         getProviderCategoryIdList().get(0).sendKeys("University");
         getProviderUnitIdList().get(0).sendKeys("College");
@@ -115,50 +119,68 @@ public class Providers {
         getAuthorizationReference().sendKeys(randomName);
         getIssuanceOn().click();
         try {
-            ActionsHelper.HandleKendoDateTimePicker("24","Jul","2020");
+            ActionsHelper.HandleKendoDateTimePicker("24", "Jul", "2020");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // ( ActionsHelper.getFutureDate( 0, 0, 0 ));
         getExpiryOn().click();
         try {
-            ActionsHelper.HandleKendoDateTimePicker("24","Jul","2021");
+            ActionsHelper.HandleKendoDateTimePicker("24", "Jul", "2021");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         getProviderZoneId().sendKeys("Abu Dhabi");
         getAddressEnglish().sendKeys(randomName);
         getAddressArabic().sendKeys(randomName);
-        getLatitude().sendKeys("24.466667");
-        getLongitude().sendKeys("54.366669");
+        getLatitude().sendKeys(faker.address().latitude());
+        getLongitude().sendKeys(faker.address().longitude());
         getProviderSaveButton().click();
         getProviderYesButton().click();
-        ActionsHelper.waitForExistance(getProviderOKButton(),30);
+        ActionsHelper.waitForExistance(getProviderOKButton(), 30);
         getProviderOKButton().click();
-        ActionsHelper.waitForListExistance( getProviderTab(), 50 );
-        ActionsHelper.selectElementFromList( getProviderTab(), "Providers Token");
-        ActionsHelper.waitForExistance(getProviderTokenSendTokenExistingButton(),30);
-        getProviderTokenSendTokenExistingButton().click();
-        ActionsHelper.waitForListExistance(getProviderTokenRegNumberContainer(),30);
-        getProviderTokenRegNumberContainer().get(0).click();
-        ActionsHelper.waitForExistance(getProviderTokenSearch(),30);
-        getProviderTokenSearch().sendKeys(randomName+ Keys.ENTER);
-        getProviderTokenEmail().sendKeys(String.format("qprosautomation+%s@gmail.com",randomName.substring(16)));
-        Thread.sleep(3000);
-        ActionsHelper.waitForExistance(getProviderTokenSend(),30);
-        getProviderTokenSend().click();
-
-
 
 
     }
 
+    public void sendProviderToken() throws Exception {
+        ActionsHelper.waitForListExistance(getProviderTab(), 50);
+        ActionsHelper.selectElementFromList(getProviderTab(), "Providers Token");
+        ActionsHelper.waitForExistance(getProviderTokenSendTokenExistingButton(), 30);
+        getProviderTokenSendTokenExistingButton().click();
+        ActionsHelper.waitForListExistance(getProviderTokenRegNumberContainer(), 30);
+        getProviderTokenRegNumberContainer().get(0).click();
+        ActionsHelper.waitForExistance(getProviderTokenSearch(), 30);
+        getProviderTokenSearch().sendKeys(randomName + Keys.ENTER);
+        getProviderTokenEmail().sendKeys(String.format("qprosautomation+%s@gmail.com", randomName.substring(16)));
+        Thread.sleep(3000);
+        ActionsHelper.waitForExistance(getProviderTokenSend(), 30);
+        getProviderTokenSend().click();
+        ActionsHelper.waitForExistance(getProviderOKButton(), 30);
+        getProviderOKButton().click();
+
+
+    }
+
+    public void createProviderAccountVerification() throws Exception {
+
+        Thread.sleep(5000);
+        ActionsHelper.navigateTo("http://autoserver:8080/externalhelper-email/api/v1/email");
+        ActionsHelper.waitForExistance(getEmailUrlBody(), 2);
+        ActionsHelper.navigateTo(removeLastCharacter(getEmailUrlBody().getText()));
+    }
+
+
     public void createFullProvider() throws Exception {
-        //Create new program
+        //Create new provider
         addProvider();
-        //Set program configurations
-        //setProgramConfig();
-        //Set program team
-        //setProgramTeam();
+        sendProviderToken();
+        createProviderAccountVerification();
+    }
+
+    public static String removeLastCharacter(String str) {
+        return Optional.ofNullable(str)
+                .filter(sStr -> sStr.length() != 0)
+                .map(sStr -> sStr.substring(0, sStr.length() - 1))
+                .orElse(str);
     }
 }
