@@ -11,8 +11,9 @@ import com.qpros.pages.sholarship_applicant_pages.ApplyForProgremPage;
 import com.qpros.pages.sholarship_applicant_pages.MyApplicationsPage;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+@Listeners(com.qpros.reporting.Listeners.class)
 public class BookInterviewTest extends Base {
 
     private LoginPage loginPage;
@@ -34,7 +35,7 @@ public class BookInterviewTest extends Base {
         //Create program and set configurations and team
         programsPage = new ProgramsPage( driver );
         programsPage.createFullProgram();
-
+        programsPage.addProgramToFile();
     }
 
     @Test(description = "Submit Application",
@@ -104,19 +105,18 @@ public class BookInterviewTest extends Base {
 
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
-        adminApplicationsListPage.searchByStatus(
-                ReadWriteHelper.readProgramStatusXMLFile( "applicationStatus2",
-                        "status" ), true );
-        adminApplicationsListPage.scheduleInterview();
+        adminApplicationsListPage.selectFirstResult();
+        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.ScheduleInterview );
+        ActionsHelper.waitForExistance(adminApplicationsListPage.getWorkflowArea(),60);
         WebElement scheduleIntervButton = null;
         try {
-            scheduleIntervButton = ActionsHelper.getElement( driver, "xpath",
-                    "//button[@name='button'][3]" );
+            scheduleIntervButton = ActionsHelper.getElementFromList( adminApplicationsListPage.getApplicationButtons(),
+                    "Schedule Interview" );
         } catch (Exception e) {
 
         }
 
-        Assert.assertTrue( null == scheduleIntervButton );
+        Assert.assertTrue( scheduleIntervButton == null );
     }
 
     @Test (description = "Confirm interview for applicant ",
@@ -130,8 +130,9 @@ public class BookInterviewTest extends Base {
 
         myApplicationsPage = new MyApplicationsPage(driver);
         myApplicationsPage.confirmInterview(ReadWriteHelper.getCreatedProgram());
+        ActionsHelper.waitForExistance(myApplicationsPage.getCancelInterview(),50);
+        Assert.assertTrue(myApplicationsPage.getCancelInterview().isDisplayed());
 
-        Assert.assertTrue(ActionsHelper.waitForExistance( myApplicationsPage.getCancelInterview(), 10 ));
     }
 
 

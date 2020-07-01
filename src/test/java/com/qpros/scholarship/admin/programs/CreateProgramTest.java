@@ -28,6 +28,7 @@ public class CreateProgramTest extends Base {
         programsPage.addProgram();
         Assert.assertEquals( ProgramsPage.createdProgram, ProgramsPage.randomName );
 
+
     }
 
 

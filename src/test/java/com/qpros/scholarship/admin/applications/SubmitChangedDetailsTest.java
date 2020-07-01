@@ -10,8 +10,10 @@ import com.qpros.pages.sholarship_applicant_pages.ApplyForProgremPage;
 import com.qpros.pages.sholarship_applicant_pages.MyApplicationsPage;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(com.qpros.reporting.Listeners.class)
 public class SubmitChangedDetailsTest extends Base {
 
     LoginPage loginPage;
@@ -36,7 +38,7 @@ public class SubmitChangedDetailsTest extends Base {
     }
 
     @Test(description = "Submit Application",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 1)// one programe
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 1)// one program
     public void submitProgram() throws Exception {
         loginPage = new LoginPage( driver );
         loginPage.signIn( ReadWriteHelper.readCredentialsXMLFile( "applicantCredentials1"
@@ -58,8 +60,8 @@ public class SubmitChangedDetailsTest extends Base {
 
     }
 
-    @Test(description = "Start review a new application",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 2)
+   @Test(description = "Start review a new application",
+           retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 2)
     public void startReviewNewApplication() throws Exception {
         loginPage = new LoginPage( driver );
         loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "recruiterCredentials3", "username" ),
@@ -68,7 +70,6 @@ public class SubmitChangedDetailsTest extends Base {
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.clearFilters();
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
-        adminApplicationsListPage.searchByStatus( "New", true );
         adminApplicationsListPage.selectFirstResult();
         adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.StartReview );
     }
@@ -85,22 +86,17 @@ public class SubmitChangedDetailsTest extends Base {
 
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
-        adminApplicationsListPage.searchByStatus(
-                ReadWriteHelper.readProgramStatusXMLFile( "applicationStatus4",
-                        "status" ), true );
-        adminApplicationsListPage.requestForChange();
+        adminApplicationsListPage.selectFirstResult();
+        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.RequestForChange);
+        ActionsHelper.waitForExistance(adminApplicationsListPage.getWorkflowArea(),60);
         WebElement changeButton = null;
-        boolean isVisable = false;
         try {
-            changeButton = ActionsHelper.getElement( driver, "xpath",
-                    "//button[@name='button'][3]" );
-            isVisable = ActionsHelper.waitForExistance( changeButton, 10 );
-
+            changeButton = ActionsHelper.getElementFromList( adminApplicationsListPage.getApplicationButtons(),
+                    "Request For Change" );
         } catch (Exception e) {
 
         }
-        Assert.assertTrue( !isVisable );
-
+        Assert.assertTrue(changeButton == null);
     }
 
     @Test(description = "Submit Application after request for change ",
@@ -108,15 +104,15 @@ public class SubmitChangedDetailsTest extends Base {
     public void reSubmitApplicationAfterChange() throws Exception {
 
         loginPage = new LoginPage(driver);
-        loginPage.signIn(ReadWriteHelper.readCredentialsXMLFile("applicantCredentials2"
+        // same applicant credentials used on submit program should be used
+        loginPage.signIn(ReadWriteHelper.readCredentialsXMLFile("applicantCredentials1"
                 , "username"),
                 ReadWriteHelper.readCredentialsXMLFile(
-                        "applicantCredentials2", "password"));
-
+                        "applicantCredentials1", "password"));
         myApplicationsPage = new MyApplicationsPage(driver);
         myApplicationsPage.applicationSubmitionAfterChanges(ReadWriteHelper.getCreatedProgram());
-
-        //   Assert.assertTrue(myApplicationsPage.getReSubmitMsg().isDisplayed());
+        ActionsHelper.waitVisibility(myApplicationsPage.getReSubmitMsg(),50);
+        Assert.assertTrue(myApplicationsPage.getReSubmitMsg().isDisplayed());
 
 
     }

@@ -130,29 +130,19 @@ public class ApplyForProgremPage extends Base {
         getSaveAsDraft().click();
         ActionsHelper.waitVisibility( getConfirm(), 10 );
         getConfirm().click();
-        findDraftApplication( programTitle );
+       // findDraftApplication( programTitle );
     }
 
     public void submitProgram(String ProgramTitle) throws Exception {
         programeSharedSteps( ProgramTitle );
         Thread.sleep( 5000 );
         ActionsHelper.waitForExistance( getStep4GuardianName(), 30 );
-        ActionsHelper.scrollTo( getStep4GuardianName() );
-        ActionsHelper.waitForExistance( getStep4GuardianName(), 30 );
-//        getStep4GuardianName().clear();
-//        ActionsHelper.actionsClick( getStep4GuardianName(), ("1234Test") );
-//        getStep4GuardianRelation().clear();
-//        ActionsHelper.actionsClick( getStep4GuardianRelation(), "Aunt" );
-//        getStep4Phone().clear();
-//        ActionsHelper.actionsClick( getStep4Phone(), "0975669899" );
-//        getStep4Email().clear();
-//        ActionsHelper.actionsClick( getStep4Email(), "Hadeel@gmail.com" );
         ActionsHelper.waitForExistance( getSubmitApplication(), 30 );
         getSubmitApplication().click();
         ActionsHelper.waitForExistance( getConfirm(), 30 );
         getConfirm().click();
         ActionsHelper.waitForExistance( getStep4Email(), 10 );
-        ActionsHelper.waitVisibility( getStep4Phone(), 10 );
+        ActionsHelper.waitForExistance( getStep4Phone(), 10 );
     }
 
     // to apply for one program
@@ -257,7 +247,7 @@ public class ApplyForProgremPage extends Base {
         ActionsHelper.waitForListExistance( getStep1EducationLists(), 20 );
         getStep1EducationLists().get( 2 ).click();
         ActionsHelper.waitForListExistance( getStep1Lists(), 50 );
-        ActionsHelper.selectElementFromList( getStep1Lists(), "Biology" );
+        ActionsHelper.selectElementFromList( getStep1Lists(), "Accounting" );
 
         ActionsHelper.waitForExistance( getAchievements(), 30 );
         getAchievements().sendKeys( "test33" );

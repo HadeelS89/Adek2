@@ -76,7 +76,7 @@ public class MyApplicationsPage extends Base {
     private List<WebElement> confirm;
     @FindBy(xpath = "//span[contains(.,'Cancel Interview')]")
     private WebElement cancelInterview;
-    @FindBy(xpath = "//button[contains(text(), 'Acknowledge Application')]")
+    @FindBy(xpath = "//button[contains(text(), 'Acknowledge Scholarship')]")
     private List<WebElement> acknowledge;
     @FindBy(xpath = "//button[contains(text(), 'Withdraw Application')]")
     private List<WebElement> withdraw;
@@ -99,6 +99,7 @@ public class MyApplicationsPage extends Base {
         System.out.println("Program Size: " + getApplicationDiv().size());
         System.out.println("Title Size: " + getApplicationTilte().size());
         ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
+        ActionsHelper.waitForListExistance(getAcknowledge(),100);
         for (int i = 0; i < getApplicationDiv().size(); i++) {
             String programTilte = getApplicationTilte().get(i).getText();
             System.out.println("Program Title: " + programTilte);
@@ -108,7 +109,7 @@ public class MyApplicationsPage extends Base {
                 System.out.println("Program Title inside if: " + programTilte);
                 System.out.println("Program Title inside if222: " +
                         getAcknowledge().get(i).getText());
-                acknowledgeresult = true;
+                acknowledgeresult = false;
                 break;
             }
         }
@@ -166,7 +167,7 @@ public class MyApplicationsPage extends Base {
                 getDeclineTextArea().sendKeys("1235");
                 getDeclineAcc().click();
                 ActionsHelper.waitForListExistance(getAcknowledge(), 50);
-                declineResults = true;
+                declineResults = false;
                 break;
 
             }
@@ -182,22 +183,20 @@ public class MyApplicationsPage extends Base {
         System.out.println("Title Size: " + getApplicationTilte().size());
         ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
         for (int i = 0; i < getApplicationDiv().size(); i++) {
-            String programTilte = getApplicationTilte().get(i).getText();
-            System.out.println("Program Title: " + programTilte);
-            // System.out.println("check size in for: " + getAcknowledge().size());
-            if ((programTilte.equalsIgnoreCase(programTitle)
+            String programTitle1 = getApplicationTilte().get(i).getText();
+            System.out.println("Program Title: " + programTitle1);
+            if ((programTitle1.equalsIgnoreCase(programTitle)
                     && getAcknowledge().get(i).isEnabled())) {
-                System.out.println("Program Title inside if: " + programTilte);
+                System.out.println("Program Title inside if: " + programTitle1);
                 System.out.println("Program Title inside if222: " +
                         getAcknowledge().get(i).getText());
-                ActionsHelper.scrollTo(getAcknowledge().get(i));
                 ActionsHelper.waitForExistance(getAcknowledge().get(i), 50);
                 getAcknowledge().get(i).click();
                 ActionsHelper.waitForExistance(getDeclineAcc(), 50);
                 getDeclineTextArea().sendKeys("1235");
                 getAcceptAcc().click();
                 ActionsHelper.waitForListExistance(getAcknowledge(), 50);
-                result = true;
+                result = false;
                 break;
             }
         }
@@ -219,24 +218,23 @@ public class MyApplicationsPage extends Base {
                 System.out.println("Program Title inside if: " + programTilte);
                 System.out.println("Program Title inside if222: " +
                         getWithdraw().get(i).getText());
-                ActionsHelper.scrollTo(getWithdraw().get(i));
-                ActionsHelper.waitForExistance(getWithdraw().get(i), 50);
+                ActionsHelper.waitForExistance(getWithdraw().get(i), 60);
                 getWithdraw().get(i).click();
-                ActionsHelper.waitForExistance(getConfirmWithdraw(), 50);
+                ActionsHelper.waitForExistance(getConfirmWithdraw(), 60);
                 getConfirmWithdraw().click();
-                ActionsHelper.waitForExistance(getMyApplication(), 90);
+                ActionsHelper.waitForExistance(getMyApplication(), 100);
                 getMyApplication().click();
-                ActionsHelper.waitForListExistance(getWithdraw(), 50);
-                //getWithdraw().get(i).isEnabled();
-                withdrawResults = true;
+                ActionsHelper.waitForListExistance(getWithdraw(), 100);
+                getWithdraw().get(i).isEnabled();
+                withdrawResults = false;
                 break;
             }
         }
     }
 
-    // to confirm interview for applicant:mdamati@outlook.com - Test@123
-    public void confirmInterview(String progarmTitle) throws Exception {
-        ActionsHelper.waitVisibility(getMyApplication(), 50);
+    // to confirm/book interview for applicant
+    public void confirmInterview(String programTitle) throws Exception {
+        ActionsHelper.waitVisibility(getMyApplication(), 60);
         getMyApplication().click();
         ActionsHelper.waitForListExistance(getApplicationDiv(), 90);
         System.out.println("Program Size: " + getApplicationDiv().size());
@@ -244,7 +242,7 @@ public class MyApplicationsPage extends Base {
         for (int i = 0; i < getApplicationDiv().size(); i++) {
             String programTitle1 = getApplicationTilte().get(i).getText();
             System.out.println("Program Title: " + programTitle1);
-            if ((programTitle1.equalsIgnoreCase(progarmTitle)
+            if ((programTitle1.equalsIgnoreCase(programTitle)
                     && getBookInterview().get(i).isEnabled())) {
                 System.out.println("Program Title inside if: " + programTitle1);
                 getBookInterview().get(i).click();
@@ -259,8 +257,6 @@ public class MyApplicationsPage extends Base {
             }
         }
     }
-
-
 
     public void myApplication() throws InterruptedException {
         ActionsHelper.waitVisibility(getMyApplication(), 5);
@@ -344,9 +340,5 @@ public class MyApplicationsPage extends Base {
         }
 
     }
-
-
-
-
 
 }

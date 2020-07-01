@@ -266,18 +266,17 @@ public class ActionsHelper extends Base {
         driver.navigate().to(url);
     }
 
-    public static void HandleKendoDateTimePicker(String day,String month,String year)
-            throws InterruptedException {
-        WebElement select = driver.findElement(By.cssSelector("table .picker-switch"));
-        select.click();
-        select= driver.findElement(By.cssSelector(".datepicker-months .picker-switch"));
-        select.click();
-        select= driver.findElement(By.xpath(String.format("//span[contains(.,'%s')]",year)));
-        select.click();
-        select= driver.findElement(By.xpath(String.format("//span[contains(.,'%s')]",month)));
-
-        // Intentional pause for 2 seconds.
-        Thread.sleep(2000);
+    public static String getFutureTime(int addedHours, int addedMins){
+        DateFormat dateFormat = new SimpleDateFormat("hh-mmaa");
+        Date currentDate = new Date();
+        // convert date to calendar
+        Calendar c = Calendar.getInstance();
+        c.setTime(currentDate);
+        c.add( Calendar.HOUR, addedHours );
+        c.add( Calendar.MINUTE, addedMins );
+        // convert calendar to date
+        Date currentDatePlus = c.getTime();
+        return dateFormat.format(currentDatePlus);
     }
 
     public static void retryClick(WebElement myelement, int maxSeconds) throws InterruptedException {
