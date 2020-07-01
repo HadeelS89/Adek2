@@ -101,7 +101,7 @@ public class ActivateProgramTest extends Base {
         adminApplicationsListPage.findProgram(ReadWriteHelper.getCreatedProgram());
 
         adminApplicationsListPage.activationForm();
-       Assert.assertTrue(adminApplicationsListPage.getSuccess().isDisplayed());
+       Assert.assertTrue(adminApplicationsListPage.getSucessLabel().get(0).isDisplayed());
          //adminApplicationsListPage.getBtnOK().click();
 
     }

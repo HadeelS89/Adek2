@@ -562,10 +562,15 @@ public class AdminApplicationsListPage extends Base {
         getExpectedGraduationDate().sendKeys(ActionsHelper.getFutureDate(0, 2, 3));
         getTotalCreditsGraduation().sendKeys("10");
         getErpStartDate().sendKeys(ActionsHelper.getFutureDate(0, 0, 5));
-        getAcademicProgramId().sendKeys("Board");
+        getAcademicProgramId().sendKeys("Doctorate");
         ActionsHelper.waitForListExistance(getActiveButton(), 50);
         System.out.println( "Button2 hit"+getActiveButton().get(0).getText() );
         getActiveButton().get(0).click();
+        okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
+        ActionsHelper.waitForExistance(okButton, 30);
+        okButton.click();
+        Thread.sleep(10000);
+        ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
     }
 
 }
