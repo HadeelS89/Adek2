@@ -76,7 +76,7 @@ public class MyApplicationsPage extends Base {
     private List<WebElement> confirm;
     @FindBy(xpath = "//span[contains(.,'Cancel Interview')]")
     private WebElement cancelInterview;
-    @FindBy(xpath = "//button[contains(text(), 'Acknowledge Application')]")
+    @FindBy(xpath = "//button[contains(text(), 'Acknowledge Scholarship')]")
     private List<WebElement> acknowledge;
     @FindBy(xpath = "//button[contains(text(), 'Withdraw Application')]")
     private List<WebElement> withdraw;
@@ -99,6 +99,7 @@ public class MyApplicationsPage extends Base {
         System.out.println("Program Size: " + getApplicationDiv().size());
         System.out.println("Title Size: " + getApplicationTilte().size());
         ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
+        ActionsHelper.waitForListExistance(getAcknowledge(),100);
         for (int i = 0; i < getApplicationDiv().size(); i++) {
             String programTilte = getApplicationTilte().get(i).getText();
             System.out.println("Program Title: " + programTilte);
