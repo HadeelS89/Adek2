@@ -265,5 +265,16 @@ public class ActionsHelper extends Base {
         driver.navigate().to(url);
     }
 
-
+    public static String getFutureTime(int addedHours, int addedMins){
+        DateFormat dateFormat = new SimpleDateFormat("hh-mmaa");
+        Date currentDate = new Date();
+        // convert date to calendar
+        Calendar c = Calendar.getInstance();
+        c.setTime(currentDate);
+        c.add( Calendar.HOUR, addedHours );
+        c.add( Calendar.MINUTE, addedMins );
+        // convert calendar to date
+        Date currentDatePlus = c.getTime();
+        return dateFormat.format(currentDatePlus);
+    }
 }

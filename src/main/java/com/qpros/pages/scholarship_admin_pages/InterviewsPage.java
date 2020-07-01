@@ -82,10 +82,11 @@ public class InterviewsPage {
 //    private WebElement successScore;
 
 
+
     public void addNewInterview(String programTitle) throws InterruptedException {
         ActionsHelper.waitForListExistance(getInterviewsTab(), 50);
         ActionsHelper.selectElementFromList(getInterviewsTab(), "Interviews");
-        // System.out.println("Divs size: "+getProgramsDiv().size());
+// System.out.println("Divs size: "+getProgramsDiv().size());
         ActionsHelper.waitForListExistance(getAddInterviewButton(), 30);
         getAddInterviewButton().get(0).click();
         Thread.sleep(2000);
@@ -95,12 +96,13 @@ public class InterviewsPage {
         getDescriptionEnglish().sendKeys("1234");
         getDescriptionArabic().sendKeys("3444");
         getDate().sendKeys(ActionsHelper.getFutureDate(0, 2, 3));
-        ActionsHelper.actionsClick(getStartTime(), "4:30P");
-        ActionsHelper.actionsClick(getEndTime(), "6:00P");
+        ActionsHelper.actionsClick(getStartTime(), ActionsHelper.getFutureTime( 2, 5 ));
+        ActionsHelper.actionsClick(getEndTime(), ActionsHelper.getFutureTime( 3, 5 ));
         getCapacity().sendKeys("1");
         getSubmitInterView().click();
         ActionsHelper.waitForExistance(getSuccess(), 20);
     }
+
 
     //for search box
     public void searchInterview(String programName) throws InterruptedException {
