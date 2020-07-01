@@ -13,6 +13,7 @@ public interface Locators {
     String NAME_ARABIC_FIELD = "NameArabic";
     String REFERENCE_NUMBER_FIELD = "RegNumber";
     String PROVIDER_TYPE_ID_LIST = "i[class='btn-addon-icon fe fe-plus-circle']";
+    String PROVIDER_TYPE_ID = "ProviderTypeId";
     String PROVIDER_CATEGORY_ID_LIST = "ProviderCategoryId";
     String PROVIDER_UNIT_ID_LIST = "ProviderUnitId";
     String PROVIDER_ZONE_ID_LIST = "ProviderZoneId";
@@ -26,12 +27,13 @@ public interface Locators {
     String LONGITUDE = "Longitude";
     String LATITUDE = "Latitude";
     String PROVIDER_SAVE_BUTTON = "//a[contains(text(),'Save')]";
+    String PROVIDER_NEXT_BUTTON = "//a[contains(text(),'Next')]";
     String PROVIDER_YES_BUTTON = "//button[contains(.,'Yes')]";
     String PROVIDER_CANCEL_BUTTON = "//button[contains(.,'Cancel')]";
     String PROVIDER_OK_BUTTON = "//button[contains(.,'OK')]";
     String PROVIDER_TOKEN_SEARCH = "//input[@type='search']";
     String PROVIDER_TOKEN_SEND = "//input[@value='Send']";
-    String PROVIDER_TOKEN_SEND_TOKEN_EXISTING_BUTTON = "//button[contains(.,' Send Token for Existing Provider')]";
+    String PROVIDER_TOKEN_SEND_TOKEN_EXISTING_BUTTON = "//button[2]";
     String PROVIDER_TOKEN_REG_NUMBER = "TokenProviderRegNumberDLL";
     String PROVIDER_TOKEN_REG_NUMBER_CONTAINER = "select2-TokenProviderRegNumberDLL-container";
     String PROVIDER_TOKEN_EMAIL = "TokenEmailAddress";

@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.pages.Data;
 import com.qpros.pages.Locators;
+import com.qpros.utils.Month;
 import lombok.Getter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,8 +40,10 @@ public class Providers {
     private WebElement nameArabicField;
     @FindBy(id = Locators.REFERENCE_NUMBER_FIELD)
     private WebElement referenceNumberField;
-    @FindBy(id = Locators.PROVIDER_TYPE_ID_LIST)
+    @FindBy(css = Locators.PROVIDER_TYPE_ID_LIST)
     private List<WebElement> providerTypeIdList;
+    @FindBy(id = Locators.PROVIDER_TYPE_ID)
+    private WebElement providerTypeId;
     @FindBy(id = Locators.PROVIDER_CATEGORY_ID_LIST)
     private List<WebElement> providerCategoryIdList;
     @FindBy(id = Locators.PROVIDER_UNIT_ID_LIST)
@@ -67,6 +72,8 @@ public class Providers {
     private WebElement latitude;
     @FindBy(xpath = Locators.PROVIDER_SAVE_BUTTON)
     private WebElement providerSaveButton;
+    @FindBy(xpath = Locators.PROVIDER_NEXT_BUTTON)
+    private WebElement providerNextButton;
     @FindBy(xpath = Locators.PROVIDER_YES_BUTTON)
     private WebElement providerYesButton;
     @FindBy(xpath = Locators.PROVIDER_CANCEL_BUTTON)
@@ -98,16 +105,16 @@ public class Providers {
 
     Faker faker = new Faker();
 
-    public void addProvider() throws Exception {
+    public void addProvider()  {
         ActionsHelper.waitForListExistance(getProviderTab(), 50);
         ActionsHelper.selectElementFromList(getProviderTab(), Data.PROVIDERS);
         ActionsHelper.waitForListExistance(getAddProviderButton(), 50);
         getAddProviderButton().get(0).click();
         randomName = Data.RANDOM_NAME;
-        ActionsHelper.waitForListExistance(getProviderTypeIdList(), 30);
-        getProviderTypeIdList().get(0).sendKeys("Federal");
+        ActionsHelper.waitForExistance(getProviderTypeId(), 30);
+        getProviderTypeId().sendKeys("Federal");
+        getProviderNextButton().click();
         //ActionsHelper.selectElementFromList(getProviderTypeIdList(),"Federal");
-
         ActionsHelper.waitForExistance(getNameEnglishField(), 30);
         getNameEnglishField().sendKeys(randomName);
         getNameArabicField().sendKeys(randomName);
@@ -117,15 +124,21 @@ public class Providers {
         getWebsite().sendKeys(faker.company().url());
         getProviderStatusId().get(0).sendKeys("Active");
         getAuthorizationReference().sendKeys(randomName);
+        Calendar cal= ActionsHelper.getTodayDateFromCalender();
         getIssuanceOn().click();
         try {
-            ActionsHelper.HandleKendoDateTimePicker("24", "Jul", "2020");
+            ActionsHelper.HandleKendoDateTimePicker(
+                    String.valueOf(cal.get(Calendar.DAY_OF_MONTH)),
+                    Month.get(cal.get(Calendar.MONTH)).name(),
+                    String.valueOf(cal.get(Calendar.YEAR)));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         getExpiryOn().click();
         try {
-            ActionsHelper.HandleKendoDateTimePicker("24", "Jul", "2021");
+            ActionsHelper.HandleKendoDateTimePicker(String.valueOf(cal.get(Calendar.DAY_OF_MONTH)),
+                    Month.get(cal.get(Calendar.MONTH)).name(),
+                    String.valueOf(cal.get(Calendar.YEAR)+1));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -171,10 +184,17 @@ public class Providers {
 
 
     public void createFullProvider() throws Exception {
+        //Create new provider without partners
+        addProvider();
+        sendProviderToken();
+        //createProviderAccountVerification();
+    }
+
+    public void createFullProviderWithPartners() throws Exception {
         //Create new provider
         addProvider();
         sendProviderToken();
-        createProviderAccountVerification();
+        //createProviderAccountVerification();
     }
 
     public static String removeLastCharacter(String str) {
