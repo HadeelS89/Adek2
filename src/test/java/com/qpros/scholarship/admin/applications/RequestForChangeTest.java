@@ -9,8 +9,10 @@ import com.qpros.pages.scholarship_admin_pages.ProgramsPage;
 import com.qpros.pages.sholarship_applicant_pages.ApplyForProgremPage;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(com.qpros.reporting.Listeners.class)
 public class RequestForChangeTest extends Base {
 
     private LoginPage loginPage;
@@ -82,21 +84,16 @@ public class RequestForChangeTest extends Base {
 
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
-        adminApplicationsListPage.searchByStatus(
-                ReadWriteHelper.readProgramStatusXMLFile( "applicationStatus4",
-                        "status" ), true );
-        adminApplicationsListPage.requestForChange();
+        adminApplicationsListPage.selectFirstResult();
+        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.RequestForChange);
         WebElement changeButton = null;
-        boolean isVisable = false;
         try {
-            changeButton = ActionsHelper.getElement( driver, "xpath",
-                    "//button[@name='button'][3]" );
-            isVisable = ActionsHelper.waitForExistance( changeButton, 10 );
+            changeButton = ActionsHelper.getElementFromList( adminApplicationsListPage.getApplicationButtons(),
+                    "Request For Change" );
+        } catch (Exception e) {
 
-        } catch (NullPointerException e) {
         }
-        Assert.assertTrue( !isVisable );
-
+        Assert.assertTrue(changeButton == null);
     }
 
 
