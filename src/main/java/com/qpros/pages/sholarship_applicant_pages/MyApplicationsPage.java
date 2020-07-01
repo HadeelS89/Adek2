@@ -257,8 +257,6 @@ public class MyApplicationsPage extends Base {
         }
     }
 
-
-
     public void myApplication() throws InterruptedException {
         ActionsHelper.waitVisibility(getMyApplication(), 5);
         getMyApplication().click();
@@ -341,9 +339,5 @@ public class MyApplicationsPage extends Base {
         }
 
     }
-
-
-
-
 
 }

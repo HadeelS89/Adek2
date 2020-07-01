@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 @Listeners(com.qpros.reporting.Listeners.class)
 public class LoginTest extends Base {
-    LoginPage loginPage;
+    private LoginPage loginPage;
 
 
     @Test(description = "Login as applicant successfully",

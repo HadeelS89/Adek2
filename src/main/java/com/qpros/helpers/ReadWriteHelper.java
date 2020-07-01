@@ -13,13 +13,9 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Properties;
 
 public class ReadWriteHelper {
-
-    private static String Par = "";
 
     public static String ReadData(String par) {
         File file = new File( "src/main/resources/config.properties" );
@@ -41,7 +37,7 @@ public class ReadWriteHelper {
             Assert.fail( "\nPlease check config file Inputs\n" );
         }
 
-        return Par = prop.getProperty( par );
+        return prop.getProperty( par );
     }
 
     public static String[][] readCSVFile(String fileName, int linesToRead, int columnsToRead) {
@@ -130,10 +126,8 @@ public class ReadWriteHelper {
                 //System.out.println( "\nNode Name :" + node.getNodeName() );
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node;
-                    switch (tag){
-                        case "title":
-                            value = eElement.getElementsByTagName( "title" ).item( 0 ).getTextContent();
-                            break;
+                    if ("title".equals( tag )) {
+                        value = eElement.getElementsByTagName( "title" ).item( 0 ).getTextContent();
                     }
                 }
 
@@ -168,10 +162,8 @@ public class ReadWriteHelper {
                 //System.out.println( "\nNode Name :" + node.getNodeName() );
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node;
-                    switch (tag){
-                        case "title":
-                            value = eElement.getElementsByTagName( "title" ).item( 0 ).getTextContent();
-                            break;
+                    if ("title".equals( tag )) {
+                        value = eElement.getElementsByTagName( "title" ).item( 0 ).getTextContent();
                     }
                 }
 
@@ -411,11 +403,9 @@ public class ReadWriteHelper {
                 //System.out.println( "\nNode Name :" + node.getNodeName() );
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node;
-                    switch (tag){
-                        case "status":
-                            value = eElement.getElementsByTagName( "status" ).
-                                    item( 0 ).getTextContent();
-                            break;
+                    if ("status".equals( tag )) {
+                        value = eElement.getElementsByTagName( "status" ).
+                                item( 0 ).getTextContent();
                     }
                 }
 

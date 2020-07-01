@@ -1,18 +1,15 @@
 package com.qpros.helpers;
 
 import com.qpros.common.Base;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.File;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -41,7 +38,7 @@ public class ActionsHelper extends Base {
     }
 
     public static boolean waitToBeClickable(WebElement element, int time) {
-        boolean isElementClickable = false;
+        boolean isElementClickable;
         try {
             wait = new WebDriverWait( driver, time );
             wait.until( ExpectedConditions.elementToBeClickable( element ) );
@@ -106,8 +103,7 @@ public class ActionsHelper extends Base {
 
     public static String getTodayDate() {
         LocalDate localDate = LocalDate.now();
-        String GetTodayDate = localDate.toString();
-        return GetTodayDate;
+        return localDate.toString();
     }
 
     public static WebElement getElement(WebDriver driver, String attribute, String locator) {
@@ -165,19 +161,17 @@ public class ActionsHelper extends Base {
         Date currentDatePlus = c.getTime();
 
         //System.out.println(dateFormat.format(currentDatePlus));
-        String finalDate = dateFormat.format( currentDatePlus );
 
-        return finalDate;
+        return dateFormat.format( currentDatePlus );
     }
 
 
     public static void selectElementFromList(List<WebElement> element, String value) {
-        for (int i = 0; i < element.size(); i++) {
-            if (element.get( i ).getText().equalsIgnoreCase( value )) {
-                element.get( i ).click();
-                break;
+        element.parallelStream().forEach(element1 -> {
+            if (element1.getText().equalsIgnoreCase(value)) {
+                element1.click();
             }
-        }
+        });
     }
 
     public static boolean waitForExistance(WebElement element, int seconds) {
@@ -220,15 +214,13 @@ public class ActionsHelper extends Base {
 
     public static String reverseString(String value) {
 
-        String reverse = "";
-
+        StringBuilder reverse = new StringBuilder();
 
         for (int i = value.length() - 1; i >= 0; i--) {
-            reverse = reverse + value.charAt( i );
+            reverse.append( value.charAt( i ) );
         }
 
-        return reverse;
-
+        return reverse.toString();
     }
 
     public static WebElement getElementFromList(List<WebElement> element, String value) {
@@ -242,9 +234,9 @@ public class ActionsHelper extends Base {
         return elmnt;
     }
 
-    public static void sendText(String locator, String value){
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("document.getElementById('"+locator+"').value='"+value+"';");
+    public static void sendText(String locator, String value) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript( "document.getElementById('" + locator + "').value='" + value + "';" );
 
     }
 

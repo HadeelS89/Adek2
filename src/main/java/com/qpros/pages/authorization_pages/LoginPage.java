@@ -74,6 +74,25 @@ public class LoginPage extends Base {
 
     }
 
+    public void signInAsADEKEmployee(String email, String password, String adminUrl) {
+        //Navigate to Admin panel
+        driver.navigate().to(ReadWriteHelper.ReadData(adminUrl));
+        //securedAccess();
+
+        ActionsHelper.waitVisibility(getLoginAsAdekEmployee(), 50);
+        getLoginAsAdekEmployee().click();
+        ActionsHelper.waitVisibility(getMsEmail(), 50);
+        getMsEmail().sendKeys(email);
+        getMsNextButton().click();
+        ActionsHelper.waitVisibility(getMsPassword(), 50);
+        getMsPassword().sendKeys(password);
+        getMsNextButton().click();
+        if (ActionsHelper.waitVisibility(getStaySignedInNoButton(), 50)) {
+            getStaySignedInNoButton().click();
+        }
+
+    }
+
     public void securedAccess() {
 
         try {
