@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -277,4 +278,28 @@ public class ActionsHelper extends Base {
         Date currentDatePlus = c.getTime();
         return dateFormat.format(currentDatePlus);
     }
+
+    public static void retryClick(WebElement myelement, int maxSeconds) throws InterruptedException {
+        int i = 0;
+        boolean result = false;
+        while (i <= maxSeconds){
+            try {
+                myelement.click();
+                result = true;
+                break;
+            } catch (Exception e) {
+                result = false;
+            }
+            i++;
+            Thread.sleep(1000);
+        }
+        if(!result){
+            Assert.fail("Failed to click element: " + myelement.toString());
+        }
+
+
+
+    }
+
+
 }
