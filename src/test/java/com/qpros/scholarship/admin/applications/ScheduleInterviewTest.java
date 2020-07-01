@@ -83,20 +83,17 @@ public class ScheduleInterviewTest extends Base {
 
         adminApplicationsListPage = new AdminApplicationsListPage( driver );
         adminApplicationsListPage.findProgram( ReadWriteHelper.getCreatedProgram() );
-        adminApplicationsListPage.searchByStatus(
-                ReadWriteHelper.readProgramStatusXMLFile( "applicationStatus2",
-                        "status" ), true );
-        adminApplicationsListPage.scheduleInterview();
+        adminApplicationsListPage.selectFirstResult();
+        adminApplicationsListPage.clickApplicationButton( AdminApplicationsListPage.ButtonsList.ScheduleInterview );
+        ActionsHelper.waitForExistance(adminApplicationsListPage.getWorkflowArea(),60);
         WebElement scheduleIntervButton = null;
         try {
-            scheduleIntervButton = ActionsHelper.getElement( driver, "xpath",
-                    "//button[@name='button'][3]" );
+            scheduleIntervButton = ActionsHelper.getElementFromList( adminApplicationsListPage.getApplicationButtons(),
+                    "Schedule Interview" );
         } catch (Exception e) {
 
         }
 
         Assert.assertTrue( scheduleIntervButton == null );
     }
-
-
 }
