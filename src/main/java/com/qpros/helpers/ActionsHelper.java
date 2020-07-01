@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -237,6 +238,42 @@ public class ActionsHelper extends Base {
     public static void sendText(String locator, String value) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript( "document.getElementById('" + locator + "').value='" + value + "';" );
+
+    }
+
+    public static void HandleKendoDateTimePicker(String day,String month,String year)
+            throws InterruptedException {
+        WebElement select = driver.findElement(By.cssSelector("table .picker-switch"));
+        select.click();
+        select= driver.findElement(By.cssSelector(".datepicker-months .picker-switch"));
+        select.click();
+        select= driver.findElement(By.xpath(String.format("//span[contains(.,'%s')]",year)));
+        select.click();
+        select= driver.findElement(By.xpath(String.format("//span[contains(.,'%s')]",month)));
+
+        // Intentional pause for 2 seconds.
+        Thread.sleep(2000);
+    }
+
+    public static void retryClick(WebElement myelement, int maxSeconds) throws InterruptedException {
+        int i = 0;
+        boolean result = false;
+        while (i <= maxSeconds){
+            try {
+                myelement.click();
+                result = true;
+                break;
+            } catch (Exception e) {
+                result = false;
+            }
+            i++;
+            Thread.sleep(1000);
+        }
+        if(!result){
+            Assert.fail("Failed to click element: " + myelement.toString());
+        }
+
+
 
     }
 

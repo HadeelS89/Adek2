@@ -291,6 +291,19 @@ public class EmailHelper extends Base {
         }
 
     }
+    public static void main(String args[]) throws MessagingException, GeneralSecurityException {
+        EmailHelper testHelper = new EmailHelper();
+        try {
+            System.out.println(testHelper.getVerificationCode("DSG Notification for Txn No", "G Transaction No -  ", 9));
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }
 

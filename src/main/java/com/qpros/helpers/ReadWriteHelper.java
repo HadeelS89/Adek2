@@ -140,6 +140,15 @@ public class ReadWriteHelper {
         return value;
     }
 
+    public static void writeCSVFirstCell(String content){
+        try(PrintWriter writer = new PrintWriter(new File("src/main/resources/DataProvider/ActiveProgram.csv"))){
+            writer.write(content);
+        }
+        catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static String readApplicationsXMLFile(String applicationId, String tag) {
 
         String value = "";
