@@ -55,6 +55,20 @@ public class LoginPage extends Base {
 
     }
 
+    public void signIn(String email, String password, String url) {
+        //Navigate to Application
+        driver.navigate().to( ReadWriteHelper.ReadData( url ) );
+        //securedAccess();
+
+        ActionsHelper.waitVisibility( getEmail(), 50 );
+        getEmail().sendKeys( email );
+        getPassword().sendKeys( password );
+        ActionsHelper.waitVisibility( getLoginButton(), 10 );
+        getLoginButton().click();
+        ActionsHelper.waitVisibility( getAddressTab(), 50 );
+
+    }
+
     public void signInAsADEKEmployee(String email, String password) {
         //Navigate to Admin panel
         driver.navigate().to( ReadWriteHelper.ReadData( "AdminURL" ) );
