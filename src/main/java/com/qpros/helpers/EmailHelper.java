@@ -236,7 +236,7 @@ public class EmailHelper extends Base {
         //properties.put("mail.smtp.auth", "true");
 
         // Get the Session object.// and pass
-        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+        Session session = Session.getInstance(properties, new Authenticator() {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
@@ -294,7 +294,8 @@ public class EmailHelper extends Base {
     public static void main(String args[]) throws MessagingException, GeneralSecurityException {
         EmailHelper testHelper = new EmailHelper();
         try {
-            System.out.println(testHelper.getVerificationCode("DSG Notification for Txn No", "G Transaction No -  ", 9));
+            System.out.println(testHelper.getVerificationCode("ADEK Online - Registration invitation", "HEIAuthorizationSystem/Client/registration?token=", 38));
+
         }
         catch (NullPointerException e){
             e.printStackTrace();
