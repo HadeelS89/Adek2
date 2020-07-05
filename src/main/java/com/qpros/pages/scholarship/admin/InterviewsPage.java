@@ -1,10 +1,7 @@
-package com.qpros.pages.scholarship_admin_pages;
+package com.qpros.pages.scholarship.admin;
 
 import com.qpros.helpers.ActionsHelper;
-import com.qpros.helpers.ReadWriteHelper;
 import lombok.Getter;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

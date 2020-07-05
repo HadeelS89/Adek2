@@ -3,7 +3,7 @@ package com.qpros.scholarship.admin;
 import com.qpros.common.Base;
 import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.pages.authorization_pages.LoginPage;
-import com.qpros.pages.scholarship_admin_pages.InterviewsPage;
+import com.qpros.pages.scholarship.admin.InterviewsPage;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
