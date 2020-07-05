@@ -5,7 +5,7 @@ import com.qpros.authorization.LoginTest;
 import com.qpros.common.Base;
 import com.qpros.pages.authorization_pages.LoginPage;
 //import com.qpros.pages.MyApplications;
-import com.qpros.pages.sholarship_applicant_pages.MyApplicationsPage;
+import com.qpros.pages.scholarship.applicant.MyApplicationsPage;
 import org.testng.annotations.Test;
 
 public class MyApplicationTest extends Base {
