@@ -115,7 +115,7 @@
                     <version>2.22.0</version>
                     <configuration>
                         <suiteXmlFiles>
-                            <file>${file}</file>
+                            <file>src/main/resources/xmlTests/Scholarship/ScholarshipTestSuite.xml</file>
                         </suiteXmlFiles>
                     </configuration>
                 </plugin>
