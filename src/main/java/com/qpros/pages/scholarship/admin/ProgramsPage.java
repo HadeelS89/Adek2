@@ -1,4 +1,4 @@
-package com.qpros.pages.scholarship_admin_pages;
+package com.qpros.pages.scholarship.admin;
 
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;

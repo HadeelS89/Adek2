@@ -1,4 +1,4 @@
-package com.qpros.pages.sholarship_applicant_pages;
+package com.qpros.pages.scholarship.applicant;
 
 
 import com.qpros.common.Base;
