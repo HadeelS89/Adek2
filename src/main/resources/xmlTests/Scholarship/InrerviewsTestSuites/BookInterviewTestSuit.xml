@@ -12,7 +12,7 @@
 
     <test name="Create interview Test">
         <classes>
-            <class name="com.qpros.scholarship_applicant.interviews.BookInterviewTest"></class>
+            <class name="com.qpros.scholarship.applicant.interviews.BookInterviewTest"></class>
         </classes>
     </test>
 </suite>

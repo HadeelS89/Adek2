@@ -12,7 +12,7 @@
 
     <test name="Application Review completed Test">
         <classes>
-            <class name="com.qpros.scholarship_admin.applications.AppsReviewCompletedTest"></class>
+            <class name="com.qpros.scholarship.admin.applications.AppsReviewCompletedTest"></class>
         </classes>
     </test>
 </suite>

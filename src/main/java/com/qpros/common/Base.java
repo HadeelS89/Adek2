@@ -1,7 +1,6 @@
 package com.qpros.common;
 
 
-import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,26 +19,24 @@ import java.util.Map;
 
 public class Base {
 
-    public static WebDriver driver;
-    public OsValidator OsValidator;
+    protected static WebDriver driver;
 
 
 
     @Parameters({"browserType"})
     @BeforeMethod(enabled = true)
     public void setUpBrowser(@Optional("optional") String browserType) {
-        String OsType = OsValidator.getDeviceOs();
         //DriverType browser = getBrowser();
         if (!browserType.equals( "optional" )){
-            initiateDriver(OsType, browserType);
+            initiateDriver(OsValidator.getDeviceOs(), browserType);
         }else {
-            initiateDriver(OsType, ReadWriteHelper.ReadData( "browser" ) );
+            initiateDriver(OsValidator.getDeviceOs(), ReadWriteHelper.ReadData( "browser" ) );
         }
 
     }
 
 
-    public WebDriver initiateDriver(String deviceOsType, String driverType) {
+    private WebDriver initiateDriver(String deviceOsType, String driverType) {
         String browser = driverType.toLowerCase();
 
         switch (browser) {
@@ -63,7 +60,7 @@ public class Base {
                     DesiredCapabilities handlSSLErr = DesiredCapabilities.chrome ();
                     handlSSLErr.setCapability ( CapabilityType.ACCEPT_SSL_CERTS, true);
                     setChromeBrowser(deviceOsType);
-                    Map<String, Object> prefs = new HashMap<String, Object>();
+                    Map<String, Object> prefs = new HashMap<>();
                     //Put this into prefs map to switch off browser notification
                     prefs.put("profile.default_content_setting_values.notifications", 2);
                     //Create chrome options to set this prefs

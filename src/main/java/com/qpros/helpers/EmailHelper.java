@@ -1,46 +1,18 @@
 package com.qpros.helpers;
 
 import com.qpros.common.Base;
-import com.sun.mail.imap.IMAPFolder;
 import com.sun.mail.util.MailSSLSocketFactory;
 
 import java.security.GeneralSecurityException;
-import java.util.List;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.mail.Flags;
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Store;
 import javax.mail.search.SubjectTerm;
-import java.io.IOException;
 
-import javax.mail.Multipart;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import java.io.*;
 import java.util.*;
 import javax.mail.*;
-import javax.mail.Flags.Flag;
 import javax.mail.internet.*;
-
-import com.sun.mail.imap.IMAPFolder;
-import com.sun.mail.imap.IMAPMessage;
 
 
 public class EmailHelper extends Base {
@@ -59,7 +31,7 @@ public class EmailHelper extends Base {
 
             private String text;
 
-            private EmailFolder(String text){
+             EmailFolder(String text){
                 this.text = text;
             }
 
@@ -138,12 +110,12 @@ public class EmailHelper extends Base {
         public Message[] getMessagesBySubject(String subject, boolean unreadOnly, int maxToSearch) throws Exception{
             Map<String, Integer> indices = getStartAndEndIndices(maxToSearch);
 
-            Message messages[] = folder.search(
+            @SuppressWarnings("CStyleArrayDeclaration") Message[] messages = folder.search(
                     new SubjectTerm(subject),
                     folder.getMessages(indices.get("startIndex"), indices.get("endIndex")));
 
             if(unreadOnly){
-                List<Message> unreadMessages = new ArrayList<Message>();
+                List<Message> unreadMessages = new ArrayList<>();
                 for (Message message : messages) {
                     if(isMessageUnread(message)) {
                         unreadMessages.add(message);
@@ -153,8 +125,7 @@ public class EmailHelper extends Base {
             }
             List listOfProducts = Arrays.asList(messages);
             Collections.reverse(listOfProducts);
-            Message[] messagesf = (Message[])listOfProducts.toArray(messages);
-            return messagesf;
+            return (Message[])listOfProducts.toArray(messages);
         }
 
         /**
@@ -175,7 +146,7 @@ public class EmailHelper extends Base {
          */
         public List<String> getUrlsFromMessage(Message message, String linkText) throws Exception{
             String html = getMessageContent(message);
-            List<String> allMatches = new ArrayList<String>();
+            List<String> allMatches = new ArrayList<>();
             Matcher matcher = Pattern.compile("(<a [^>]+>)"+linkText+"</a>").matcher(html);
             while (matcher.find()) {
                 String aTag = matcher.group(1);
@@ -193,7 +164,7 @@ public class EmailHelper extends Base {
                 startIndex = 1;
             }
 
-            Map<String, Integer> indices = new HashMap<String, Integer>();
+            Map<String, Integer> indices = new HashMap<>();
             indices.put("startIndex", startIndex);
             indices.put("endIndex", endIndex);
 
@@ -248,7 +219,6 @@ public class EmailHelper extends Base {
     public void sendMail(String recipient, String attachmentPath) {
 
         // Recipient's email ID needs to be mentioned.
-        String to = recipient;
 
         // Sender's email ID needs to be mentioned
         String from = "QProsAutomation2@q-pros.net";
@@ -266,7 +236,7 @@ public class EmailHelper extends Base {
         //properties.put("mail.smtp.auth", "true");
 
         // Get the Session object.// and pass
-        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+        Session session = Session.getInstance(properties, new Authenticator() {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
@@ -284,7 +254,7 @@ public class EmailHelper extends Base {
             message.setFrom(new InternetAddress(from));
 
             // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress( recipient ));
 
             // Set Subject: header field
             message.setSubject("Automation Report");
@@ -322,18 +292,20 @@ public class EmailHelper extends Base {
 
     }
     public static void main(String args[]) throws MessagingException, GeneralSecurityException {
-            EmailHelper testHelper = new EmailHelper();
-            try {
-                System.out.println(testHelper.getVerificationCode("DSG Notification for Txn No", "G Transaction No -  ", 9));
-            }
-            catch (NullPointerException e){
-                e.printStackTrace();
+        EmailHelper testHelper = new EmailHelper();
+        try {
+            System.out.println(testHelper.getVerificationCode("ADEK Online - Registration invitation", "HEIAuthorizationSystem/Client/registration?token=", 38));
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
+
 }
 
 

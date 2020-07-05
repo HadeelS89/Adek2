@@ -55,6 +55,20 @@ public class LoginPage extends Base {
 
     }
 
+    public void signIn(String email, String password, String url) {
+        //Navigate to Application
+        driver.navigate().to( ReadWriteHelper.ReadData( url ) );
+        //securedAccess();
+
+        ActionsHelper.waitVisibility( getEmail(), 50 );
+        getEmail().sendKeys( email );
+        getPassword().sendKeys( password );
+        ActionsHelper.waitVisibility( getLoginButton(), 10 );
+        getLoginButton().click();
+        ActionsHelper.waitVisibility( getAddressTab(), 50 );
+
+    }
+
     public void signInAsADEKEmployee(String email, String password) {
         //Navigate to Admin panel
         driver.navigate().to( ReadWriteHelper.ReadData( "AdminURL" ) );
@@ -69,6 +83,25 @@ public class LoginPage extends Base {
         getMsPassword().sendKeys( password );
         getMsNextButton().click();
         if (ActionsHelper.waitVisibility( getStaySignedInNoButton(), 50 )) {
+            getStaySignedInNoButton().click();
+        }
+
+    }
+
+    public void signInAsADEKEmployee(String email, String password, String adminUrl) {
+        //Navigate to Admin panel
+        driver.navigate().to(ReadWriteHelper.ReadData(adminUrl));
+        //securedAccess();
+
+        ActionsHelper.waitVisibility(getLoginAsAdekEmployee(), 50);
+        getLoginAsAdekEmployee().click();
+        ActionsHelper.waitVisibility(getMsEmail(), 50);
+        getMsEmail().sendKeys(email);
+        getMsNextButton().click();
+        ActionsHelper.waitVisibility(getMsPassword(), 50);
+        getMsPassword().sendKeys(password);
+        getMsNextButton().click();
+        if (ActionsHelper.waitVisibility(getStaySignedInNoButton(), 50)) {
             getStaySignedInNoButton().click();
         }
 

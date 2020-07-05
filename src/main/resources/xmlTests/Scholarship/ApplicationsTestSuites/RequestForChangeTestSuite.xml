@@ -12,7 +12,7 @@
 
     <test name="Request change Test">
         <classes>
-            <class name="com.qpros.scholarship_admin.applications.RequestForChangeTest"></class>
+            <class name="com.qpros.scholarship.admin.applications.RequestForChangeTest"></class>
         </classes>
     </test>
 </suite>
