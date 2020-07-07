@@ -4,19 +4,13 @@
 
 
 
-<suite name=" Sholarship Test" parallel="tests" >
+<suite name=" Sholarship Test"  >
 
     <listeners>
         <listener class-name="com.qpros.reporting.Listeners" />
     </listeners>
 
 
-    <test name="Authorization Test - Firefox">
-        <parameter name="browserType" value="Firefox"></parameter>
-        <classes>
-            <class name="com.qpros.authorization.LoginTest"/>
-        </classes>
-    </test>
 
     <test name="Authorization Test - Chrome">
         <parameter name="browserType" value="Chrome"></parameter>
