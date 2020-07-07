@@ -163,4 +163,9 @@ public class Base {
         }
     }
 
+    @BeforeMethod
+    public void startingTestCase(){
+        System.out.println("===================================================================================");
+    }
+
 }
