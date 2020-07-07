@@ -4,7 +4,7 @@
 
 
 
-<suite name=" Sholarship Test" parallel="tests" thread-count="2">
+<suite name=" Sholarship Test" parallel="tests" >
 
     <listeners>
         <listener class-name="com.qpros.reporting.Listeners" />
