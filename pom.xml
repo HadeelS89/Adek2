@@ -114,6 +114,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.22.0</version>
                     <configuration>
+                        <testFailureIgnore>true</testFailureIgnore>
                         <suiteXmlFiles>
                             <file>src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml</file>
                         </suiteXmlFiles>
