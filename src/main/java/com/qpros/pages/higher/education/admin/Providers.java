@@ -6,6 +6,7 @@ import com.qpros.pages.Data;
 import com.qpros.pages.Locators;
 import com.qpros.utils.Month;
 import lombok.Getter;
+import lombok.Setter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +14,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.Calendar;
-import java.util.Date;
+import java.util.Locale;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +23,6 @@ public class Providers {
 
     public static String randomName = "";
     public static String createdProvider = "";
-    WebElement createdProviderName = null;
 
     public Providers(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -102,10 +102,28 @@ public class Providers {
     private WebElement ddlPageSize;
     @FindBy(css = Locators.EMAIL_URL_BODY)
     private WebElement emailUrlBody;
+    @FindBy(linkText = Locators.PROVIDER_COLLEGE_TAB)
+    private WebElement addProviderCollege;
+    @FindBy(css = Locators.PROVIDER_COLLEGE_ADD)
+    private WebElement addButtonProviderCollege;
+    @FindBy(css = Locators.PROVIDER_COLLEGE_NAME_ENGLISH)
+    private WebElement nameEnglishButtonProviderCollege;
+    @FindBy(css = Locators.PROVIDER_COLLEGE_NAME_ARABIC)
+    private WebElement nameArabicButtonProviderCollege;
+    @FindBy(id = Locators.PROVIDER_COLLEGE_IS_ACTIVE)
+    private WebElement isActiveButtonProviderCollege;
+    @FindBy(xpath = Locators.PROVIDER_COLLEGE_SAVE_BUTTON)
+    private WebElement saveButtonProviderCollege;
 
-    Faker faker = new Faker();
 
-    public void addProvider()  {
+    @Getter
+    @Setter
+    WebElement createdProviderName;
+
+    Faker enfaker = new Faker(new Locale("en"));
+    Faker arfaker = new Faker(new Locale("ar"));
+
+    public void addProvider() {
         ActionsHelper.waitForListExistance(getProviderTab(), 50);
         ActionsHelper.selectElementFromList(getProviderTab(), Data.PROVIDERS);
         ActionsHelper.waitForListExistance(getAddProviderButton(), 50);
@@ -121,10 +139,10 @@ public class Providers {
         getReferenceNumberField().sendKeys(randomName);
         getProviderCategoryIdList().get(0).sendKeys("University");
         getProviderUnitIdList().get(0).sendKeys("College");
-        getWebsite().sendKeys(faker.company().url());
+        getWebsite().sendKeys(enfaker.company().url());
         getProviderStatusId().get(0).sendKeys("Active");
         getAuthorizationReference().sendKeys(randomName);
-        Calendar cal= ActionsHelper.getTodayDateFromCalender();
+        Calendar cal = ActionsHelper.getTodayDateFromCalender();
         getIssuanceOn().click();
         try {
             ActionsHelper.HandleKendoDateTimePicker(
@@ -138,15 +156,15 @@ public class Providers {
         try {
             ActionsHelper.HandleKendoDateTimePicker(String.valueOf(cal.get(Calendar.DAY_OF_MONTH)),
                     Month.get(cal.get(Calendar.MONTH)).name(),
-                    String.valueOf(cal.get(Calendar.YEAR)+1));
+                    String.valueOf(cal.get(Calendar.YEAR) + 1));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         getProviderZoneId().sendKeys("Abu Dhabi");
-        getAddressEnglish().sendKeys(randomName);
-        getAddressArabic().sendKeys(randomName);
-        getLatitude().sendKeys(faker.address().latitude());
-        getLongitude().sendKeys(faker.address().longitude());
+        getAddressEnglish().sendKeys(enfaker.address().fullAddress());
+        getAddressArabic().sendKeys(arfaker.address().fullAddress());
+        getLatitude().sendKeys(enfaker.address().latitude());
+        getLongitude().sendKeys(enfaker.address().longitude());
         getProviderSaveButton().click();
         getProviderYesButton().click();
         ActionsHelper.waitForExistance(getProviderOKButton(), 30);
@@ -174,6 +192,46 @@ public class Providers {
 
     }
 
+    public void AddProviderCollege() throws Exception {
+        getCreatedProviderName().click();
+        ActionsHelper.waitForExistance(getAddProviderCollege(),30);
+        getAddProviderCollege().click();
+        ActionsHelper.waitForExistance(getAddProviderCollege(),30);
+
+        getAddButtonProviderCollege().click();
+        ActionsHelper.waitForExistance(getNameEnglishButtonProviderCollege(),30);
+        getNameEnglishButtonProviderCollege().sendKeys(enfaker.university().name());
+        getNameEnglishButtonProviderCollege().sendKeys(arfaker.university().name());
+        getIsActiveButtonProviderCollege().click();
+        getSaveButtonProviderCollege().click();
+
+
+//        ActionsHelper.waitForListExistance(getProviderTab(), 50);
+//        ActionsHelper.selectElementFromList(getProviderTab(), Data.PROVIDERS);
+//        ActionsHelper.waitForExistance(getProviderTokenSendTokenExistingButton(), 30);
+//        getProviderTokenSendTokenExistingButton().click();
+//        ActionsHelper.waitForListExistance(getProviderTokenRegNumberContainer(), 30);
+//        getProviderTokenRegNumberContainer().get(0).click();
+//        ActionsHelper.waitForExistance(getProviderTokenSearch(), 30);
+//        getProviderTokenSearch().sendKeys(randomName + Keys.ENTER);
+//        getProviderTokenEmail().sendKeys(String.format("qprosautomation+%s@gmail.com", randomName.substring(16)));
+//        Thread.sleep(3000);
+//        ActionsHelper.waitForExistance(getProviderTokenSend(), 30);
+//        getProviderTokenSend().click();
+//        ActionsHelper.waitForExistance(getProviderOKButton(), 30);
+//        getProviderOKButton().click();
+
+
+    }
+
+    public void getCreatedProvider() throws Exception {
+        ActionsHelper.waitForListExistance(getProviderTab(), 50);
+        ActionsHelper.selectElementFromList(getProviderTab(), Data.PROVIDERS);
+        ActionsHelper.waitForListExistance(getProviderDiv(), 50);
+        System.out.println(getProviderDiv().size());
+        setCreatedProviderName(ActionsHelper.getElementFromList(getProviderDiv(), randomName));
+    }
+
     public void createProviderAccountVerification() throws Exception {
 
         Thread.sleep(5000);
@@ -194,6 +252,7 @@ public class Providers {
         //Create new provider
         addProvider();
         sendProviderToken();
+        //getCreatedProvider();
         //createProviderAccountVerification();
     }
 

@@ -37,6 +37,17 @@ public interface Locators {
     String SEARCH_BOX = "searchbox";
     String ddl_Page_Size = "ddlPageSize";
     String EMAIL_URL_BODY = "body";
+    String PROVIDER_COLLEGE_TAB = "College";
+    String PROVIDER_COLLEGE_ADD = ".float-right";
+    String PROVIDER_COLLEGE_NAME_ENGLISH = "UnitNameEnglish";
+    String PROVIDER_COLLEGE_NAME_ARABIC = "UnitNameArabic";
+    String PROVIDER_COLLEGE_IS_ACTIVE = "IsActive";
+    String PROVIDER_COLLEGE_SAVE_BUTTON = "//input[@value='Save']";
     String PROVIDER_ZONE_ID = "ProviderZoneId";
+    String APPLICATION_SEARCH_BOX = "searchbox";
+    String APPLICATION_TAB = "a[class='air__menuLeft__link']";
+
+
+
 
 }
