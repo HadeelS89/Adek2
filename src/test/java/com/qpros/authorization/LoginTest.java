@@ -31,7 +31,7 @@ public class LoginTest extends Base {
 
 
     @Test(description = "Login as ADEK employee successfully",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 1)
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 1, enabled = false)
     public void loginAsADEKEmployee(){
 
         loginPage = new LoginPage(driver);
