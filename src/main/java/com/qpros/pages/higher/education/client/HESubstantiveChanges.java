@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
-import javax.swing.*;
 import java.util.List;
 
 @Getter
@@ -83,29 +83,29 @@ public class HESubstantiveChanges {
 
 
     @FindBy(css = ".btn-primary")
-    private WebElement nextButton; //Test123
+    private WebElement nextButton;
 
     @FindBy(css = ".adek-upload-div")
-    private WebElement uploadDiv; //Test123
+    private WebElement uploadDiv;
     @FindBy(css = "input[type='file']")
-    private List<WebElement> uploadFilePath; //Add filepath to this by sendkeys
+    private List<WebElement> uploadFilePath;
     @FindBy(css = ".row > .form-control")
-    private WebElement uploadDescription; //Test123
+    private WebElement uploadDescription;
     @FindBy(css = ".adek-upload-popup-btn")
 
-    private WebElement uploadButton; //Test123
+    private WebElement uploadButton;
     @FindBy(css = ".ml-1")
-    private WebElement submitButton; //Test123
+    private WebElement submitButton;
     @FindBy(css = ".swal2-confirm")
-    private WebElement confirmButton; //Test123
+    private WebElement confirmButton;
     @FindBy(css = ".h5")
-    private WebElement feedbackText; //Should contain: SHARE YOUR FEEDBACK
+    private WebElement feedbackText;
     @FindBy(css = ".ng-star-inserted:nth-child(1) > td:nth-child(2)")
-    private WebElement currentProgram; //GetText
+    private WebElement currentProgram;
     @FindBy(css = ".ng-star-inserted > adek-label .mb-2")
-    private WebElement expiryDate; //GetText
+    private WebElement expiryDate;
     @FindBy(css = ".fa-remove")
-    private WebElement closeFeedback; //GetText
+    private WebElement closeFeedback;
 
     public void applySubstantiveChanges() throws Exception {
         ActionsHelper.waitForExistance(getExpandNewApplications(), 60);
@@ -113,15 +113,17 @@ public class HESubstantiveChanges {
         ActionsHelper.waitToBeClickable(getExpandNewApplications(),60);
         ActionsHelper.waitForExistance(getExpiryDate(),60);
         ActionsHelper.retryClick(getExpandNewApplications(), 30);
-        //ActionsHelper.waitVisibility(getProgramSection(), 60);
         getSubstantiveChanges().click();
+        //Reached substantive changes form input
+
         ActionsHelper.waitVisibility(getCheckBox5(), 60);
         ActionsHelper.retryClick(getCheckBox5(), 10);
+        Assert.assertNotNull(getCheckBox4());
         getCheckBox4().click();
         getCheckBox3().click();
         getCheckBox2().click();
         getCheckBox1().click();
-
+        //Wait for checkboxes to be visible then expand them all for complete coverage
         getNewProviderNameEnglish().sendKeys("ProviderNameEnglish " + System.currentTimeMillis() % 100000);
         getNewProviderNameArabic().sendKeys("ProviderNameArabic " + System.currentTimeMillis() % 100000);
         getNewNomenclatureEnglish().sendKeys("NomenclatureEnglish");
@@ -144,7 +146,7 @@ public class HESubstantiveChanges {
         getExistingPartnershipArabic().sendKeys("oldPartnerArabic " + System.currentTimeMillis() % 100000);
         getNewPartnershipEnglish().sendKeys("newPartnerEnglish " + System.currentTimeMillis() % 100000);
         getNewPartnershipArabic().sendKeys("newPartnerArabic " + System.currentTimeMillis() % 100000);
-
+        //Fill in the data
         ActionsHelper.retryClick(getNextButton(), 5);
 
         ActionsHelper.waitToBeClickable(getUploadDiv(),60);
@@ -152,19 +154,24 @@ public class HESubstantiveChanges {
         ActionsHelper.retryClick(getUploadDiv(), 30);
         ActionsHelper.waitForListExistance(getUploadFilePath(),60);
         System.out.println("Upload size: "+getUploadFilePath().size());
-        getUploadFilePath().get(0).sendKeys("C:/ExamplePhoto.jpg");
+        getUploadFilePath().get(0).sendKeys(System.getProperty("user.dir") + "\\src\\main\\resources\\images\\image.PNG");
         getUploadDescription().sendKeys("MyDescription");
         getUploadButton().click();
+        //Finishing upload
         ActionsHelper.waitVisibility(getSubmitButton(), 60);
         ActionsHelper.retryClick(getSubmitButton(),10);
         ActionsHelper.waitVisibility(getConfirmButton(), 60);
         ActionsHelper.retryClick(getConfirmButton(),10);
         System.out.println("Trying to click application section");
         ActionsHelper.retryClick(getCloseFeedback(),10);
+        //Substantive Changes successfully submitted.
+
         ActionsHelper.retryClick(getApplicationsSection(),10);
         System.out.println("Clicked application section successfully");
         ActionsHelper.waitVisibility(getCurrentProgram(), 60);
         System.out.println("Found damn program area");
+        Assert.assertNotNull(getCurrentProgram());
+        //Read current program ID and write it to ActiveProgram.csv
         ReadWriteHelper.writeCSVFirstCell(getCurrentProgram().getText()); //Write this to a CSV file
     }
 }
