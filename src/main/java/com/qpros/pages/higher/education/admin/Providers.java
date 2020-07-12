@@ -10,6 +10,8 @@ import lombok.Setter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -114,8 +116,6 @@ public class Providers {
     private WebElement isActiveButtonProviderCollege;
     @FindBy(xpath = Locators.PROVIDER_COLLEGE_SAVE_BUTTON)
     private WebElement saveButtonProviderCollege;
-
-
     @Getter
     @Setter
     WebElement createdProviderName;
@@ -123,20 +123,20 @@ public class Providers {
     Faker enfaker = new Faker(new Locale("en"));
     Faker arfaker = new Faker(new Locale("ar"));
 
-    public void addProvider() {
-        ActionsHelper.waitForListExistance(getProviderTab(), 50);
+    public void addProvider() throws InterruptedException {
+        ActionsHelper.waitForListExistance(getProviderTab(), 100);
         ActionsHelper.selectElementFromList(getProviderTab(), Data.PROVIDERS);
-        ActionsHelper.waitForListExistance(getAddProviderButton(), 50);
+        Thread.sleep(1000);
+        ActionsHelper.waitForListExistance(getAddProviderButton(), 100);
         getAddProviderButton().get(0).click();
-        randomName = Data.RANDOM_NAME;
+        randomName = enfaker.university().name();
         ActionsHelper.waitForExistance(getProviderTypeId(), 30);
         getProviderTypeId().sendKeys("Federal");
         getProviderNextButton().click();
-        //ActionsHelper.selectElementFromList(getProviderTypeIdList(),"Federal");
         ActionsHelper.waitForExistance(getNameEnglishField(), 30);
         getNameEnglishField().sendKeys(randomName);
-        getNameArabicField().sendKeys(randomName);
-        getReferenceNumberField().sendKeys(randomName);
+        getNameArabicField().sendKeys(arfaker.university().name());
+        getReferenceNumberField().sendKeys(enfaker.phoneNumber().subscriberNumber());
         getProviderCategoryIdList().get(0).sendKeys("University");
         getProviderUnitIdList().get(0).sendKeys("College");
         getWebsite().sendKeys(enfaker.company().url());
@@ -167,38 +167,31 @@ public class Providers {
         getLongitude().sendKeys(enfaker.address().longitude());
         getProviderSaveButton().click();
         getProviderYesButton().click();
-        ActionsHelper.waitForExistance(getProviderOKButton(), 30);
-        getProviderOKButton().click();
+        ActionsHelper.retryClick(getProviderOKButton(), 30);
 
 
     }
 
     public void sendProviderToken() throws Exception {
-        ActionsHelper.waitForListExistance(getProviderTab(), 50);
+        ActionsHelper.waitForListExistance(getProviderTab(), 150);
         ActionsHelper.selectElementFromList(getProviderTab(), "Providers Token");
-        ActionsHelper.waitForExistance(getProviderTokenSendTokenExistingButton(), 30);
-        getProviderTokenSendTokenExistingButton().click();
+        ActionsHelper.retryClick(getProviderTokenSendTokenExistingButton(), 30);
         ActionsHelper.waitForListExistance(getProviderTokenRegNumberContainer(), 30);
         getProviderTokenRegNumberContainer().get(0).click();
-        ActionsHelper.waitForExistance(getProviderTokenSearch(), 30);
+        ActionsHelper.waitForExistance(getProviderTokenSearch(), 50);
         getProviderTokenSearch().sendKeys(randomName + Keys.ENTER);
-        getProviderTokenEmail().sendKeys(String.format("qprosautomation+%s@gmail.com", randomName.substring(16)));
+        getProviderTokenEmail().sendKeys(String.format("qprosautomation+%s@gmail.com", Data.RANDOM_NAME.substring(16)));
         Thread.sleep(3000);
-        ActionsHelper.waitForExistance(getProviderTokenSend(), 30);
-        getProviderTokenSend().click();
-        ActionsHelper.waitForExistance(getProviderOKButton(), 30);
-        getProviderOKButton().click();
+        ActionsHelper.retryClick(getProviderTokenSend(), 50);
+        ActionsHelper.retryClick(getProviderOKButton(), 50);
 
 
     }
 
     public void AddProviderCollege() throws Exception {
         getCreatedProviderName().click();
-        ActionsHelper.waitForExistance(getAddProviderCollege(),30);
-        getAddProviderCollege().click();
-        ActionsHelper.waitForExistance(getAddProviderCollege(),30);
-
-        getAddButtonProviderCollege().click();
+        ActionsHelper.retryClick(getAddProviderCollege(),50);
+        ActionsHelper.retryClick(getAddProviderCollege(),30);
         ActionsHelper.waitForExistance(getNameEnglishButtonProviderCollege(),30);
         getNameEnglishButtonProviderCollege().sendKeys(enfaker.university().name());
         getNameEnglishButtonProviderCollege().sendKeys(arfaker.university().name());
@@ -245,15 +238,15 @@ public class Providers {
         //Create new provider without partners
         addProvider();
         sendProviderToken();
-        //createProviderAccountVerification();
+        getCreatedProvider();
+        AddProviderCollege();
     }
 
     public void createFullProviderWithPartners() throws Exception {
         //Create new provider
         addProvider();
         sendProviderToken();
-        //getCreatedProvider();
-        //createProviderAccountVerification();
+
     }
 
     public static String removeLastCharacter(String str) {

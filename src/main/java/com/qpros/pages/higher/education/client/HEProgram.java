@@ -87,7 +87,7 @@ public class HEProgram {
         ActionsHelper.retryClick(getUploadDiv(), 30);
         ActionsHelper.waitForListExistance(getUploadFilePath(),60);
         System.out.println("Upload size: "+getUploadFilePath().size());
-        getUploadFilePath().get(0).sendKeys("C:/ExamplePhoto.jpg");
+        getUploadFilePath().get(0).sendKeys(System.getProperty("user.dir") + "\\src\\main\\resources\\images\\image.PNG");
         getUploadDescription().sendKeys("MyDescription");
         getUploadButton().click();
         ActionsHelper.waitVisibility(getSubmitButton(), 60);
