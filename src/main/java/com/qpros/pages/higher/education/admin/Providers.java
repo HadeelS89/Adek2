@@ -3,15 +3,13 @@ package com.qpros.pages.higher.education.admin;
 import com.github.javafaker.Faker;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.pages.Data;
-import com.qpros.pages.Locators;
+import com.qpros.pages.higher.education.Locators;
 import com.qpros.utils.Month;
 import lombok.Getter;
 import lombok.Setter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -19,12 +17,16 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Getter
 public class Providers {
+    protected static Logger LOGGER = Logger.getLogger(Providers.class.getName());
 
     public static String randomName = "";
     public static String createdProvider = "";
+    private int maxWait=150;
+    private int minWait=50;
 
     public Providers(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -124,16 +126,18 @@ public class Providers {
     Faker arfaker = new Faker(new Locale("ar"));
 
     public void addProvider() throws InterruptedException {
-        ActionsHelper.waitForListExistance(getProviderTab(), 100);
+        LOGGER.info("waiting for get Provider tab");
+        ActionsHelper.waitForListExistance(getProviderTab(), maxWait);
+        LOGGER.info("success for get Provider tab");
         ActionsHelper.selectElementFromList(getProviderTab(), Data.PROVIDERS);
         Thread.sleep(1000);
-        ActionsHelper.waitForListExistance(getAddProviderButton(), 100);
+        ActionsHelper.waitForListExistance(getAddProviderButton(), maxWait);
         getAddProviderButton().get(0).click();
         randomName = enfaker.university().name();
-        ActionsHelper.waitForExistance(getProviderTypeId(), 30);
+        ActionsHelper.waitForExistance(getProviderTypeId(), minWait);
         getProviderTypeId().sendKeys("Federal");
         getProviderNextButton().click();
-        ActionsHelper.waitForExistance(getNameEnglishField(), 30);
+        ActionsHelper.waitForExistance(getNameEnglishField(), minWait);
         getNameEnglishField().sendKeys(randomName);
         getNameArabicField().sendKeys(arfaker.university().name());
         getReferenceNumberField().sendKeys(enfaker.phoneNumber().subscriberNumber());
@@ -167,67 +171,68 @@ public class Providers {
         getLongitude().sendKeys(enfaker.address().longitude());
         getProviderSaveButton().click();
         getProviderYesButton().click();
-        ActionsHelper.retryClick(getProviderOKButton(), 30);
+        ActionsHelper.retryClick(getProviderOKButton(), maxWait);
 
 
     }
 
     public void sendProviderToken() throws Exception {
-        ActionsHelper.waitForListExistance(getProviderTab(), 150);
+        ActionsHelper.waitForListExistance(getProviderTab(), maxWait);
         ActionsHelper.selectElementFromList(getProviderTab(), "Providers Token");
-        ActionsHelper.retryClick(getProviderTokenSendTokenExistingButton(), 30);
-        ActionsHelper.waitForListExistance(getProviderTokenRegNumberContainer(), 30);
+        ActionsHelper.retryClick(getProviderTokenSendTokenExistingButton(), minWait);
+        ActionsHelper.waitForListExistance(getProviderTokenRegNumberContainer(), minWait);
         getProviderTokenRegNumberContainer().get(0).click();
-        ActionsHelper.waitForExistance(getProviderTokenSearch(), 50);
+        ActionsHelper.waitForExistance(getProviderTokenSearch(), maxWait);
         getProviderTokenSearch().sendKeys(randomName + Keys.ENTER);
         getProviderTokenEmail().sendKeys(String.format("qprosautomation+%s@gmail.com", Data.RANDOM_NAME.substring(16)));
         Thread.sleep(3000);
-        ActionsHelper.retryClick(getProviderTokenSend(), 50);
-        ActionsHelper.retryClick(getProviderOKButton(), 50);
+        ActionsHelper.retryClick(getProviderTokenSend(), minWait);
+        ActionsHelper.retryClick(getProviderOKButton(), minWait);
 
 
     }
 
     public void AddProviderCollege() throws Exception {
-        getCreatedProviderName().click();
-        ActionsHelper.retryClick(getAddProviderCollege(),50);
-        ActionsHelper.retryClick(getAddProviderCollege(),30);
-        ActionsHelper.waitForExistance(getNameEnglishButtonProviderCollege(),30);
-        getNameEnglishButtonProviderCollege().sendKeys(enfaker.university().name());
-        getNameEnglishButtonProviderCollege().sendKeys(arfaker.university().name());
-        getIsActiveButtonProviderCollege().click();
-        getSaveButtonProviderCollege().click();
+//        getCreatedProviderName().click();
+//        ActionsHelper.retryClick(getAddButtonProviderCollege(),minWait);
+//        ActionsHelper.retryClick(getAddProviderCollege(),minWait);
+//        ActionsHelper.retryClick(getAddProviderCollege(),minWait);
+//        ActionsHelper.waitForExistance(getNameEnglishButtonProviderCollege(),minWait);
+//        getNameEnglishButtonProviderCollege().sendKeys(enfaker.university().name());
+//        getNameEnglishButtonProviderCollege().sendKeys(arfaker.university().name());
+//        getIsActiveButtonProviderCollege().click();
+//        getSaveButtonProviderCollege().click();
 
 
-//        ActionsHelper.waitForListExistance(getProviderTab(), 50);
+//        ActionsHelper.waitForListExistance(getProviderTab(), minWait);
 //        ActionsHelper.selectElementFromList(getProviderTab(), Data.PROVIDERS);
-//        ActionsHelper.waitForExistance(getProviderTokenSendTokenExistingButton(), 30);
+//        ActionsHelper.waitForExistance(getProviderTokenSendTokenExistingButton(), minWait);
 //        getProviderTokenSendTokenExistingButton().click();
-//        ActionsHelper.waitForListExistance(getProviderTokenRegNumberContainer(), 30);
+//        ActionsHelper.waitForListExistance(getProviderTokenRegNumberContainer(), minWait);
 //        getProviderTokenRegNumberContainer().get(0).click();
-//        ActionsHelper.waitForExistance(getProviderTokenSearch(), 30);
+//        ActionsHelper.waitForExistance(getProviderTokenSearch(), minWait);
 //        getProviderTokenSearch().sendKeys(randomName + Keys.ENTER);
 //        getProviderTokenEmail().sendKeys(String.format("qprosautomation+%s@gmail.com", randomName.substring(16)));
-//        Thread.sleep(3000);
-//        ActionsHelper.waitForExistance(getProviderTokenSend(), 30);
+//        Thread.sleep(minWait00);
+//        ActionsHelper.waitForExistance(getProviderTokenSend(), minWait);
 //        getProviderTokenSend().click();
-//        ActionsHelper.waitForExistance(getProviderOKButton(), 30);
+//        ActionsHelper.waitForExistance(getProviderOKButton(), minWait);
 //        getProviderOKButton().click();
 
 
     }
 
     public void getCreatedProvider() throws Exception {
-        ActionsHelper.waitForListExistance(getProviderTab(), 50);
+        ActionsHelper.waitForListExistance(getProviderTab(), minWait);
         ActionsHelper.selectElementFromList(getProviderTab(), Data.PROVIDERS);
-        ActionsHelper.waitForListExistance(getProviderDiv(), 50);
+        ActionsHelper.waitForListExistance(getProviderDiv(), minWait);
         System.out.println(getProviderDiv().size());
         setCreatedProviderName(ActionsHelper.getElementFromList(getProviderDiv(), randomName));
     }
 
     public void createProviderAccountVerification() throws Exception {
 
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         ActionsHelper.navigateTo("http://autoserver:8080/externalhelper-email/api/v1/email");
         ActionsHelper.waitForExistance(getEmailUrlBody(), 2);
         ActionsHelper.navigateTo(removeLastCharacter(getEmailUrlBody().getText()));

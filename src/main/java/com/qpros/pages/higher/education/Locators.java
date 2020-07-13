@@ -1,4 +1,4 @@
-package com.qpros.pages;
+package com.qpros.pages.higher.education;
 
 public interface Locators {
     String PROVIDER_TAB = "a[class='air__menuLeft__link']";
@@ -44,7 +44,6 @@ public interface Locators {
     String PROVIDER_COLLEGE_IS_ACTIVE = "IsActive";
     String PROVIDER_COLLEGE_SAVE_BUTTON = "//input[@value='Save']";
     String PROVIDER_ZONE_ID = "ProviderZoneId";
-    String APPLICATION_SEARCH_BOX = "searchbox";
     String APPLICATION_TAB = "a[class='air__menuLeft__link']";
 
 
