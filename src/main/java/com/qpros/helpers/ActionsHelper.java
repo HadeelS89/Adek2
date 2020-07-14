@@ -10,7 +10,6 @@ import org.testng.Assert;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -107,6 +106,7 @@ public class ActionsHelper extends Base {
         return localDate.toString();
     }
 
+
     public static Calendar getTodayDateFromCalender() {
         Date today = new Date();
         Calendar cal = Calendar.getInstance();
@@ -143,7 +143,13 @@ public class ActionsHelper extends Base {
         actions.build().perform();
 
     }
+    public static void click(WebElement element) {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element);
+        actions.click();
+        actions.build().perform();
 
+    }
     public static String getFutureDate(int addedYears, int addedMonths, int addedDays) {
         DateFormat dateFormat;
         if (ReadWriteHelper.ReadData("browser").equalsIgnoreCase("chrome")) {

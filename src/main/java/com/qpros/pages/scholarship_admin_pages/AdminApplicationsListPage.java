@@ -18,7 +18,7 @@ import java.util.*;
 @Getter
 public class AdminApplicationsListPage extends Base {
 
-    int waitTime = 50;
+    int waitTime = 60;
 
     public AdminApplicationsListPage(WebDriver driver) {
         PageFactory.initElements( driver, this );
@@ -109,6 +109,7 @@ public class AdminApplicationsListPage extends Base {
     WebElement ApplicantPresent= null;
     WebElement ScheduleInterview=null;
     WebElement RequestForChange=null;
+    WebElement ApplicantAbsent=null;
     @FindBy(xpath = "//button[starts-with(@class,'confirm btn')]")
     private List<WebElement> confirmationButtons;
     WebElement submitButton = null;
@@ -156,7 +157,7 @@ public class AdminApplicationsListPage extends Base {
 
     public enum ButtonsList {
         Delegate, ApplicationReviewCompleted, ApplicationDocumentsVerified, ApproveAndProceedToAcknowledgement,
-        StartReview, RejectApplication, RequestForChange, ScheduleInterview,ApplicantPresent
+        StartReview, RejectApplication, RequestForChange, ScheduleInterview,ApplicantPresent,ApplicantAbsent
     }
 
     EnumMap<ButtonsList, Integer> buttonTarget = new EnumMap<ButtonsList, Integer>( ButtonsList.class );
@@ -182,27 +183,8 @@ public class AdminApplicationsListPage extends Base {
         buttonTarget.put( ButtonsList.ScheduleInterview, 8);
         buttonTarget.put( ButtonsList.ApplicantPresent, 7 );
         buttonTarget.put( ButtonsList.RejectApplication, 10 );
-        //Get button location value
-//        if (button == ButtonsList.RejectApplication) {
-//            System.out.println("Reject button");
-//            ActionsHelper.waitVisibility(getThirdButton(), waitTime);
-//            getThirdButton().click();
-//            ActionsHelper.waitVisibility(getRejectionComment(), waitTime);
-//            getRejectionComment().sendKeys("RejectionReason123");
-//            ActionsHelper.waitVisibility(getRejectionButton(), waitTime);
-//            getRejectionButton().click();
-//            ActionsHelper.waitForExistance(getConfirmButton(), waitTime);
-//            getConfirmButton().click();
-//            ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
-//            submitButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "Submit" );
-//            ActionsHelper.waitForExistance( submitButton, waitTime );
-//            submitButton.click();
-//            ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
-//            Thread.sleep( 1000 );
-//            ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
-//            okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
-//            ActionsHelper.waitForExistance( okButton, waitTime );
-//            okButton.click();
+        buttonTarget.put( ButtonsList.ApplicantAbsent, 11 );
+
 
         if (buttonTarget.get( button ) == 1) {
             System.out.println( "Button1 " );
@@ -266,7 +248,8 @@ public class AdminApplicationsListPage extends Base {
             ActionsHelper.waitForListExistance( getApplicationButtons(), waitTime );
             appDocumentsVerifiedButton = ActionsHelper.getElementFromList( getApplicationButtons(),
                     "Application Documents Verified" );
-            appDocumentsVerifiedButton.click();
+            ActionsHelper.retryClick(appDocumentsVerifiedButton,30);
+            //appDocumentsVerifiedButton.click();
             //Submit
             ActionsHelper.waitForListExistance( getAreYouSureLabel(), waitTime );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
@@ -308,6 +291,28 @@ public class AdminApplicationsListPage extends Base {
             ApplicantPresent = ActionsHelper.getElementFromList( getApplicationButtons(),
                     "Applicant Present" );
             ApplicantPresent.click();
+            //Submit
+            ActionsHelper.waitForListExistance( getAreYouSureLabel(), waitTime );
+            ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
+            submitButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "Submit" );
+            ActionsHelper.waitForExistance( submitButton, waitTime );
+            submitButton.click();
+            //Confirm
+            ActionsHelper.waitForListExistance( getSucessLabel(), waitTime );
+            Thread.sleep( 1000 );
+            ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
+            okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
+            Thread.sleep( 1000 );
+            ActionsHelper.waitForExistance( okButton, waitTime );
+            okButton.click();
+
+        }
+        else if (buttonTarget.get( button ) == 11) {
+            ActionsHelper.waitForListExistance( getApplicationButtons(), waitTime );
+            ActionsHelper.waitForListExistance( getApplicationButtons(), waitTime );
+            ApplicantAbsent = ActionsHelper.getElementFromList( getApplicationButtons(),
+                    "Applicant Absent" );
+            ApplicantAbsent.click();
             //Submit
             ActionsHelper.waitForListExistance( getAreYouSureLabel(), waitTime );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );

@@ -1,5 +1,6 @@
 package com.qpros.pages.scholarship_admin_pages;
 
+import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 import lombok.Getter;
 import org.openqa.selenium.Keys;
@@ -11,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 @Getter
-public class ScholarshipsPage {
+public class ScholarshipsPage extends Base {
 
 
     public ScholarshipsPage(WebDriver driver) {
@@ -91,11 +92,17 @@ public class ScholarshipsPage {
         getClearFiltersButton().click();
     }
     public void findProgram(String programName) throws InterruptedException {
-        ActionsHelper.waitForListExistance(getScholarshipsTab(), 50);
+        if (isHeadless) {
+            ActionsHelper.navigateTo("https://apps-tst.adek.gov.ae/ScholarshipNew/ScholarshipAdminUI/Scholarship");
+        } else {
+
+
+        ActionsHelper.waitForListExistance(getScholarshipsTab(), 100);
         ActionsHelper.selectElementFromList(getScholarshipsTab(), "Scholarships");
-        ActionsHelper.waitForExistance( getProgramsLabel(), 50 );
+    }
+        ActionsHelper.waitForExistance( getProgramsLabel(), 100 );
         //Thread.sleep( 3000 );
-        ActionsHelper.waitForListExistance( getProgramsList1(), 50 );
+        ActionsHelper.waitForListExistance( getProgramsList1(), 100 );
         getProgramsList1().get( 0 ).click();
         getProgramNameInput().sendKeys(programName);
         getProgramNameInput().sendKeys(Keys.ENTER);
@@ -109,7 +116,7 @@ public class ScholarshipsPage {
         ActionsHelper.waitForExistance(getTimeLine(), 60);
         ActionsHelper.waitForListExistance(getApplicationTabs(), 60);
         System.out.println("check 1 " + getApplicationTabs().size());
-        getApplicationTabs().get(11).click();
+        getApplicationTabs().get(13).click();
         ActionsHelper.waitForListExistance(getAddPayElementBtn(), 60);
         System.out.println("text2 " + getAddPayElementBtn().size());
         getAddPayElementBtn().get(0).click();
@@ -121,7 +128,8 @@ public class ScholarshipsPage {
         ActionsHelper.waitForExistance(getSubmitBtn(), 30);
         getSubmitBtn().click();
         ActionsHelper.waitForListExistance( getSucessLabel(), 60 );
-        //Thread.sleep( 1000 );
+        //
+        // Thread.sleep( 1000 );
     }
 
 
@@ -155,37 +163,41 @@ public class ScholarshipsPage {
 
         ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
         getLblFirstResultCode().click();
-        ActionsHelper.waitForExistance(getTimeLine(), 60);
-        ActionsHelper.waitForListExistance(getApplicationTabs(), 60);
+        ActionsHelper.waitForExistance(getTimeLine(), 100);
+        ActionsHelper.waitForListExistance(getApplicationTabs(), 100);
         System.out.println("check 1 " + getApplicationTabs().size());
         System.out.println("text  " + getApplicationTabs().get(4).getText());
-        getApplicationTabs().get(10).click();
-        ActionsHelper.waitForExistance(getRecordHeader(), 30);
+        getApplicationTabs().get(12).click();
+        ActionsHelper.waitForExistance(getRecordHeader(), 100);
         if (getAddBankDetailsBtn().get(0).isDisplayed()) {
-            ActionsHelper.waitForListExistance(getAddBankDetailsBtn(), 30);
+            ActionsHelper.waitForListExistance(getAddBankDetailsBtn(), 100);
             getAddBankDetailsBtn().get(0).click();
 
         } else {
-            ActionsHelper.waitForListExistance(getFirstBankRecord(), 30);
+            ActionsHelper.waitForListExistance(getFirstBankRecord(), 100);
             System.out.println("record size  " + getFirstBankRecord().size());
             getFirstBankRecord().get(0).click();
             System.out.println("button size  " + getFirstBankRecord().size());
-            ActionsHelper.waitForListExistance(getAddBankDetailsBtn(), 30);
+            ActionsHelper.waitForListExistance(getAddBankDetailsBtn(), 100);
             getAddBankDetailsBtn().get(1).click();
 
         }
-        ActionsHelper.waitForExistance(getEffectiveDate(), 30);
+        ActionsHelper.waitForExistance(getEffectiveDate(), 100);
         getEffectiveDate().sendKeys(ActionsHelper.getFutureDate(1, 0, 0));
         getCountryDDL().sendKeys("United Arab Emirates");
-        getBankName().sendKeys("ABU DHABI ISLAMIC BANK");
-        getAddressLine1().sendKeys("ewrwe");
-        getAddressLine2().sendKeys("erwerferwerf");
-        getBankBranchName().sendKeys("AL AIN SANAIYA");
+        ActionsHelper.waitForExistance(getBankName(), 50);
+        getBankName().click();
+        getBankName().sendKeys("ABU DHABI ISLAMIC BANK"+ Keys.ENTER);
+        ActionsHelper.waitForExistance(getBankBranchName(), 50);
+        getBankBranchName().click();
+        getBankBranchName().sendKeys("AL AIN SANAIYA"+ Keys.ENTER);
+        getAddressLine1().sendKeys("ABU DHABI");
+        getAddressLine2().sendKeys("ABU DHABI Area 2");
         getIABN().sendKeys("AE320500000000028353371");
         getSubmitBankDetailsBtn().click();
-        ActionsHelper.waitForExistance(getYesButton(),30);
+        ActionsHelper.waitForExistance(getYesButton(),100);
         getYesButton().click();
-        ActionsHelper.waitForExistance(getSuccess(), 60);
+        ActionsHelper.waitForExistance(getSuccess(), 100);
     }
 }
 

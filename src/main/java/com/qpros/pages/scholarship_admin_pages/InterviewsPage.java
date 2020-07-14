@@ -1,12 +1,10 @@
 package com.qpros.pages.scholarship_admin_pages;
 
+import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
 import lombok.Getter;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -14,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class InterviewsPage {
+public class InterviewsPage extends Base {
 
     public static String randomName = "";
     public static String createdProgram = "";
@@ -81,36 +79,37 @@ public class InterviewsPage {
 //    @FindBy(xpath = "//h2[contains(.,'Success')]")
 //    private WebElement successScore;
 
-
-
     public void addNewInterview(String programTitle) throws InterruptedException {
-        ActionsHelper.waitForListExistance(getInterviewsTab(), 50);
-        ActionsHelper.selectElementFromList(getInterviewsTab(), "Interviews");
-// System.out.println("Divs size: "+getProgramsDiv().size());
-        ActionsHelper.waitForListExistance(getAddInterviewButton(), 30);
-        getAddInterviewButton().get(0).click();
+        if (isHeadless) {
+            ActionsHelper.navigateTo("https://apps-tst.adek.gov.ae/ScholarshipNew/ScholarshipAdminUI/Interview");
+        } else {
+            ActionsHelper.waitForListExistance(getInterviewsTab(), 50);
+            ActionsHelper.selectElementFromList(getInterviewsTab(), "Interviews");
+        }
+        // ActionsHelper.waitForListExistance(getAddInterviewButton(), 50);
+        ActionsHelper.retryClick(getAddInterviewButton().get(0),30);
         Thread.sleep(2000);
-        ActionsHelper.waitForExistance(getProgramDDL(), 50);
-        getProgramDDL().sendKeys(programTitle);
-        getProvideVenue().sendKeys("room 123");
-        getDescriptionEnglish().sendKeys("1234");
+
+        // ActionsHelper.waitForExistance(getProgramDDL(), 50);
+        ActionsHelper.actionsClick(getProgramDDL(), programTitle);
+        ActionsHelper.actionsClick(getProvideVenue(), "MeetingRoom B ");
+        ActionsHelper.actionsClick(getDescriptionEnglish(), "1234");
         getDescriptionArabic().sendKeys("3444");
         getDate().sendKeys(ActionsHelper.getFutureDate(0, 2, 3));
-        ActionsHelper.actionsClick(getStartTime(), ActionsHelper.getFutureTime( 2, 5 ));
-        ActionsHelper.actionsClick(getEndTime(), ActionsHelper.getFutureTime( 3, 5 ));
+        ActionsHelper.actionsClick(getStartTime(), ActionsHelper.getFutureTime(2, 5));
+        ActionsHelper.actionsClick(getEndTime(), ActionsHelper.getFutureTime(3, 5));
         getCapacity().sendKeys("1");
         getSubmitInterView().click();
         ActionsHelper.waitForExistance(getSuccess(), 20);
     }
 
-
     //for search box
     public void searchInterview(String programName) throws InterruptedException {
-        ActionsHelper.waitForListExistance(getInterviewsTab(), 50);
+        ActionsHelper.waitForListExistance(getInterviewsTab(), 100);
         ActionsHelper.selectElementFromList(getInterviewsTab(), "Interviews");
         ActionsHelper.waitForExistance(getInterviewSearchBox(), 90);
         getInterviewSearchBox().sendKeys(programName);
-        ActionsHelper.waitForExistance(getSearchBtn(), 30);
+        ActionsHelper.waitForExistance(getSearchBtn(), 100);
         getSearchBtn().click();
         ActionsHelper.waitForListExistance(getFirstRecord(), 100);
 
@@ -133,11 +132,11 @@ public class InterviewsPage {
         getGoodBtn().get(3).click();
         getPoorBtn().get(4).click();
         getGoodBtn().get(5).click();
-        ActionsHelper.waitForExistance(getInterviewComment(), 30);
+        ActionsHelper.waitForExistance(getInterviewComment(), 50);
         getInterviewComment().sendKeys("121322");
         getCalculateScore().click();
         getBtnSubmit().click();
-        ActionsHelper.waitForExistance(getScoreSuccessText(), 20);
+        ActionsHelper.waitForExistance(getScoreSuccessText(), 50);
 
     }
 }

@@ -82,6 +82,8 @@ public class MyApplicationsPage extends Base {
     private List<WebElement> withdraw;
     @FindBy(xpath = "//button[contains(.,'confirm')]")
     private WebElement confirmWithdraw;
+    @FindBy(xpath = "//div[@id='toast-container']/div/div")
+    private WebElement confirmWithdrawMessage;
     @FindBy(xpath = "//span[contains(.,'Decline')]")
     private WebElement declineAcc;
     @FindBy(xpath = "//div[@id='toast-container']/div/div[2]")
@@ -91,10 +93,20 @@ public class MyApplicationsPage extends Base {
     @FindBy(xpath = "//span[contains(.,'Accept')]")
     private WebElement acceptAcc;
 
+public void navigateToApplication(){
 
-    public void acknowledgeApplicantion(String programTitle) throws Exception {
+    if (isHeadless) {
+        ActionsHelper.navigateTo("https://apps-tst.adek.gov.ae/ScholarshipNew/Client/scholarship/dashboard/dashboard-tile");
+    } else {
         ActionsHelper.waitForExistance(getMyApplication(), 100);
         getMyApplication().click();
+
+    }
+
+
+}
+    public void acknowledgeApplicantion(String programTitle) throws Exception {
+        navigateToApplication();
         ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
         System.out.println("Program Size: " + getApplicationDiv().size());
         System.out.println("Title Size: " + getApplicationTilte().size());
@@ -117,8 +129,7 @@ public class MyApplicationsPage extends Base {
 
     // this method to decline application by leaving the message filed empty
     public void declineApplicationEmpty(String programTitle) throws Exception {
-        ActionsHelper.waitForExistance(getMyApplication(), 100);
-        getMyApplication().click();
+        navigateToApplication();
         ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
         System.out.println("Program Size: " + getApplicationDiv().size());
         System.out.println("Title Size: " + getApplicationTilte().size());
@@ -145,8 +156,7 @@ public class MyApplicationsPage extends Base {
 
     // this method to decline application by entering valid text
     public void declineApplicationWithMessage(String programTitle) throws Exception {
-        ActionsHelper.waitForExistance(getMyApplication(), 100);
-        getMyApplication().click();
+        navigateToApplication();
         ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
         System.out.println("Program Size: " + getApplicationDiv().size());
         System.out.println("Title Size: " + getApplicationTilte().size());
@@ -176,8 +186,7 @@ public class MyApplicationsPage extends Base {
 
     // this method to accept application
     public void acceptApplication(String programTitle) throws Exception {
-        ActionsHelper.waitForExistance(getMyApplication(), 100);
-        getMyApplication().click();
+        navigateToApplication();
         ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
         System.out.println("Program Size: " + getApplicationDiv().size());
         System.out.println("Title Size: " + getApplicationTilte().size());
@@ -204,8 +213,7 @@ public class MyApplicationsPage extends Base {
 
     // this method to accept application
     public void withdrawApplication(String programTitle) throws Exception {
-        ActionsHelper.waitForExistance(getMyApplication(), 100);
-        getMyApplication().click();
+        navigateToApplication();
         ActionsHelper.waitForListExistance(getApplicationDiv(), 100);
         System.out.println("Program Size: " + getApplicationDiv().size());
         System.out.println("Title Size: " + getApplicationTilte().size());
@@ -222,11 +230,8 @@ public class MyApplicationsPage extends Base {
                 getWithdraw().get(i).click();
                 ActionsHelper.waitForExistance(getConfirmWithdraw(), 60);
                 getConfirmWithdraw().click();
-                ActionsHelper.waitForExistance(getMyApplication(), 100);
-                getMyApplication().click();
-                ActionsHelper.waitForListExistance(getWithdraw(), 100);
-                getWithdraw().get(i).isEnabled();
-                withdrawResults = false;
+                ActionsHelper.waitForExistance(getConfirmWithdrawMessage(),60);
+
                 break;
             }
         }
@@ -234,8 +239,7 @@ public class MyApplicationsPage extends Base {
 
     // to confirm/book interview for applicant
     public void confirmInterview(String programTitle) throws Exception {
-        ActionsHelper.waitVisibility(getMyApplication(), 60);
-        getMyApplication().click();
+        navigateToApplication();
         ActionsHelper.waitForListExistance(getApplicationDiv(), 90);
         System.out.println("Program Size: " + getApplicationDiv().size());
         System.out.println("Title Size: " + getApplicationTilte().size());
@@ -306,8 +310,7 @@ public class MyApplicationsPage extends Base {
 
     public void applicationSubmitionAfterChanges(String programTitle) throws Exception {
         System.out.println("Current Date: " + ActionsHelper.getTodayDate());
-        ActionsHelper.waitVisibility(getMyApplication(), 15);
-        getMyApplication().click();
+        navigateToApplication();
         Thread.sleep(10000);
         System.out.println("Program Size: " + getApplicationDiv().size());
         System.out.println("Title Size: " + getApplicationTilte().size());

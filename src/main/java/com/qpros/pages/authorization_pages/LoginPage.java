@@ -65,7 +65,7 @@ public class LoginPage extends Base {
         getPassword().sendKeys( password );
         ActionsHelper.waitVisibility( getLoginButton(), 10 );
         getLoginButton().click();
-        ActionsHelper.waitVisibility( getAddressTab(), 50 );
+        //ActionsHelper.waitVisibility( getAddressTab(), 50 );
 
     }
 

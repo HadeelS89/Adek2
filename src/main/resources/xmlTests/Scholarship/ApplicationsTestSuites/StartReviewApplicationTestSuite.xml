@@ -12,7 +12,7 @@
 
     <test name="Start review application Test">
         <classes>
-            <class name="com.qpros.scholarship.admin.applications.StartReviewApplicationTest"></class>
+            <class name="com.qpros.scholarship.admin.applicationsScenarios.StartReviewApplicationTest"></class>
         </classes>
     </test>
 </suite>
