@@ -79,7 +79,7 @@ public class InterviewsPage extends Base {
 //    @FindBy(xpath = "//h2[contains(.,'Success')]")
 //    private WebElement successScore;
 
-    public void addNewInterview(String programTitle) throws InterruptedException {
+    public void addNewInterview(String programTitle)  {
         if (isHeadless) {
             ActionsHelper.navigateTo("https://apps-tst.adek.gov.ae/ScholarshipNew/ScholarshipAdminUI/Interview");
         } else {
@@ -88,8 +88,11 @@ public class InterviewsPage extends Base {
         }
         // ActionsHelper.waitForListExistance(getAddInterviewButton(), 50);
         ActionsHelper.retryClick(getAddInterviewButton().get(0),30);
-        Thread.sleep(2000);
+        try {
+            Thread.sleep(2000);
+        }catch (Exception e){
 
+        }
         // ActionsHelper.waitForExistance(getProgramDDL(), 50);
         ActionsHelper.actionsClick(getProgramDDL(), programTitle);
         ActionsHelper.actionsClick(getProvideVenue(), "MeetingRoom B ");
@@ -105,8 +108,13 @@ public class InterviewsPage extends Base {
 
     //for search box
     public void searchInterview(String programName) throws InterruptedException {
-        ActionsHelper.waitForListExistance(getInterviewsTab(), 100);
-        ActionsHelper.selectElementFromList(getInterviewsTab(), "Interviews");
+        if (isHeadless) {
+            ActionsHelper.navigateTo("https://apps-tst.adek.gov.ae/ScholarshipNew/ScholarshipAdminUI/Interview");
+        } else {
+
+            ActionsHelper.waitForListExistance(getInterviewsTab(), 100);
+            ActionsHelper.selectElementFromList(getInterviewsTab(), "Interviews");
+        }
         ActionsHelper.waitForExistance(getInterviewSearchBox(), 90);
         getInterviewSearchBox().sendKeys(programName);
         ActionsHelper.waitForExistance(getSearchBtn(), 100);
@@ -116,6 +124,7 @@ public class InterviewsPage extends Base {
     }
 
     public void addScore(WebDriver driver) throws InterruptedException {
+
         ActionsHelper.waitForListExistance(getFirstRecord(), 100);
         System.out.println(getFirstRecord().size());
         getFirstRecord().get(0).click();
@@ -135,7 +144,8 @@ public class InterviewsPage extends Base {
         ActionsHelper.waitForExistance(getInterviewComment(), 50);
         getInterviewComment().sendKeys("121322");
         getCalculateScore().click();
-        getBtnSubmit().click();
+        ActionsHelper.retryClick(getBtnSubmit(),50);
+        //getBtnSubmit().click();
         ActionsHelper.waitForExistance(getScoreSuccessText(), 50);
 
     }

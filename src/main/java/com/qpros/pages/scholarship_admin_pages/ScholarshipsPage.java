@@ -43,6 +43,8 @@ public class ScholarshipsPage extends Base {
     private WebElement timeLine;
     @FindBy(css = "input[value='Add Pay Element']")
     private List<WebElement> addPayElementBtn;
+    @FindBy(css = ".sorting_disabled > condition-scholarship-recruter-afterassignadviser-permission > .btn")
+    private WebElement addPayElementBtnn;
     @FindBy(id = "EffectiveDate")
     private WebElement effectiveDate;
     @FindBy(id = "select2-ErpPayrollElementId-container")
@@ -57,6 +59,8 @@ public class ScholarshipsPage extends Base {
     private WebElement btnOK;
     @FindBy(css = "input[value='Add']")
     private List<WebElement> addBankDetailsBtn;
+    @FindBy(css = ".dtr-title .btn")
+    private WebElement addBankDetailsBtnn;
     @FindBy(css = "td[class='sorting_1']")
     private List<WebElement> firstBankRecord;
     @FindBy(xpath = "//th[contains(.,'Bank Branch')]")
@@ -101,7 +105,7 @@ public class ScholarshipsPage extends Base {
         ActionsHelper.selectElementFromList(getScholarshipsTab(), "Scholarships");
     }
         ActionsHelper.waitForExistance( getProgramsLabel(), 100 );
-        //Thread.sleep( 3000 );
+        Thread.sleep( 3000 );
         ActionsHelper.waitForListExistance( getProgramsList1(), 100 );
         getProgramsList1().get( 0 ).click();
         getProgramNameInput().sendKeys(programName);
@@ -117,9 +121,11 @@ public class ScholarshipsPage extends Base {
         ActionsHelper.waitForListExistance(getApplicationTabs(), 60);
         System.out.println("check 1 " + getApplicationTabs().size());
         getApplicationTabs().get(13).click();
+        System.out.println("pay element tab " + getApplicationTabs().get(13).getText());
         ActionsHelper.waitForListExistance(getAddPayElementBtn(), 60);
-        System.out.println("text2 " + getAddPayElementBtn().size());
-        getAddPayElementBtn().get(0).click();
+        System.out.println("text2 " + getAddPayElementBtnn().getTagName());
+        driver.getPageSource();
+        ActionsHelper.click(getAddPayElementBtnn());
         ActionsHelper.waitForExistance(getEffectiveDate(), 60);
         getEffectiveDate().sendKeys(ActionsHelper.getFutureDate(2, 0, 1));//error when add days =10
         getPayrollElement().click();
@@ -166,7 +172,7 @@ public class ScholarshipsPage extends Base {
         ActionsHelper.waitForExistance(getTimeLine(), 100);
         ActionsHelper.waitForListExistance(getApplicationTabs(), 100);
         System.out.println("check 1 " + getApplicationTabs().size());
-        System.out.println("text  " + getApplicationTabs().get(4).getText());
+        System.out.println("BankDetails  " + getApplicationTabs().get(4).getText());
         getApplicationTabs().get(12).click();
         ActionsHelper.waitForExistance(getRecordHeader(), 100);
         if (getAddBankDetailsBtn().get(0).isDisplayed()) {
@@ -178,8 +184,11 @@ public class ScholarshipsPage extends Base {
             System.out.println("record size  " + getFirstBankRecord().size());
             getFirstBankRecord().get(0).click();
             System.out.println("button size  " + getFirstBankRecord().size());
-            ActionsHelper.waitForListExistance(getAddBankDetailsBtn(), 100);
-            getAddBankDetailsBtn().get(1).click();
+//            ActionsHelper.waitForListExistance(getAddBankDetailsBtn(), 100);
+//            getAddBankDetailsBtn().get(1).click();
+            ActionsHelper.waitForExistance(getAddBankDetailsBtnn(), 100);
+            getAddBankDetailsBtnn().click();
+
 
         }
         ActionsHelper.waitForExistance(getEffectiveDate(), 100);

@@ -213,7 +213,7 @@ public class AdminApplicationsListPage extends Base {
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
             okButton = ActionsHelper.getElementFromList( getConfirmationButtons(), "OK" );
             ActionsHelper.waitForExistance( okButton, waitTime );
-            okButton.click();
+            ActionsHelper.retryClick(okButton,50);
         } else if (buttonTarget.get( button ) == 3) {
             System.out.println( "Button3" );
             ActionsHelper.waitVisibility( getThirdButton(), waitTime );
@@ -334,7 +334,7 @@ public class AdminApplicationsListPage extends Base {
             ActionsHelper.waitForListExistance( getApplicationButtons(), waitTime );
             ScheduleInterview = ActionsHelper.getElementFromList( getApplicationButtons(),
                     "Schedule Interview" );
-            ScheduleInterview.click();
+            ActionsHelper.retryClick(ScheduleInterview,50);
             //Submit
             ActionsHelper.waitForListExistance( getAreYouSureLabel(), waitTime );
             ActionsHelper.waitForListExistance( getConfirmationButtons(), waitTime );
@@ -355,7 +355,7 @@ public class AdminApplicationsListPage extends Base {
             ActionsHelper.waitForListExistance( getApplicationButtons(), waitTime );
             RequestForChange = ActionsHelper.getElementFromList( getApplicationButtons(),
                     "Request For Change" );
-            RequestForChange.click();
+            ActionsHelper.retryClick(RequestForChange,50);
             //add comment
             ActionsHelper.waitVisibility( getRejectionComment(), waitTime );
             getRejectionComment().sendKeys( "RejectionReason123" );
@@ -380,7 +380,7 @@ public class AdminApplicationsListPage extends Base {
             ActionsHelper.waitForListExistance( getApplicationButtons(), waitTime );
             RequestForChange = ActionsHelper.getElementFromList( getApplicationButtons(),
                     "Reject Application" );
-            RequestForChange.click();
+            ActionsHelper.retryClick(RequestForChange,50);
             //add comment
             ActionsHelper.waitVisibility( getRejectionComment(), waitTime );
             getRejectionComment().sendKeys( "RejectionReason123" );

@@ -41,7 +41,7 @@ public class ScholarshipsTest extends Base {
                 "username"),
                 ReadWriteHelper.readCredentialsXMLFile("interviewer1", "password"));
         scholarshipsPage = new ScholarshipsPage(driver);
-        scholarshipsPage.findProgram("Dev07");
+        scholarshipsPage.findProgram("Hadeel Program");
         scholarshipsPage.addBankDetails();
         Assert.assertTrue(scholarshipsPage.getSuccess().isDisplayed());
        // scholarshipsPage.getBtnOK().click();

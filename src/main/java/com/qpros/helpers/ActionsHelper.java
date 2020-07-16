@@ -285,7 +285,7 @@ public class ActionsHelper extends Base {
         return dateFormat.format(currentDatePlus);
     }
 
-    public static void retryClick(WebElement myelement, int maxSeconds) throws InterruptedException {
+    public static void retryClick(WebElement myelement, int maxSeconds)  {
         int i = 0;
         boolean result = false;
         while (i <= maxSeconds){
@@ -297,7 +297,11 @@ public class ActionsHelper extends Base {
                 result = false;
             }
             i++;
-            Thread.sleep(1000);
+            try {
+                Thread.sleep(1000);
+            }catch (Exception e){
+
+            }
         }
         if(!result){
             Assert.fail("Failed to click element: " + myelement.toString());

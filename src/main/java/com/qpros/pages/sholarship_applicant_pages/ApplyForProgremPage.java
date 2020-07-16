@@ -144,7 +144,7 @@ public class ApplyForProgremPage extends Base {
         ActionsHelper.waitForExistance(getStep4GuardianName(), 30);
         ActionsHelper.waitForExistance(getSubmitApplication(), 30);
         getSubmitApplication().click();
-        ActionsHelper.waitForExistance(getConfirm(), 30);
+        ActionsHelper.waitForExistance(getConfirm(), 50);
         getConfirm().click();
         ActionsHelper.waitForExistance(getStep4Email(), 10);
         ActionsHelper.waitForExistance(getStep4Phone(), 10);
