@@ -60,12 +60,12 @@ public class LoginPage extends Base {
         driver.navigate().to( ReadWriteHelper.ReadData( url ) );
         //securedAccess();
 
-        ActionsHelper.waitVisibility( getEmail(), 50 );
+        ActionsHelper.waitVisibility( getEmail(), 200 );
         getEmail().sendKeys( email );
         getPassword().sendKeys( password );
-        ActionsHelper.waitVisibility( getLoginButton(), 10 );
+        ActionsHelper.waitVisibility( getLoginButton(), 100 );
         getLoginButton().click();
-        ActionsHelper.waitVisibility( getAddressTab(), 50 );
+        //ActionsHelper.waitVisibility( getAddressTab(), 50 );
 
     }
 

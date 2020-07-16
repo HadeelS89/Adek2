@@ -3,9 +3,10 @@ package com.qpros.pages.higher.education.admin;
 import com.github.javafaker.Faker;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.pages.Data;
-import com.qpros.pages.Locators;
+import com.qpros.pages.higher.education.Locators;
 import com.qpros.utils.Month;
 import lombok.Getter;
+import lombok.Setter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,16 +14,19 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.Calendar;
-import java.util.Date;
+import java.util.Locale;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Getter
 public class Providers {
+    protected static Logger LOGGER = Logger.getLogger(Providers.class.getName());
 
     public static String randomName = "";
     public static String createdProvider = "";
-    WebElement createdProviderName = null;
+    private int maxWait=150;
+    private int minWait=50;
 
     public Providers(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -102,29 +106,47 @@ public class Providers {
     private WebElement ddlPageSize;
     @FindBy(css = Locators.EMAIL_URL_BODY)
     private WebElement emailUrlBody;
+    @FindBy(linkText = Locators.PROVIDER_COLLEGE_TAB)
+    private WebElement addProviderCollege;
+    @FindBy(css = Locators.PROVIDER_COLLEGE_ADD)
+    private WebElement addButtonProviderCollege;
+    @FindBy(css = Locators.PROVIDER_COLLEGE_NAME_ENGLISH)
+    private WebElement nameEnglishButtonProviderCollege;
+    @FindBy(css = Locators.PROVIDER_COLLEGE_NAME_ARABIC)
+    private WebElement nameArabicButtonProviderCollege;
+    @FindBy(id = Locators.PROVIDER_COLLEGE_IS_ACTIVE)
+    private WebElement isActiveButtonProviderCollege;
+    @FindBy(xpath = Locators.PROVIDER_COLLEGE_SAVE_BUTTON)
+    private WebElement saveButtonProviderCollege;
+    @Getter
+    @Setter
+    WebElement createdProviderName;
 
-    Faker faker = new Faker();
+    Faker enfaker = new Faker(new Locale("en"));
+    Faker arfaker = new Faker(new Locale("ar"));
 
-    public void addProvider()  {
-        ActionsHelper.waitForListExistance(getProviderTab(), 50);
+    public void addProvider() throws InterruptedException {
+        LOGGER.info("waiting for get Provider tab");
+        ActionsHelper.waitForListExistance(getProviderTab(), maxWait);
+        LOGGER.info("success for get Provider tab");
         ActionsHelper.selectElementFromList(getProviderTab(), Data.PROVIDERS);
-        ActionsHelper.waitForListExistance(getAddProviderButton(), 50);
+        Thread.sleep(1000);
+        ActionsHelper.waitForListExistance(getAddProviderButton(), maxWait);
         getAddProviderButton().get(0).click();
-        randomName = Data.RANDOM_NAME;
-        ActionsHelper.waitForExistance(getProviderTypeId(), 30);
+        randomName = enfaker.university().name();
+        ActionsHelper.waitForExistance(getProviderTypeId(), minWait);
         getProviderTypeId().sendKeys("Federal");
         getProviderNextButton().click();
-        //ActionsHelper.selectElementFromList(getProviderTypeIdList(),"Federal");
-        ActionsHelper.waitForExistance(getNameEnglishField(), 30);
+        ActionsHelper.waitForExistance(getNameEnglishField(), minWait);
         getNameEnglishField().sendKeys(randomName);
-        getNameArabicField().sendKeys(randomName);
-        getReferenceNumberField().sendKeys(randomName);
+        getNameArabicField().sendKeys(arfaker.university().name());
+        getReferenceNumberField().sendKeys(enfaker.phoneNumber().subscriberNumber());
         getProviderCategoryIdList().get(0).sendKeys("University");
         getProviderUnitIdList().get(0).sendKeys("College");
-        getWebsite().sendKeys(faker.company().url());
+        getWebsite().sendKeys(enfaker.company().url());
         getProviderStatusId().get(0).sendKeys("Active");
         getAuthorizationReference().sendKeys(randomName);
-        Calendar cal= ActionsHelper.getTodayDateFromCalender();
+        Calendar cal = ActionsHelper.getTodayDateFromCalender();
         getIssuanceOn().click();
         try {
             ActionsHelper.HandleKendoDateTimePicker(
@@ -138,45 +160,79 @@ public class Providers {
         try {
             ActionsHelper.HandleKendoDateTimePicker(String.valueOf(cal.get(Calendar.DAY_OF_MONTH)),
                     Month.get(cal.get(Calendar.MONTH)).name(),
-                    String.valueOf(cal.get(Calendar.YEAR)+1));
+                    String.valueOf(cal.get(Calendar.YEAR) + 1));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         getProviderZoneId().sendKeys("Abu Dhabi");
-        getAddressEnglish().sendKeys(randomName);
-        getAddressArabic().sendKeys(randomName);
-        getLatitude().sendKeys(faker.address().latitude());
-        getLongitude().sendKeys(faker.address().longitude());
+        getAddressEnglish().sendKeys(enfaker.address().fullAddress());
+        getAddressArabic().sendKeys(arfaker.address().fullAddress());
+        getLatitude().sendKeys(enfaker.address().latitude());
+        getLongitude().sendKeys(enfaker.address().longitude());
         getProviderSaveButton().click();
         getProviderYesButton().click();
-        ActionsHelper.waitForExistance(getProviderOKButton(), 30);
-        getProviderOKButton().click();
+        ActionsHelper.retryClick(getProviderOKButton(), maxWait);
 
 
     }
 
     public void sendProviderToken() throws Exception {
-        ActionsHelper.waitForListExistance(getProviderTab(), 50);
+        ActionsHelper.waitForListExistance(getProviderTab(), maxWait);
         ActionsHelper.selectElementFromList(getProviderTab(), "Providers Token");
-        ActionsHelper.waitForExistance(getProviderTokenSendTokenExistingButton(), 30);
-        getProviderTokenSendTokenExistingButton().click();
-        ActionsHelper.waitForListExistance(getProviderTokenRegNumberContainer(), 30);
+        ActionsHelper.retryClick(getProviderTokenSendTokenExistingButton(), minWait);
+        ActionsHelper.waitForListExistance(getProviderTokenRegNumberContainer(), minWait);
         getProviderTokenRegNumberContainer().get(0).click();
-        ActionsHelper.waitForExistance(getProviderTokenSearch(), 30);
+        ActionsHelper.waitForExistance(getProviderTokenSearch(), maxWait);
         getProviderTokenSearch().sendKeys(randomName + Keys.ENTER);
-        getProviderTokenEmail().sendKeys(String.format("qprosautomation+%s@gmail.com", randomName.substring(16)));
+        getProviderTokenEmail().sendKeys(String.format("qprosautomation+%s@gmail.com", Data.RANDOM_NAME.substring(16)));
         Thread.sleep(3000);
-        ActionsHelper.waitForExistance(getProviderTokenSend(), 30);
-        getProviderTokenSend().click();
-        ActionsHelper.waitForExistance(getProviderOKButton(), 30);
-        getProviderOKButton().click();
+        ActionsHelper.retryClick(getProviderTokenSend(), minWait);
+        ActionsHelper.retryClick(getProviderOKButton(), minWait);
 
 
     }
 
+    public void AddProviderCollege() throws Exception {
+//        getCreatedProviderName().click();
+//        ActionsHelper.retryClick(getAddButtonProviderCollege(),minWait);
+//        ActionsHelper.retryClick(getAddProviderCollege(),minWait);
+//        ActionsHelper.retryClick(getAddProviderCollege(),minWait);
+//        ActionsHelper.waitForExistance(getNameEnglishButtonProviderCollege(),minWait);
+//        getNameEnglishButtonProviderCollege().sendKeys(enfaker.university().name());
+//        getNameEnglishButtonProviderCollege().sendKeys(arfaker.university().name());
+//        getIsActiveButtonProviderCollege().click();
+//        getSaveButtonProviderCollege().click();
+
+
+//        ActionsHelper.waitForListExistance(getProviderTab(), minWait);
+//        ActionsHelper.selectElementFromList(getProviderTab(), Data.PROVIDERS);
+//        ActionsHelper.waitForExistance(getProviderTokenSendTokenExistingButton(), minWait);
+//        getProviderTokenSendTokenExistingButton().click();
+//        ActionsHelper.waitForListExistance(getProviderTokenRegNumberContainer(), minWait);
+//        getProviderTokenRegNumberContainer().get(0).click();
+//        ActionsHelper.waitForExistance(getProviderTokenSearch(), minWait);
+//        getProviderTokenSearch().sendKeys(randomName + Keys.ENTER);
+//        getProviderTokenEmail().sendKeys(String.format("qprosautomation+%s@gmail.com", randomName.substring(16)));
+//        Thread.sleep(minWait00);
+//        ActionsHelper.waitForExistance(getProviderTokenSend(), minWait);
+//        getProviderTokenSend().click();
+//        ActionsHelper.waitForExistance(getProviderOKButton(), minWait);
+//        getProviderOKButton().click();
+
+
+    }
+
+    public void getCreatedProvider() throws Exception {
+        ActionsHelper.waitForListExistance(getProviderTab(), minWait);
+        ActionsHelper.selectElementFromList(getProviderTab(), Data.PROVIDERS);
+        ActionsHelper.waitForListExistance(getProviderDiv(), minWait);
+        System.out.println(getProviderDiv().size());
+        setCreatedProviderName(ActionsHelper.getElementFromList(getProviderDiv(), randomName));
+    }
+
     public void createProviderAccountVerification() throws Exception {
 
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         ActionsHelper.navigateTo("http://autoserver:8080/externalhelper-email/api/v1/email");
         ActionsHelper.waitForExistance(getEmailUrlBody(), 2);
         ActionsHelper.navigateTo(removeLastCharacter(getEmailUrlBody().getText()));
@@ -187,14 +243,15 @@ public class Providers {
         //Create new provider without partners
         addProvider();
         sendProviderToken();
-        //createProviderAccountVerification();
+        getCreatedProvider();
+        AddProviderCollege();
     }
 
     public void createFullProviderWithPartners() throws Exception {
         //Create new provider
         addProvider();
         sendProviderToken();
-        //createProviderAccountVerification();
+
     }
 
     public static String removeLastCharacter(String str) {

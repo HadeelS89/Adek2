@@ -1,5 +1,4 @@
 package com.qpros.pages.higher.education.client;
-
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
 import lombok.Getter;
@@ -7,10 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import javax.swing.*;
 import java.util.List;
-
 @Getter
 public class HEProgram {
     public HEProgram(WebDriver driver) {
@@ -42,7 +39,6 @@ public class HEProgram {
     private WebElement degreeLevelArrow; //Test123
     @FindBy(css = ".btn:nth-child(2)")
     private WebElement nextButton; //Test123
-
     @FindBy(css = ".adek-upload-div")
     private WebElement uploadDiv; //Test123
     @FindBy(css = "input[type='file']")
@@ -64,9 +60,7 @@ public class HEProgram {
     private WebElement expiryDate; //GetText
     @FindBy(css = ".fa-remove")
     private WebElement closeFeedback; //GetText
-
-//css=.swal2-confirm
-
+    //css=.swal2-confirm
     //TODO: Name arabic and English must be unique
     //css=.btn:nth-child(2)
     public void applyForProgram() throws Exception {
@@ -89,13 +83,11 @@ public class HEProgram {
         getDegreeLevelArrow().click();
         getFirstOption().click();
         getNextButton().click();
-
         ActionsHelper.waitToBeClickable(getUploadDiv(),60);
-
         ActionsHelper.retryClick(getUploadDiv(), 30);
         ActionsHelper.waitForListExistance(getUploadFilePath(),60);
         System.out.println("Upload size: "+getUploadFilePath().size());
-        getUploadFilePath().get(0).sendKeys("C:/ExamplePhoto.jpg");
+        getUploadFilePath().get(0).sendKeys(System.getProperty("user.dir") + "\\src\\main\\resources\\images\\image.PNG");
         getUploadDescription().sendKeys("MyDescription");
         getUploadButton().click();
         ActionsHelper.waitVisibility(getSubmitButton(), 60);
