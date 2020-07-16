@@ -196,21 +196,38 @@ public class ApplyForProgremPage extends Base {
     }
 
 
-    private void getProgram(String value) {
-        HashMap<String, WebElement> map = new HashMap<>(  );
+    private void getProgramOld(String value) {
+        HashMap<String, WebElement> map = new HashMap<>();
+        List<WebElement> myTestProgram = getProgramDiv();
+        for (int i = 0; i < myTestProgram.size(); i++) {
+            if (getProgramButton().get(i).getText().equalsIgnoreCase("apply")) {
 
-        for (int i = 0; i < getProgramDiv().size(); i++) {
-            if (getProgramButton().get( i ).getText().equalsIgnoreCase( "apply" )) {
-
-                map.put( getProgramDiv().get( i ).getText().substring( 0, 21 ), getProgramButton().get( i ) );
-                System.out.print( "Saved title: " + map.keySet() );
-                System.out.println( "------ Saved button: " + map.get( getProgramDiv().get( i ).getText() ) );
-                if (getProgramTilte().get( i ).getText().equalsIgnoreCase( value )) {
-                    getProgramButton().get( i ).click();
+                map.put(getProgramDiv().get(i).getText().substring(0, 21), getProgramButton().get(i));
+                System.out.print("Saved title: " + map.keySet());
+                System.out.println("------ Saved button: " + map.get(myTestProgram.get(i).getText()));
+                if (getProgramTilte().get(i).getText().equalsIgnoreCase(value)) {
+                    getProgramButton().get(i).click();
                     break;
                 }
             }
         }
+    }
+
+    private void getProgram(String value) throws InterruptedException {
+        int i = 0;
+        Thread.sleep(20000);
+        for (WebElement program :getProgramDiv()) {
+            if (getProgramTilte().get(i).getText().equalsIgnoreCase(value)){
+                getProgramButton().get(i).click();
+            }
+            i++;
+        }
+
+        //For each program in getProgramDiv{
+        /*
+        For each program in getProgramDiv
+        If program.getText().isEquaks
+         */
         //System.out.println( "Map size: " + map.size() );
 
         //WebElement element = map.get( value );
