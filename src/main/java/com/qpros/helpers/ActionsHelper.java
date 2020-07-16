@@ -287,7 +287,9 @@ public class ActionsHelper extends Base {
         Date currentDatePlus = c.getTime();
         return dateFormat.format(currentDatePlus);
     }
-
+    public static void retryClick(WebElement myelement) throws InterruptedException {
+        retryClick(myelement,10); //Default value for retryClicker
+    }
     public static void retryClick(WebElement myelement, int maxSeconds) throws InterruptedException {
         int i = 0;
         boolean result = false;
