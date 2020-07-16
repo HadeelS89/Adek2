@@ -144,6 +144,15 @@ public class ActionsHelper extends Base {
 
     }
 
+    public static void actionsScrollToClick(WebElement element, String EnterText) {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element);
+        actions.click();
+        actions.sendKeys(EnterText, Keys.ENTER);
+        actions.build().perform();
+
+    }
+
     public static String getFutureDate(int addedYears, int addedMonths, int addedDays) {
         DateFormat dateFormat;
         if (ReadWriteHelper.ReadData("browser").equalsIgnoreCase("chrome")) {

@@ -1,9 +1,4 @@
-package com.qpros.pages;
-
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
+package com.qpros.pages.higher.education;
 
 public interface Locators {
     String PROVIDER_TAB = "a[class='air__menuLeft__link']";
@@ -42,6 +37,16 @@ public interface Locators {
     String SEARCH_BOX = "searchbox";
     String ddl_Page_Size = "ddlPageSize";
     String EMAIL_URL_BODY = "body";
+    String PROVIDER_COLLEGE_TAB = "College";
+    String PROVIDER_COLLEGE_ADD = ".float-right";
+    String PROVIDER_COLLEGE_NAME_ENGLISH = "UnitNameEnglish";
+    String PROVIDER_COLLEGE_NAME_ARABIC = "UnitNameArabic";
+    String PROVIDER_COLLEGE_IS_ACTIVE = "IsActive";
+    String PROVIDER_COLLEGE_SAVE_BUTTON = "//input[@value='Save']";
     String PROVIDER_ZONE_ID = "ProviderZoneId";
+    String APPLICATION_TAB = "a[class='air__menuLeft__link']";
+
+
+
 
 }
