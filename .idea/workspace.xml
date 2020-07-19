@@ -50,6 +50,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/DataProvider" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
@@ -300,10 +301,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="333" y="100" key="Vcs.Multiple.Commit.Info.Dialog.Key/0.0.1280.680@0.0.1280.680" timestamp="1594888093955" />
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1594887279539">
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1595145433055">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1594887279539" />
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1595145433055" />
     <state width="647" height="347" key="XDebugger.FullValuePopup" timestamp="1594818580176">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -328,10 +329,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="0" y="0" width="587" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1594815433482" />
-    <state x="221" y="129" key="git4idea.merge.GitPullDialog" timestamp="1594887659941">
+    <state x="221" y="129" key="git4idea.merge.GitPullDialog" timestamp="1595145752856">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="221" y="129" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1594887659941" />
+    <state x="221" y="129" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1595145752856" />
     <state x="58" y="150" key="git4idea.ui.GitUnstashDialog" timestamp="1593071477204">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -355,11 +356,5 @@
         <watch expression="driver.findElement(By.cssSelector(&quot;condition-scholarship-recruter-afterassignadviser-permission &gt; .btn&quot;)).getAttribute(&quot;value&quot;);" language="JAVA" custom="org.openqa.selenium.By" />
       </configuration>
     </watches-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/QPros$WithdrawApplicationTest.ic" NAME="WithdrawApplicationTest Coverage Results" MODIFIED="1593342300956" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>com.qpros.scholarship_admin.applications.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/QPros$C__Users_HadeelSalameh_Desktop_Adek2_src_main_resources_xmlTests_Scholarship_InrerviewsTestSuites_BookInterviewTestSuitDep_xml.ic" NAME="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/InrerviewsTestSuites/BookInterviewTestSuitDep.xml Coverage Results" MODIFIED="1593936564765" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
