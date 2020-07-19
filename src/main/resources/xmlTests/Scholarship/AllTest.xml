@@ -6,8 +6,8 @@
 <suite name="Run All Xml Files" verbose="1" >
     <listeners>
         <listener class-name="com.qpros.reporting.Listeners"/>
-
     </listeners>
+
     <suite-files>
         <suite-file path="AcceptAck.xml"></suite-file>
         <suite-file path="DeclineAck.xml"></suite-file>
