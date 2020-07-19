@@ -31,7 +31,7 @@ public class ScholarshipsPage extends Base {
     private List<WebElement> programsIndex;
     //    @FindBy(xpath = "//input[starts-with(@class,'select2-selection')]")
 //    private List<WebElement> programsIndex;
-    @FindBy(css= ".font-weight-bold > .col-md-auto:nth-child(1)")
+    @FindBy(css = ".font-weight-bold > .col-md-auto:nth-child(1)")
     private WebElement lblFirstResultCode;
     @FindBy(css = "div[class='col-md-auto']")
     private List<WebElement> resultsCodes;
@@ -86,7 +86,7 @@ public class ScholarshipsPage extends Base {
     @FindBy(id = "btnApply")
     private WebElement btnApply;
     @FindBy(css = "input[class='select2-search__field']")
-    private List <WebElement> payElementNameInput;
+    private List<WebElement> payElementNameInput;
     @FindBy(xpath = "//p[starts-with(@class,'lead ')]")
     private List<WebElement> sucessLabel;
 
@@ -95,24 +95,25 @@ public class ScholarshipsPage extends Base {
         ActionsHelper.waitVisibility(getClearFiltersButton(), 90);
         getClearFiltersButton().click();
     }
+
     public void findProgram(String programName) throws InterruptedException {
         if (isHeadless) {
             ActionsHelper.navigateTo("https://apps-tst.adek.gov.ae/ScholarshipNew/ScholarshipAdminUI/Scholarship");
         } else {
 
-
-        ActionsHelper.waitForListExistance(getScholarshipsTab(), 100);
-        ActionsHelper.selectElementFromList(getScholarshipsTab(), "Scholarships");
-    }
-        ActionsHelper.waitForExistance( getProgramsLabel(), 100 );
-        Thread.sleep( 3000 );
-        ActionsHelper.waitForListExistance( getProgramsList1(), 100 );
-        getProgramsList1().get( 0 ).click();
+            ActionsHelper.waitForListExistance(getScholarshipsTab(), 100);
+            ActionsHelper.selectElementFromList(getScholarshipsTab(), "Scholarships");
+        }
+        ActionsHelper.waitForExistance(getProgramsLabel(), 100);
+        //Thread.sleep( 3000 );
+        ActionsHelper.waitForListExistance(getProgramsList1(), 100);
+        getProgramsList1().get(0).click();
         getProgramNameInput().sendKeys(programName);
         getProgramNameInput().sendKeys(Keys.ENTER);
-        ActionsHelper.waitForExistance( getBtnApply(), 100 );
+        ActionsHelper.waitForExistance(getBtnApply(), 100);
         getBtnApply().click();
     }
+
     public void addPayElement() throws InterruptedException {
 
         ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
@@ -129,11 +130,11 @@ public class ScholarshipsPage extends Base {
         ActionsHelper.waitForExistance(getEffectiveDate(), 60);
         getEffectiveDate().sendKeys(ActionsHelper.getFutureDate(2, 0, 1));//error when add days =10
         getPayrollElement().click();
-        getPayElementNameInput().get(0).sendKeys("Scholarship Earning Adj AED"+ Keys.ENTER);
+        getPayElementNameInput().get(0).sendKeys("Scholarship Earning Adj AED" + Keys.ENTER);
         getAmount().sendKeys("500");
         ActionsHelper.waitForExistance(getSubmitBtn(), 30);
         getSubmitBtn().click();
-        ActionsHelper.waitForListExistance( getSucessLabel(), 60 );
+        ActionsHelper.waitForListExistance(getSucessLabel(), 60);
         //
         // Thread.sleep( 1000 );
     }
@@ -186,25 +187,22 @@ public class ScholarshipsPage extends Base {
             System.out.println("button size  " + getFirstBankRecord().size());
 //            ActionsHelper.waitForListExistance(getAddBankDetailsBtn(), 100);
 //            getAddBankDetailsBtn().get(1).click();
-            ActionsHelper.waitForExistance(getAddBankDetailsBtnn(), 100);
-            getAddBankDetailsBtnn().click();
-
-
+            ActionsHelper.retryClick(getAddBankDetailsBtnn(), 30);
         }
         ActionsHelper.waitForExistance(getEffectiveDate(), 100);
         getEffectiveDate().sendKeys(ActionsHelper.getFutureDate(1, 0, 0));
         getCountryDDL().sendKeys("United Arab Emirates");
         ActionsHelper.waitForExistance(getBankName(), 50);
         getBankName().click();
-        getBankName().sendKeys("ABU DHABI ISLAMIC BANK"+ Keys.ENTER);
+        getBankName().sendKeys("ABU DHABI ISLAMIC BANK" + Keys.ENTER);
         ActionsHelper.waitForExistance(getBankBranchName(), 50);
         getBankBranchName().click();
-        getBankBranchName().sendKeys("AL AIN SANAIYA"+ Keys.ENTER);
+        getBankBranchName().sendKeys("AL AIN SANAIYA" + Keys.ENTER);
         getAddressLine1().sendKeys("ABU DHABI");
         getAddressLine2().sendKeys("ABU DHABI Area 2");
         getIABN().sendKeys("AE320500000000028353371");
         getSubmitBankDetailsBtn().click();
-        ActionsHelper.waitForExistance(getYesButton(),100);
+        ActionsHelper.waitForExistance(getYesButton(), 100);
         getYesButton().click();
         ActionsHelper.waitForExistance(getSuccess(), 100);
     }

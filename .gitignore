@@ -1,5 +1,4 @@
 /target/
-/src/main/resources/browserDrivers/
-/src/main/resources/Reports/
-.idea
-QPros.iml
+src/main/resources/Reports/
+src/main/resources/browserDrivers/
+
