@@ -6,12 +6,14 @@ import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
+import net.sf.cglib.asm.$ClassReader;
 
 public class ExtentManager extends Base {
 
     private static ExtentReports extent;
-    private static String reportFileName = "QPros-Automation_Report-"+ ActionsHelper.getTodayDate() + "-" +
-            System.currentTimeMillis() + ".html";
+    private static String reportClassName;
+    private static String reportFileName = String.format("QPros-Automation_Report-%s-%s.html",
+            ActionsHelper.getTodayDate(),System.currentTimeMillis());
     private static String path = System.getProperty("user.dir") + "/src/main/resources/Reports/";
 
     public static ExtentReports getInstance() {

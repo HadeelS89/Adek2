@@ -12,7 +12,7 @@
 
     <test name="Approve application Test">
         <classes>
-            <class name="com.qpros.scholarship.admin.applications.ApproveAndProceedToAcknowlageTest"></class>
+            <class name="com.qpros.scholarship.admin.applicationsScenarios.ApproveAndProceedToAcknowlageTest"></class>
         </classes>
     </test>
 </suite>
