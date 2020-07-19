@@ -2,6 +2,7 @@ package com.qpros.common;
 
 
 import com.qpros.helpers.ReadWriteHelper;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,9 +21,12 @@ import java.util.Map;
 public class Base {
 
     protected static WebDriver driver;
+    public boolean isHeadless= ReadWriteHelper.ReadData("headless").equalsIgnoreCase("true");
 
-
-
+    /**
+     * Set UP Browser it initiate the driver based on client OS and Browser Type
+     * @param browserType String Value of Browser name from thr config File
+     */
     @Parameters({"browserType"})
     @BeforeMethod(enabled = true)
     public void setUpBrowser(@Optional("optional") String browserType) {
@@ -32,17 +36,18 @@ public class Base {
         }else {
             initiateDriver(OsValidator.getDeviceOs(), ReadWriteHelper.ReadData( "browser" ) );
         }
-
     }
-
-
+    /**
+     * sub Method from the Setup Browser Method
+     * @param deviceOsType String Device OS
+     * @param driverType String Driver type Name
+     * @return instance of WebDriver
+     */
     private WebDriver initiateDriver(String deviceOsType, String driverType) {
         String browser = driverType.toLowerCase();
-
         switch (browser) {
             case "firefox":
                 try {
-
                     setFireFoxBrowser(deviceOsType);
                     FirefoxOptions options = new FirefoxOptions(  );
                     options.setAcceptInsecureCerts( true );
@@ -71,6 +76,10 @@ public class Base {
                     options.setAcceptInsecureCerts( true );
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
                         options.addArguments("--headless");
+                        options.addArguments("--proxy-server='direct://'");
+                        options.addArguments("--proxy-bypass-list=*");
+                        options.addArguments("--no-proxy-server");
+                        options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
                     }
                     driver = new ChromeDriver(options);
                     //Dimension targetSize = new Dimension(1920, 1080); //your screen resolution here
@@ -153,7 +162,6 @@ public class Base {
         }
     }
 
-
     //@AfterMethod(enabled = true)
     public void stopDriver() {
         try {
@@ -162,10 +170,4 @@ public class Base {
             e.getStackTrace();
         }
     }
-
-    @BeforeMethod
-    public void startingTestCase(){
-        System.out.println("===================================================================================");
-    }
-
 }

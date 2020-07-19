@@ -35,6 +35,8 @@ public class Listeners extends TestListenerAdapter{
 
     @Override
     public synchronized void onTestStart(ITestResult result) {
+        result.getTestClass().getXmlClass().getAllParameters();
+        //result.getTestClass().getXmlClass().m_xmlTest.m_suite.m_fileNam;
         if (CONSOLE) {
             System.out.println((result.getMethod().getMethodName() + " started!"));
 
