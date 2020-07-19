@@ -1,5 +1,6 @@
 package com.qpros.common;
 
+
 import com.qpros.helpers.ReadWriteHelper;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
@@ -13,9 +14,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
 import java.util.HashMap;
 import java.util.Map;
+
 public class Base {
+
     protected static WebDriver driver;
     public boolean isHeadless= ReadWriteHelper.ReadData("headless").equalsIgnoreCase("true");
 
@@ -46,7 +50,7 @@ public class Base {
                 try {
                     setFireFoxBrowser(deviceOsType);
                     FirefoxOptions options = new FirefoxOptions(  );
-                    //options.setAcceptInsecureCerts( true );
+                    options.setAcceptInsecureCerts( true );
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
                         options.addArguments("--headless");
                     }
@@ -69,7 +73,7 @@ public class Base {
                     options.setExperimentalOption("prefs", prefs);
                     options.addArguments("--disable-web-security");
                     options.addArguments("--allow-running-insecure-content");
-                   // options.setAcceptInsecureCerts( true );
+                    options.setAcceptInsecureCerts( true );
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
                         options.addArguments("--headless");
                         options.addArguments("--proxy-server='direct://'");
@@ -80,12 +84,14 @@ public class Base {
                     driver = new ChromeDriver(options);
                     //Dimension targetSize = new Dimension(1920, 1080); //your screen resolution here
                     //driver.manage().window().setSize(targetSize);
+
                 } catch (Throwable e) {
                     e.printStackTrace(System.out);
                     Assert.fail("Please check Browser is exist Browser Unable to start");
                 }
                 break;
             case "ie":
+
             {
                 try {
                     System.setProperty(ReadWriteHelper.ReadData("IEDriverPath"),
@@ -101,6 +107,7 @@ public class Base {
                 try {
                     System.setProperty(ReadWriteHelper.ReadData("SafariDriverPath"),
                             ReadWriteHelper.ReadData("SafariBrowserPath"));
+
                     driver = new SafariDriver();
                 } catch (Throwable e) {
                     e.printStackTrace(System.out);
@@ -108,11 +115,14 @@ public class Base {
                 }
             }
         }
+
         driver.manage().window().maximize();
         return driver;
     }
+
     public DriverType getBrowser() {
         String browserName = ReadWriteHelper.ReadData("browser");
+
         if (browserName == null || browserName.equalsIgnoreCase("chrome"))
             return DriverType.CHROME;
         else if (browserName.equalsIgnoreCase("firefox"))
@@ -125,6 +135,7 @@ public class Base {
             throw new RuntimeException("Browser Name Key value in Configuration.properties is not matched : " +
                     browserName);
     }
+
 
     private void setChromeBrowser(String deviceOsType) {
         if (deviceOsType.equalsIgnoreCase("mac")) {
@@ -140,6 +151,7 @@ public class Base {
                     ReadWriteHelper.ReadData("chromeDriverLinkLinux"));
         }
     }
+
     private void setFireFoxBrowser(String deviceOsType) {
         if (deviceOsType.equalsIgnoreCase("mac")) {
             System.setProperty(ReadWriteHelper.ReadData("FireFoxDriverPath"),
