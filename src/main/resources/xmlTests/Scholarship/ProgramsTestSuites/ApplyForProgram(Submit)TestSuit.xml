@@ -13,7 +13,7 @@
 
     <test name="Submit program Test">
         <classes>
-            <class name="com.qpros.scholarship.applicant.programs.SubmitProgramTest"></class>
+
         </classes>
     </test>
 </suite>

@@ -46,10 +46,10 @@ public class LoginPage extends Base {
         driver.navigate().to( ReadWriteHelper.ReadData( "ApplicantURL" ) );
         //securedAccess();
 
-        ActionsHelper.waitVisibility( getEmail(), 50 );
+        ActionsHelper.waitVisibility( getEmail(), 60 );
         getEmail().sendKeys( email );
         getPassword().sendKeys( password );
-        ActionsHelper.waitVisibility( getLoginButton(), 10 );
+        ActionsHelper.waitVisibility( getLoginButton(), 50 );
         getLoginButton().click();
         ActionsHelper.waitVisibility( getAddressTab(), 50 );
 
@@ -60,10 +60,10 @@ public class LoginPage extends Base {
         driver.navigate().to( ReadWriteHelper.ReadData( url ) );
         //securedAccess();
 
-        ActionsHelper.waitVisibility( getEmail(), 200 );
+        ActionsHelper.waitVisibility( getEmail(), 50 );
         getEmail().sendKeys( email );
         getPassword().sendKeys( password );
-        ActionsHelper.waitVisibility( getLoginButton(), 100 );
+        ActionsHelper.waitVisibility( getLoginButton(), 10 );
         getLoginButton().click();
         //ActionsHelper.waitVisibility( getAddressTab(), 50 );
 

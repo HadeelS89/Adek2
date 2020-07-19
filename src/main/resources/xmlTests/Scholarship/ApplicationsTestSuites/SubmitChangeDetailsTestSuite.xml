@@ -12,7 +12,8 @@
 
     <test name="Submit change details Test">
         <classes>
-            <class name="com.qpros.scholarship.admin.applications.SubmitChangedDetailsTest"></class>
+            <class name="com.qpros.scholarship.admin.applicationsScenarios.SubmitChangedDetailsTest">
+            </class>
         </classes>
     </test>
 </suite>

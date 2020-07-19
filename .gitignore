@@ -1,3 +1,4 @@
 /target/
-src/main/resources/browserDrivers
-src/main/resources/Reports
+src/main/resources/Reports/
+src/main/resources/browserDrivers/
+
