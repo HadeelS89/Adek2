@@ -1,10 +1,7 @@
 package com.qpros.common;
 
-import okhttp3.*;
-
-
 import com.google.gson.Gson;
-import okhttp3.OkHttpClient;
+import okhttp3.*;
 
 import javax.annotation.Nullable;
 import java.util.Map;

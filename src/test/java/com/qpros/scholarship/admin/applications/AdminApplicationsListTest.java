@@ -3,12 +3,12 @@ package com.qpros.scholarship.admin.applications;
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
-import com.qpros.pages.scholarship.admin.AdminApplicationsListPage;
 import com.qpros.pages.authorization_pages.AdminExternalLoginPage;
 import com.qpros.pages.authorization_pages.LoginPage;
+import com.qpros.pages.scholarship.admin.AdminApplicationsListPage;
 import com.qpros.scholarship.applicant.applications.ApplicantActionsTest;
-import org.testng.Assert;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
