@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="Program Test">
+
+    <listeners>
+        <listener class-name="com.qpros.reporting.Listeners"/>
+    </listeners>
+
+
+    <test name="Create new provider Test">
+        <classes>
+            <class name="com.qpros.higher.education.admin.provider.ProviderTest"></class>
+        </classes>
+    </test>
+</suite>

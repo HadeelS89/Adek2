@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="Program Test">
+
+    <listeners>
+        <listener class-name="com.qpros.reporting.Listeners"/>
+    </listeners>
+
+
+    <test name="Create new program Test">
+        <classes>
+            <class name="com.qpros.scholarship.admin.programs.CreateProgramTest"></class>
+        </classes>
+    </test>
+</suite>
