@@ -20,7 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 public class Base {
     protected static WebDriver driver;
-    public boolean isHeadless= false;//ReadWriteHelper.ReadData("headless").equalsIgnoreCase("true");
 
     /**
      * Set UP Browser it initiate the driver based on client OS and Browser Type
@@ -49,7 +48,7 @@ public class Base {
                 try {
                     setFireFoxBrowser(deviceOsType);
                     FirefoxOptions options = new FirefoxOptions(  );
-                   // options.setAcceptInsecureCerts( true );
+                    options.setAcceptInsecureCerts( true );
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
                         options.addArguments("--headless");
                         options.addArguments("window-size=1920,1080");
@@ -73,7 +72,7 @@ public class Base {
                     options.setExperimentalOption("prefs", prefs);
                     options.addArguments("--disable-web-security");
                     options.addArguments("--allow-running-insecure-content");
-                   // options.setAcceptInsecureCerts( true );
+                    options.setAcceptInsecureCerts( true );
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
                         options.addArguments("--headless");
                         options.addArguments("--proxy-server='direct://'");
