@@ -95,13 +95,11 @@ public class MyApplicationsPage extends Base {
 
 public void navigateToApplication(){
 
-    if (isHeadless) {
-        ActionsHelper.navigateTo("https://apps-tst.adek.gov.ae/ScholarshipNew/Client/scholarship/dashboard/dashboard-tile");
-    } else {
+
         ActionsHelper.waitForExistance(getMyApplication(), 100);
         getMyApplication().click();
 
-    }
+
 
 
 }

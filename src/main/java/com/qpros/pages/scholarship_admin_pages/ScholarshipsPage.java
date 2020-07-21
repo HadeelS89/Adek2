@@ -97,13 +97,11 @@ public class ScholarshipsPage extends Base {
     }
 
     public void findProgram(String programName) throws InterruptedException {
-        if (isHeadless) {
-            ActionsHelper.navigateTo("https://apps-tst.adek.gov.ae/ScholarshipNew/ScholarshipAdminUI/Scholarship");
-        } else {
+
 
             ActionsHelper.waitForListExistance(getScholarshipsTab(), 100);
             ActionsHelper.selectElementFromList(getScholarshipsTab(), "Scholarships");
-        }
+
         ActionsHelper.waitForExistance(getProgramsLabel(), 100);
         //Thread.sleep( 3000 );
         ActionsHelper.waitForListExistance(getProgramsList1(), 100);
