@@ -5,10 +5,10 @@ import com.qpros.common.Base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-
-//import static com.qpros.common.Base.driver;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
+
+//import static com.qpros.common.Base.driver;
 
 public class FileHelper extends Base {
 

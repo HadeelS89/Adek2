@@ -6,7 +6,6 @@ import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
-import net.sf.cglib.asm.$ClassReader;
 
 public class ExtentManager extends Base {
 

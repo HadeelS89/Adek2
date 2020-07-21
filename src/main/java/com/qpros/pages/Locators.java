@@ -1,10 +1,5 @@
 package com.qpros.pages;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
-
 public interface Locators {
     String PROVIDER_TAB = "a[class='air__menuLeft__link']";
     String PROVIDER_DIV = "col-md-auto";
