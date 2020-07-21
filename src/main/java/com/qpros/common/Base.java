@@ -12,12 +12,15 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+
 import java.util.HashMap;
 import java.util.Map;
 public class Base {
     protected static WebDriver driver;
-    public boolean isHeadless= ReadWriteHelper.ReadData("headless").equalsIgnoreCase("true");
+    public boolean isHeadless= false;//ReadWriteHelper.ReadData("headless").equalsIgnoreCase("true");
 
     /**
      * Set UP Browser it initiate the driver based on client OS and Browser Type
@@ -46,9 +49,10 @@ public class Base {
                 try {
                     setFireFoxBrowser(deviceOsType);
                     FirefoxOptions options = new FirefoxOptions(  );
-                    //options.setAcceptInsecureCerts( true );
+                   // options.setAcceptInsecureCerts( true );
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
                         options.addArguments("--headless");
+                        options.addArguments("window-size=1920,1080");
                     }
                     driver = new FirefoxDriver(options);
                 } catch (Throwable e) {
@@ -75,6 +79,7 @@ public class Base {
                         options.addArguments("--proxy-server='direct://'");
                         options.addArguments("--proxy-bypass-list=*");
                         options.addArguments("--no-proxy-server");
+                        options.addArguments("window-size=1920,1080");
                         options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
                     }
                     driver = new ChromeDriver(options);

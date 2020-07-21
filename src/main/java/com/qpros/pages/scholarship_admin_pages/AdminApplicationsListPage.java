@@ -158,7 +158,8 @@ public class AdminApplicationsListPage extends Base {
         StartReview, RejectApplication, RequestForChange, ScheduleInterview, ApplicantPresent, ApplicantAbsent
     }
 
-    EnumMap<ButtonsList, Integer> buttonTarget = new EnumMap<ButtonsList, Integer>(ButtonsList.class);
+    EnumMap<ButtonsList, Integer> buttonTarget =
+            new EnumMap<ButtonsList, Integer>(ButtonsList.class);
 
     public void clearFilters() {
         ActionsHelper.waitForExistance(getClearFiltersButton(), waitTime);
