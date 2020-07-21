@@ -5,16 +5,9 @@ import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.pages.authorization_pages.AdminExternalLoginPage;
 import com.qpros.pages.authorization_pages.LoginPage;
-<<<<<<< HEAD:src/test/java/com/qpros/scholarship/admin/applications/AdminApplicationsListTest.java
-import com.qpros.pages.scholarship.admin.AdminApplicationsListPage;
-import com.qpros.scholarship.applicant.applications.ApplicantActionsTest;
-=======
 import com.qpros.pages.scholarship_admin_pages.AdminApplicationsListPage;
 import com.qpros.scholarship.applicant.MyApplications.ApplicantActionsTest;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
->>>>>>> 0bd247cb55c8d328b9ce3bec46318d24c05e6979:src/test/java/com/qpros/scholarship/admin/Applications/AdminApplicationsListTest.java
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
