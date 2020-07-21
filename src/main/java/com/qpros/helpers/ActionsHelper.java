@@ -106,6 +106,7 @@ public class ActionsHelper extends Base {
         return localDate.toString();
     }
 
+
     public static Calendar getTodayDateFromCalender() {
         Date today = new Date();
         Calendar cal = Calendar.getInstance();
@@ -142,16 +143,13 @@ public class ActionsHelper extends Base {
         actions.build().perform();
 
     }
-
-    public static void actionsScrollToClick(WebElement element, String EnterText) {
+    public static void click(WebElement element) {
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
         actions.click();
-        actions.sendKeys(EnterText, Keys.ENTER);
         actions.build().perform();
 
     }
-
     public static String getFutureDate(int addedYears, int addedMonths, int addedDays) {
         DateFormat dateFormat;
         if (ReadWriteHelper.ReadData("browser").equalsIgnoreCase("chrome")) {
@@ -286,10 +284,8 @@ public class ActionsHelper extends Base {
         Date currentDatePlus = c.getTime();
         return dateFormat.format(currentDatePlus);
     }
-    public static void retryClick(WebElement myelement) throws InterruptedException {
-        retryClick(myelement,10); //Default value for retryClicker
-    }
-    public static void retryClick(WebElement myelement, int maxSeconds) throws InterruptedException {
+
+    public static void retryClick(WebElement myelement, int maxSeconds)  {
         int i = 0;
         boolean result = false;
         while (i <= maxSeconds){
@@ -301,7 +297,11 @@ public class ActionsHelper extends Base {
                 result = false;
             }
             i++;
-            Thread.sleep(1000);
+            try {
+                Thread.sleep(1000);
+            }catch (Exception e){
+
+            }
         }
         if(!result){
             Assert.fail("Failed to click element: " + myelement.toString());
