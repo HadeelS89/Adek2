@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement" />
+    <list default="true" id="d0552d0b-1714-49ae-bef5-4ada696a8884" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,14 +58,12 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.qpros.scholarship_applicant" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\DataProvider" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\ApplicationsTestSuites" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\InrerviewsTestSuites" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.qpros.scholarship.admin.Applications" />
@@ -74,8 +72,10 @@
       <recent name="com.qpros.scholarship.applicant.interviews" />
       <recent name="com.qpros.scholarship_admin.applications" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\DataProvider" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\ApplicationsTestSuites" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\InrerviewsTestSuites" />
       <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
     </key>
   </component>
