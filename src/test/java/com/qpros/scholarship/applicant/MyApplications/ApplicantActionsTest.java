@@ -2,7 +2,6 @@ package com.qpros.scholarship.applicant.MyApplications;
 
 
 import com.qpros.common.Base;
-//import com.qpros.pages.ApplicantLoginPage;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.pages.authorization_pages.LoginPage;
@@ -11,6 +10,8 @@ import com.qpros.pages.sholarship_applicant_pages.MyApplicationsPage;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+//import com.qpros.pages.ApplicantLoginPage;
 
 public class ApplicantActionsTest extends Base {
     private ApplyForProgremPage applyForProgremPage;

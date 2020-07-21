@@ -6,7 +6,9 @@ import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.BreakException;
 import com.qpros.helpers.ReadWriteHelper;
 import lombok.Getter;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -177,10 +179,9 @@ public class ApplyForProgremPage extends Base {
     }
 
     // to check whether the program status is drafted (go to my application) or new (apply)
-    private void selectProgram(String programTitle) throws InterruptedException {
-        //ActionsHelper.waitForListExistance(getProgramDiv(), 30);
-        //ActionsHelper.selectElementFromList(getProgramDiv(), "Programs");
-        ActionsHelper.navigateTo("https://apps-tst.adek.gov.ae/ScholarshipNew/Client/scholarship/programs/programs-list");
+    private void selectProgram(String programTitle)  {
+        ActionsHelper.waitForListExistance(getProgramDiv(), 30);
+        ActionsHelper.selectElementFromList(getProgramDiv(), "Programs");
         System.out.println("Program Size: " + getProgramDiv().size());
         System.out.println("Title Size: " + getProgramTilte().size());
         System.out.println("Button Size: " + getProgramButton().size());
@@ -217,9 +218,7 @@ public class ApplyForProgremPage extends Base {
 
             }
         }
-        //System.out.println( "Map size: " + map.size() );
 
-        //WebElement element = map.get( value );
 
     }
 
@@ -250,12 +249,10 @@ public class ApplyForProgremPage extends Base {
     private void programeSharedSteps(String programTitle) throws Exception {
         System.out.println("Current Date: " + ActionsHelper.getTodayDate());
         Thread.sleep(5000);
-        if (isHeadless) {
-            ActionsHelper.navigateTo("https://apps-tst.adek.gov.ae/ScholarshipNew/Client/scholarship/programs/programs-list");
-        } else {
+
             ActionsHelper.waitForListExistance(getPrograms(), 100);
             ActionsHelper.selectElementFromList(getPrograms(), "Programs");
-        }
+
         ActionsHelper.waitForListExistance(getProgramTilte(), 30);
 
         ActionsHelper.waitForListExistance(getPrograms(), 30);

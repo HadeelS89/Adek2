@@ -1,6 +1,5 @@
 package com.qpros.scholarship.admin.interviews;
 
-import com.github.javafaker.Faker;
 import com.qpros.common.Base;
 import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.pages.authorization_pages.LoginPage;
@@ -8,8 +7,6 @@ import com.qpros.pages.scholarship_admin_pages.InterviewsPage;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
-import java.util.Locale;
 
 @Listeners(com.qpros.reporting.Listeners.class)
 public class InterviewsTest extends Base {

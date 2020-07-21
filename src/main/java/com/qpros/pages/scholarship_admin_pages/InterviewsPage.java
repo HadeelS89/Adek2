@@ -2,9 +2,9 @@ package com.qpros.pages.scholarship_admin_pages;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
-import com.qpros.helpers.ReadWriteHelper;
 import lombok.Getter;
-import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -80,12 +80,10 @@ public class InterviewsPage extends Base {
 //    private WebElement successScore;
 
     public void addNewInterview(String programTitle)  {
-        if (isHeadless) {
-            ActionsHelper.navigateTo("https://apps-tst.adek.gov.ae/ScholarshipNew/ScholarshipAdminUI/Interview");
-        } else {
+
             ActionsHelper.waitForListExistance(getInterviewsTab(), 50);
             ActionsHelper.selectElementFromList(getInterviewsTab(), "Interviews");
-        }
+
         // ActionsHelper.waitForListExistance(getAddInterviewButton(), 50);
         ActionsHelper.retryClick(getAddInterviewButton().get(0),30);
         try {
@@ -108,13 +106,11 @@ public class InterviewsPage extends Base {
 
     //for search box
     public void searchInterview(String programName) throws InterruptedException {
-        if (isHeadless) {
-            ActionsHelper.navigateTo("https://apps-tst.adek.gov.ae/ScholarshipNew/ScholarshipAdminUI/Interview");
-        } else {
+
 
             ActionsHelper.waitForListExistance(getInterviewsTab(), 100);
             ActionsHelper.selectElementFromList(getInterviewsTab(), "Interviews");
-        }
+
         ActionsHelper.waitForExistance(getInterviewSearchBox(), 90);
         getInterviewSearchBox().sendKeys(programName);
         ActionsHelper.waitForExistance(getSearchBtn(), 100);

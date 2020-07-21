@@ -22,7 +22,7 @@
                 </methods>
             </class>
 
-            <class name="com.qpros.scholarship.admin.Applications.AdminApplicationsListTest">
+            <class name="com.qpros.scholarship.admin.applications.AdminApplicationsListTest">
                 <methods>
                     <include name="approveNewApplication"/>
                 </methods>
@@ -40,7 +40,7 @@
     </test>
     <test name="test3">
         <classes>
-            <class name="com.qpros.scholarship.admin.Applications.AdminApplicationsListTest">
+            <class name="com.qpros.scholarship.admin.applications.AdminApplicationsListTest">
                 <methods>
                     <include name="scheduleInterview"/>
                 </methods>
@@ -54,7 +54,7 @@
     </test>
     <test name ="test4">
         <classes>
-            <class name="com.qpros.scholarship.admin.Applications.AdminApplicationsListTest">
+            <class name="com.qpros.scholarship.admin.applications.AdminApplicationsListTest">
                 <methods>
                     <include name="markApplicationAsPresent"/>
                 </methods>
