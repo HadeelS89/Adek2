@@ -2,6 +2,7 @@ package com.qpros.pages.scholarship_admin_pages;
 
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
+import com.qpros.model.programModel;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,11 +13,27 @@ import java.util.List;
 
 @Getter
 public class ProgramsPage {
-
+    programModel testmode = new programModel().populateData();
     public static String randomName = "";
     public static String createdProgram = "";
    // public static String interviewProgram = "";
     WebElement createdProgramName = null;
+    final String Academi_Careers= ReadWriteHelper.readFromExel
+            ("programData","Configuration", "AcademicCareers");
+    final String Min_Age =ReadWriteHelper.readFromExel(
+            "programData","Configuration", "AgeRangeMin");
+    final String Max_Age =ReadWriteHelper.readFromExel(
+            "programData","Configuration", "AgeRangeMax");
+    final String Nationality =ReadWriteHelper.readFromExel(
+            "programData","Configuration", "Nationality");
+    final String Preferred_University =ReadWriteHelper.readFromExel(
+            "programData","Configuration", "PreferredUniversity");
+    final String Count =ReadWriteHelper.readFromExel(
+            "programData","Configuration", "Count");
+    final String Preferred_Major =ReadWriteHelper.readFromExel(
+            "programData","Configuration", "PreferredMajor");
+
+
 
     public ProgramsPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -178,7 +195,7 @@ public class ProgramsPage {
     }
 
 
-    public void setProgramConfig() {
+    public void setProgramConfig() throws InterruptedException {
         //Select configurations tab
         ActionsHelper.waitForExistance(getMainInfoLabels(), 50);
         ActionsHelper.waitForListExistance(getProgramOptions(), 50);
@@ -192,9 +209,9 @@ public class ProgramsPage {
         System.out.println("Fields List size: " + getAcademicCareersField().size());
         getAcademicCareersField().get(0).click();
         ActionsHelper.waitForListExistance(getUserSearchField(), 20);
-        getUserSearchField().get(0).sendKeys("Doctorate");
+        getUserSearchField().get(0).sendKeys(Academi_Careers);
         ActionsHelper.waitForListExistance(getDivList(), 50);
-        ActionsHelper.selectElementFromList(getDivList(), "Doctorate");
+        ActionsHelper.selectElementFromList(getDivList(), Academi_Careers);
         getSelectionCountList().get(0).clear();
         getSelectionCountList().get(0).sendKeys("1");
         getMandatoryCheckListList().get(0).click();
@@ -205,9 +222,9 @@ public class ProgramsPage {
         ActionsHelper.selectElementFromList(getConfigurationsList(), "Age Range");
         ActionsHelper.waitForExistance(getMinAgeField(), 50);
         getMinAgeField().clear();
-        getMinAgeField().sendKeys("16");
+        getMinAgeField().sendKeys(getMin_Age());
         getMaxAgeField().clear();
-        getMaxAgeField().sendKeys("40");
+        getMaxAgeField().sendKeys(getMax_Age());
         getSaveButton().get(1).click();
 
         //Nationality
@@ -216,11 +233,14 @@ public class ProgramsPage {
         ActionsHelper.waitForListExistance(getAcademicCareersField(), 50);
         getAcademicCareersField().get(1).click();
         ActionsHelper.waitForListExistance(getUserSearchField(), 20);
-        getUserSearchField().get(1).sendKeys("United Arab Emirates");
-        ActionsHelper.waitForListExistance(getDivList(), 30);
-        ActionsHelper.selectElementFromList(getDivList(), "United Arab Emirates");
+        getUserSearchField().get(1).sendKeys(getNationality());
+        ActionsHelper.waitForListExistance(getDivList(), 40);
+        ActionsHelper.selectElementFromList(getDivList(), getNationality());
+        //Thread.sleep(3000);
+
         getSelectionCountList().get(1).clear();
         getSelectionCountList().get(1).sendKeys("1");
+
         getMandatoryCheckListList().get(1).click();
         getSaveButton().get(2).click();
 
@@ -237,16 +257,16 @@ public class ProgramsPage {
         ActionsHelper.waitForListExistance(getAcademicCareersField(), 50);
         getAcademicCareersField().get(2).click();
         ActionsHelper.waitForListExistance(getUserSearchField(), 20);
-        getUserSearchField().get(2).sendKeys("Aarhus University");
+        getUserSearchField().get(2).sendKeys(getPreferred_University());
         ActionsHelper.waitForListExistance(getDivList(), 30);
-        ActionsHelper.selectElementFromList(getDivList(), "Aarhus University");
-        getAcademicCareersField().get(2).click();
-        getUserSearchField().get(2).sendKeys("Boston University");
-        ActionsHelper.selectElementFromList(getDivList(), "Boston University");
-        getAcademicCareersField().get(2).click();
-        getUserSearchField().get(2).sendKeys("Brown University");
-        ActionsHelper.selectElementFromList(getDivList(), "Brown University");
-        getSelectionCountList().get(2).clear();
+        ActionsHelper.selectElementFromList(getDivList(), getPreferred_University());
+//        getAcademicCareersField().get(2).click();
+//        getUserSearchField().get(2).sendKeys("Boston University");
+//        ActionsHelper.selectElementFromList(getDivList(), "Boston University");
+//        getAcademicCareersField().get(2).click();
+//        getUserSearchField().get(2).sendKeys("Brown University");
+//        ActionsHelper.selectElementFromList(getDivList(), "Brown University");
+//        getSelectionCountList().get(2).clear();
         getSelectionCountList().get(2).sendKeys("1");
         getMandatoryCheckListList().get(2).click();
         getSaveButton().get(4).click();
@@ -256,16 +276,16 @@ public class ProgramsPage {
         ActionsHelper.selectElementFromList(getConfigurationsList(), "Preferred Major");
         ActionsHelper.waitForListExistance(getAcademicCareersField(), 50);
         getAcademicCareersField().get(3).click();
-        getUserSearchField().get(3).sendKeys("Accounting");
+        getUserSearchField().get(3).sendKeys(getPreferred_Major());
         ActionsHelper.waitForListExistance(getDivList(), 20);
-        ActionsHelper.selectElementFromList(getDivList(), "Accounting");
-        getAcademicCareersField().get(3).click();
-        getUserSearchField().get(3).sendKeys("Biology");
-        ActionsHelper.selectElementFromList(getDivList(), "Biology");
-        getAcademicCareersField().get(3).click();
-        getUserSearchField().get(3).sendKeys("Software Engineering");
-        ActionsHelper.selectElementFromList(getDivList(), "Software Engineering");
-        getSelectionCountList().get(3).clear();
+        ActionsHelper.selectElementFromList(getDivList(), getPreferred_Major());
+//        getAcademicCareersField().get(3).click();
+//        getUserSearchField().get(3).sendKeys("Biology");
+//        ActionsHelper.selectElementFromList(getDivList(), "Biology");
+//        getAcademicCareersField().get(3).click();
+//        getUserSearchField().get(3).sendKeys("Software Engineering");
+//        ActionsHelper.selectElementFromList(getDivList(), "Software Engineering");
+//        getSelectionCountList().get(3).clear();
         getSelectionCountList().get(3).sendKeys("1");
         getMandatoryCheckListList().get(3).click();
         getSaveButton().get(5).click();

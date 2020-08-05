@@ -467,4 +467,17 @@ public class ReadWriteHelper {
         return value;
     }
 
+
+    public static String readFromExel(String fileName, String sheetName, String headerName) {
+        ReadFromExcel1 excelFile = null;
+        try {
+            excelFile = new ReadFromExcel1("src/main/resources/DataProvider/"+fileName+".xlsx");
+        }catch (IOException e){
+
+        }
+        final String value = excelFile.getData1(sheetName, headerName);
+
+        return value;
+    }
+
 }

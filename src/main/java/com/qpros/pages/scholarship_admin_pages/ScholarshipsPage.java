@@ -2,6 +2,8 @@ package com.qpros.pages.scholarship_admin_pages;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
+import com.qpros.helpers.ReadFromExcel1;
+import com.qpros.helpers.ReadWriteHelper;
 import lombok.Getter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -9,13 +11,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
 import java.util.List;
 
 @Getter
 public class ScholarshipsPage extends Base {
 
-
-    public ScholarshipsPage(WebDriver driver) {
+    ReadFromExcel1 excelFile= new ReadFromExcel1("src/main/resources/DataProvider/programData.xlsx") ;
+    public ScholarshipsPage(WebDriver driver) throws IOException {
         PageFactory.initElements(driver, this);
     }
 
@@ -103,7 +106,7 @@ public class ScholarshipsPage extends Base {
             ActionsHelper.selectElementFromList(getScholarshipsTab(), "Scholarships");
 
         ActionsHelper.waitForExistance(getProgramsLabel(), 100);
-        //Thread.sleep( 3000 );
+        Thread.sleep( 3000 );
         ActionsHelper.waitForListExistance(getProgramsList1(), 100);
         getProgramsList1().get(0).click();
         getProgramNameInput().sendKeys(programName);
@@ -128,8 +131,10 @@ public class ScholarshipsPage extends Base {
         ActionsHelper.waitForExistance(getEffectiveDate(), 60);
         getEffectiveDate().sendKeys(ActionsHelper.getFutureDate(2, 0, 1));//error when add days =10
         getPayrollElement().click();
-        getPayElementNameInput().get(0).sendKeys("Scholarship Earning Adj AED" + Keys.ENTER);
-        getAmount().sendKeys("500");
+        getPayElementNameInput().get(0).sendKeys(ReadWriteHelper.readFromExel(
+                "programData","PayElement", "PayElementNameInput") + Keys.ENTER);
+        getAmount().sendKeys(ReadWriteHelper.readFromExel(
+                "programData","PayElement", "Amount"));
         ActionsHelper.waitForExistance(getSubmitBtn(), 30);
         getSubmitBtn().click();
         ActionsHelper.waitForListExistance(getSucessLabel(), 60);
@@ -163,7 +168,6 @@ public class ScholarshipsPage extends Base {
 
 
     }
-
     public void addBankDetails() throws InterruptedException {
 
         ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
@@ -183,8 +187,52 @@ public class ScholarshipsPage extends Base {
             System.out.println("record size  " + getFirstBankRecord().size());
             getFirstBankRecord().get(0).click();
             System.out.println("button size  " + getFirstBankRecord().size());
-//            ActionsHelper.waitForListExistance(getAddBankDetailsBtn(), 100);
-//            getAddBankDetailsBtn().get(1).click();
+            ActionsHelper.retryClick(getAddBankDetailsBtnn(), 30);
+        }
+        ActionsHelper.waitForExistance(getEffectiveDate(), 100);
+        getEffectiveDate().sendKeys(ActionsHelper.getFutureDate(1, 0, 0));
+        getCountryDDL().sendKeys(ReadWriteHelper.readFromExel("programData","BankDetails", "Country"));
+        ActionsHelper.waitForExistance(getBankName(), 50);
+        System.out.println(ReadWriteHelper.readFromExel("programData","BankDetails", "Country")  );
+        getBankName().click();
+        getBankName().sendKeys(ReadWriteHelper.readFromExel
+                ("programData","BankDetails", "BankName") + Keys.ENTER);
+        getBankName().click();
+        ActionsHelper.waitForExistance(getBankBranchName(), 50);
+        getBankBranchName().click();
+        getBankBranchName().sendKeys(ReadWriteHelper.readFromExel
+                ("programData","BankDetails", "BranchName") + Keys.ENTER);
+        getAddressLine1().sendKeys(ReadWriteHelper.readFromExel
+                ("programData","BankDetails", "AddressLine1"));
+        getAddressLine2().sendKeys(ReadWriteHelper.readFromExel
+                ("programData","BankDetails", "AddressLine2"));
+        getIABN().sendKeys(ReadWriteHelper.readFromExel
+                ("programData","BankDetails", "IABN"));
+        getSubmitBankDetailsBtn().click();
+        ActionsHelper.waitForExistance(getYesButton(), 100);
+        getYesButton().click();
+        ActionsHelper.waitForExistance(getSuccess(), 100);
+    }
+
+    public void addBankDetails1() throws InterruptedException {
+
+        ActionsHelper.waitForExistance(getLblFirstResultCode(), 100);
+        getLblFirstResultCode().click();
+        ActionsHelper.waitForExistance(getTimeLine(), 100);
+        ActionsHelper.waitForListExistance(getApplicationTabs(), 100);
+        System.out.println("check 1 " + getApplicationTabs().size());
+        System.out.println("BankDetails  " + getApplicationTabs().get(4).getText());
+        getApplicationTabs().get(12).click();
+        ActionsHelper.waitForExistance(getRecordHeader(), 100);
+        if (getAddBankDetailsBtn().get(0).isDisplayed()) {
+            ActionsHelper.waitForListExistance(getAddBankDetailsBtn(), 100);
+            getAddBankDetailsBtn().get(0).click();
+
+        } else {
+            ActionsHelper.waitForListExistance(getFirstBankRecord(), 100);
+            System.out.println("record size  " + getFirstBankRecord().size());
+            getFirstBankRecord().get(0).click();
+            System.out.println("button size  " + getFirstBankRecord().size());
             ActionsHelper.retryClick(getAddBankDetailsBtnn(), 30);
         }
         ActionsHelper.waitForExistance(getEffectiveDate(), 100);

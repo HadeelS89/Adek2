@@ -5,6 +5,7 @@ import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.BreakException;
 import com.qpros.helpers.ReadWriteHelper;
+import com.qpros.pages.scholarship_admin_pages.ProgramsPage;
 import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,9 +26,8 @@ public class ApplyForProgremPage extends Base {
     public ApplyForProgremPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
+    private ProgramsPage programsPage;
 
-    //    @FindBy(xpath = "//span[contains(.,'Programs')]")
-//    private WebElement programs;
     @FindBy(xpath = "//div/div/div/button")
     private WebElement applyBtn;
     @FindBy(xpath = "//*[@class='btn ml-auto mb-0 btn-primary']//*[text()='Apply']")
@@ -36,13 +36,6 @@ public class ApplyForProgremPage extends Base {
     private WebElement yes;
     @FindBy(xpath = "//adek-application-step/a/span")
     private WebElement Step1;
-    //    @FindBy(xpath = "//div[@id='kick-start']/div/div/application/form/div[2]/div" +
-//            "/div/div/program-dynamic/adek-drop-down/div/ng-select/div/span")
-//    private WebElement academicLevel;
-//    @FindBy(xpath = "//div[@id='kick-start']/div/div/application/form/div[2]/div/div/div[2]/program-dynamic/adek-drop-down/div/ng-select/div/div/div[2]")
-//    private WebElement preferredUniversity;
-//    @FindBy(xpath = "(//input[@type='text'])[3]")
-//    private WebElement PreferredMajor;
     @FindBy(xpath = "(//input[@type='text'])[4]")
     private WebElement university;
     @FindBy(xpath = "(//input[@type='text'])[5]")
@@ -245,8 +238,56 @@ public class ApplyForProgremPage extends Base {
 
     }
 
-
     private void programeSharedSteps(String programTitle) throws Exception {
+        // create object from testh class
+        programsPage = new ProgramsPage( driver );
+        System.out.println("Current Date: " + ActionsHelper.getTodayDate());
+        Thread.sleep(5000);
+
+        ActionsHelper.waitForListExistance(getPrograms(), 100);
+        ActionsHelper.selectElementFromList(getPrograms(), "Programs");
+
+        ActionsHelper.waitForListExistance(getProgramTilte(), 30);
+
+        ActionsHelper.waitForListExistance(getPrograms(), 30);
+        //selectProgram( programTitle );
+        ReadWriteHelper.writeCSVFirstCell(driver.getPageSource());
+        getProgram(programTitle);
+        //WebElement applyButton = getProgram( programTitle );
+        //ActionsHelper.actionsClick( applyButton, programTitle );
+        //ActionsHelper.safeJavaScriptClick( applyButton );
+
+
+        Thread.sleep(4000);
+        ActionsHelper.waitForListExistance(getStep1EducationLists(), 50);
+        ActionsHelper.scrollTo(getStep1EducationLists().get(0));
+        ActionsHelper.actionsClick(getStep1EducationLists().get(0), "");
+        // getStep1EducationLists().get(0).click();
+        ActionsHelper.waitForListExistance(getStep1Lists(), 20);
+        ActionsHelper.selectElementFromList(getStep1Lists(),programsPage.getAcademi_Careers());
+
+        ActionsHelper.waitForListExistance(getStep1EducationLists(), 20);
+        getStep1EducationLists().get(1).click();
+        ActionsHelper.waitForListExistance(getStep1Lists(), 50);
+        ActionsHelper.selectElementFromList(getStep1Lists(), programsPage.getPreferred_University());
+
+        ActionsHelper.waitForListExistance(getStep1EducationLists(), 20);
+        getStep1EducationLists().get(2).click();
+        ActionsHelper.waitForListExistance(getStep1Lists(), 50);
+        ActionsHelper.selectElementFromList(getStep1Lists(), programsPage.getPreferred_Major());
+
+        ActionsHelper.waitForExistance(getAchievements(), 30);
+        getAchievements().sendKeys("test33");
+
+        ActionsHelper.waitForExistance(getBtnNext1(), 50);
+        getBtnNext1().click();// step 1
+        ActionsHelper.waitForExistance(getStep2EducationLable(), 50);// step 2
+        getBtnNext1().click();
+        ActionsHelper.waitForExistance(getStep3ProficiencyLable(), 50);// step 3
+        getBtnNext1().click();// step 3
+
+    }
+    private void programeSharedSteps1(String programTitle) throws Exception {
         System.out.println("Current Date: " + ActionsHelper.getTodayDate());
         Thread.sleep(5000);
 
