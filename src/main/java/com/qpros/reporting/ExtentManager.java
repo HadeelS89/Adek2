@@ -7,21 +7,24 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 
+import javax.mail.MessagingException;
+import java.security.GeneralSecurityException;
+
 public class ExtentManager extends Base {
 
     private static ExtentReports extent;
     private static String reportClassName;
-    private static String reportFileName = String.format("QPros-Automation_Report-%s-%s.html",
+    public static String reportFileName = String.format("QPros-Automation_Report-%s-%s.html",
             ActionsHelper.getTodayDate(),System.currentTimeMillis());
-    private static String path = System.getProperty("user.dir") + "/src/main/resources/Reports/";
+    public static String path = System.getProperty("user.dir") + "/src/main/resources/Reports/";
 
-    public static ExtentReports getInstance() {
+    public static ExtentReports getInstance() throws GeneralSecurityException, MessagingException {
         if (extent == null)
             createInstance();
         return extent;
     }
 
-    public static ExtentReports createInstance() {
+    public static ExtentReports createInstance() throws GeneralSecurityException, MessagingException {
         StateHelper.setStepState("reportName", reportFileName);
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(path + reportFileName);
         htmlReporter.config().setTestViewChartLocation( ChartLocation.TOP);
@@ -32,7 +35,12 @@ public class ExtentManager extends Base {
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
 
+
         return extent;
+    }
+
+    public static void main(String[] args) throws GeneralSecurityException, MessagingException {
+        createInstance();
     }
 
 }
