@@ -64,7 +64,8 @@ public class EmailHelper extends Base {
             store.connect("imap.gmail.com","qprosautomation@gmail.com", "QPros@123");
             folder = store.getFolder(emailFolder.getText());
             folder.open(Folder.READ_WRITE);}
-            catch (Exception e){}
+            catch (Exception e){//Do nothing
+                }
         }
 
 
