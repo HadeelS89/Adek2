@@ -48,7 +48,7 @@ public class EmailHelper extends Base {
          * Connects to email server with credentials provided to read from a given folder of the email application
          */
         public EmailHelper() throws MessagingException, GeneralSecurityException {
-
+            try{
             EmailFolder emailFolder = EmailFolder.INBOX;
             Properties props = System.getProperties();
             MailSSLSocketFactory sf = new MailSSLSocketFactory();
@@ -63,7 +63,8 @@ public class EmailHelper extends Base {
             Store store = session.getStore("imaps");
             store.connect("imap.gmail.com","qprosautomation@gmail.com", "QPros@123");
             folder = store.getFolder(emailFolder.getText());
-            folder.open(Folder.READ_WRITE);
+            folder.open(Folder.READ_WRITE);}
+            catch (Exception e){}
         }
 
 
