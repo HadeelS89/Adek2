@@ -3,16 +3,20 @@ package com.qpros.helpers;
 import com.qpros.common.Base;
 import com.sun.mail.util.MailSSLSocketFactory;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.search.SubjectTerm;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.mail.search.SubjectTerm;
-
-import java.io.*;
-import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.*;
 
 
 public class EmailHelper extends Base {
@@ -44,7 +48,7 @@ public class EmailHelper extends Base {
          * Connects to email server with credentials provided to read from a given folder of the email application
          */
         public EmailHelper() throws MessagingException, GeneralSecurityException {
-
+            try{
             EmailFolder emailFolder = EmailFolder.INBOX;
             Properties props = System.getProperties();
             MailSSLSocketFactory sf = new MailSSLSocketFactory();
@@ -59,7 +63,9 @@ public class EmailHelper extends Base {
             Store store = session.getStore("imaps");
             store.connect("imap.gmail.com","qprosautomation@gmail.com", "QPros@123");
             folder = store.getFolder(emailFolder.getText());
-            folder.open(Folder.READ_WRITE);
+            folder.open(Folder.READ_WRITE);}
+            catch (Exception e){//Do nothing
+                }
         }
 
 

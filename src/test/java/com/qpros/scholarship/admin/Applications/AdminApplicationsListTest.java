@@ -8,8 +8,6 @@ import com.qpros.pages.authorization_pages.LoginPage;
 import com.qpros.pages.scholarship_admin_pages.AdminApplicationsListPage;
 import com.qpros.scholarship.applicant.MyApplications.ApplicantActionsTest;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;

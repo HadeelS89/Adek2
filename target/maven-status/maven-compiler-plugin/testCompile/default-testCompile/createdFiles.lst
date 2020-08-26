@@ -1,5 +1,6 @@
 com\qpros\scholarship\admin\interviews\InterviewsTest.class
 com\qpros\scholarship\admin\applicationsScenarios\AppsReviewCompletedTest.class
+com\qpros\scholarship\applicant\applications\MyApplicationTest.class
 com\qpros\scholarship\admin\applicationsScenarios\ActivateProgramTest.class
 com\qpros\scholarship\admin\applicationsScenarios\SaveToDraftTest.class
 com\qpros\scholarship\admin\applicationsScenarios\WithdrawApplicationTest.class
@@ -14,12 +15,12 @@ com\qpros\scholarship\admin\applicationsScenarios\ScheduleInterviewTest.class
 com\qpros\higher\education\client\program\Program.class
 com\qpros\scholarship\admin\applicationsScenarios\SubmitProgramTest.class
 com\qpros\scholarship\applicant\MyApplications\ApplicantActionsTest.class
-com\qpros\scholarship\admin\Applications\AdminApplicationsListTest.class
 com\qpros\higher\education\admin\provider\ProviderTest.class
 com\qpros\scholarship\admin\applicationsScenarios\RejectApplicationTest.class
 com\qpros\scholarship\admin\applicationsScenarios\AddScholarshipPayElementTest.class
 com\qpros\scholarship\admin\applicationsScenarios\CreateInterviewTest.class
 com\qpros\scholarship\applicant\ApplicantPrograms\ApplicantProgramTest.class
+com\qpros\scholarship\admin\applications\AdminApplicationsListTest.class
 com\qpros\scholarship\admin\applicationsScenarios\AddScholarshipBankDetailsTest.class
 com\qpros\authorization\ExternalLogin.class
 com\qpros\scholarship\admin\scholarships\ScholarshipsTest.class
