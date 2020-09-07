@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlTests/Scholarship/AuthorizationTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/xmlTests/Scholarship/AuthorizationTest.xml" afterDir="false" />
-    </list>
+    <list default="true" id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
