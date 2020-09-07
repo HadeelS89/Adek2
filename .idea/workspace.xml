@@ -19,7 +19,31 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement" />
+    <list default="true" id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement">
+      <change afterPath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTests.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_client5_httpclient5_5_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_core5_httpcore5_5_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_core5_httpcore5_h2_5_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_13_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTestsUGH.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/HadeelSalameh.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_bonigarcia_webdrivermanager_3_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_bonigarcia_webdrivermanager_4_2_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_14.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_11_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_rauschig_jarchivelib_0_8_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_rauschig_jarchivelib_1_0_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +65,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="mohaiat" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,6 +87,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/DataProvider" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
@@ -70,12 +95,14 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.qpros.scholarship_applicant" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\DataProvider" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\ApplicationsTestSuites" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\InrerviewsTestSuites" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.qpros.scholarship.admin.Applications" />
@@ -84,23 +111,18 @@
       <recent name="com.qpros.scholarship.applicant.interviews" />
       <recent name="com.qpros.scholarship_admin.applications" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\DataProvider" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\ApplicationsTestSuites" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\InrerviewsTestSuites" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\" />
       <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.DTCMAnalysis2.doMagic">
-    <configuration name="InterviewsTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.qpros.scholarship.admin.interviews.InterviewsTest" />
-      <module name="QPros" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qpros.scholarship.admin.interviews.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+  <component name="RunManager" selected="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml">
+    <configuration name="C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ScholarshipsAutomatedTests" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -163,11 +185,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.DTCMAnalysis2.doMagic" />
-        <item itemvalue="Application.InterviewsTest" />
+        <item itemvalue="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" />
         <item itemvalue="TestNG.InterviewsTest.fillInterviewScore" />
-        <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipBank.xml" />
+        <item itemvalue="TestNG.DTCMAnalysis2.doMagic" />
         <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipPayElement.xml" />
+        <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipBank.xml" />
       </list>
     </recent_temporary>
   </component>
@@ -335,10 +357,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="333" y="100" key="Vcs.Multiple.Commit.Info.Dialog.Key/0.0.1280.680@0.0.1280.680" timestamp="1594888093955" />
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1599472751220">
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1595145433055">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1599472751220" />
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1595145433055" />
     <state width="647" height="347" key="XDebugger.FullValuePopup" timestamp="1594818580176">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
