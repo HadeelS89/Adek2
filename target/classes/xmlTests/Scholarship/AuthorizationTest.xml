@@ -13,7 +13,7 @@
 
 
     <test name="Authorization Test - Chrome">
-        <parameter name="browserType" value="IE"></parameter>
+        <parameter name="browserType" value="Chrome"></parameter>
 
         <classes>
             <class name="com.qpros.authorization.LoginTest"/>
