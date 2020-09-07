@@ -20,29 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement">
-      <change afterPath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTests.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_client5_httpclient5_5_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_core5_httpcore5_5_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_core5_httpcore5_h2_5_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_13_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTestsUGH.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/HadeelSalameh.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_7.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_bonigarcia_webdrivermanager_3_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_bonigarcia_webdrivermanager_4_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_14.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_18.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_rauschig_jarchivelib_0_8_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_rauschig_jarchivelib_1_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/xmlTests/Scholarship/AuthorizationTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/xmlTests/Scholarship/AuthorizationTest.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -301,22 +282,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1594887804402" />
-    <state width="1237" height="253" key="GridCell.Tab.0.bottom" timestamp="1595141718385">
+    <state width="1237" height="263" key="GridCell.Tab.0.bottom" timestamp="1599481122748">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1595141718385" />
-    <state width="1237" height="253" key="GridCell.Tab.0.center" timestamp="1595141718384">
+    <state width="1237" height="263" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599481122748" />
+    <state width="1237" height="263" key="GridCell.Tab.0.center" timestamp="1599481122748">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1595141718384" />
-    <state width="1237" height="253" key="GridCell.Tab.0.left" timestamp="1595141718384">
+    <state width="1237" height="263" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1599481122748" />
+    <state width="1237" height="263" key="GridCell.Tab.0.left" timestamp="1599481122748">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1595141718384" />
-    <state width="1237" height="253" key="GridCell.Tab.0.right" timestamp="1595141718385">
+    <state width="1237" height="263" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1599481122748" />
+    <state width="1237" height="263" key="GridCell.Tab.0.right" timestamp="1599481122748">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1595141718385" />
+    <state width="1237" height="263" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1599481122748" />
     <state width="1237" height="294" key="GridCell.Tab.1.bottom" timestamp="1595141718377">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -357,10 +338,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="333" y="100" key="Vcs.Multiple.Commit.Info.Dialog.Key/0.0.1280.680@0.0.1280.680" timestamp="1594888093955" />
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1595145433055">
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1599480287654">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1595145433055" />
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1599480287654" />
     <state width="647" height="347" key="XDebugger.FullValuePopup" timestamp="1594818580176">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
