@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  name: 'QPros'
+  name: 'ADEK'
 
 steps:
 - task: Maven@3
