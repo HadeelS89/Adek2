@@ -20,3 +20,8 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/junitreports/TEST-*.xml'
     goals: 'clean test -Dfile=src\main\resources\xmlTests\Scholarship\AuthorizationTest.xml'
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/junitreports/TEST-*.xml'
+    
