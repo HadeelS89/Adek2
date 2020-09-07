@@ -2,6 +2,7 @@ package com.qpros.common;
 
 
 import com.qpros.helpers.ReadWriteHelper;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,10 +10,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -32,7 +32,6 @@ public class Base {
     @Parameters({"browserType"})
     @BeforeMethod(enabled = true)
     public void setUpBrowser(@Optional("optional") String browserType) {
-        //DriverType browser = getBrowser();
         if (!browserType.equals( "optional" )){
             initiateDriver(OsValidator.getDeviceOs(), browserType);
         }else {
@@ -50,7 +49,8 @@ public class Base {
         switch (browser) {
             case "firefox":
                 try {
-                    setFireFoxBrowser(deviceOsType);
+                   // setFireFoxBrowser(deviceOsType);
+                    WebDriverManager.firefoxdriver().setup();
                     FirefoxOptions options = new FirefoxOptions(  );
                     options.setAcceptInsecureCerts( true );
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
@@ -64,9 +64,7 @@ public class Base {
                 break;
             case "chrome":
                 try {
-                    DesiredCapabilities handlSSLErr = DesiredCapabilities.chrome ();
-                    handlSSLErr.setCapability ( CapabilityType.ACCEPT_SSL_CERTS, true);
-                    setChromeBrowser(deviceOsType);
+                    WebDriverManager.chromedriver().setup();
                     Map<String, Object> prefs = new HashMap<>();
                     //Put this into prefs map to switch off browser notification
                     prefs.put("profile.default_content_setting_values.notifications", 2);
@@ -95,9 +93,8 @@ public class Base {
             case "ie":
 
             {
+                WebDriverManager.iedriver().setup();
                 try {
-                    System.setProperty(ReadWriteHelper.ReadData("IEDriverPath"),
-                            ReadWriteHelper.ReadData("IEBrowserPathWindows"));
                     driver = new InternetExplorerDriver();
                 } catch (Throwable e) {
                     e.printStackTrace(System.out);
@@ -122,49 +119,8 @@ public class Base {
         return driver;
     }
 
-    public DriverType getBrowser() {
-        String browserName = ReadWriteHelper.ReadData("browser");
 
-        if (browserName == null || browserName.equalsIgnoreCase("chrome"))
-            return DriverType.CHROME;
-        else if (browserName.equalsIgnoreCase("firefox"))
-            return DriverType.FIREFOX;
-        else if (browserName.equals("iexplorer") || browserName.equalsIgnoreCase("internetExplorer") ||
-                browserName.equalsIgnoreCase("ie"))
-            return DriverType.INTERNETEXPLORER;
-        else if (browserName.equalsIgnoreCase("safari")) return DriverType.Safari;
-        else
-            throw new RuntimeException("Browser Name Key value in Configuration.properties is not matched : " +
-                    browserName);
-    }
-
-
-    private void setChromeBrowser(String deviceOsType) {
-        if (deviceOsType.equalsIgnoreCase("mac")) {
-            System.setProperty(ReadWriteHelper.ReadData("ChromeDriverPath"),
-                    ReadWriteHelper.ReadData("ChromeDriverLinkMac"));
-        } else if (deviceOsType.equalsIgnoreCase("windows")) {
-            System.setProperty(ReadWriteHelper.ReadData("ChromeDriverPath"),
-                    ReadWriteHelper.ReadData("chromeDriverLinkWindows"));
-        }
-        else if(deviceOsType.equalsIgnoreCase("Unix"))
-        {
-            System.setProperty(ReadWriteHelper.ReadData("ChromeDriverPath"),
-                    ReadWriteHelper.ReadData("chromeDriverLinkLinux"));
-        }
-    }
-
-    private void setFireFoxBrowser(String deviceOsType) {
-        if (deviceOsType.equalsIgnoreCase("mac")) {
-            System.setProperty(ReadWriteHelper.ReadData("FireFoxDriverPath"),
-                    ReadWriteHelper.ReadData("FireFoxBrowserPathMac"));
-        } else if (deviceOsType.equalsIgnoreCase("windows")) {
-            System.setProperty(ReadWriteHelper.ReadData("FireFoxDriverPath"),
-                    ReadWriteHelper.ReadData("FireFoxBrowserPathWindows"));
-        }
-    }
-
-    //@AfterMethod(enabled = true)
+    @AfterMethod(enabled = true)
     public void stopDriver() {
         try {
             driver.quit();
