@@ -41,7 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="mohaiat" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,6 +63,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/DataProvider" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
@@ -70,12 +71,14 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.qpros.scholarship_applicant" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\DataProvider" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\ApplicationsTestSuites" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\InrerviewsTestSuites" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.qpros.scholarship.admin.Applications" />
@@ -84,23 +87,18 @@
       <recent name="com.qpros.scholarship.applicant.interviews" />
       <recent name="com.qpros.scholarship_admin.applications" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\DataProvider" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\ApplicationsTestSuites" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\InrerviewsTestSuites" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\" />
       <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.DTCMAnalysis2.doMagic">
-    <configuration name="InterviewsTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.qpros.scholarship.admin.interviews.InterviewsTest" />
-      <module name="QPros" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qpros.scholarship.admin.interviews.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+  <component name="RunManager" selected="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml">
+    <configuration name="C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ScholarshipsAutomatedTests" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -163,11 +161,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.DTCMAnalysis2.doMagic" />
-        <item itemvalue="Application.InterviewsTest" />
+        <item itemvalue="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" />
         <item itemvalue="TestNG.InterviewsTest.fillInterviewScore" />
-        <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipBank.xml" />
+        <item itemvalue="TestNG.DTCMAnalysis2.doMagic" />
         <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipPayElement.xml" />
+        <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipBank.xml" />
       </list>
     </recent_temporary>
   </component>
@@ -279,22 +277,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1594887804402" />
-    <state width="1237" height="253" key="GridCell.Tab.0.bottom" timestamp="1595141718385">
+    <state width="1237" height="263" key="GridCell.Tab.0.bottom" timestamp="1599481122748">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1595141718385" />
-    <state width="1237" height="253" key="GridCell.Tab.0.center" timestamp="1595141718384">
+    <state width="1237" height="263" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599481122748" />
+    <state width="1237" height="263" key="GridCell.Tab.0.center" timestamp="1599481122748">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1595141718384" />
-    <state width="1237" height="253" key="GridCell.Tab.0.left" timestamp="1595141718384">
+    <state width="1237" height="263" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1599481122748" />
+    <state width="1237" height="263" key="GridCell.Tab.0.left" timestamp="1599481122748">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1595141718384" />
-    <state width="1237" height="253" key="GridCell.Tab.0.right" timestamp="1595141718385">
+    <state width="1237" height="263" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1599481122748" />
+    <state width="1237" height="263" key="GridCell.Tab.0.right" timestamp="1599481122748">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1595141718385" />
+    <state width="1237" height="263" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1599481122748" />
     <state width="1237" height="294" key="GridCell.Tab.1.bottom" timestamp="1595141718377">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -335,10 +333,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="333" y="100" key="Vcs.Multiple.Commit.Info.Dialog.Key/0.0.1280.680@0.0.1280.680" timestamp="1594888093955" />
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1599472751220">
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1599480287654">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1599472751220" />
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1599480287654" />
     <state width="647" height="347" key="XDebugger.FullValuePopup" timestamp="1594818580176">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  name: 'Default'
+  name: 'ADEK'
 
 steps:
 - task: Maven@3
@@ -19,4 +19,9 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: false
     testResultsFiles: '**/junitreports/TEST-*.xml'
-    goals: 'mvn clean test -Dfile="src\main\resources\xmlTests\Scholarship\AuthorizationTest.xml"'
+    goals: 'clean test -Dfile=src\main\resources\xmlTests\Scholarship\AuthorizationTest.xml'
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/junitreports/TEST-*.xml'
+    
