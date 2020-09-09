@@ -4,9 +4,10 @@ package com.qpros.scholarship.applicant.applications;
 import com.qpros.authorization.LoginTest;
 import com.qpros.common.Base;
 import com.qpros.pages.authorization_pages.LoginPage;
-//import com.qpros.pages.MyApplications;
 import com.qpros.pages.scholarship.applicant.MyApplicationsPage;
 import org.testng.annotations.Test;
+
+//import com.qpros.pages.MyApplications;
 
 public class MyApplicationTest extends Base {
     LoginPage loginPage;

@@ -9,11 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ScholarshipsAutomatedTestsUGH" />
         <module name="QPros" />
+        <module name="ScholarshipsAutomatedTests" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Adek2" target="1.8" />
       <module name="QPros" target="8" />
+      <module name="ScholarshipsAutomatedTests" target="1.8" />
       <module name="ScholarshipsAutomatedTestsUGH" target="1.8" />
     </bytecodeTargetLevel>
   </component>

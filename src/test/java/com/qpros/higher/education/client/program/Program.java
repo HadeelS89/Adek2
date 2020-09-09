@@ -3,7 +3,6 @@ package com.qpros.higher.education.client.program;
 import com.qpros.common.Base;
 import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.pages.authorization_pages.LoginPage;
-
 import com.qpros.pages.higher.education.client.HEProgram;
 import com.qpros.pages.higher.education.client.HESubstantiveChanges;
 import org.testng.annotations.Listeners;

@@ -12,7 +12,9 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,9 +30,9 @@ public class Base {
     public void setUpBrowser(@Optional("optional") String browserType) {
         //DriverType browser = getBrowser();
         if (!browserType.equals( "optional" )){
-            initiateDriver(OsValidator.getDeviceOs(), browserType);
+            initiateDriver("Linux", browserType);
         }else {
-            initiateDriver(OsValidator.getDeviceOs(), ReadWriteHelper.ReadData( "browser" ) );
+            initiateDriver("Linux", ReadWriteHelper.ReadData( "browser" ) );
         }
 
     }
@@ -68,6 +70,7 @@ public class Base {
                     options.setExperimentalOption("prefs", prefs);
                     options.addArguments("--disable-web-security");
                     options.addArguments("--allow-running-insecure-content");
+                    options.addArguments("--no-sandbox");
                     options.setAcceptInsecureCerts( true );
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
                         options.addArguments("--headless");
@@ -136,7 +139,7 @@ public class Base {
             System.setProperty(ReadWriteHelper.ReadData("ChromeDriverPath"),
                     ReadWriteHelper.ReadData("chromeDriverLinkWindows"));
         }
-        else if(deviceOsType.equalsIgnoreCase("Unix"))
+        else if(deviceOsType.equalsIgnoreCase("Linux"))
         {
             System.setProperty(ReadWriteHelper.ReadData("ChromeDriverPath"),
                     ReadWriteHelper.ReadData("chromeDriverLinkLinux"));
