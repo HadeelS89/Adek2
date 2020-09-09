@@ -20,15 +20,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement">
-      <change beforePath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTests.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTests.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_7.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataProvider/ActiveProgram.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataProvider/ActiveProgram.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DataProvider/ActiveProgram.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DataProvider/ActiveProgram.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DataProvider/createdProgram.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DataProvider/createdProgram.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DataProvider/credentialsData.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DataProvider/credentialsData.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AcceptAck.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AcceptAck.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ActivateProgram.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ActivateProgram.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/BookInterview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/BookInterview.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/DeclineAck.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/DeclineAck.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/FillInterviewScore.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/FillInterviewScore.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/MarkApplicantAsAbsent.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/MarkApplicantAsAbsent.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/RejectApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/RejectApplication.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ResubmitAfterChange.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ResubmitAfterChange.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/DataProvider/createdProgram.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataProvider/createdProgram.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataProvider/credentialsData.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataProvider/credentialsData.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,16 +63,10 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1728" />
-    <option name="y" value="125" />
-    <option name="width" value="1026" />
-    <option name="height" value="546" />
   </component>
   <component name="ProjectId" id="1cWilW3ot6RhLTrPKiVJQ7eM2dy" />
   <component name="ProjectViewState">
@@ -74,10 +80,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/browserDrivers" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin" />
     <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
@@ -96,13 +103,51 @@
       <recent name="com.qpros.scholarship_admin.applications" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
+      <recent name="C:\ScholarshipsAutomatedTests\src\main\resources\browserDrivers" />
       <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\DataProvider" />
       <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\ApplicationsTestSuites" />
       <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\InrerviewsTestSuites" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml">
+  <component name="RunManager" selected="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AcceptAck.xml">
+    <configuration name="AcceptAcknowledgeApplsTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ScholarshipsAutomatedTests" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qpros.scholarship.admin.applicationsScenarios.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qpros.scholarship.admin.applicationsScenarios" />
+      <option name="MAIN_CLASS_NAME" value="com.qpros.scholarship.admin.applicationsScenarios.AcceptAcknowledgeApplsTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AcceptAck.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ScholarshipsAutomatedTests" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AcceptAck.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AllTest.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ScholarshipsAutomatedTests" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AllTest.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="ScholarshipsAutomatedTests" />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" />
@@ -113,69 +158,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipBank.xml" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="QPros" />
-      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipBank.xml" />
-      <option name="TEST_OBJECT" value="SUITE" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipPayElement.xml" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="QPros" />
-      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipPayElement.xml" />
-      <option name="TEST_OBJECT" value="SUITE" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DTCMAnalysis2.doMagic" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="ScholarshipsAutomatedTestsUGH" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qpros.common.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.qpros.common" />
-      <option name="MAIN_CLASS_NAME" value="com.qpros.common.DTCMAnalysis2" />
-      <option name="METHOD_NAME" value="doMagic" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InterviewsTest.fillInterviewScore" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="QPros" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qpros.scholarship.admin.interviews.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.qpros.scholarship.admin.interviews" />
-      <option name="MAIN_CLASS_NAME" value="com.qpros.scholarship.admin.interviews.InterviewsTest" />
-      <option name="METHOD_NAME" value="fillInterviewScore" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="" />
+          <option name="buildCliOptions" value="" />
+          <option name="buildOnly" value="true" />
+          <option name="command" value="" />
+          <option name="containerName" value="" />
+          <option name="entrypoint" value="" />
+          <option name="commandLineOptions" value="" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AcceptAck.xml" />
+        <item itemvalue="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AllTest.xml" />
+        <item itemvalue="TestNG.AcceptAcknowledgeApplsTest" />
         <item itemvalue="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" />
-        <item itemvalue="TestNG.InterviewsTest.fillInterviewScore" />
-        <item itemvalue="TestNG.DTCMAnalysis2.doMagic" />
-        <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipPayElement.xml" />
-        <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipBank.xml" />
+        <item itemvalue="Docker.Dockerfile" />
       </list>
     </recent_temporary>
   </component>
@@ -247,6 +251,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="234" y="0" key="#Docker" timestamp="1599580722120">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="234" y="0" key="#Docker/0.0.1280.680@0.0.1280.680" timestamp="1599580722120" />
+    <state x="351" y="0" key="#Dockerfile" timestamp="1599580724802">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="351" y="0" key="#Dockerfile/0.0.1280.680@0.0.1280.680" timestamp="1599580724802" />
     <state x="267" y="19" key="#Inspections" timestamp="1593943090083">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -259,26 +271,34 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1280.680@0.0.1280.680" timestamp="1591789495832" />
-    <state x="368" y="143" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593948848999">
+    <state x="368" y="143" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599589233687">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="368" y="143" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1593948848999" />
+    <state x="368" y="143" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1599589233687" />
     <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser" timestamp="1594626275034">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1594626275034" />
-    <state x="374" y="30" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1599634856735">
+    <state x="371" y="117" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1599646571048">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="374" y="30" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1280.680@0.0.1280.680" timestamp="1599634856735" />
-    <state x="233" y="265" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1594017133225">
+    <state x="371" y="117" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1599646571048" />
+    <state x="365" y="30" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1599581354039">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="265" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1594017133225" />
+    <state x="365" y="30" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1280.680@0.0.1280.680" timestamp="1599581354039" />
+    <state x="233" y="265" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1599646613299">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="265" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1599646613299" />
     <state x="424" y="210" width="525" height="269" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594017278540">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="424" y="210" width="525" height="269" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1594017278540" />
+    <state x="438" y="222" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1599646573073">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="438" y="222" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1280.680@0.0.1280.680" timestamp="1599646573073" />
     <state x="351" y="185" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1593948757500">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -287,78 +307,86 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1594887804402" />
-    <state width="1237" height="295" key="GridCell.Tab.0.bottom" timestamp="1599636063067">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1599646627630">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="295" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599636063067" />
-    <state width="1237" height="295" key="GridCell.Tab.0.center" timestamp="1599636063067">
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1599646627630" />
+    <state width="1237" height="158" key="GridCell.Tab.0.bottom" timestamp="1599648191754">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="295" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1599636063067" />
-    <state width="1237" height="295" key="GridCell.Tab.0.left" timestamp="1599636063066">
+    <state width="1237" height="158" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599648191754" />
+    <state width="1237" height="158" key="GridCell.Tab.0.center" timestamp="1599648191754">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="295" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1599636063066" />
-    <state width="1237" height="295" key="GridCell.Tab.0.right" timestamp="1599636063067">
+    <state width="1237" height="158" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1599648191754" />
+    <state width="1237" height="158" key="GridCell.Tab.0.left" timestamp="1599648191754">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="295" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1599636063067" />
-    <state width="1237" height="294" key="GridCell.Tab.1.bottom" timestamp="1595141718377">
+    <state width="1237" height="158" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1599648191754" />
+    <state width="1237" height="158" key="GridCell.Tab.0.right" timestamp="1599648191754">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1595141718377" />
-    <state width="1237" height="294" key="GridCell.Tab.1.center" timestamp="1595141718377">
+    <state width="1237" height="158" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1599648191754" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1599642024320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1595141718377" />
-    <state width="1237" height="294" key="GridCell.Tab.1.left" timestamp="1595141718377">
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599642024320" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1599642024320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1595141718377" />
-    <state width="1237" height="294" key="GridCell.Tab.1.right" timestamp="1595141718377">
+    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1599642024320" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1599642024320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1595141718377" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1599642024320" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1599642024320">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1599642024320" />
     <state x="171" y="0" key="Maven.ArtifactSearchDialog" timestamp="1594278438184">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.680@0.0.1280.680" timestamp="1594278438184" />
-    <state x="0" y="3" width="1280" height="677" key="MergeDialog" timestamp="1594889154387">
+    <state x="0" y="3" width="1280" height="677" key="MergeDialog" timestamp="1599640541817">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="0" y="3" width="1280" height="677" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1594889154387" />
-    <state x="125" y="124" width="646" height="417" key="MultipleFileMergeDialog" timestamp="1594889175744">
+    <state x="0" y="3" width="1280" height="677" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1599640541817" />
+    <state x="125" y="124" width="646" height="417" key="MultipleFileMergeDialog" timestamp="1599640541822">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="125" y="124" width="646" height="417" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1594889175744" />
-    <state x="423" y="43" key="RollbackChangesDialog" timestamp="1591168597580">
+    <state x="125" y="124" width="646" height="417" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1599640541822" />
+    <state x="423" y="43" key="RollbackChangesDialog" timestamp="1599584005451">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="423" y="43" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1591168597580" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1594889337046">
+    <state x="423" y="43" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1599584005451" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1599640268384">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1594889337045" />
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1599640268384" />
     <state x="333" y="100" key="Vcs.Multiple.Commit.Info.Dialog.Key" timestamp="1594888093955">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="333" y="100" key="Vcs.Multiple.Commit.Info.Dialog.Key/0.0.1280.680@0.0.1280.680" timestamp="1594888093955" />
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1599480287654">
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1599644526486">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1599480287654" />
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1599644526486" />
     <state width="647" height="347" key="XDebugger.FullValuePopup" timestamp="1594818580176">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="647" height="347" key="XDebugger.FullValuePopup/0.0.1280.680@0.0.1280.680" timestamp="1594818580176" />
+    <state x="452" y="119" key="chooseDestDirectoryDialog" timestamp="1599646589085">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="452" y="119" key="chooseDestDirectoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1599646589085" />
     <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1594898632982">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1594898632982" />
-    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594887116554">
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599641194221">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1594887116554" />
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1599641194221" />
     <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591554877364">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -371,24 +399,33 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="0" y="0" width="587" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1594815433482" />
-    <state x="221" y="129" key="git4idea.merge.GitPullDialog" timestamp="1595145752856">
+    <state x="221" y="129" key="git4idea.merge.GitPullDialog" timestamp="1599644719005">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="221" y="129" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1595145752856" />
+    <state x="221" y="129" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1599644719005" />
     <state x="58" y="150" key="git4idea.ui.GitUnstashDialog" timestamp="1593071477204">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="58" y="150" key="git4idea.ui.GitUnstashDialog/0.0.1280.680@0.0.1280.680" timestamp="1593071477204" />
-    <state x="297" y="151" key="run.anything.popup" timestamp="1595141870250">
+    <state x="297" y="151" key="run.anything.popup" timestamp="1599584119258">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1595141870250" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1594899574841">
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1599584119258" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1599649259240">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1594899574841" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1599649259240" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="TestNG">
         <watch expression="exception.substring(exception.lastIndexOf(&quot;:&quot;));" language="JAVA" />

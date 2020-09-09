@@ -3,7 +3,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 
-<suite name="Sample Test Suite" verbose="1" >
+<suite name="Sample Test Suite" verbose="1" parallel="tests">
     <listeners>
         <listener class-name="com.qpros.reporting.Listeners"/>
 
