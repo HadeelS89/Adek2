@@ -2,12 +2,15 @@ package com.qpros.pages.scholarship_admin_pages;
 
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
+import com.qpros.helpers.ReadFromExcel1;
+import com.qpros.helpers.ReadWriteHelper;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +20,9 @@ public class InterviewsPage extends Base {
     public static String randomName = "";
     public static String createdProgram = "";
 
-    public InterviewsPage(WebDriver driver) {
+
+    ReadFromExcel1 excelFile= new ReadFromExcel1("src/main/resources/DataProvider/programData.xlsx") ;
+    public InterviewsPage(WebDriver driver) throws IOException {
         PageFactory.initElements(driver, this);
     }
 
@@ -93,13 +98,19 @@ public class InterviewsPage extends Base {
         }
         // ActionsHelper.waitForExistance(getProgramDDL(), 50);
         ActionsHelper.actionsClick(getProgramDDL(), programTitle);
-        ActionsHelper.actionsClick(getProvideVenue(), "MeetingRoom B ");
-        ActionsHelper.actionsClick(getDescriptionEnglish(), "1234");
-        getDescriptionArabic().sendKeys("3444");
+        ActionsHelper.actionsClick(getProvideVenue(), ReadWriteHelper.readFromExcel
+                ("programData","Interview", "ProvideVenue"));
+        System.out.println("test 233 "+ReadFromExcel1.
+                getData2("Interview","ProvideVenue"));
+        ActionsHelper.actionsClick(getDescriptionEnglish(),ReadWriteHelper.readFromExcel
+                ("programData","Interview", "DescriptionEnglish"));
+        getDescriptionArabic().sendKeys(ReadWriteHelper.readFromExcel
+                ("programData","Interview", "DescriptionArabic"));
         getDate().sendKeys(ActionsHelper.getFutureDate(0, 2, 3));
         ActionsHelper.actionsClick(getStartTime(), ActionsHelper.getFutureTime(2, 5));
         ActionsHelper.actionsClick(getEndTime(), ActionsHelper.getFutureTime(3, 5));
-        getCapacity().sendKeys("1");
+        getCapacity().sendKeys(ReadWriteHelper.readFromExcel
+                ("programData","Interview", "Capacity"));
         getSubmitInterView().click();
         ActionsHelper.waitForExistance(getSuccess(), 20);
     }

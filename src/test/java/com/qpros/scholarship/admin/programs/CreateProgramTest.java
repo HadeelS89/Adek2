@@ -34,7 +34,7 @@ public class CreateProgramTest extends Base {
 
     @Test(description = "Set program configurations",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 1)
-    public void setConfigurations() {
+    public void setConfigurations() throws InterruptedException {
         //Login as Program Manager
         loginPage = new LoginPage( driver );
         loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "programManager1",
@@ -65,5 +65,22 @@ public class CreateProgramTest extends Base {
         programsPage.setProgramTeam();
 
     }
+
+    @Test(description = "Set Program TemplateConfiguration",
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 2)
+    public void setProgramTemplateConfiguration() throws Exception {
+        //Login as Program Manager
+        loginPage = new LoginPage(driver);
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "programManager1",
+                "username" ),
+                ReadWriteHelper.readCredentialsXMLFile( "programManager1", "password" ));
+
+        //Set program team
+        programsPage = new ProgramsPage( driver );
+        programsPage.templateConfiguration("Added ");
+
+
+    }
+
 
 }

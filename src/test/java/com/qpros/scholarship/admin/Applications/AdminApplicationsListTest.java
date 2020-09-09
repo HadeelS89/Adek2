@@ -229,7 +229,7 @@ public class AdminApplicationsListTest extends Base {
 
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
         //adminApplicationsListPage.findProgram(ReadWriteHelper.getCreatedProgram());
-        adminApplicationsListPage.findProgram("AUTOMATION TEST 92419");
+        adminApplicationsListPage.findProgram(ReadWriteHelper.getCreatedProgram());
         adminApplicationsListPage.activationForm();
         Assert.assertTrue(adminApplicationsListPage.getSucessLabel().get(0).isDisplayed());
         adminApplicationsListPage.getBtnOk().click();

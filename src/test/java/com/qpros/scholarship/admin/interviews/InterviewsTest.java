@@ -8,6 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 @Listeners(com.qpros.reporting.Listeners.class)
 public class InterviewsTest extends Base {
     private LoginPage loginPage;
@@ -16,12 +18,12 @@ public class InterviewsTest extends Base {
     @Test(description = "Create new interview from admin panel",
 
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
-    public void createInterview() throws InterruptedException {
+    public void createInterview() throws InterruptedException, IOException {
         //Login as Program Manager
         loginPage = new LoginPage( driver );
-        loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "programManager1",
+        loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "interviewer1",
                 "username" ),
-                ReadWriteHelper.readCredentialsXMLFile( "programManager1", "password" ) );
+                ReadWriteHelper.readCredentialsXMLFile( "interviewer1", "password" ) );
 
         //Create new interview
         interviewsPage = new InterviewsPage( driver );

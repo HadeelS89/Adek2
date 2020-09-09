@@ -1,7 +1,9 @@
 package com.qpros.pages.scholarship_admin_pages;
 
+import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
+import com.qpros.model.programModel;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,17 +13,35 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 @Getter
-public class ProgramsPage {
-
+public class ProgramsPage extends Base {
+    programModel testmode = new programModel().populateData();
     public static String randomName = "";
     public static String createdProgram = "";
-   // public static String interviewProgram = "";
+    // public static String interviewProgram = "";
     WebElement createdProgramName = null;
+    final String Academi_Careers = ReadWriteHelper.readFromExcel
+            ("programData", "Configuration", "AcademicCareers");
+    final String Min_Age = ReadWriteHelper.readFromExcel(
+            "programData", "Configuration", "AgeRangeMin");
+    final String Max_Age = ReadWriteHelper.readFromExcel(
+            "programData", "Configuration", "AgeRangeMax");
+    final String Nationality = ReadWriteHelper.readFromExcel(
+            "programData", "Configuration", "Nationality");
+    final String Preferred_University = ReadWriteHelper.readFromExcel(
+            "programData", "Configuration", "PreferredUniversity");
+    final String Count = ReadWriteHelper.readFromExcel(
+            "programData", "Configuration", "Count");
+    final String Preferred_Major = ReadWriteHelper.readFromExcel(
+            "programData", "Configuration", "PreferredMajor");
+    String policy_Name = ReadWriteHelper.readFromExcel(
+            "programData", "TemplateConfig", "Policy");
+    String performance_RuleSet = ReadWriteHelper.readFromExcel(
+            "programData", "TemplateConfig", "PerformanceRuleSet");
+
 
     public ProgramsPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-
     @FindBy(css = "a[class='air__menuLeft__link']")
     private List<WebElement> programsTab;
     @FindBy(css = "i[class='btn-addon-icon fe fe-plus-circle']")
@@ -134,6 +154,18 @@ public class ProgramsPage {
     private List<WebElement> okButton;
     @FindBy(id = "ProjectId")
     private WebElement erpIDField;
+    @FindBy(id = "policyRule")
+    private WebElement policyField;
+    @FindBy(id = "policyRuleId")
+    private WebElement performanceRuleField;
+    @FindBy(css = "#collapseLetterofNotice1 .note-editable")
+    private WebElement letterTemplateField;
+    @FindBy(xpath = "//input[starts-with(@id,'btnSubmitBankBranches')]")
+    private List<WebElement> submitLetterBtn;
+
+    public ProgramsPage() {
+
+    }
 
 
     public void addProgram() {
@@ -178,7 +210,7 @@ public class ProgramsPage {
     }
 
 
-    public void setProgramConfig() {
+    public void setProgramConfig() throws InterruptedException {
         //Select configurations tab
         ActionsHelper.waitForExistance(getMainInfoLabels(), 50);
         ActionsHelper.waitForListExistance(getProgramOptions(), 50);
@@ -192,9 +224,9 @@ public class ProgramsPage {
         System.out.println("Fields List size: " + getAcademicCareersField().size());
         getAcademicCareersField().get(0).click();
         ActionsHelper.waitForListExistance(getUserSearchField(), 20);
-        getUserSearchField().get(0).sendKeys("Doctorate");
+        getUserSearchField().get(0).sendKeys(Academi_Careers);
         ActionsHelper.waitForListExistance(getDivList(), 50);
-        ActionsHelper.selectElementFromList(getDivList(), "Doctorate");
+        ActionsHelper.selectElementFromList(getDivList(), Academi_Careers);
         getSelectionCountList().get(0).clear();
         getSelectionCountList().get(0).sendKeys("1");
         getMandatoryCheckListList().get(0).click();
@@ -205,9 +237,9 @@ public class ProgramsPage {
         ActionsHelper.selectElementFromList(getConfigurationsList(), "Age Range");
         ActionsHelper.waitForExistance(getMinAgeField(), 50);
         getMinAgeField().clear();
-        getMinAgeField().sendKeys("16");
+        getMinAgeField().sendKeys(getMin_Age());
         getMaxAgeField().clear();
-        getMaxAgeField().sendKeys("40");
+        getMaxAgeField().sendKeys(getMax_Age());
         getSaveButton().get(1).click();
 
         //Nationality
@@ -216,11 +248,14 @@ public class ProgramsPage {
         ActionsHelper.waitForListExistance(getAcademicCareersField(), 50);
         getAcademicCareersField().get(1).click();
         ActionsHelper.waitForListExistance(getUserSearchField(), 20);
-        getUserSearchField().get(1).sendKeys("United Arab Emirates");
-        ActionsHelper.waitForListExistance(getDivList(), 30);
-        ActionsHelper.selectElementFromList(getDivList(), "United Arab Emirates");
+        getUserSearchField().get(1).sendKeys(getNationality());
+        ActionsHelper.waitForListExistance(getDivList(), 40);
+        ActionsHelper.selectElementFromList(getDivList(), getNationality());
+        //Thread.sleep(3000);
+
         getSelectionCountList().get(1).clear();
         getSelectionCountList().get(1).sendKeys("1");
+
         getMandatoryCheckListList().get(1).click();
         getSaveButton().get(2).click();
 
@@ -237,16 +272,16 @@ public class ProgramsPage {
         ActionsHelper.waitForListExistance(getAcademicCareersField(), 50);
         getAcademicCareersField().get(2).click();
         ActionsHelper.waitForListExistance(getUserSearchField(), 20);
-        getUserSearchField().get(2).sendKeys("Aarhus University");
+        getUserSearchField().get(2).sendKeys(getPreferred_University());
         ActionsHelper.waitForListExistance(getDivList(), 30);
-        ActionsHelper.selectElementFromList(getDivList(), "Aarhus University");
-        getAcademicCareersField().get(2).click();
-        getUserSearchField().get(2).sendKeys("Boston University");
-        ActionsHelper.selectElementFromList(getDivList(), "Boston University");
-        getAcademicCareersField().get(2).click();
-        getUserSearchField().get(2).sendKeys("Brown University");
-        ActionsHelper.selectElementFromList(getDivList(), "Brown University");
-        getSelectionCountList().get(2).clear();
+        ActionsHelper.selectElementFromList(getDivList(), getPreferred_University());
+//        getAcademicCareersField().get(2).click();
+//        getUserSearchField().get(2).sendKeys("Boston University");
+//        ActionsHelper.selectElementFromList(getDivList(), "Boston University");
+//        getAcademicCareersField().get(2).click();
+//        getUserSearchField().get(2).sendKeys("Brown University");
+//        ActionsHelper.selectElementFromList(getDivList(), "Brown University");
+//        getSelectionCountList().get(2).clear();
         getSelectionCountList().get(2).sendKeys("1");
         getMandatoryCheckListList().get(2).click();
         getSaveButton().get(4).click();
@@ -256,16 +291,16 @@ public class ProgramsPage {
         ActionsHelper.selectElementFromList(getConfigurationsList(), "Preferred Major");
         ActionsHelper.waitForListExistance(getAcademicCareersField(), 50);
         getAcademicCareersField().get(3).click();
-        getUserSearchField().get(3).sendKeys("Accounting");
+        getUserSearchField().get(3).sendKeys(getPreferred_Major());
         ActionsHelper.waitForListExistance(getDivList(), 20);
-        ActionsHelper.selectElementFromList(getDivList(), "Accounting");
-        getAcademicCareersField().get(3).click();
-        getUserSearchField().get(3).sendKeys("Biology");
-        ActionsHelper.selectElementFromList(getDivList(), "Biology");
-        getAcademicCareersField().get(3).click();
-        getUserSearchField().get(3).sendKeys("Software Engineering");
-        ActionsHelper.selectElementFromList(getDivList(), "Software Engineering");
-        getSelectionCountList().get(3).clear();
+        ActionsHelper.selectElementFromList(getDivList(), getPreferred_Major());
+//        getAcademicCareersField().get(3).click();
+//        getUserSearchField().get(3).sendKeys("Biology");
+//        ActionsHelper.selectElementFromList(getDivList(), "Biology");
+//        getAcademicCareersField().get(3).click();
+//        getUserSearchField().get(3).sendKeys("Software Engineering");
+//        ActionsHelper.selectElementFromList(getDivList(), "Software Engineering");
+//        getSelectionCountList().get(3).clear();
         getSelectionCountList().get(3).sendKeys("1");
         getMandatoryCheckListList().get(3).click();
         getSaveButton().get(5).click();
@@ -366,16 +401,75 @@ public class ProgramsPage {
         //Set program team
         setProgramTeam();
     }
+
     public void addProgramToFile() throws Exception {
 
-            for (int i = 0; i < getProgramsDiv().size(); i++) {
-                if (getProgramsDiv().get(i).getText().equalsIgnoreCase(randomName)) {
-                    createdProgram = getProgramsDiv().get(i).getText();
-                    ReadWriteHelper.writeIntoXMLFileInterview(createdProgram);
-                    break;
-                }
+        for (int i = 0; i < getProgramsDiv().size(); i++) {
+            if (getProgramsDiv().get(i).getText().equalsIgnoreCase(randomName)) {
+                createdProgram = getProgramsDiv().get(i).getText();
+                ReadWriteHelper.writeIntoXMLFileInterview(createdProgram);
+                break;
             }
+        }
 
+
+    }
+
+    public void templateConfiguration(String programName) {
+
+
+        ActionsHelper.waitForExistance(getSearchField(), 30);
+        getSearchField().sendKeys(programName);
+        ActionsHelper.waitForExistance(getSearchButton(), 30);
+        getSearchButton().click();
+        ActionsHelper.waitForListExistance(getProgramsDiv(), 30);
+        getProgramsDiv().get(0).click();
+        getProgramOptions().get(11).click();
+
+        ActionsHelper.waitForExistance(getPolicyField(), 50);
+        getPolicyField().sendKeys(getPolicy_Name());
+        getPerformanceRuleField().sendKeys(getPerformance_RuleSet());
+        ActionsHelper.waitForListExistance(getConfigurationsList(), 50);
+        ActionsHelper.selectElementFromList(getConfigurationsList(), "Letter of Notice 1");
+        ActionsHelper.waitForExistance(getLetterTemplateField(), 50);
+        getLetterTemplateField().sendKeys("        Tags Needed\tKeys\n" +
+                "        Applicant Id\t{{Applicant Id}}\n" +
+                "        Application Number\n" +
+                "        {{Application Number}}\n" +
+                "        Student Name EN\t{{Student Name EN}}\n" +
+                "        Student Name AR\t{{Student Name AR}}\n" +
+                "        First Name EN\t{{First Name EN}}\n" +
+                "        First Name AR\t{{First Name AR}}\n" +
+                "        Middle Name EN\t{{Middle Name EN}}\n" +
+                "        Middle Name AR\t{{Middle Name AR}}\n" +
+                "        Last Name EN\t{{Last Name EN}}\n" +
+                "        Last Name AR\t{{Last Name AR}}\n" +
+                "        Program Name EN\t{{Program Name EN}}\n" +
+                "        Program Name AR\t{{Program Name AR}}\n" +
+                "        Current Date\t{{Current Date}}\n" +
+                "        Academic Year\t{{Academic Year}}\n" +
+                "        Academic Term EN\t{{Academic Term EN}}\n" +
+                "        Academic Term AR\t{{Academic Term AR}}\n" +
+                "        Semester GPA\t{{Semester GPA}}\n" +
+                "        Semester Credit Hour\t{{Semester Credit Hour}}\n" +
+                "        Cumulative GPA\t{{Cumulative GPA}}\n" +
+                "        Cumulative Credit Hour\t{{Cumulative Credit Hour}}\n" +
+                "        Year GPA\t{{Year GPA}}\n" +
+                "        Year Credit Hour\t{{Year Credit Hour}}\n" +
+                "        Indicator\t{{Indicator}}\n" +
+                "        University En\t{{University En}}\n" +
+                "        University Ar\t{{University Ar}}\n" +
+                "        Major En\t{{Major En}}\n" +
+                "        Major Ar\t{{Major Ar}}\n" +
+                "        Scholarship Activation Date\t{{Scholarship Activation Date}}\n" +
+                "        Academic Level En\t{{Academic Level En}}\n" +
+                "        Academic Level Ar\t{{Academic Level Ar}}\n" +
+                "        Academic Program En\t{{Academic Program En}}\n" +
+                "        Academic Program Ar\t{{Academic Program Ar}}\n" +
+                "        Expected Graduation Date\t{{Expected Graduation Date}}");
+        System.out.println("Siza 123 " + getSubmitLetterBtn().size());
+        getSubmitLetterBtn().get(1).click();
+        ActionsHelper.waitForListExistance(getOkButton(), 30);
 
 
     }
