@@ -1,7 +1,7 @@
 package com.qpros.common;
 
 public enum DriverType {
-    FIREFOX,
+    FIREFOX(),
     CHROME,
     INTERNETEXPLORER,
     Safari

@@ -7,7 +7,9 @@ import javax.annotation.Nullable;
 import java.util.Map;
 
 public class Requester {
-
+    public enum Verb {
+        GET,POST,DELETE
+    }
     private final OkHttpClient httpClient = new OkHttpClient();
     public ResponseBody responseBody;
     public int statusCode;

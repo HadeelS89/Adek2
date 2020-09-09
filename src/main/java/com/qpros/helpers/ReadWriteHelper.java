@@ -16,31 +16,32 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
+import java.util.HashMap;
 import java.util.Properties;
 
 public class ReadWriteHelper {
 
     public static String ReadData(String par) {
-        File file = new File( "src/main/resources/config.properties" );
+        File file = new File("src/main/resources/config.properties");
 
         FileInputStream fileInput = null;
         try {
-            fileInput = new FileInputStream( file );
+            fileInput = new FileInputStream(file);
         } catch (Throwable e) {
-            e.printStackTrace( System.out );
-            Assert.fail( "\nPlease check config file if exist\n" );
+            e.printStackTrace(System.out);
+            Assert.fail("\nPlease check config file if exist\n");
         }
         Properties prop = new Properties();
 
         // load properties file
         try {
-            prop.load( fileInput );
+            prop.load(fileInput);
         } catch (IOException e) {
-            e.printStackTrace( System.out );
-            Assert.fail( "\nPlease check config file Inputs\n" );
+            e.printStackTrace(System.out);
+            Assert.fail("\nPlease check config file Inputs\n");
         }
 
-        return prop.getProperty( par );
+        return prop.getProperty(par);
     }
 
     public static String[][] readCSVFile(String fileName, int linesToRead, int columnsToRead) {
@@ -49,12 +50,12 @@ public class ReadWriteHelper {
         String csvSplitBy = ",";
         String[] currentLine = null;
         String[][] finalResult = new String[linesToRead][columnsToRead];
-        try (BufferedReader br = new BufferedReader( new FileReader( System.getProperty( "user.dir" ) +
-                "/src/main/resources/DataProvider/"+fileName+".csv" ) )) {
+        try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") +
+                "/src/main/resources/DataProvider/" + fileName + ".csv"))) {
             int j = 0;
             while ((line = br.readLine()) != null) {
                 // use comma as separator
-                 currentLine = line.split( csvSplitBy );
+                currentLine = line.split(csvSplitBy);
                 for (int i = 0; i < currentLine.length; i++) {
                     finalResult[j][i] = currentLine[i];
                 }
@@ -66,34 +67,72 @@ public class ReadWriteHelper {
         return finalResult;
     }
 
+    public static String[][] readCSVFile(String fileName, int linesToRead) {
+        //Possible future implementation: Make separators as input. However this looks better for reusability
+        String line = "";
+        String csvSplitBy = ",";
+        String[] currentLine = null;
+        String[][] finalResult = new String[linesToRead][1];
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            int j = 0;
+            while ((line = br.readLine()) != null) {
+                // use comma as separator
+                currentLine = line.split(csvSplitBy);
+                for (int i = 0; i < currentLine.length; i++) {
+                    finalResult[j][i] = currentLine[i];
+                }
+                j++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return finalResult;
+    }
+
+    public static void writeCSVFile(String filePath, String[] data) throws IOException {
+        //Possible future implementation: Make separators as input. However this looks better for reusability
+        String csvSplitBy = ",";
+        BufferedWriter br = new BufferedWriter(new FileWriter(filePath));
+        StringBuilder sb = new StringBuilder();
+        int len = data.length;
+        for (int i = 0; i < len; i++) {
+            sb.append(data[i]);
+            sb.append("\n");
+        }
+        br.write(sb.toString());
+        br.close();
+
+
+    }
+
     public static String readCredentialsXMLFile(String credentialsType, String tag) {
 
         String value = "";
 
         try {
             //creating a constructor of file class and parsing an XML file
-            File file = new File( System.getProperty( "user.dir" ) +
-                    "/src/main/resources/DataProvider/credentialsData.xml" );
+            File file = new File(System.getProperty("user.dir") +
+                    "/src/main/resources/DataProvider/credentialsData.xml");
             //an instance of factory that gives a document builder
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             //an instance of builder to parse the specified xml file
             DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse( file );
+            Document doc = db.parse(file);
             doc.getDocumentElement().normalize();
             //System.out.println( "Root element: " + doc.getDocumentElement().getNodeName() );
-            NodeList nodeList = doc.getElementsByTagName( credentialsType );
+            NodeList nodeList = doc.getElementsByTagName(credentialsType);
             // nodeList is not iterable, so we are using for loop
             for (int itr = 0; itr < nodeList.getLength(); itr++) {
-                Node node = nodeList.item( itr );
+                Node node = nodeList.item(itr);
                 //System.out.println( "\nNode Name :" + node.getNodeName() );
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node;
-                    switch (tag){
+                    switch (tag) {
                         case "username":
-                            value = eElement.getElementsByTagName( "username" ).item( 0 ).getTextContent();
+                            value = eElement.getElementsByTagName("username").item(0).getTextContent();
                             break;
                         case "password":
-                            value = eElement.getElementsByTagName( "password" ).item( 0 ).getTextContent();
+                            value = eElement.getElementsByTagName("password").item(0).getTextContent();
                             break;
                     }
                 }
@@ -113,24 +152,24 @@ public class ReadWriteHelper {
 
         try {
             //creating a constructor of file class and parsing an XML file
-            File file = new File( System.getProperty( "user.dir" ) +
-                    "/src/main/resources/DataProvider/programsData.xml" );
+            File file = new File(System.getProperty("user.dir") +
+                    "/src/main/resources/DataProvider/programsData.xml");
             //an instance of factory that gives a document builder
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             //an instance of builder to parse the specified xml file
             DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse( file );
+            Document doc = db.parse(file);
             doc.getDocumentElement().normalize();
             //System.out.println( "Root element: " + doc.getDocumentElement().getNodeName() );
-            NodeList nodeList = doc.getElementsByTagName( programNumber );
+            NodeList nodeList = doc.getElementsByTagName(programNumber);
             // nodeList is not iterable, so we are using for loop
             for (int itr = 0; itr < nodeList.getLength(); itr++) {
-                Node node = nodeList.item( itr );
+                Node node = nodeList.item(itr);
                 //System.out.println( "\nNode Name :" + node.getNodeName() );
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node;
-                    if ("title".equals( tag )) {
-                        value = eElement.getElementsByTagName( "title" ).item( 0 ).getTextContent();
+                    if ("title".equals(tag)) {
+                        value = eElement.getElementsByTagName("title").item(0).getTextContent();
                     }
                 }
 
@@ -143,11 +182,10 @@ public class ReadWriteHelper {
         return value;
     }
 
-    public static void writeCSVFirstCell(String content){
-        try(PrintWriter writer = new PrintWriter(new File("src/main/resources/DataProvider/ActiveProgram.csv"))){
+    public static void writeCSVFirstCell(String content) {
+        try (PrintWriter writer = new PrintWriter(new File("src/main/resources/DataProvider/ActiveProgram.csv"))) {
             writer.write(content);
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -158,24 +196,24 @@ public class ReadWriteHelper {
 
         try {
             //creating a constructor of file class and parsing an XML file
-            File file = new File( System.getProperty( "user.dir" ) +
-                    "/src/main/resources/DataProvider/applicationsData.xml" );
+            File file = new File(System.getProperty("user.dir") +
+                    "/src/main/resources/DataProvider/applicationsData.xml");
             //an instance of factory that gives a document builder
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             //an instance of builder to parse the specified xml file
             DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse( file );
+            Document doc = db.parse(file);
             doc.getDocumentElement().normalize();
             //System.out.println( "Root element: " + doc.getDocumentElement().getNodeName() );
-            NodeList nodeList = doc.getElementsByTagName( applicationId );
+            NodeList nodeList = doc.getElementsByTagName(applicationId);
             // nodeList is not iterable, so we are using for loop
             for (int itr = 0; itr < nodeList.getLength(); itr++) {
-                Node node = nodeList.item( itr );
+                Node node = nodeList.item(itr);
                 //System.out.println( "\nNode Name :" + node.getNodeName() );
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node;
-                    if ("title".equals( tag )) {
-                        value = eElement.getElementsByTagName( "title" ).item( 0 ).getTextContent();
+                    if ("title".equals(tag)) {
+                        value = eElement.getElementsByTagName("title").item(0).getTextContent();
                     }
                 }
 
@@ -188,8 +226,8 @@ public class ReadWriteHelper {
         return value;
     }
 
-    public static void writeIntoXMLFile(String programTitle){
-        String xmlFilePath = System.getProperty( "user.dir" ) +
+    public static void writeIntoXMLFile(String programTitle) {
+        String xmlFilePath = System.getProperty("user.dir") +
                 "/src/main/resources/DataProvider/createdProgram.xml";
 
 
@@ -237,8 +275,9 @@ public class ReadWriteHelper {
         }
 
     }
-    public static void writeIntoXMLFileInterview(String programTitle){
-        String xmlFilePath = System.getProperty( "user.dir" ) +
+
+    public static void writeIntoXMLFileInterview(String programTitle) {
+        String xmlFilePath = System.getProperty("user.dir") +
                 "/src/main/resources/DataProvider/interviewProgram.xml";
 
 
@@ -293,24 +332,24 @@ public class ReadWriteHelper {
 
         try {
             //creating a constructor of file class and parsing an XML file
-            File file = new File( System.getProperty( "user.dir" ) +
-                    "/src/main/resources/DataProvider/createdProgram.xml" );
+            File file = new File(System.getProperty("user.dir") +
+                    "/src/main/resources/DataProvider/createdProgram.xml");
             //an instance of factory that gives a document builder
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             //an instance of builder to parse the specified xml file
             DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse( file );
+            Document doc = db.parse(file);
             doc.getDocumentElement().normalize();
             //System.out.println( "Root element: " + doc.getDocumentElement().getNodeName() );
-            NodeList nodeList = doc.getElementsByTagName( "createdProgram" );
+            NodeList nodeList = doc.getElementsByTagName("createdProgram");
             // nodeList is not iterable, so we are using for loop
             for (int itr = 0; itr < nodeList.getLength(); itr++) {
-                Node node = nodeList.item( itr );
+                Node node = nodeList.item(itr);
                 //System.out.println( "\nNode Name :" + node.getNodeName() );
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node;
-                            value = eElement.getElementsByTagName( "title" ).item( 0 ).getTextContent();
-                            break;
+                    value = eElement.getElementsByTagName("title").item(0).getTextContent();
+                    break;
                 }
 
             }
@@ -328,23 +367,23 @@ public class ReadWriteHelper {
 
         try {
             //creating a constructor of file class and parsing an XML file
-            File file = new File( System.getProperty( "user.dir" ) +
-                    "/src/main/resources/DataProvider/scholarshipProgram.xml" );
+            File file = new File(System.getProperty("user.dir") +
+                    "/src/main/resources/DataProvider/scholarshipProgram.xml");
             //an instance of factory that gives a document builder
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             //an instance of builder to parse the specified xml file
             DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse( file );
+            Document doc = db.parse(file);
             doc.getDocumentElement().normalize();
             //System.out.println( "Root element: " + doc.getDocumentElement().getNodeName() );
-            NodeList nodeList = doc.getElementsByTagName( "createdProgram" );
+            NodeList nodeList = doc.getElementsByTagName("createdProgram");
             // nodeList is not iterable, so we are using for loop
             for (int itr = 0; itr < nodeList.getLength(); itr++) {
-                Node node = nodeList.item( itr );
+                Node node = nodeList.item(itr);
                 //System.out.println( "\nNode Name :" + node.getNodeName() );
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node;
-                    value = eElement.getElementsByTagName( "title" ).item( 0 ).getTextContent();
+                    value = eElement.getElementsByTagName("title").item(0).getTextContent();
                     break;
                 }
 
@@ -363,23 +402,23 @@ public class ReadWriteHelper {
 
         try {
             //creating a constructor of file class and parsing an XML file
-            File file = new File( System.getProperty( "user.dir" ) +
-                    "/src/main/resources/DataProvider/interviewProgram.xml" );
+            File file = new File(System.getProperty("user.dir") +
+                    "/src/main/resources/DataProvider/interviewProgram.xml");
             //an instance of factory that gives a document builder
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             //an instance of builder to parse the specified xml file
             DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse( file );
+            Document doc = db.parse(file);
             doc.getDocumentElement().normalize();
             //System.out.println( "Root element: " + doc.getDocumentElement().getNodeName() );
-            NodeList nodeList = doc.getElementsByTagName( "createdProgram" );
+            NodeList nodeList = doc.getElementsByTagName("createdProgram");
             // nodeList is not iterable, so we are using for loop
             for (int itr = 0; itr < nodeList.getLength(); itr++) {
-                Node node = nodeList.item( itr );
+                Node node = nodeList.item(itr);
                 //System.out.println( "\nNode Name :" + node.getNodeName() );
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node;
-                    value = eElement.getElementsByTagName( "title" ).item( 0 ).getTextContent();
+                    value = eElement.getElementsByTagName("title").item(0).getTextContent();
                     break;
                 }
 
@@ -399,25 +438,25 @@ public class ReadWriteHelper {
 
         try {
             //creating a constructor of file class and parsing an XML file
-            File file = new File( System.getProperty( "user.dir" ) +
-                    "/src/main/resources/DataProvider/applicationStatus.xml" );
+            File file = new File(System.getProperty("user.dir") +
+                    "/src/main/resources/DataProvider/applicationStatus.xml");
             //an instance of factory that gives a document builder
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             //an instance of builder to parse the specified xml file
             DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse( file );
+            Document doc = db.parse(file);
             doc.getDocumentElement().normalize();
             //System.out.println( "Root element: " + doc.getDocumentElement().getNodeName() );
-            NodeList nodeList = doc.getElementsByTagName( applicationId );
+            NodeList nodeList = doc.getElementsByTagName(applicationId);
             // nodeList is not iterable, so we are using for loop
             for (int itr = 0; itr < nodeList.getLength(); itr++) {
-                Node node = nodeList.item( itr );
+                Node node = nodeList.item(itr);
                 //System.out.println( "\nNode Name :" + node.getNodeName() );
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node;
-                    if ("status".equals( tag )) {
-                        value = eElement.getElementsByTagName( "status" ).
-                                item( 0 ).getTextContent();
+                    if ("status".equals(tag)) {
+                        value = eElement.getElementsByTagName("status").
+                                item(0).getTextContent();
                     }
                 }
 
@@ -430,4 +469,47 @@ public class ReadWriteHelper {
         return value;
     }
 
+
+    public static String readFromExcel(String fileName, String sheetName, String headerName) {
+        ReadFromExcel1 excelFile = null;
+        try {
+            excelFile = new ReadFromExcel1("src/main/resources/DataProvider/" + fileName + ".xlsx");
+        } catch (IOException e) {
+
+        }
+        final String value = excelFile.getData1(sheetName, headerName);
+
+        return value;
+    }
+
+    public static String readFromExcel(String fileName, String sheetName, String headerName, int Row) {
+        ReadFromExcel1 excelFile = null;
+        try {
+            excelFile = new ReadFromExcel1("src/main/resources/DataProvider/" + fileName + ".xlsx");
+        } catch (IOException e) {
+
+        }
+
+        final String value = excelFile.getDataWithoutRand(sheetName, headerName, Row);
+
+        return value;
+    }
+
+    public static HashMap readFromExcel1(String fileName, String sheetName, String headerName, int Row) {
+        ReadFromExcel1 excelFile = null;
+        try {
+            excelFile = new ReadFromExcel1("src/main/resources/DataProvider/" + fileName + ".xlsx");
+        } catch (IOException e) {
+
+        }
+
+        //final String value = excelFile.getDataWithoutRand(sheetName, headerName, Row);
+
+        return ReadFromExcel1.getDataWithoutRand1(sheetName, headerName, Row);
+    }
+
+//    public static void main(String[] args) {
+//        HashMap m = readFromExcel1("Scholarships", "Enrollment", "Terms", 0);
+//        System.out.println(m.get());
+//    }
 }

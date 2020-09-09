@@ -1,0 +1,19 @@
+pipeline {
+     agent any
+       stages {
+
+            stage ('Clean Compile Project') {
+                      steps {
+                          withMaven (maven : 'MAVEN_HOME')
+                          sh 'mvn clean compile'
+                      }
+                 }
+            stage ('Test Project') {
+                       steps {
+                          withMaven (maven : 'MAVEN_HOME')
+                          sh 'mvn test'
+                          }
+                 }
+       }
+
+}

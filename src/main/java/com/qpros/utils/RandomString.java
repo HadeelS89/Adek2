@@ -1,49 +1,17 @@
 package com.qpros.utils;
 
-import org.apache.commons.lang3.RandomStringUtils;
-
-import java.security.SecureRandom;
-
 public class RandomString {
 
-    private static final String CHAR_LIST_SPECIAL = "$&@?<>~!%#";
-    private static final String CHAR_LIST_ARABIC = "ابتثجحخدذرزسشصضطظعغفقكلمنهويأؤءةآىئ";
+    private static final String CHAR_LIST ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final int RANDOM_STRING_LENGTH = 10;
 
-    //TODO add massive methods for data generator for now will be using faker
+       //TODO add massive methods for data generator for now will be using faker
 
-    public static int getRandomNumber() {
+
+
+
+    public static int getRandomNumber(){
         double x = Math.random();
-        return (int) x;
+        return (int)x;
     }
-
-    public static String getRandomInteger(int length) {
-        return RandomStringUtils.randomNumeric(length);
-    }
-
-    public static String getRandomAlphabets(int length) {
-        return RandomStringUtils.randomAlphabetic(length);
-    }
-
-    public static String getRandomAlphanumeric(int length) {
-        return RandomStringUtils.randomAlphanumeric(length);
-    }
-
-    public static String getRandomArabic(int length) {
-        return getRandomString(length, CHAR_LIST_ARABIC);
-    }
-
-    public static String getRandomSpecialChars(int length) {
-        return getRandomString(length, CHAR_LIST_SPECIAL);
-    }
-
-    private static String getRandomString(int length, String charList) {
-        SecureRandom rnd = new SecureRandom();
-        StringBuilder buf = new StringBuilder();
-        for (int i = 0; i < length; i++) {
-            int val = rnd.nextInt(charList.length());
-            buf.append(charList.charAt(val));
-        }
-        return buf.toString();
-    }
-
 }

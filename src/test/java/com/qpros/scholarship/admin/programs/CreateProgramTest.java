@@ -3,7 +3,7 @@ package com.qpros.scholarship.admin.programs;
 import com.qpros.common.Base;
 import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.pages.authorization_pages.LoginPage;
-import com.qpros.pages.scholarship.admin.ProgramsPage;
+import com.qpros.pages.scholarship_admin_pages.ProgramsPage;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -34,7 +34,7 @@ public class CreateProgramTest extends Base {
 
     @Test(description = "Set program configurations",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 1)
-    public void setConfigurations() {
+    public void setConfigurations() throws InterruptedException {
         //Login as Program Manager
         loginPage = new LoginPage( driver );
         loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "programManager1",
@@ -65,5 +65,22 @@ public class CreateProgramTest extends Base {
         programsPage.setProgramTeam();
 
     }
+
+    @Test(description = "Set Program TemplateConfiguration",
+            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 2)
+    public void setProgramTemplateConfiguration() throws Exception {
+        //Login as Program Manager
+        loginPage = new LoginPage(driver);
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile( "programManager1",
+                "username" ),
+                ReadWriteHelper.readCredentialsXMLFile( "programManager1", "password" ));
+
+        //Set program team
+        programsPage = new ProgramsPage( driver );
+        programsPage.templateConfiguration("Added ");
+
+
+    }
+
 
 }
