@@ -21,5 +21,9 @@
         <suite-file path="ActivateProgram.xml"></suite-file>
         <suite-file path="ScholarShipBank.xml"></suite-file>
         <suite-file path="ScholarShipPayElement.xml"></suite-file>
+        <suite-file path="EnrollmentAdmin.xml"></suite-file>
+        <suite-file path="EnrollmentClient.xml"></suite-file>
+        <suite-file path="TranscriptAdmin.xml"></suite-file>
+        <suite-file path="TranscriptClient.xml"></suite-file>
     </suite-files>
 </suite>

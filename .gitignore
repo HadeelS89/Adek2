@@ -1,4 +1,4 @@
-/target/
+target/
 src/main/resources/Reports/
 src/main/resources/browserDrivers/
 .idea/

@@ -98,18 +98,18 @@ public class InterviewsPage extends Base {
         }
         // ActionsHelper.waitForExistance(getProgramDDL(), 50);
         ActionsHelper.actionsClick(getProgramDDL(), programTitle);
-        ActionsHelper.actionsClick(getProvideVenue(), ReadWriteHelper.readFromExel
+        ActionsHelper.actionsClick(getProvideVenue(), ReadWriteHelper.readFromExcel
                 ("programData","Interview", "ProvideVenue"));
         System.out.println("test 233 "+ReadFromExcel1.
                 getData2("Interview","ProvideVenue"));
-        ActionsHelper.actionsClick(getDescriptionEnglish(),ReadWriteHelper.readFromExel
+        ActionsHelper.actionsClick(getDescriptionEnglish(),ReadWriteHelper.readFromExcel
                 ("programData","Interview", "DescriptionEnglish"));
-        getDescriptionArabic().sendKeys(ReadWriteHelper.readFromExel
+        getDescriptionArabic().sendKeys(ReadWriteHelper.readFromExcel
                 ("programData","Interview", "DescriptionArabic"));
         getDate().sendKeys(ActionsHelper.getFutureDate(0, 2, 3));
         ActionsHelper.actionsClick(getStartTime(), ActionsHelper.getFutureTime(2, 5));
         ActionsHelper.actionsClick(getEndTime(), ActionsHelper.getFutureTime(3, 5));
-        getCapacity().sendKeys(ReadWriteHelper.readFromExel
+        getCapacity().sendKeys(ReadWriteHelper.readFromExcel
                 ("programData","Interview", "Capacity"));
         getSubmitInterView().click();
         ActionsHelper.waitForExistance(getSuccess(), 20);

@@ -19,60 +19,52 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__cglib_cglib_nodep_3_2_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_codeborne_phantomjsdriver_1_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_0_18.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_23_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_java_dev_jna_jna_4_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_java_dev_jna_jna_platform_4_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sourceforge_cssparser_cssparser_0_9_23.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sourceforge_htmlunit_htmlunit_2_27.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sourceforge_htmlunit_htmlunit_core_js_2_27.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sourceforge_htmlunit_neko_htmlunit_2_27.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_5_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_client_9_4_5_v20170502.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_http_9_4_5_v20170502.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_io_9_4_5_v20170502.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_util_9_4_5_v20170502.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_websocket_websocket_api_9_4_5_v20170502.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_websocket_websocket_client_9_4_5_v20170502.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_websocket_websocket_common_9_4_5_v20170502.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_htmlunit_driver_2_27.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_api_3_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_chrome_driver_3_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_edge_driver_3_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_firefox_driver_3_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_ie_driver_3_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_java_3_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_opera_driver_3_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_remote_driver_3_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_safari_driver_3_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_seleniumhq_selenium_selenium_support_3_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_w3c_css_sac_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xalan_serializer_2_7_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xalan_xalan_2_7_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_11_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_4_01.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="8bd42829-b0fb-4e9d-84bf-8f5df9c2d959" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTestsUGH.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTestsUGH.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/common/Requester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/common/Requester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/pages/Locators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/pages/Locators.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/pages/higher/education/admin/Providers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/pages/higher/education/admin/Providers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/pages/higher/education/client/HEProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/pages/higher/education/client/HEProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/reporting/ExtentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/reporting/ExtentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/utils/RandomString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/utils/RandomString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/common/DTCMAnalysis2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/common/DTCMAnalysis2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/common/DriverType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/common/DriverType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/ActionsHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/ActionsHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/ReadFromExcel1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/ReadFromExcel1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/ReadWriteHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/ReadWriteHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/pages/scholarship_admin_pages/InterviewsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/pages/scholarship_admin_pages/InterviewsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/pages/scholarship_admin_pages/ProgramsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/pages/scholarship_admin_pages/ProgramsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/pages/scholarship_admin_pages/ScholarshipsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/pages/scholarship_admin_pages/ScholarshipsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/pages/sholarship_applicant_pages/ApplyForProgremPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/pages/sholarship_applicant_pages/ApplyForProgremPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/reporting/StateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/reporting/StateHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DataProvider/ActiveProgram.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DataProvider/ActiveProgram.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DataProvider/createdProgram.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DataProvider/createdProgram.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DataProvider/credentialsData.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DataProvider/credentialsData.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DataProvider/programData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DataProvider/programData.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DataProvider/scholarshipProgram.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DataProvider/scholarshipProgram.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AcceptAck.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AcceptAck.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AllTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AllTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/Applications/AdminApplicationsListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/Applications/AdminApplicationsListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/applicationsScenarios/BookInterviewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/applicationsScenarios/BookInterviewTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/applicationsScenarios/CreateInterviewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/applicationsScenarios/CreateInterviewTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/applicationsScenarios/FillInterviewScoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/applicationsScenarios/FillInterviewScoreTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/interviews/InterviewsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/interviews/InterviewsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/programs/CreateProgramTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/programs/CreateProgramTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/scholarships/ScholarshipsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/scholarships/ScholarshipsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/applicant/applications/MyApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/applicant/applications/MyApplicationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataProvider/ActiveProgram.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataProvider/ActiveProgram.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataProvider/createdProgram.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataProvider/createdProgram.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataProvider/credentialsData.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataProvider/credentialsData.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataProvider/scholarshipProgram.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataProvider/scholarshipProgram.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/common/DTCMAnalysis2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/common/DTCMAnalysis2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/helpers/ActionsHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/helpers/ActionsHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/helpers/ReadWriteHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/helpers/ReadWriteHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/reporting/StateHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/reporting/StateHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/qpros/scholarship/admin/applications/AdminApplicationsListTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/qpros/scholarship/admin/applications/AdminApplicationsListTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/qpros/scholarship/admin/programs/CreateProgramTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/qpros/scholarship/admin/programs/CreateProgramTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/qpros/scholarship/applicant/applications/MyApplicationTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/qpros/scholarship/applicant/applications/MyApplicationTest.class" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,229 +73,55 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/qpros/common/DTCMAnalysis2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="98" column="58" lean-forward="true" selection-start-line="98" selection-start-column="58" selection-end-line="98" selection-end-column="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/applications/AdminApplicationsListTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/qpros/scholarship/applicant/applications/MyApplicationTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/qpros/common/Requester.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1581" />
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="hadeel" />
-      </map>
-    </option>
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/qpros/common/Requester.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/applications/AdminApplicationsListTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/applicant/applications/MyApplicationTest.java" />
-      </list>
-    </option>
-  </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="QPros" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-      </expand>
-      <select />
-    </treeState>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1728" />
-    <option name="y" value="125" />
-    <option name="width" value="1026" />
-    <option name="height" value="546" />
-  </component>
-  <component name="ProjectId" id="1cWilW3ot6RhLTrPKiVJQ7eM2dy" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="ScholarshipsAutomatedTestsUGH" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ScholarshipsAutomatedTestsUGH" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ScholarshipsAutomatedTestsUGH" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ScholarshipsAutomatedTestsUGH" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ScholarshipsAutomatedTestsUGH" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ScholarshipsAutomatedTestsUGH" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ScholarshipsAutomatedTestsUGH" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ScholarshipsAutomatedTestsUGH" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ScholarshipsAutomatedTestsUGH" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ScholarshipsAutomatedTestsUGH" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="qpros" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ScholarshipsAutomatedTestsUGH" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ScholarshipsAutomatedTestsUGH" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="qpros" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-    </panes>
-  </component>
+  <component name="ProjectId" id="1f2DDdaini131AvHO4BszsghuO7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/DataProvider" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.qpros.scholarship_applicant" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.qpros.scholarship.admin.Applications" />
+      <recent name="com.qpros.scholarship.applicant.activeScholarships" />
       <recent name="com.qpros.scholarship.applicant.ApplicantPrograms" />
-      <recent name="com.qpros.scholarship.admin.applications.dpendency" />
-      <recent name="com.qpros.scholarship.applicant.interviews" />
-      <recent name="com.qpros.scholarship_admin.applications" />
+      <recent name="com.qpros.pages.sholarship_applicant_pages" />
+      <recent name="com.qpros.helpers" />
+      <recent name="com.qpros.scholarship.admin.programs" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship" />
       <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\DataProvider" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\ApplicationsTestSuites" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\InrerviewsTestSuites" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean " />
+      <command value="mvn compile " />
+      <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.DTCMAnalysis2.doMagic">
-    <configuration name="InterviewsTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.qpros.scholarship.admin.interviews.InterviewsTest" />
-      <module name="QPros" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qpros.scholarship.admin.interviews.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipBank.xml" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="QPros" />
-      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipBank.xml" />
+  <component name="RunManager" selected="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ResubmitAfterChange.xml">
+    <configuration name="C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/AllTest.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ScholarshipsAutomatedTestsUGH" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AllTest.xml" />
       <option name="TEST_OBJECT" value="SUITE" />
       <properties />
       <listeners />
@@ -311,9 +129,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipPayElement.xml" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="QPros" />
-      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipPayElement.xml" />
+    <configuration name="C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ResubmitAfterChange.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ScholarshipsAutomatedTestsUGH" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ResubmitAfterChange.xml" />
       <option name="TEST_OBJECT" value="SUITE" />
       <properties />
       <listeners />
@@ -321,35 +139,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DTCMAnalysis2.doMagic" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ScholarShipBank.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ScholarshipsAutomatedTestsUGH" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ScholarShipBank.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/Withdraw.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ScholarshipsAutomatedTestsUGH" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/Withdraw.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ScholarshipsTest.addScholarshipPayElement" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="ScholarshipsAutomatedTestsUGH" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.qpros.common.*" />
+          <option name="PATTERN" value="com.qpros.scholarship.admin.scholarships.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.qpros.common" />
-      <option name="MAIN_CLASS_NAME" value="com.qpros.common.DTCMAnalysis2" />
-      <option name="METHOD_NAME" value="doMagic" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InterviewsTest.fillInterviewScore" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="QPros" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qpros.scholarship.admin.interviews.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.qpros.scholarship.admin.interviews" />
-      <option name="MAIN_CLASS_NAME" value="com.qpros.scholarship.admin.interviews.InterviewsTest" />
-      <option name="METHOD_NAME" value="fillInterviewScore" />
+      <option name="PACKAGE_NAME" value="com.qpros.scholarship.admin.scholarships" />
+      <option name="MAIN_CLASS_NAME" value="com.qpros.scholarship.admin.scholarships.ScholarshipsTest" />
+      <option name="METHOD_NAME" value="addScholarshipPayElement" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -359,11 +179,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.DTCMAnalysis2.doMagic" />
-        <item itemvalue="Application.InterviewsTest" />
-        <item itemvalue="TestNG.InterviewsTest.fillInterviewScore" />
-        <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipBank.xml" />
-        <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ApplicationsTestSuites/ScholarShipPayElement.xml" />
+        <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ResubmitAfterChange.xml" />
+        <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/AllTest.xml" />
+        <item itemvalue="TestNG.ScholarshipsTest.addScholarshipPayElement" />
+        <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/ScholarShipBank.xml" />
+        <item itemvalue="TestNG.C:/Users/HadeelSalameh/Desktop/Adek2/src/main/resources/xmlTests/Scholarship/Withdraw.xml" />
       </list>
     </recent_temporary>
   </component>
@@ -372,301 +192,196 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="" />
-      <created>1590650900897</created>
+      <changelist id="8bd42829-b0fb-4e9d-84bf-8f5df9c2d959" name="Default Changelist" comment="" />
+      <created>1595407175694</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1590650900897</updated>
+      <updated>1595407175694</updated>
     </task>
-    <task id="LOCAL-00001" summary="Apply for one program , save program to draft , submit program">
-      <created>1590917893091</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1590917893091</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Apply for one program , save program to draft , submit program">
-      <created>1593071638852</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1593071638852</updated>
-    </task>
-    <task id="LOCAL-00003" summary="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement">
-      <created>1594710409483</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1594710409483</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-1928" y="52" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32936078" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" weight="0.32995737" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-    </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Apply for one program , save program to draft , submit program" />
-    <MESSAGE value="Project :Scholarship&#10;Main Changes :xml files for all test suits &#10;add test pages for applicant and admin &#10;&#10; &#10;&#10;Covered Story Action id's:&#10;1-&#10;2-&#10;3-&#10;&#10; &#10;&#10;is there new Methods :no&#10;&#10; &#10;&#10;is it easy to roll back :yes&#10;&#10; &#10;&#10;is there any  Main Design Changes :no" />
-    <MESSAGE value="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement" />
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="267" y="19" key="#Inspections" timestamp="1593943090083">
+    <state x="407" y="45" key="#Auto_Import" timestamp="1597565843161">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="267" y="19" key="#Inspections/0.0.1280.680@0.0.1280.680" timestamp="1593943090083" />
-    <state x="233" y="0" key="#Intentions" timestamp="1593938663120">
+    <state x="407" y="45" key="#Auto_Import/0.0.1280.680@0.0.1280.680" timestamp="1597565843161" />
+    <state x="267" y="19" key="#Inspections" timestamp="1595412341164">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="0" key="#Intentions/0.0.1280.680@0.0.1280.680" timestamp="1593938663120" />
-    <state x="93" y="93" width="1095" height="495" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1591789495832">
+    <state x="267" y="19" key="#Inspections/0.0.1280.680@0.0.1280.680" timestamp="1595412341164" />
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser" timestamp="1598775384352">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="93" y="93" width="1095" height="495" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1280.680@0.0.1280.680" timestamp="1591789495832" />
-    <state x="368" y="143" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1593948848999">
+    <state x="446" y="25" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1598775384352" />
+    <state x="424" y="210" width="432" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1595488146383">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="368" y="143" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1593948848999" />
-    <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser" timestamp="1594626275034">
+    <state x="424" y="210" width="432" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1595488146383" />
+    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1595407169275">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1594626275034" />
-    <state x="410" y="121" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1590917230862">
+    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1595407169275" />
+    <state width="1237" height="210" key="GridCell.Tab.0.bottom" timestamp="1599564769947">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="410" y="121" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1590917230862" />
-    <state x="233" y="265" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1594017133225">
+    <state width="1237" height="210" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.1.1920.1040@0.0.1280.680" timestamp="1599475630999" />
+    <state width="1237" height="214" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1599133346930" />
+    <state width="1237" height="210" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599564769947" />
+    <state width="1877" height="235" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597752405259" />
+    <state width="1237" height="210" key="GridCell.Tab.0.center" timestamp="1599564769947">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="265" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1594017133225" />
-    <state x="424" y="210" width="525" height="269" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594017278540">
+    <state width="1237" height="210" key="GridCell.Tab.0.center/0.0.1280.680/-1920.1.1920.1040@0.0.1280.680" timestamp="1599475630998" />
+    <state width="1237" height="214" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1599133346930" />
+    <state width="1237" height="210" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1599564769947" />
+    <state width="1877" height="235" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597752405258" />
+    <state width="1237" height="210" key="GridCell.Tab.0.left" timestamp="1599564769946">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="424" y="210" width="525" height="269" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1594017278540" />
-    <state x="351" y="185" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1593948757500">
+    <state width="1237" height="210" key="GridCell.Tab.0.left/0.0.1280.680/-1920.1.1920.1040@0.0.1280.680" timestamp="1599475630998" />
+    <state width="1237" height="214" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1599133346929" />
+    <state width="1237" height="210" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1599564769946" />
+    <state width="1877" height="235" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597752405258" />
+    <state width="1237" height="210" key="GridCell.Tab.0.right" timestamp="1599564769947">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="351" y="185" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1593948757500" />
-    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1594887804402">
+    <state width="1237" height="210" key="GridCell.Tab.0.right/0.0.1280.680/-1920.1.1920.1040@0.0.1280.680" timestamp="1599475630999" />
+    <state width="1237" height="214" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1599133346930" />
+    <state width="1237" height="210" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1599564769947" />
+    <state width="1877" height="235" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597752405258" />
+    <state width="1237" height="214" key="GridCell.Tab.1.bottom" timestamp="1599467841460">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1594887804402" />
-    <state width="1237" height="253" key="GridCell.Tab.0.bottom" timestamp="1595141718385">
+    <state width="1237" height="214" key="GridCell.Tab.1.bottom/0.0.1280.680/-1920.1.1920.1040@0.0.1280.680" timestamp="1599467841460" />
+    <state width="1237" height="214" key="GridCell.Tab.1.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1599124810289" />
+    <state width="1237" height="214" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599466437983" />
+    <state width="1237" height="214" key="GridCell.Tab.1.center" timestamp="1599467841459">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1595141718385" />
-    <state width="1237" height="253" key="GridCell.Tab.0.center" timestamp="1595141718384">
+    <state width="1237" height="214" key="GridCell.Tab.1.center/0.0.1280.680/-1920.1.1920.1040@0.0.1280.680" timestamp="1599467841459" />
+    <state width="1237" height="214" key="GridCell.Tab.1.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1599124810289" />
+    <state width="1237" height="214" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1599466437983" />
+    <state width="1237" height="214" key="GridCell.Tab.1.left" timestamp="1599467841459">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1595141718384" />
-    <state width="1237" height="253" key="GridCell.Tab.0.left" timestamp="1595141718384">
+    <state width="1237" height="214" key="GridCell.Tab.1.left/0.0.1280.680/-1920.1.1920.1040@0.0.1280.680" timestamp="1599467841459" />
+    <state width="1237" height="214" key="GridCell.Tab.1.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1599124810289" />
+    <state width="1237" height="214" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1599466437982" />
+    <state width="1237" height="214" key="GridCell.Tab.1.right" timestamp="1599467841460">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1595141718384" />
-    <state width="1237" height="253" key="GridCell.Tab.0.right" timestamp="1595141718385">
+    <state width="1237" height="214" key="GridCell.Tab.1.right/0.0.1280.680/-1920.1.1920.1040@0.0.1280.680" timestamp="1599467841460" />
+    <state width="1237" height="214" key="GridCell.Tab.1.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1599124810289" />
+    <state width="1237" height="214" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1599466437983" />
+    <state x="171" y="0" key="Maven.ArtifactSearchDialog" timestamp="1598261535674">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="253" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1595141718385" />
-    <state width="1237" height="294" key="GridCell.Tab.1.bottom" timestamp="1595141718377">
+    <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1598261535674" />
+    <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.680@0.0.1280.680" timestamp="1595834660076" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1599461505590">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1595141718377" />
-    <state width="1237" height="294" key="GridCell.Tab.1.center" timestamp="1595141718377">
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1599461505590" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1596627264018">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1595141718377" />
-    <state width="1237" height="294" key="GridCell.Tab.1.left" timestamp="1595141718377">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1596627264018" />
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1595506749988">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1595141718377" />
-    <state width="1237" height="294" key="GridCell.Tab.1.right" timestamp="1595141718377">
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1595506749988" />
+    <state x="146" y="89" width="1010" height="591" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1598779231409">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1595141718377" />
-    <state x="171" y="0" key="Maven.ArtifactSearchDialog" timestamp="1594278438184">
+    <state x="146" y="89" width="1010" height="591" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1598779231409" />
+    <state x="93" y="93" width="1095" height="495" key="dock-window-1" timestamp="1599388313658">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.680@0.0.1280.680" timestamp="1594278438184" />
-    <state x="0" y="3" width="1280" height="677" key="MergeDialog" timestamp="1594889154387">
+    <state x="93" y="93" width="1095" height="495" key="dock-window-1/0.0.1280.680@0.0.1280.680" timestamp="1599388313658" />
+    <state x="347" y="73" width="587" height="534" key="find.popup" timestamp="1598776470539">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="0" y="3" width="1280" height="677" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1594889154387" />
-    <state x="125" y="124" width="646" height="417" key="MultipleFileMergeDialog" timestamp="1594889175744">
+    <state x="347" y="73" width="587" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1598776470539" />
+    <state x="348" y="98" key="refactoring.ChangeSignatureDialog" timestamp="1597582168061">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="125" y="124" width="646" height="417" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1594889175744" />
-    <state x="423" y="43" key="RollbackChangesDialog" timestamp="1591168597580">
+    <state x="348" y="98" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1597582168061" />
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1597142270990">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="423" y="43" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1591168597580" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1594889337046">
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1597142270990" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1599633888586">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1594889337045" />
-    <state x="333" y="100" key="Vcs.Multiple.Commit.Info.Dialog.Key" timestamp="1594888093955">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="333" y="100" key="Vcs.Multiple.Commit.Info.Dialog.Key/0.0.1280.680@0.0.1280.680" timestamp="1594888093955" />
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1595145433055">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1595145433055" />
-    <state width="647" height="347" key="XDebugger.FullValuePopup" timestamp="1594818580176">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="647" height="347" key="XDebugger.FullValuePopup/0.0.1280.680@0.0.1280.680" timestamp="1594818580176" />
-    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1594898632982">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1594898632982" />
-    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594887116554">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1594887116554" />
-    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591554877364">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1591554877364" />
-    <state x="91" y="70" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1594818105532">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="91" y="70" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1594818105532" />
-    <state x="0" y="0" width="587" height="680" key="find.popup" timestamp="1594815433482">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="0" y="0" width="587" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1594815433482" />
-    <state x="221" y="129" key="git4idea.merge.GitPullDialog" timestamp="1595145752856">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="221" y="129" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1595145752856" />
-    <state x="58" y="150" key="git4idea.ui.GitUnstashDialog" timestamp="1593071477204">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="58" y="150" key="git4idea.ui.GitUnstashDialog/0.0.1280.680@0.0.1280.680" timestamp="1593071477204" />
-    <state x="297" y="151" key="run.anything.popup" timestamp="1595141870250">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1595141870250" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1594899574841">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1594899574841" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680/-1920.1.1920.1040@0.0.1280.680" timestamp="1599471640415" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1599633888586" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/qpros/model/programModel.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/qpros/model/programModel.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/scholarships/ScholarshipsTest.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/qpros/helpers/ActionsHelper.java</url>
+          <line>367</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/qpros/helpers/ReadFromExcel.java</url>
+          <line>81</line>
+          <properties class="com.qpros.helpers.ReadFromExcel" method="getSheetByName">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint type="java-method">
+          <url>jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-api/3.5.1/selenium-api-3.5.1.jar!/org/openqa/selenium/WebElement.class</url>
+          <line>16</line>
+          <properties class="org.openqa.selenium.WebElement" method="clear" />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="TestNG">
-        <watch expression="exception.substring(exception.lastIndexOf(&quot;:&quot;));" language="JAVA" />
-        <watch expression="getAddBankDetailsBtnn().getTagName();" language="JAVA" />
-        <watch expression="driver.findElement(By.id(&quot;formAddScholarBank&quot;));" language="JAVA" custom="org.openqa.selenium.By" />
-        <watch expression="driver.getPageSource();" language="JAVA" />
-        <watch expression="driver.findElement(By.cssSelector(&quot;condition-scholarship-recruter-afterassignadviser-permission &gt; .btn&quot;)).getAttribute(&quot;value&quot;);" language="JAVA" custom="org.openqa.selenium.By" />
+        <watch expression="ReadFromExcel1.getData2(&quot;Configuration&quot;,                 &quot;AgeMin&quot;)" language="JAVA" />
+        <watch expression="ReadFromExcel1.getData2(&quot;Configuration&quot;,                 &quot;AgeMin&quot;)" language="JAVA" />
+        <watch expression="Integer.parseInt(ReadFromExcel1.getData2(&quot;Configuration&quot;,                 &quot;AgeMin&quot;))" language="JAVA" />
+        <watch expression="getMinAgeField().sendKeys((ReadFromExcel1.getData2(&quot;Configuration&quot;,                 &quot;AgeMin&quot;)))" language="JAVA" />
+        <watch expression="getMinAgeField().sendKeys((CharSequence)ReadFromExcel1.getData2(&quot;Configuration&quot;,&quot;AgeMin&quot;));" language="JAVA" />
+        <watch expression="StateHelper.CrossStepState.size;" language="JAVA" custom="com.qpros.reporting.StateHelper" />
+        <watch expression="StateHelper.CrossStepState;" language="JAVA" custom="com.qpros.reporting.StateHelper" />
+      </configuration>
+      <configuration name="Application">
+        <watch expression="ExcelSheetHeaders.values()" language="JAVA" />
+        <watch expression="ExcelSheetHeaders." language="JAVA" />
+        <watch expression="ExcelSheetHeaders.ABOUT.value;" language="JAVA" />
       </configuration>
     </watches-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1581" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qpros/common/Requester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/qpros/common/DTCMAnalysis2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="98" column="58" lean-forward="true" selection-start-line="98" selection-start-column="58" selection-end-line="98" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/applications/AdminApplicationsListTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/qpros/scholarship/applicant/applications/MyApplicationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

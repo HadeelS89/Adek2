@@ -18,7 +18,7 @@ import org.testng.annotations.Parameters;
 
 import java.util.HashMap;
 import java.util.Map;
-public class Base {
+public class Base  {
     protected static WebDriver driver;
 
     /**
@@ -48,7 +48,7 @@ public class Base {
                 try {
                     setFireFoxBrowser(deviceOsType);
                     FirefoxOptions options = new FirefoxOptions(  );
-                    options.setAcceptInsecureCerts( true );
+                    //options.setAcceptInsecureCerts( true );
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
                         options.addArguments("--headless");
                         options.addArguments("window-size=1920,1080");
@@ -67,18 +67,21 @@ public class Base {
                     Map<String, Object> prefs = new HashMap<>();
                     //Put this into prefs map to switch off browser notification
                     prefs.put("profile.default_content_setting_values.notifications", 2);
+                    prefs.put("dom.forms.number", false);
                     //Create chrome options to set this prefs
                     ChromeOptions options = new ChromeOptions();
                     options.setExperimentalOption("prefs", prefs);
                     options.addArguments("--disable-web-security");
                     options.addArguments("--allow-running-insecure-content");
-                    options.setAcceptInsecureCerts( true );
+                    //options.setAcceptInsecureCerts( true );
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
                         options.addArguments("--headless");
                         options.addArguments("--proxy-server='direct://'");
                         options.addArguments("--proxy-bypass-list=*");
                         options.addArguments("--no-proxy-server");
-                        options.addArguments("window-size=1920,1080");
+                      //  options.addArguments("window-size=1920,1080");
+                        options.addArguments("window-size=920,l080");
+                        options.addArguments("dom.forms.number");
                         options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
                     }
                     driver = new ChromeDriver(options);

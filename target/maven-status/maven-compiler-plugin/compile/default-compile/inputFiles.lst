@@ -1,7 +1,9 @@
+C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\common\Requester.java
 C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\pages\authorization_pages\LoginPage.java
 C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\pages\higher\education\admin\Providers.java
 C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\pages\scholarship_admin_pages\InterviewsPage.java
 C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\pages\higher\education\admin\ProvidersToken.java
+C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\pages\scholarship\admin\AdminApplicationsListPage.java
 C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\common\Base.java
 C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\pages\sholarship_applicant_pages\MyApplicationsPage.java
 C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\helpers\EmailHelper.java
@@ -23,6 +25,7 @@ C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\pages\scholarship_a
 C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\helpers\BreakException.java
 C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\pages\scholarship_admin_pages\ScholarshipsPage.java
 C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\pages\higher\education\admin\Applications.java
+C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\common\DTCMAnalysis2.java
 C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\helpers\RetryAnalyzer.java
 C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\reporting\ExtentManager.java
 C:\Users\HadeelSalameh\Desktop\Adek2\src\main\java\com\qpros\pages\sholarship_applicant_pages\ApplyForProgremPage.java

@@ -1,5 +1,6 @@
 package com.qpros.pages.scholarship_admin_pages;
 
+import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.model.programModel;
@@ -12,33 +13,35 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 @Getter
-public class ProgramsPage {
+public class ProgramsPage extends Base {
     programModel testmode = new programModel().populateData();
     public static String randomName = "";
     public static String createdProgram = "";
-   // public static String interviewProgram = "";
+    // public static String interviewProgram = "";
     WebElement createdProgramName = null;
-    final String Academi_Careers= ReadWriteHelper.readFromExel
-            ("programData","Configuration", "AcademicCareers");
-    final String Min_Age =ReadWriteHelper.readFromExel(
-            "programData","Configuration", "AgeRangeMin");
-    final String Max_Age =ReadWriteHelper.readFromExel(
-            "programData","Configuration", "AgeRangeMax");
-    final String Nationality =ReadWriteHelper.readFromExel(
-            "programData","Configuration", "Nationality");
-    final String Preferred_University =ReadWriteHelper.readFromExel(
-            "programData","Configuration", "PreferredUniversity");
-    final String Count =ReadWriteHelper.readFromExel(
-            "programData","Configuration", "Count");
-    final String Preferred_Major =ReadWriteHelper.readFromExel(
-            "programData","Configuration", "PreferredMajor");
-
+    final String Academi_Careers = ReadWriteHelper.readFromExcel
+            ("programData", "Configuration", "AcademicCareers");
+    final String Min_Age = ReadWriteHelper.readFromExcel(
+            "programData", "Configuration", "AgeRangeMin");
+    final String Max_Age = ReadWriteHelper.readFromExcel(
+            "programData", "Configuration", "AgeRangeMax");
+    final String Nationality = ReadWriteHelper.readFromExcel(
+            "programData", "Configuration", "Nationality");
+    final String Preferred_University = ReadWriteHelper.readFromExcel(
+            "programData", "Configuration", "PreferredUniversity");
+    final String Count = ReadWriteHelper.readFromExcel(
+            "programData", "Configuration", "Count");
+    final String Preferred_Major = ReadWriteHelper.readFromExcel(
+            "programData", "Configuration", "PreferredMajor");
+    String policy_Name = ReadWriteHelper.readFromExcel(
+            "programData", "TemplateConfig", "Policy");
+    String performance_RuleSet = ReadWriteHelper.readFromExcel(
+            "programData", "TemplateConfig", "PerformanceRuleSet");
 
 
     public ProgramsPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-
     @FindBy(css = "a[class='air__menuLeft__link']")
     private List<WebElement> programsTab;
     @FindBy(css = "i[class='btn-addon-icon fe fe-plus-circle']")
@@ -151,6 +154,18 @@ public class ProgramsPage {
     private List<WebElement> okButton;
     @FindBy(id = "ProjectId")
     private WebElement erpIDField;
+    @FindBy(id = "policyRule")
+    private WebElement policyField;
+    @FindBy(id = "policyRuleId")
+    private WebElement performanceRuleField;
+    @FindBy(css = "#collapseLetterofNotice1 .note-editable")
+    private WebElement letterTemplateField;
+    @FindBy(xpath = "//input[starts-with(@id,'btnSubmitBankBranches')]")
+    private List<WebElement> submitLetterBtn;
+
+    public ProgramsPage() {
+
+    }
 
 
     public void addProgram() {
@@ -386,16 +401,75 @@ public class ProgramsPage {
         //Set program team
         setProgramTeam();
     }
+
     public void addProgramToFile() throws Exception {
 
-            for (int i = 0; i < getProgramsDiv().size(); i++) {
-                if (getProgramsDiv().get(i).getText().equalsIgnoreCase(randomName)) {
-                    createdProgram = getProgramsDiv().get(i).getText();
-                    ReadWriteHelper.writeIntoXMLFileInterview(createdProgram);
-                    break;
-                }
+        for (int i = 0; i < getProgramsDiv().size(); i++) {
+            if (getProgramsDiv().get(i).getText().equalsIgnoreCase(randomName)) {
+                createdProgram = getProgramsDiv().get(i).getText();
+                ReadWriteHelper.writeIntoXMLFileInterview(createdProgram);
+                break;
             }
+        }
 
+
+    }
+
+    public void templateConfiguration(String programName) {
+
+
+        ActionsHelper.waitForExistance(getSearchField(), 30);
+        getSearchField().sendKeys(programName);
+        ActionsHelper.waitForExistance(getSearchButton(), 30);
+        getSearchButton().click();
+        ActionsHelper.waitForListExistance(getProgramsDiv(), 30);
+        getProgramsDiv().get(0).click();
+        getProgramOptions().get(11).click();
+
+        ActionsHelper.waitForExistance(getPolicyField(), 50);
+        getPolicyField().sendKeys(getPolicy_Name());
+        getPerformanceRuleField().sendKeys(getPerformance_RuleSet());
+        ActionsHelper.waitForListExistance(getConfigurationsList(), 50);
+        ActionsHelper.selectElementFromList(getConfigurationsList(), "Letter of Notice 1");
+        ActionsHelper.waitForExistance(getLetterTemplateField(), 50);
+        getLetterTemplateField().sendKeys("        Tags Needed\tKeys\n" +
+                "        Applicant Id\t{{Applicant Id}}\n" +
+                "        Application Number\n" +
+                "        {{Application Number}}\n" +
+                "        Student Name EN\t{{Student Name EN}}\n" +
+                "        Student Name AR\t{{Student Name AR}}\n" +
+                "        First Name EN\t{{First Name EN}}\n" +
+                "        First Name AR\t{{First Name AR}}\n" +
+                "        Middle Name EN\t{{Middle Name EN}}\n" +
+                "        Middle Name AR\t{{Middle Name AR}}\n" +
+                "        Last Name EN\t{{Last Name EN}}\n" +
+                "        Last Name AR\t{{Last Name AR}}\n" +
+                "        Program Name EN\t{{Program Name EN}}\n" +
+                "        Program Name AR\t{{Program Name AR}}\n" +
+                "        Current Date\t{{Current Date}}\n" +
+                "        Academic Year\t{{Academic Year}}\n" +
+                "        Academic Term EN\t{{Academic Term EN}}\n" +
+                "        Academic Term AR\t{{Academic Term AR}}\n" +
+                "        Semester GPA\t{{Semester GPA}}\n" +
+                "        Semester Credit Hour\t{{Semester Credit Hour}}\n" +
+                "        Cumulative GPA\t{{Cumulative GPA}}\n" +
+                "        Cumulative Credit Hour\t{{Cumulative Credit Hour}}\n" +
+                "        Year GPA\t{{Year GPA}}\n" +
+                "        Year Credit Hour\t{{Year Credit Hour}}\n" +
+                "        Indicator\t{{Indicator}}\n" +
+                "        University En\t{{University En}}\n" +
+                "        University Ar\t{{University Ar}}\n" +
+                "        Major En\t{{Major En}}\n" +
+                "        Major Ar\t{{Major Ar}}\n" +
+                "        Scholarship Activation Date\t{{Scholarship Activation Date}}\n" +
+                "        Academic Level En\t{{Academic Level En}}\n" +
+                "        Academic Level Ar\t{{Academic Level Ar}}\n" +
+                "        Academic Program En\t{{Academic Program En}}\n" +
+                "        Academic Program Ar\t{{Academic Program Ar}}\n" +
+                "        Expected Graduation Date\t{{Expected Graduation Date}}");
+        System.out.println("Siza 123 " + getSubmitLetterBtn().size());
+        getSubmitLetterBtn().get(1).click();
+        ActionsHelper.waitForListExistance(getOkButton(), 30);
 
 
     }

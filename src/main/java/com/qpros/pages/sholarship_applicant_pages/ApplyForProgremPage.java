@@ -26,7 +26,7 @@ public class ApplyForProgremPage extends Base {
     public ApplyForProgremPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-    private ProgramsPage programsPage;
+    private ProgramsPage programsPage=new ProgramsPage() ;
 
     @FindBy(xpath = "//div/div/div/button")
     private WebElement applyBtn;
@@ -121,6 +121,9 @@ public class ApplyForProgremPage extends Base {
     @FindBy(id = "docUp79")
     private WebElement step3ProficiencyLable;
 
+    @FindBy(xpath = "//div[starts-with(@id,'ng-option ng-option')]")
+    private List<WebElement> divList;
+
     protected static Logger LOGGER = Logger.getLogger(Thread.currentThread().getStackTrace()[0].getClassName());
 
 
@@ -135,9 +138,9 @@ public class ApplyForProgremPage extends Base {
 
     public void submitProgram(String ProgramTitle) throws Exception {
         programeSharedSteps(ProgramTitle);
-        Thread.sleep(5000);
-        ActionsHelper.waitForExistance(getStep4GuardianName(), 30);
-        ActionsHelper.waitForExistance(getSubmitApplication(), 30);
+        Thread.sleep(10000);
+        ActionsHelper.waitForExistance(getStep4GuardianName(), 50);
+        ActionsHelper.waitForExistance(getSubmitApplication(), 50);
         getSubmitApplication().click();
         ActionsHelper.waitForExistance(getConfirm(), 50);
         getConfirm().click();
@@ -239,10 +242,8 @@ public class ApplyForProgremPage extends Base {
     }
 
     private void programeSharedSteps(String programTitle) throws Exception {
-        // create object from testh class
-        programsPage = new ProgramsPage( driver );
         System.out.println("Current Date: " + ActionsHelper.getTodayDate());
-        Thread.sleep(5000);
+        Thread.sleep(10000);
 
         ActionsHelper.waitForListExistance(getPrograms(), 100);
         ActionsHelper.selectElementFromList(getPrograms(), "Programs");
@@ -253,18 +254,15 @@ public class ApplyForProgremPage extends Base {
         //selectProgram( programTitle );
         ReadWriteHelper.writeCSVFirstCell(driver.getPageSource());
         getProgram(programTitle);
-        //WebElement applyButton = getProgram( programTitle );
-        //ActionsHelper.actionsClick( applyButton, programTitle );
-        //ActionsHelper.safeJavaScriptClick( applyButton );
 
-
-        Thread.sleep(4000);
+        //Thread.sleep(8000);
         ActionsHelper.waitForListExistance(getStep1EducationLists(), 50);
         ActionsHelper.scrollTo(getStep1EducationLists().get(0));
-        ActionsHelper.actionsClick(getStep1EducationLists().get(0), "");
-        // getStep1EducationLists().get(0).click();
+        Thread.sleep(5000);
+        getStep1EducationLists().get(0).click();
         ActionsHelper.waitForListExistance(getStep1Lists(), 20);
-        ActionsHelper.selectElementFromList(getStep1Lists(),programsPage.getAcademi_Careers());
+       ActionsHelper.selectElementFromList(getStep1Lists(), programsPage.getAcademi_Careers());
+       System.out.println("test acadimic level "+ programsPage.getAcademi_Careers());
 
         ActionsHelper.waitForListExistance(getStep1EducationLists(), 20);
         getStep1EducationLists().get(1).click();
