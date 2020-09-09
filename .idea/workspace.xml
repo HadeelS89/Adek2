@@ -20,67 +20,121 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement">
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_8.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_ooxml_schemas_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_openxml4j_1_0_beta.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_3_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_scratchpad_3_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTests.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTests.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__backport_util_concurrent_backport_util_concurrent_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__classworlds_classworlds_1_1_alpha_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_inject_guice_no_aop_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_chain_commons_chain_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_digester_commons_digester_1_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_validator_commons_validator_1_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__edu_umass_cs_benchlab_harlib_1_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_bonigarcia_webdrivermanager_3_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_qameta_allure_allure_maven_2_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_jsr250_api_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_enterprise_cdi_api_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_inject_javax_inject_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_lingala_zip4j_zip4j_1_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_compress_1_14.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_core_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_decoration_model_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_logging_api_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_module_fml_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_module_xhtml_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_sink_api_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_doxia_doxia_site_renderer_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_aether_provider_3_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_artifact_3_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_artifact_manager_2_2_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_builder_support_3_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_core_3_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_jxr_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_model_3_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_model_builder_3_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_api_3_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_plugin_registry_2_2_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_profile_2_2_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_project_2_2_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_repository_metadata_3_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_settings_3_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_maven_settings_builder_3_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_plugin_tools_maven_plugin_annotations_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_plugins_maven_jxr_plugin_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_reporting_maven_reporting_api_3_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_reporting_maven_reporting_impl_2_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_shared_maven_shared_utils_0_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_maven_wagon_wagon_provider_api_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_struts_struts_core_1_3_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_struts_struts_taglib_1_3_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_struts_struts_tiles_1_3_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_velocity_velocity_1_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_velocity_velocity_tools_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_core_asl_1_8_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_classworlds_2_5_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_component_annotations_1_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_container_default_1_0_alpha_9_stable_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_i18n_1_0_beta_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_interpolation_1_21.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_utils_3_0_22.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_plexus_plexus_velocity_1_1_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_aether_aether_api_1_0_2_v20150114.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_aether_aether_impl_1_0_2_v20150114.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_aether_aether_spi_1_0_2_v20150114.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_aether_aether_util_1_0_2_v20150114.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_sisu_org_eclipse_sisu_inject_0_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_sisu_org_eclipse_sisu_plexus_0_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_11_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_rauschig_jarchivelib_0_8_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_sonatype_plexus_plexus_cipher_1_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_sonatype_plexus_plexus_sec_dispatcher_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__oro_oro_2_0_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__sslext_sslext_1_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xalan_xalan_2_7_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_9_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xmlunit_xmlunit_1_5.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/common/Requester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/common/Requester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/ActionsHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/ActionsHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/EmailHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/EmailHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/FileHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/FileHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/ReadWriteHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/ReadWriteHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/ScreenshotHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/helpers/ScreenshotHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/model/programModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/model/programModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/pages/higher/education/admin/Providers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/pages/higher/education/admin/Providers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/pages/scholarship/admin/AdminApplicationsListPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/pages/scholarship/admin/AdminApplicationsListPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/pages/scholarship/applicant/ApplyForProgremPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/pages/scholarship/applicant/ApplyForProgremPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/browserDrivers/chromedriverLinux" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/browserDrivers/chromedriverLinux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DataProvider/ActiveProgram.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DataProvider/ActiveProgram.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DataProvider/createdProgram.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DataProvider/createdProgram.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/browserDrivers/chromedriver85.exe" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/browserDrivers/chromedriver85.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/browserDrivers/geckodriver-v0.26.0-win64.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/browserDrivers/tempfireFoxgeckodriver.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/browserDrivers/windowschromedriver.exe" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/qpros/higher/education/client/program/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qpros/higher/education/client/program/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/applications/AdminApplicationsListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/admin/applications/AdminApplicationsListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/applicant/applications/ApplicantActionsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/applicant/applications/ApplicantActionsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/applicant/applications/MyApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/applicant/applications/MyApplicationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/applicant/activeScholarships/ActiveScholarshipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qpros/scholarship/applicant/activeScholarships/ActiveScholarshipTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/browserDrivers/chromedriverLinux" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/browserDrivers/chromedriverLinux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/browserDrivers/geckodriver-v0.26.0-win64.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/browserDrivers/tempfireFoxgeckodriver.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/browserDrivers/windowschromedriver.exe" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/common/DTCMAnalysis2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/common/DTCMAnalysis2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/helpers/ActionsHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/helpers/ActionsHelper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/helpers/ReadWriteHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/helpers/ReadWriteHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.qpros.authorization.LoginTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/collapseall.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.qpros.authorization.LoginTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.qpros.authorization.LoginTest/Command line test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.qpros.authorization.LoginTest/Command line test.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.qpros.authorization.LoginTest/testng-failed.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/emailable-report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/failed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/jquery-1.7.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/junitreports/TEST-com.qpros.authorization.LoginTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/navigator-bullet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/com.qpros.authorization.LoginTest/Command line test.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/com.qpros.authorization.LoginTest/classes.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/com.qpros.authorization.LoginTest/groups.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/com.qpros.authorization.LoginTest/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/com.qpros.authorization.LoginTest/main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/com.qpros.authorization.LoginTest/methods-alphabetical.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/com.qpros.authorization.LoginTest/methods-not-run.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/com.qpros.authorization.LoginTest/methods.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/com.qpros.authorization.LoginTest/reporter-output.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/com.qpros.authorization.LoginTest/testng.xml.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/com.qpros.authorization.LoginTest/toc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/old/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/passed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/skipped.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/testng-failed.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/testng-reports.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/testng-reports.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/testng-results.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/testng.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/xmlTests/Scholarship/AuthorizationTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/xmlTests/Scholarship/AuthorizationTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/qpros/scholarship/admin/applications/AdminApplicationsListTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,23 +172,21 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/browserDrivers" />
     <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.qpros.scholarship_applicant" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\ScholarshipsAutomatedTests\src\main\resources\browserDrivers" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\DataProvider" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\ApplicationsTestSuites" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\InrerviewsTestSuites" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.qpros.scholarship.admin.Applications" />
@@ -143,21 +195,48 @@
       <recent name="com.qpros.scholarship.applicant.interviews" />
       <recent name="com.qpros.scholarship_admin.applications" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\ScholarshipsAutomatedTests\src\main\resources\browserDrivers" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\DataProvider" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\ApplicationsTestSuites" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\InrerviewsTestSuites" />
       <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml">
-    <configuration name="InterviewsTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.qpros.scholarship.admin.interviews.InterviewsTest" />
-      <module name="QPros" />
+  <component name="RunManager" selected="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AllTest.xml">
+    <configuration name="AcceptAcknowledgeApplsTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ScholarshipsAutomatedTests" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.qpros.scholarship.admin.interviews.*" />
+          <option name="PATTERN" value="com.qpros.scholarship.admin.applicationsScenarios.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.qpros.scholarship.admin.applicationsScenarios" />
+      <option name="MAIN_CLASS_NAME" value="com.qpros.scholarship.admin.applicationsScenarios.AcceptAcknowledgeApplsTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AcceptAck.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ScholarshipsAutomatedTests" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AcceptAck.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AllTest.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ScholarshipsAutomatedTests" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AllTest.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -166,42 +245,6 @@
       <module name="ScholarshipsAutomatedTests" />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" />
       <option name="TEST_OBJECT" value="SUITE" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DTCMAnalysis2.doMagic" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="ScholarshipsAutomatedTestsUGH" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qpros.common.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.qpros.common" />
-      <option name="MAIN_CLASS_NAME" value="com.qpros.common.DTCMAnalysis2" />
-      <option name="METHOD_NAME" value="doMagic" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InterviewsTest.fillInterviewScore" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="QPros" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.qpros.scholarship.admin.interviews.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.qpros.scholarship.admin.interviews" />
-      <option name="MAIN_CLASS_NAME" value="com.qpros.scholarship.admin.interviews.InterviewsTest" />
-      <option name="METHOD_NAME" value="fillInterviewScore" />
-      <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
       <method v="2">
@@ -225,11 +268,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AllTest.xml" />
+        <item itemvalue="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AcceptAck.xml" />
+        <item itemvalue="TestNG.AcceptAcknowledgeApplsTest" />
         <item itemvalue="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" />
         <item itemvalue="Docker.Dockerfile" />
-        <item itemvalue="TestNG.DTCMAnalysis2.doMagic" />
-        <item itemvalue="Application.InterviewsTest" />
-        <item itemvalue="TestNG.InterviewsTest.fillInterviewScore" />
       </list>
     </recent_temporary>
   </component>
@@ -353,66 +396,66 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1599578641646" />
-    <state width="1237" height="242" key="GridCell.Tab.0.bottom" timestamp="1599590897011">
+    <state width="1237" height="217" key="GridCell.Tab.0.bottom" timestamp="1599642444184">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="242" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599590897011" />
-    <state width="1237" height="242" key="GridCell.Tab.0.center" timestamp="1599590897009">
+    <state width="1237" height="217" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599642444184" />
+    <state width="1237" height="217" key="GridCell.Tab.0.center" timestamp="1599642444184">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="242" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1599590897009" />
-    <state width="1237" height="242" key="GridCell.Tab.0.left" timestamp="1599590897009">
+    <state width="1237" height="217" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1599642444184" />
+    <state width="1237" height="217" key="GridCell.Tab.0.left" timestamp="1599642444184">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="242" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1599590897009" />
-    <state width="1237" height="242" key="GridCell.Tab.0.right" timestamp="1599590897010">
+    <state width="1237" height="217" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1599642444184" />
+    <state width="1237" height="217" key="GridCell.Tab.0.right" timestamp="1599642444184">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="242" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1599590897010" />
-    <state width="1237" height="294" key="GridCell.Tab.1.bottom" timestamp="1595141718377">
+    <state width="1237" height="217" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1599642444184" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1599642024320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1595141718377" />
-    <state width="1237" height="294" key="GridCell.Tab.1.center" timestamp="1595141718377">
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599642024320" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1599642024320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1595141718377" />
-    <state width="1237" height="294" key="GridCell.Tab.1.left" timestamp="1595141718377">
+    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1599642024320" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1599642024320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1595141718377" />
-    <state width="1237" height="294" key="GridCell.Tab.1.right" timestamp="1595141718377">
+    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1599642024320" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1599642024320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="294" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1595141718377" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1599642024320" />
     <state x="171" y="0" key="Maven.ArtifactSearchDialog" timestamp="1594278438184">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.680@0.0.1280.680" timestamp="1594278438184" />
-    <state x="0" y="3" width="1280" height="677" key="MergeDialog" timestamp="1594889154387">
+    <state x="0" y="3" width="1280" height="677" key="MergeDialog" timestamp="1599640541817">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="0" y="3" width="1280" height="677" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1594889154387" />
-    <state x="125" y="124" width="646" height="417" key="MultipleFileMergeDialog" timestamp="1594889175744">
+    <state x="0" y="3" width="1280" height="677" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1599640541817" />
+    <state x="125" y="124" width="646" height="417" key="MultipleFileMergeDialog" timestamp="1599640541822">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="125" y="124" width="646" height="417" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1594889175744" />
+    <state x="125" y="124" width="646" height="417" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1599640541822" />
     <state x="423" y="43" key="RollbackChangesDialog" timestamp="1599584005451">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="423" y="43" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1599584005451" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1594889337046">
+    <state x="121" y="0" key="SettingsEditor" timestamp="1599640268384">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1594889337045" />
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1599640268384" />
     <state x="333" y="100" key="Vcs.Multiple.Commit.Info.Dialog.Key" timestamp="1594888093955">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="333" y="100" key="Vcs.Multiple.Commit.Info.Dialog.Key/0.0.1280.680@0.0.1280.680" timestamp="1594888093955" />
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1595145433055">
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1599641056774">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1595145433055" />
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1599641056774" />
     <state width="647" height="347" key="XDebugger.FullValuePopup" timestamp="1594818580176">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -421,10 +464,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1594898632982" />
-    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594887116554">
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599641194221">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1594887116554" />
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1599641194221" />
     <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591554877364">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -437,10 +480,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="0" y="0" width="587" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1594815433482" />
-    <state x="221" y="129" key="git4idea.merge.GitPullDialog" timestamp="1595145752856">
+    <state x="221" y="129" key="git4idea.merge.GitPullDialog" timestamp="1599640284153">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="221" y="129" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1595145752856" />
+    <state x="221" y="129" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1599640284153" />
     <state x="58" y="150" key="git4idea.ui.GitUnstashDialog" timestamp="1593071477204">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -449,12 +492,21 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1599584119258" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1599592485735">
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1599640804690">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1599592485735" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1599640804690" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="TestNG">
         <watch expression="exception.substring(exception.lastIndexOf(&quot;:&quot;));" language="JAVA" />
