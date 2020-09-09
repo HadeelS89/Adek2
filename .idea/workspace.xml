@@ -20,10 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement">
+      <change beforePath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTests.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTests.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_7.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataProvider/ActiveProgram.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataProvider/ActiveProgram.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DataProvider/createdProgram.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataProvider/createdProgram.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlTests/Scholarship/AuthorizationTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/xmlTests/Scholarship/AuthorizationTest.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,21 +74,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/DataProvider" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/browserDrivers" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.qpros.scholarship_applicant" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\DataProvider" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\ApplicationsTestSuites" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\InrerviewsTestSuites" />
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.qpros.scholarship.admin.Applications" />
@@ -92,9 +95,11 @@
       <recent name="com.qpros.scholarship.applicant.interviews" />
       <recent name="com.qpros.scholarship_admin.applications" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\DataProvider" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\ApplicationsTestSuites" />
+      <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\xmlTests\Scholarship\InrerviewsTestSuites" />
     </key>
   </component>
   <component name="RunManager" selected="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml">
@@ -262,10 +267,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1594626275034" />
-    <state x="410" y="121" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1590917230862">
+    <state x="374" y="30" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1599634856735">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="410" y="121" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1590917230862" />
+    <state x="374" y="30" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1280.680@0.0.1280.680" timestamp="1599634856735" />
     <state x="233" y="265" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1594017133225">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -282,22 +287,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1594887804402" />
-    <state width="1237" height="263" key="GridCell.Tab.0.bottom" timestamp="1599481122748">
+    <state width="1237" height="295" key="GridCell.Tab.0.bottom" timestamp="1599636063067">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="263" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599481122748" />
-    <state width="1237" height="263" key="GridCell.Tab.0.center" timestamp="1599481122748">
+    <state width="1237" height="295" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599636063067" />
+    <state width="1237" height="295" key="GridCell.Tab.0.center" timestamp="1599636063067">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="263" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1599481122748" />
-    <state width="1237" height="263" key="GridCell.Tab.0.left" timestamp="1599481122748">
+    <state width="1237" height="295" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1599636063067" />
+    <state width="1237" height="295" key="GridCell.Tab.0.left" timestamp="1599636063066">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="263" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1599481122748" />
-    <state width="1237" height="263" key="GridCell.Tab.0.right" timestamp="1599481122748">
+    <state width="1237" height="295" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1599636063066" />
+    <state width="1237" height="295" key="GridCell.Tab.0.right" timestamp="1599636063067">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="263" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1599481122748" />
+    <state width="1237" height="295" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1599636063067" />
     <state width="1237" height="294" key="GridCell.Tab.1.bottom" timestamp="1595141718377">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
