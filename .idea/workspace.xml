@@ -21,26 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/DataProvider/ActiveProgram.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DataProvider/ActiveProgram.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/DataProvider/createdProgram.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DataProvider/createdProgram.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/DataProvider/credentialsData.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DataProvider/credentialsData.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AcceptAck.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AcceptAck.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ActivateProgram.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ActivateProgram.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/BookInterview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/BookInterview.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/DeclineAck.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/DeclineAck.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/FillInterviewScore.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/FillInterviewScore.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/MarkApplicantAsAbsent.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/MarkApplicantAsAbsent.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/RejectApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/RejectApplication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ResubmitAfterChange.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/ResubmitAfterChange.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataProvider/createdProgram.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataProvider/createdProgram.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataProvider/credentialsData.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataProvider/credentialsData.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +90,7 @@
       <recent name="C:\Users\HadeelSalameh\Desktop\Adek2\src\main\resources\browserDrivers" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AcceptAck.xml">
+  <component name="RunManager" selected="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/FillInterviewScore.xml">
     <configuration name="AcceptAcknowledgeApplsTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="ScholarshipsAutomatedTests" />
       <extension name="coverage">
@@ -158,28 +138,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="imageTag" value="" />
-          <option name="buildCliOptions" value="" />
-          <option name="buildOnly" value="true" />
-          <option name="command" value="" />
-          <option name="containerName" value="" />
-          <option name="entrypoint" value="" />
-          <option name="commandLineOptions" value="" />
-          <option name="sourceFilePath" value="Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
+    <configuration name="C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/FillInterviewScore.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ScholarshipsAutomatedTests" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/resources/xmlTests/Scholarship/FillInterviewScore.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/FillInterviewScore.xml" />
         <item itemvalue="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AcceptAck.xml" />
         <item itemvalue="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AllTest.xml" />
         <item itemvalue="TestNG.AcceptAcknowledgeApplsTest" />
         <item itemvalue="TestNG.C:/ScholarshipsAutomatedTests/src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml" />
-        <item itemvalue="Docker.Dockerfile" />
       </list>
     </recent_temporary>
   </component>
@@ -311,22 +286,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1599646627630" />
-    <state width="1237" height="158" key="GridCell.Tab.0.bottom" timestamp="1599648191754">
+    <state width="1237" height="158" key="GridCell.Tab.0.bottom" timestamp="1599649680475">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="158" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599648191754" />
-    <state width="1237" height="158" key="GridCell.Tab.0.center" timestamp="1599648191754">
+    <state width="1237" height="158" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1599649680475" />
+    <state width="1237" height="158" key="GridCell.Tab.0.center" timestamp="1599649680475">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="158" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1599648191754" />
-    <state width="1237" height="158" key="GridCell.Tab.0.left" timestamp="1599648191754">
+    <state width="1237" height="158" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1599649680475" />
+    <state width="1237" height="158" key="GridCell.Tab.0.left" timestamp="1599649680475">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="158" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1599648191754" />
-    <state width="1237" height="158" key="GridCell.Tab.0.right" timestamp="1599648191754">
+    <state width="1237" height="158" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1599649680475" />
+    <state width="1237" height="158" key="GridCell.Tab.0.right" timestamp="1599649680475">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="158" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1599648191754" />
+    <state width="1237" height="158" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1599649680475" />
     <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1599642024320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -367,10 +342,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="333" y="100" key="Vcs.Multiple.Commit.Info.Dialog.Key/0.0.1280.680@0.0.1280.680" timestamp="1594888093955" />
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1599644526486">
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1599649739390">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1599644526486" />
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1599649739390" />
     <state width="647" height="347" key="XDebugger.FullValuePopup" timestamp="1594818580176">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
