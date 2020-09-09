@@ -2,6 +2,7 @@ package com.qpros.common;
 
 
 import com.qpros.helpers.ReadWriteHelper;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,7 +13,9 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -73,8 +76,11 @@ public class Base {
                         options.addArguments("--headless");
                     }
                     driver = new ChromeDriver(options);
-                    //Dimension targetSize = new Dimension(1920, 1080); //your screen resolution here
-                    //driver.manage().window().setSize(targetSize);
+                    if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
+                        Dimension targetSize = new Dimension(1920, 1080); //your screen resolution here
+                        driver.manage().window().setSize(targetSize);
+                    }
+
 
                 } catch (Throwable e) {
                     e.printStackTrace(System.out);

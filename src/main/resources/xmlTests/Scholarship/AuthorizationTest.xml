@@ -13,4 +13,10 @@
             <class name="com.qpros.authorization.LoginTest"/>
         </classes>
     </test>
+    <test name="Authorization Test - Firefox">
+        <parameter name="browserType" value="Firefox"></parameter>
+        <classes>
+            <class name="com.qpros.authorization.LoginTest"/>
+        </classes>
+    </test>
 </suite>
