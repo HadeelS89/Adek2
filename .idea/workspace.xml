@@ -19,17 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement">
-      <change beforePath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTests.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ScholarshipsAutomatedTests.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qpros/common/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataProvider/ActiveProgram.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataProvider/ActiveProgram.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DataProvider/createdProgram.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DataProvider/createdProgram.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qpros/common/Base.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config.properties" afterDir="false" />
-    </list>
+    <list default="true" id="28f5731d-e504-42ac-8046-487bb134e2d7" name="Default Changelist" comment="fix headless issue for interview, ScholarShipBank and ScholarShipPayElement" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -343,10 +333,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="333" y="100" key="Vcs.Multiple.Commit.Info.Dialog.Key/0.0.1280.680@0.0.1280.680" timestamp="1594888093955" />
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1599480287654">
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2" timestamp="1599651407763">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1599480287654" />
+    <state x="233" y="74" width="964" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1599651407763" />
     <state width="647" height="347" key="XDebugger.FullValuePopup" timestamp="1594818580176">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -371,10 +361,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="0" y="0" width="587" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1594815433482" />
-    <state x="221" y="129" key="git4idea.merge.GitPullDialog" timestamp="1595145752856">
+    <state x="221" y="129" key="git4idea.merge.GitPullDialog" timestamp="1599651420606">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="221" y="129" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1595145752856" />
+    <state x="221" y="129" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1599651420606" />
     <state x="58" y="150" key="git4idea.ui.GitUnstashDialog" timestamp="1593071477204">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
