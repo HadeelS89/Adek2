@@ -2,13 +2,11 @@ package com.qpros.scholarship.applicant.activeScholarships;
 
 
 import com.qpros.common.Base;
-import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.pages.authorization_pages.LoginPage;
 import com.qpros.pages.sholarship_applicant_pages.ActiveScholarshipsPage;
 import com.qpros.pages.sholarship_applicant_pages.ApplyForProgremPage;
 import com.qpros.pages.sholarship_applicant_pages.MyApplicationsPage;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
