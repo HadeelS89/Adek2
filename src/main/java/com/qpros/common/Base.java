@@ -31,9 +31,9 @@ public class Base {
     public void setUpBrowser(@Optional("optional") String browserType) {
         //DriverType browser = getBrowser();
         if (!browserType.equals( "optional" )){
-            initiateDriver("Linux", browserType);
+            initiateDriver(OsValidator.getDeviceOs(), browserType);
         }else {
-            initiateDriver("Linux", ReadWriteHelper.ReadData( "browser" ) );
+            initiateDriver(OsValidator.getDeviceOs(), ReadWriteHelper.ReadData( "browser" ) );
         }
 
     }
