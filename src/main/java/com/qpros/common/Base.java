@@ -142,7 +142,7 @@ public class Base {
             System.setProperty(ReadWriteHelper.ReadData("ChromeDriverPath"),
                     ReadWriteHelper.ReadData("chromeDriverLinkWindows"));
         }
-        else if(deviceOsType.equalsIgnoreCase("Unix"))
+        else if(deviceOsType.equalsIgnoreCase("Linux"))
         {
             System.setProperty(ReadWriteHelper.ReadData("ChromeDriverPath"),
                     ReadWriteHelper.ReadData("chromeDriverLinkLinux"));
