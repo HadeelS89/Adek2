@@ -72,7 +72,7 @@ public class DTCMAnalysis2 {
 
             //set chromedriver system property
             System.setProperty("webdriver.chrome.driver", driverPath);
-            options.setProxy(seleniumProxy);
+            //options.setProxy(seleniumProxy);
             driver = new ChromeDriver(capabilities);
 
             // enable more detailed HAR capture

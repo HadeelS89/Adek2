@@ -12,6 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 public class CreateInterviewTest extends Base {
     private LoginPage loginPage;
     private ProgramsPage programsPage;
@@ -77,7 +79,7 @@ public class CreateInterviewTest extends Base {
 
     @Test(description = "Create new interview from admin panel",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 3)
-    public void createInterview() throws InterruptedException {
+    public void createInterview() throws InterruptedException, IOException {
         //Login as Program Manager
         loginPage = new LoginPage( driver );
         loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "programManager1",

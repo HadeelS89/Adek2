@@ -22,7 +22,7 @@
                     <include name="submitProgram"/>
                 </methods>
             </class>
-            <class name="com.qpros.scholarship.admin.applications.AdminApplicationsListTest">
+            <class name="AdminApplicationsListTest">
                 <methods>
                     <include name="approveNewApplicationWithAck"/>
                 </methods>

@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
@@ -19,6 +20,7 @@ import java.util.logging.Logger;
 public class ActionsHelper extends Base {
     protected static Logger LOGGER = Logger.getLogger(Thread.currentThread().getStackTrace()[0].getClassName());
     public static WebDriverWait wait;
+    public static int waitTime = 60;
 
     public static void waitForSeconds(Integer timeWait) {
         driver.manage().timeouts().implicitlyWait(timeWait, TimeUnit.SECONDS);
@@ -183,6 +185,7 @@ public class ActionsHelper extends Base {
     public static void selectElementFromList(List<WebElement> element, String value) {
         element.parallelStream().forEach(element1 -> {
             if (element1.getText().equalsIgnoreCase(value)) {
+                highlightElement(element1);
                 element1.click();
             }
         });
@@ -193,6 +196,26 @@ public class ActionsHelper extends Base {
 
         int count = 1;
         while (count <= seconds) {
+            try {
+                Thread.sleep(1000);
+                if (element.isDisplayed()) {
+                    isExist = true;
+                    break;
+                }
+            } catch (Exception e) {
+                System.out.println("Exception message: " + e.getMessage());
+            }
+            count++;
+        }
+
+        return isExist;
+    }
+
+    public static boolean waitForExistance(WebElement element) {
+        boolean isExist = false;
+
+        int count = 1;
+        while (count <= waitTime) {
             try {
                 Thread.sleep(1000);
                 if (element.isDisplayed()) {
@@ -311,5 +334,73 @@ public class ActionsHelper extends Base {
 
     }
 
+    public void getWebTableIndex(String tableId) throws InterruptedException {
+        Thread.sleep(5000);
+        WebElement Webtable=driver.findElement(By.id(tableId)); // Replace TableID with Actual Table ID or Xpath
 
+        List<WebElement> TotalRowCount=Webtable.findElements
+                (By.xpath("//*[@id="+tableId+"]/tbody/tr"));
+
+        System.out.println("No. of Rows in the WebTable: "+TotalRowCount.size());
+        // Now we will Iterate the Table and print the Values
+
+        int RowIndex=1;
+
+        //int RowIndex=1;
+        HashMap<String, Integer> webMap
+                = new HashMap<>();
+
+        for(WebElement rowElement:TotalRowCount)
+        {
+            List<WebElement> TotalColumnCount=rowElement.findElements(By.xpath("td"));
+            int ColumnIndex=1;
+
+            for(WebElement colElement:TotalColumnCount)
+            {
+                System.out.println("Row "+RowIndex+" Column "+ColumnIndex+" Data "+colElement.getText());
+                ColumnIndex=ColumnIndex+1;
+            }
+            RowIndex=RowIndex+1;
+            webMap.put(TotalColumnCount.get(ColumnIndex).getText(),RowIndex );
+        }
+    }
+    public static HashMap<Integer,String > getWebColumnIndex(String tableId, int columnIndex) throws InterruptedException {
+        Thread.sleep(2000);
+        WebElement Webtable=driver.findElement(By.id(tableId)); // Replace TableID with Actual Table ID or Xpath
+
+        List<WebElement> TotalRowCount=Webtable.findElements
+                (By.xpath("//*[@id='"+tableId+"']/tbody/tr"));
+
+      //  System.out.println("No. of Rows in the WebTable: "+TotalRowCount.size());
+        // Now we will Iterate the Table and print the Values
+
+        int RowIndex=1;
+        HashMap<Integer, String> webMap
+                = new HashMap<>();
+
+        for(WebElement rowElement:TotalRowCount)
+        {
+            List<WebElement> TotalColumnCount=rowElement.findElements(By.xpath("td"));
+                System.out.println("Row "+RowIndex+" Column "+columnIndex+" Data "
+                        +TotalColumnCount.get(columnIndex).getText());
+
+            RowIndex=RowIndex+1;
+            webMap.put(RowIndex,TotalColumnCount.get(columnIndex).getText() );
+           // System.out.println("test map  "+ webMap);
+        }
+
+
+        return webMap;
+    }
+
+    public static int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
+
+    public static void highlightElement(WebElement element){
+        if (driver instanceof JavascriptExecutor) {
+            ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='3px solid red'", element);
+        }
+    }
 }

@@ -13,6 +13,9 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
+
 @Listeners(com.qpros.reporting.Listeners.class)
 
 public class FillInterviewScoreTest extends Base {
@@ -80,7 +83,7 @@ public class FillInterviewScoreTest extends Base {
 
     @Test(description = "Create new interview from admin panel",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class, priority = 3)
-    public void createInterview() throws InterruptedException {
+    public void createInterview() throws InterruptedException, IOException {
         //Login as Program Manager
         loginPage = new LoginPage( driver );
         loginPage.signInAsADEKEmployee( ReadWriteHelper.readCredentialsXMLFile( "programManager1",
