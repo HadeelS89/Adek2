@@ -72,6 +72,7 @@ public class Base {
                     options.addArguments("--disable-web-security");
                     options.addArguments("--allow-running-insecure-content");
                     options.setAcceptInsecureCerts( true );
+                    options.addArguments("--no-sandbox");
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
                         options.addArguments("--headless");
                     }
