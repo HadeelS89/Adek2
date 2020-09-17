@@ -301,7 +301,7 @@ public class EmailHelper extends Base {
 
     }
     public static void main(String args[]) throws MessagingException, GeneralSecurityException {
-        sendEmail("mohammedm@q-pros.net", "src\\main\\resources\\Reports\\QPros-Automation_Report-2020-09-15-1600164140869.html");
+        sendEmail("mohammedm@q-pros.net", "src\\main\\resources\\Reports\\QPros-Automation_Report-2020-06-09-1591687128398.html");
 
     }
 
@@ -309,12 +309,12 @@ public class EmailHelper extends Base {
 
     public static void sendEmail(String recipients, String attachmentPath){
         String to = recipients;
-        String from = "qprosautomationnew@gmail.com";
+        String from = "mohammad.mohaidat@adek.gov.ae";
 
-        final String username = "qprosautomationnew@gmail.com";
-        final String password = "Automation@123";
+        final String username = "mohammad.mohaidat@adek.gov.ae";
+        final String password = "Moibmo123";
 
-        String host = "smtp.gmail.com";
+        String host = "smtp.office365.com";
 
         Properties prop = new Properties();
         prop.put("mail.smtp.auth", "true");
@@ -353,6 +353,7 @@ public class EmailHelper extends Base {
             throw new RuntimeException(e);
         }
     }
+
 
 }
 
