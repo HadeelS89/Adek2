@@ -3,7 +3,6 @@ package com.qpros.reporting;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.qpros.helpers.EmailHelper;
-import com.qpros.helpers.ReadWriteHelper;
 import lombok.SneakyThrows;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
@@ -49,16 +48,21 @@ public class Listeners extends TestListenerAdapter{
 
         }
         extent.flush();
-        EmailHelper sender = new EmailHelper();
-        String emails = ReadWriteHelper.ReadData( "EmailsTo" );
-        String toSendEmails = ReadWriteHelper.ReadData( "SendMail" );
-        System.out.println(emails);
-        if (!emails.equals("") && toSendEmails.equals("true")) {
-            String[] emailArray = emails.split(",");
-            for(String email: emailArray) {
-                sender.sendMail(email , ExtentManager.path + ExtentManager.reportFileName);
-            }
-        }
+
+        String reportPath = "src/main/resources/Reports/" + ExtentManager.reportFileName;
+        EmailHelper.sendEmail("mohammedm@q-pros.net, mohammadY@q-pros.net, hadeelS@q-pros.net," +
+                " khaledM@q-pros.net, rawaQ@q-pros.net, HamzahA@q-pros.net", reportPath);
+
+//        EmailHelper sender = new EmailHelper();
+//        String emails = ReadWriteHelper.ReadData( "EmailsTo" );
+//        String toSendEmails = ReadWriteHelper.ReadData( "SendMail" );
+//        System.out.println(emails);
+//        if (!emails.equals("") && toSendEmails.equals("true")) {
+//            String[] emailArray = emails.split(",");
+//            for(String email: emailArray) {
+//                sender.sendMail(email , ExtentManager.path + ExtentManager.reportFileName);
+//            }
+//        }
 
     }
 
