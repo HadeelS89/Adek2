@@ -3,6 +3,9 @@ package com.qpros.helpers;
 import com.qpros.common.Base;
 import com.sun.mail.util.MailSSLSocketFactory;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
@@ -298,19 +301,59 @@ public class EmailHelper extends Base {
 
     }
     public static void main(String args[]) throws MessagingException, GeneralSecurityException {
-        EmailHelper testHelper = new EmailHelper();
-        try {
-            System.out.println(testHelper.getVerificationCode("ADEK Online - Registration invitation", "HEIAuthorizationSystem/Client/registration?token=", 38));
-
-        }
-        catch (NullPointerException e){
-            e.printStackTrace();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        sendEmail("mohammedm@q-pros.net", "src\\main\\resources\\Reports\\QPros-Automation_Report-2020-06-09-1591687128398.html");
 
     }
+
+
+
+    public static void sendEmail(String recipients, String attachmentPath){
+        String to = recipients;
+        String from = "mohammad.mohaidat@adek.gov.ae";
+
+        final String username = "mohammad.mohaidat@adek.gov.ae";
+        final String password = "Moibmo123";
+
+        String host = "smtp.office365.com";
+
+        Properties prop = new Properties();
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true");
+        prop.put("mail.smtp.host", host);
+        prop.put("mail.smtp.port", "25");
+
+        Session session = Session.getInstance(prop,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(to));
+            message.setSubject("Automation Test");
+            BodyPart messageBodyPart = new MimeBodyPart();
+            messageBodyPart.setText("Hello, \n\n Automation test has been done with the attached result, " +
+                    "kindly find the attached report. \n\n Thank you,\nAutomation Team");
+            Multipart multipart = new MimeMultipart();
+            multipart.addBodyPart(messageBodyPart);
+            messageBodyPart = new MimeBodyPart();
+            String filename = attachmentPath;
+            DataSource source = new FileDataSource(filename);
+            messageBodyPart.setDataHandler(new DataHandler(source));
+            messageBodyPart.setFileName(filename);
+            multipart.addBodyPart(messageBodyPart);
+            message.setContent(multipart);
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }
 

@@ -72,6 +72,7 @@ public class Base {
                     options.addArguments("--disable-web-security");
                     options.addArguments("--allow-running-insecure-content");
                     options.setAcceptInsecureCerts( true );
+                    options.addArguments("--no-sandbox");
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
                         options.addArguments("--headless");
                     }
@@ -142,7 +143,7 @@ public class Base {
             System.setProperty(ReadWriteHelper.ReadData("ChromeDriverPath"),
                     ReadWriteHelper.ReadData("chromeDriverLinkWindows"));
         }
-        else if(deviceOsType.equalsIgnoreCase("Unix"))
+        else if(deviceOsType.equalsIgnoreCase("Linux"))
         {
             System.setProperty(ReadWriteHelper.ReadData("ChromeDriverPath"),
                     ReadWriteHelper.ReadData("chromeDriverLinkLinux"));

@@ -77,6 +77,12 @@
             <artifactId>extentreports</artifactId>
             <version>3.1.5</version>
         </dependency>
+        <!-- Extent Report dependency -->
+        <dependency>
+            <groupId>com.relevantcodes</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>2.41.1</version>
+        </dependency>
 
         <dependency>
             <groupId>org.axsl.org.w3c.dom.svg</groupId>
@@ -217,10 +223,11 @@
                     <version>2.22.0</version>
                     <configuration>
                         <suiteXmlFiles>
-                            <file>src/main/resources/xmlTests/Scholarship/AuthorizationTest.xml</file>
+                            <file>src/main/resources/xmlTests/Scholarship/${file}</file>
                         </suiteXmlFiles>
                     </configuration>
                 </plugin>
+
             </plugins>
         </pluginManagement>
     </build>
