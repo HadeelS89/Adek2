@@ -67,6 +67,8 @@ public class HEProgram {
     private List<WebElement> newApplicationTab;
     @FindBy(id="swal2-title")
     private WebElement thankYouTag;
+    @FindBy(xpath="//td[2]")
+    private WebElement programId;
 
 
 
@@ -125,9 +127,10 @@ public class HEProgram {
 
         //getXBtn().click();
         Thread.sleep(10000);
-        ActionsHelper.selectElementFromList(getNewApplicationTab(), "New Applications");
+
         ActionsHelper.waitForListExistance(getNewApplicationTab(), 100);
         ActionsHelper.selectElementFromList(getNewApplicationTab(), "Current and Previous Applications");
-        ReadWriteHelper.writeIntoXMLFileHEApplication("");
+Thread.sleep(3000);
+        ReadWriteHelper.writeIntoXMLFileHEApplication(getProgramId().getText());
     }
 }

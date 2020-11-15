@@ -39,7 +39,7 @@ public class WithoutERTest extends Base {
         //Create program and set configurations and team
         myProgram = new HEProgram(driver);
         myProgram.applyForProgram();
-        Assert.assertTrue( myProgram.getThankYou().isDisplayed());
+        Assert.assertTrue( myProgram.getThankYouTag().isDisplayed());
 
 
     }

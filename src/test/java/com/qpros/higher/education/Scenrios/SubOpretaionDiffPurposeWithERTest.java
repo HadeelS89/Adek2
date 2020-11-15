@@ -41,7 +41,7 @@ public class SubOpretaionDiffPurposeWithERTest extends Base {
         //Create program and set configurations and team
         substantiveChangePage = new SubstantiveChangePage (driver);
         substantiveChangePage.operateWithDifferentPurpose();
-         Assert.assertTrue( myProgram.getThankYou().isDisplayed());
+         Assert.assertTrue( myProgram.getThankYouTag().isDisplayed());
 
 
     }

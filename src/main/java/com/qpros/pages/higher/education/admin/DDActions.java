@@ -1,6 +1,7 @@
 package com.qpros.pages.higher.education.admin;
 
 import com.qpros.helpers.ActionsHelper;
+import com.qpros.helpers.ReadWriteHelper;
 import lombok.Getter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
@@ -66,6 +68,14 @@ public class DDActions {
     private WebElement submitButton;
     @FindBy(xpath = "//button[contains(.,'Yes')]")
     private WebElement yetBtnYesNew;
+    @FindBy(xpath = "//button[starts-with(@class,'btn btn-primary')]")
+    private List<WebElement> assignBtn;
+    @FindBy(css = "input[class='rdorequestochangeClass']")
+    private List<WebElement> requestForChangeBtn;
+    @FindBy(id = "Comment")
+    private WebElement commentChange;
+    @FindBy(id = "btnRequestForChange")
+    private WebElement requestMainChangeBtn;
 
 
     public void findProgram(String programName) throws InterruptedException {
@@ -73,95 +83,109 @@ public class DDActions {
         Thread.sleep(3000);
         ActionsHelper.waitForExistance(getApplicationTab1(), 30);
         getApplicationTab1().click();
-//        ActionsHelper.selectElementFromList(getApplicationTab(),"Applications                            ");
-
 
         ActionsHelper.waitForExistance(getSearchField(), 100);
         sleep(3000);
-
         getSearchField().sendKeys(programName);
         getSearchField().sendKeys(Keys.ENTER);
         ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
         getSelectFirstRecord().click();
-    }
 
-    public void acceptInvitationByER() throws InterruptedException {
-        ActionsHelper.waitForExistance(getUploadPdfConflict(), 40);
-        getUploadPdfConflict().click();
-        getUploadPdf().get(0).sendKeys(ActionsHelper.getImagePath("Amending.pdf"));
-        Thread.sleep(3000);
-        getUploadBtn().click();
-        getUploadPdfCommitment().click();
-        getUploadPdf().get(0).sendKeys(ActionsHelper.getImagePath("Amending.pdf"));
-        Thread.sleep(3000);
-        getUploadBtn().click();
-        getUploadPdfInvoice().click();
-        getUploadPdf().get(0).sendKeys(ActionsHelper.getImagePath("Amending.pdf"));
-        Thread.sleep(3000);
-        getUploadBtn().click();
-        ActionsHelper.waitForListExistance(getAcceptBtn(), 40);
-        getAcceptBtn().get(0).click();
-
-        getYesBtn().get(0).click();
 
     }
 
 
-    public void submitIndvReport(String programName) throws InterruptedException {
-        ActionsHelper.waitForExistance(getSearchField(), 100);
-        sleep(3000);
+    public void assignApplication(String PCName) throws InterruptedException {
 
-        getSearchField().sendKeys(programName);
-        getSearchField().sendKeys(Keys.ENTER);
-        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
-        getSelectFirstRecord().click();
-        ActionsHelper.waitForExistance(getUploadIndvReport(), 40);
-        getUploadIndvReport().click();
-
-        getUploadPdf().get(0).sendKeys(ActionsHelper.getImagePath("Amending.pdf"));
+        ActionsHelper.waitForListExistance(getAssignBtn(), 30);
+        getAssignBtn().get(0).click();
+        Thread.sleep(2000);
+        ActionsHelper.waitForExistance(getAssignToField(), 40);
+        getAssignToField().sendKeys(PCName);
         Thread.sleep(3000);
-        ActionsHelper.retryClick(getUploadBtn(), 50);
-        Thread.sleep(3000);
-        getSubmitButton().click();
-        Thread.sleep(3000);
+        ActionsHelper.waitForListExistance(getSelectAssignee(), 40);
+        getSelectAssignee().get(0).click();
+        getSubmitBtn().click();
+        ActionsHelper.waitForExistance(getYetBtnYesNew(), 30);
         getYetBtnYesNew().click();
-
-    }
-
-    public void jointReport(String programName) throws InterruptedException {
-        ActionsHelper.waitForExistance(getSearchField(), 100);
-        sleep(3000);
-
-        getSearchField().sendKeys(programName);
-        getSearchField().sendKeys(Keys.ENTER);
-        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
-        getSelectFirstRecord().click();
-        ActionsHelper.waitForExistance(getUploadIndvReport(), 40);
-        getUploadIndvReport().click();
-
-        getUploadPdf().get(0).sendKeys(ActionsHelper.getImagePath("Amending.pdf"));
-        Thread.sleep(3000);
-        ActionsHelper.retryClick(getUploadBtn(), 50);
-        Thread.sleep(3000);
-        getSubmitButton().click();
-        Thread.sleep(3000);
-        getYetBtnYesNew().click();
-
-    }
-
-
-    public void assignApplication(String hadeel_salameh) {
+        //  getYesBtn().get(0).click();
     }
 
     public void proceedWithoutER() {
+
+        ActionsHelper.waitForListExistance(getAssignBtn(), 30);
+        getAssignBtn().get(1).click();
+        ActionsHelper.waitForExistance(getYetBtnYesNew(), 40);
+        getYetBtnYesNew().click();
+
     }
 
     public void proceedWithER(String er_numbers) {
+
+        ActionsHelper.waitForListExistance(getAssignBtn(), 30);
+        //with ER button same locator as assign btn
+
+        getAssignBtn().get(0).click();
+        ActionsHelper.waitForExistance(getInputERField(), 30);
+        getInputERField().clear();
+        getInputERField().sendKeys(er_numbers);
+        getSubmitERBtn().click();
+        ActionsHelper.waitForExistance(getYetBtnYesNew(), 40);
+        getYetBtnYesNew().click();
     }
 
     public void acceptAllReviewers() {
+
+        ActionsHelper.waitForExistance(getAcceptAllReviewersBtn(), 50);
+        getAcceptAllReviewersBtn().click();
+        getYetBtnYesNew().click();
+
     }
 
-    public void requestToChangeER() {
+    public void requestToChangeER() throws InterruptedException {
+        Thread.sleep(5000);
+        String System_ER_List = "";
+
+
+        // read fields from excel file
+        final String ER_numbers = ReadWriteHelper.readFromExcel
+                ("ERHireEducation", "ER", "Number of ER");
+        int numberOfER = Integer.parseInt(ER_numbers);
+
+
+        HashMap table = ActionsHelper.getWebColumnIndex("selectedExternalReviewersforSubmit", 0);
+
+
+        // read fields from excel file
+        final String ER_List_names = ReadWriteHelper.readFromExcel
+                ("ERHireEducation", "RequestToChangeER", "ER names");
+        System.out.println("ER names from excel " + ER_List_names);
+
+        for (int i = 2; i <= table.size() + 1; i++) {
+            System.out.println("Table size = " + table.size());
+
+
+            System_ER_List = (String) table.get(i);
+
+            System.out.println("Check system Record " + System_ER_List);
+            System.out.println("excel inside for " + ER_List_names);
+            if (System_ER_List.equalsIgnoreCase(ER_List_names)) {
+
+                System.out.println(" inside if " + System_ER_List + ER_List_names);
+                ActionsHelper.waitForListExistance(getRequestForChangeBtn(), 40);
+                getRequestForChangeBtn().get(i - 2).click();
+                System.out.println("i = " + i + "new i = " + (i - 2));
+
+                break;
+            }
+
+
+        }
+
+        getCommentChange().sendKeys("Automation Test");
+        ActionsHelper.waitForExistance(getRequestMainChangeBtn(), 30);
+        getRequestMainChangeBtn().click();
+        getYetBtnYesNew().click();
+
     }
 }
