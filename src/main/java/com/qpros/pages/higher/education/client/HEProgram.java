@@ -63,19 +63,29 @@ public class HEProgram {
     private WebElement expiryDate; //GetText
     @FindBy(css = ".fa-remove")
     private WebElement closeFeedback; //GetText
+    @FindBy(css = "a[class='air__menuLeft__link']")
+    private List<WebElement> newApplicationTab;
+    @FindBy(id="swal2-title")
+    private WebElement thankYouTag;
+
+
+
 
 //css=.swal2-confirm
 
     //TODO: Name arabic and English must be unique
     //css=.btn:nth-child(2)
     public void applyForProgram() throws Exception {
-        ActionsHelper.waitForExistance(getExpandNewApplications(), 60);
-        ActionsHelper.waitVisibility(getExpandNewApplications(), 60);
-        ActionsHelper.waitToBeClickable(getExpandNewApplications(),60);
-        ActionsHelper.waitForExistance(getExpiryDate(),60);
-        ActionsHelper.retryClick(getExpandNewApplications(), 30);
-        //ActionsHelper.waitVisibility(getProgramSection(), 60);
-        getProgramSection().click();
+
+        //getXBtn().click();
+        Thread.sleep(10000);
+        ActionsHelper.selectElementFromList(getNewApplicationTab(), "New Applications");
+        ActionsHelper.waitForListExistance(getNewApplicationTab(), 100);
+        ActionsHelper.selectElementFromList(getNewApplicationTab(), "Program");
+
+
+
+
         ActionsHelper.waitVisibility(getProgramNameEnglish(), 60);
         getProgramNameEnglish().sendKeys("Testapp d" + System.currentTimeMillis() % 100000);
         getProgramNameArabic().sendKeys("عربياسم "+ System.currentTimeMillis() % 100000);
@@ -94,7 +104,7 @@ public class HEProgram {
         ActionsHelper.retryClick(getUploadDiv(), 30);
         ActionsHelper.waitForListExistance(getUploadFilePath(),60);
         System.out.println("Upload size: "+getUploadFilePath().size());
-        getUploadFilePath().get(0).sendKeys("C:/ExamplePhoto.jpg");
+        getUploadFilePath().get(0).sendKeys(ActionsHelper.getImagePath("Amending.pdf"));
         getUploadDescription().sendKeys("MyDescription");
         getUploadButton().click();
         ActionsHelper.waitVisibility(getSubmitButton(), 60);
@@ -108,5 +118,16 @@ public class HEProgram {
         ActionsHelper.waitVisibility(getCurrentProgram(), 60);
         System.out.println("Found damn program area");
         ReadWriteHelper.writeCSVFirstCell(getCurrentProgram().getText()); //Write this to a CSV file
+    }
+
+
+    public void addProgramToFile() throws InterruptedException {
+
+        //getXBtn().click();
+        Thread.sleep(10000);
+        ActionsHelper.selectElementFromList(getNewApplicationTab(), "New Applications");
+        ActionsHelper.waitForListExistance(getNewApplicationTab(), 100);
+        ActionsHelper.selectElementFromList(getNewApplicationTab(), "Current and Previous Applications");
+        ReadWriteHelper.writeIntoXMLFileHEApplication("");
     }
 }
