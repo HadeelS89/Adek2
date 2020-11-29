@@ -14,7 +14,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 @Listeners(com.qpros.reporting.Listeners.class)
-public class ProgramWithERTest extends Base {
+public class ProgramWithERTest1 extends Base {
     LoginPage loginPage;
     HEProgram myProgram;
     DDActions ddActions;
@@ -28,7 +28,7 @@ public class ProgramWithERTest extends Base {
     final String ER_numbers = ReadWriteHelper.readFromExcel
             ("ERHireEducation", "ER", "Number of ER");
     @Test(description = "Submit new program for existing provider ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 0)
+            retryAnalyzer = RetryAnalyzer.class,priority = 0)
     public void submitProgramExistingProv() throws Exception {
         //Login as Program Manager
         loginPage = new LoginPage(driver);
@@ -46,22 +46,9 @@ public class ProgramWithERTest extends Base {
 
     }
 
-    //@Test(description = "Submit new program for existing provider ",
-      //      retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 1)
-    public void saveProgramId() throws Exception {
-        //Login as Program Manager
-        loginPage = new LoginPage(driver);
-        loginPage.signIn(ReadWriteHelper.readCredentialsXMLFile("HEProvider2",
-                "username"),
-                ReadWriteHelper.readCredentialsXMLFile("HEProvider2", "password"),"HigherApplicantURL");
 
-        //Create program and set configurations and team
-        myProgram = new HEProgram(driver);
-        myProgram.addProgramToFile();
-
-    }
     @Test(description = "Assign to PC ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 2)
+            retryAnalyzer = RetryAnalyzer.class,priority = 1)
     public void assignProgramToProvisionManager() throws Exception {
         //Login as Program Manager
         loginPage = new LoginPage(driver);
@@ -78,9 +65,9 @@ public class ProgramWithERTest extends Base {
 
 
     }
-    @Test(description = "Start application by PC ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 3)
-    public void startReviewByPC() throws Exception {
+    @Test(description = "Start application and send technical report  by PC ",
+            retryAnalyzer = RetryAnalyzer.class,priority = 2)
+    public void startReviewSendTechReportPC() throws Exception {
         //Login as Program Manager
         loginPage = new LoginPage(driver);
         loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("ProvisionCoord1",
@@ -91,25 +78,12 @@ public class ProgramWithERTest extends Base {
         pcActions = new PCActions(driver);
         pcActions.findProgram(ReadWriteHelper.getHEApplication());
         pcActions.startReviewApplication();
+
         ActionsHelper.waitForExistance(pcActions.getSuccessStartReviewText(), 30);
         Assert.assertTrue(pcActions.getSuccessStartReviewText().isDisplayed());
+        pcActions.getOkButton().get(0).click();
 
-
-    }
-
-
-    @Test(description = "Send Technical Report by PC ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 4)
-    public void sendTechnicalReport() throws Exception {
-        //Login as Program Manager
-        loginPage = new LoginPage(driver);
-        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("ProvisionCoord1",
-                "username"),
-                ReadWriteHelper.readCredentialsXMLFile("ProvisionCoord1", "password"), "HigherAdminURL");
-
-        //Create program and set configurations and team
-        pcActions = new PCActions(driver);
-        pcActions.findProgram(ReadWriteHelper.getHEApplication());
+       // pcActions.findProgram(ReadWriteHelper.getHEApplication());
         pcActions.sendTechnicalReport();
         ActionsHelper.waitForExistance(pcActions.getSuccessStartReviewText(), 40);
         Assert.assertTrue(pcActions.getSuccessStartReviewText().isDisplayed());
@@ -118,7 +92,7 @@ public class ProgramWithERTest extends Base {
     }
 
     @Test(description = "Proceed with selected ER Numbers ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 5)
+            retryAnalyzer = RetryAnalyzer.class,priority = 3)
     public void proceedWithER() throws Exception {
         //Login as Program Manager
         loginPage = new LoginPage(driver);
@@ -138,7 +112,7 @@ public class ProgramWithERTest extends Base {
 
 
     @Test(description = "Select ER list by PC ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 6)
+            retryAnalyzer = RetryAnalyzer.class,priority = 4)
     public void selectERFromList() throws Exception {
         //Login as Program Manager
         loginPage = new LoginPage(driver);
@@ -156,7 +130,7 @@ public class ProgramWithERTest extends Base {
     }
 
     @Test(description = "DD accepts all the ERs ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 7)
+            retryAnalyzer = RetryAnalyzer.class,priority = 5)
     public void acceptAllReviewersByDD() throws Exception {
         //Login as Program Manager
         loginPage = new LoginPage(driver);
@@ -176,7 +150,7 @@ public class ProgramWithERTest extends Base {
 
 
     @Test(description = "Invite ER list by PC ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 8)
+            retryAnalyzer = RetryAnalyzer.class,priority = 6)
     public void inviteERsByPC() throws Exception {
         //Login as Program Manager
         loginPage = new LoginPage(driver);
@@ -193,7 +167,7 @@ public class ProgramWithERTest extends Base {
 
 
     @Test(description = "Accept invitation By ER ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 9)
+            retryAnalyzer = RetryAnalyzer.class,priority = 7)
     public void acceptInvitationByER() throws Exception {
 
 
@@ -227,7 +201,7 @@ public class ProgramWithERTest extends Base {
 
     }
     @Test(description = " PC give full access to ER  ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 10)
+            retryAnalyzer = RetryAnalyzer.class,priority = 8)
     public void giveREFullAccess() throws Exception {
         //Login as Program Manager
         loginPage = new LoginPage(driver);
@@ -242,7 +216,7 @@ public class ProgramWithERTest extends Base {
 
     }
     @Test(description = "Submit individual report By ER ",
-            retryAnalyzer = RetryAnalyzer.class,priority = 11)
+            retryAnalyzer = RetryAnalyzer.class,priority = 9)
     public void submitIndividualReport() throws Exception {
 
 
@@ -279,7 +253,7 @@ public class ProgramWithERTest extends Base {
     }
 
     @Test(description = " Accept all Individual reports by PC ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 12)
+            retryAnalyzer = RetryAnalyzer.class,priority = 10)
     public void acceptIndividualReport() throws Exception {
         //Login as Program Manager
         loginPage = new LoginPage(driver);
@@ -291,47 +265,17 @@ public class ProgramWithERTest extends Base {
         pcActions = new PCActions(driver);
         pcActions.findProgram(ReadWriteHelper.getHEApplication());
         pcActions.acceptAllIndividualReports();
-
-    }
-
-    @Test(description = " Send invoice by PC ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 13)
-    public void sendInvoice() throws Exception {
-        //Login as Program Manager
-        loginPage = new LoginPage(driver);
-        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("ProvisionCoord1",
-                "username"),
-                ReadWriteHelper.readCredentialsXMLFile("ProvisionCoord1", "password"), "HigherAdminURL");
-
-        //Create program and set configurations and team
-        pcActions = new PCActions(driver);
-        pcActions.findProgram(ReadWriteHelper.getHEApplication());
+        Thread.sleep(2000);
         pcActions.reviewAndSendInvoice();
-
-    }
-
-    @Test(description = " Request For Joint Report by PC ",
-            retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class,priority = 14)
-    public void requestForJoint() throws Exception {
-        //Login as Program Manager
-        loginPage = new LoginPage(driver);
-        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("ProvisionCoord1",
-                "username"),
-                ReadWriteHelper.readCredentialsXMLFile("ProvisionCoord1", "password"), "HigherAdminURL");
-
-        //Create program and set configurations and team
-        pcActions = new PCActions(driver);
+        pcActions.getOkButton().get(0).click();
+        Thread.sleep(2000);
         pcActions.findProgram(ReadWriteHelper.getHEApplication());
         pcActions.requestForJointReport();
-
     }
 
     @Test(description = "Submit joint report By ER ",
-            retryAnalyzer = RetryAnalyzer.class,priority = 15)
+            retryAnalyzer = RetryAnalyzer.class,priority = 11)
     public void submitJointReport() throws Exception {
-
-
-
 
         loginPage = new LoginPage(driver);
 
@@ -349,7 +293,7 @@ public class ProgramWithERTest extends Base {
     }
 
     @Test(description = "approve joint report By ER ",
-            retryAnalyzer = RetryAnalyzer.class,priority = 16)
+            retryAnalyzer = RetryAnalyzer.class,priority = 12)
     public void approveJointReport() throws Exception {
 
         loginPage = new LoginPage(driver);

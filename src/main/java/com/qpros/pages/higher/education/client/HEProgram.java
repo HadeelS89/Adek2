@@ -13,8 +13,9 @@ import java.util.List;
 @Getter
 public class HEProgram {
     public HEProgram(WebDriver driver) {
-        PageFactory.initElements( driver, this );
+        PageFactory.initElements(driver, this);
     }
+
     @FindBy(linkText = "New applications")
     private WebElement expandNewApplications;
     @FindBy(linkText = "Programs")
@@ -65,12 +66,12 @@ public class HEProgram {
     private WebElement closeFeedback; //GetText
     @FindBy(css = "a[class='air__menuLeft__link']")
     private List<WebElement> newApplicationTab;
-    @FindBy(id="swal2-title")
+    @FindBy(id = "swal2-title")
     private WebElement thankYouTag;
-    @FindBy(xpath="//td[2]")
+    @FindBy(xpath = "//td[2]")
     private WebElement programId;
-
-
+    @FindBy(xpath = "//button[@class='swal2-confirm swal2-styled' and contains(text(), 'OK')]")
+    private List<WebElement> okButton;
 
 
 //css=.swal2-confirm
@@ -86,11 +87,9 @@ public class HEProgram {
         ActionsHelper.selectElementFromList(getNewApplicationTab(), "Program");
 
 
-
-
         ActionsHelper.waitVisibility(getProgramNameEnglish(), 60);
         getProgramNameEnglish().sendKeys("Testapp d" + System.currentTimeMillis() % 100000);
-        getProgramNameArabic().sendKeys("عربياسم "+ System.currentTimeMillis() % 100000);
+        getProgramNameArabic().sendKeys("عربياسم " + System.currentTimeMillis() % 100000);
         getDescriptionEnglish().sendKeys(String.format("Teseawt ", System.currentTimeMillis() % 100000));
         getDescriptionArabic().sendKeys(String.format("عربياسشيسم ", System.currentTimeMillis() % 100000));
         getFacultyArrow().click();
@@ -101,25 +100,28 @@ public class HEProgram {
         getFirstOption().click();
         getNextButton().click();
 
-        ActionsHelper.waitToBeClickable(getUploadDiv(),60);
+        ActionsHelper.waitToBeClickable(getUploadDiv(), 60);
 
         ActionsHelper.retryClick(getUploadDiv(), 30);
-        ActionsHelper.waitForListExistance(getUploadFilePath(),60);
-        System.out.println("Upload size: "+getUploadFilePath().size());
+        ActionsHelper.waitForListExistance(getUploadFilePath(), 60);
+        System.out.println("Upload size: " + getUploadFilePath().size());
         getUploadFilePath().get(0).sendKeys(ActionsHelper.getImagePath("Amending.pdf"));
         getUploadDescription().sendKeys("MyDescription");
         getUploadButton().click();
         ActionsHelper.waitVisibility(getSubmitButton(), 60);
-        ActionsHelper.retryClick(getSubmitButton(),10);
+        ActionsHelper.retryClick(getSubmitButton(), 10);
         ActionsHelper.waitVisibility(getConfirmButton(), 60);
-        ActionsHelper.retryClick(getConfirmButton(),10);
+        ActionsHelper.retryClick(getConfirmButton(), 10);
         System.out.println("Trying to click application section");
-        ActionsHelper.retryClick(getCloseFeedback(),10);
-        ActionsHelper.retryClick(getApplicationsSection(),10);
-        System.out.println("Clicked application section successfully");
-        ActionsHelper.waitVisibility(getCurrentProgram(), 60);
-        System.out.println("Found damn program area");
-        ReadWriteHelper.writeCSVFirstCell(getCurrentProgram().getText()); //Write this to a CSV file
+        ActionsHelper.waitForListExistance(getOkButton(),40);
+getOkButton().get(0).click();
+
+//        ActionsHelper.retryClick(getCloseFeedback(),10);
+//        ActionsHelper.retryClick(getApplicationsSection(),10);
+//        System.out.println("Clicked application section successfully");
+//        ActionsHelper.waitVisibility(getCurrentProgram(), 60);
+//        System.out.println("Found damn program area");
+//        ReadWriteHelper.writeCSVFirstCell(getCurrentProgram().getText()); //Write this to a CSV file
     }
 
 
@@ -130,7 +132,7 @@ public class HEProgram {
 
         ActionsHelper.waitForListExistance(getNewApplicationTab(), 100);
         ActionsHelper.selectElementFromList(getNewApplicationTab(), "Current and Previous Applications");
-Thread.sleep(3000);
+        Thread.sleep(5000);
         ReadWriteHelper.writeIntoXMLFileHEApplication(getProgramId().getText());
     }
 }

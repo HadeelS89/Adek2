@@ -3,6 +3,7 @@ package com.qpros.higher.education.admin.provider;
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
+import com.qpros.helpers.RetryAnalyzer;
 import com.qpros.pages.authorization_pages.LoginPage;
 import com.qpros.pages.higher.education.admin.DDActions;
 import com.qpros.pages.higher.education.admin.PCActions;
@@ -151,6 +152,24 @@ public class PCActionsTest extends Base {
         pcActions.findProgram(ReadWriteHelper.getHEApplication());
         pcActions.requestForJointReport();
 
+
+    }
+    @Test(description = "approve joint report By ER ",
+            retryAnalyzer = RetryAnalyzer.class)
+    public void approveJointReport() throws Exception {
+
+        loginPage = new LoginPage(driver);
+
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("ProvisionCoord1",
+                "username"),
+                ReadWriteHelper.readCredentialsXMLFile("ProvisionCoord1", "password"), "HigherAdminURL");
+
+        //Create program and set configurations and team
+        pcActions = new PCActions(driver);
+        pcActions.findProgram(ReadWriteHelper.getHEApplication());
+        pcActions.approveJointReport();
+
+        // Assert.assertTrue(erActions.getSuccessLabel().isDisplayed());
 
     }
 

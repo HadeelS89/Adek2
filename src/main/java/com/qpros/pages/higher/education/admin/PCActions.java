@@ -54,11 +54,19 @@ public class PCActions {
     private List<WebElement> selectBtn;
     @FindBy(xpath = "//input[@value='Submit ER List']")
     private WebElement submitERList;
-    @FindBy(xpath = "//input[@value='Full Access']")
-    private WebElement fullAccessBtn;
-    @FindBy(css=".odd > .sorting_1")
-    private WebElement expandButton;
-    @FindBy(css=".even > .sorting_1")
+    //      @FindBy(xpath = "//td[@class='child' and (@value= 'Full Access')]")
+//    private List <WebElement> fullAccessBtn;
+    @FindBy(css = "input[value='Full Access']")
+    private List<WebElement> fullAccessBtn;
+    //@FindBy(xpath = "//input[starts-with(@class,'btn btn-sm btn-primary')]")
+//   private List<WebElement> fullAccessBtn;
+//@FindBy(xpath = "//tr[@class='child']")
+//   private List<WebElement> fullAccessBtn;
+    @FindBy(xpath = "//td[@class='sorting_1']")
+    private List<WebElement> expandButton;
+    @FindBy(css = "css=.close > span")
+    private WebElement closeBtn;
+    @FindBy(css = ".even > .sorting_1")
     private WebElement expandButton2;
     @FindBy(xpath = "//input[@value='Accept all Individual Report']")
     private WebElement acceptIndividualBtn;
@@ -78,6 +86,10 @@ public class PCActions {
     private WebElement requestForJointBtn;
     @FindBy(css = ".air__menuLeft__toggleButton")
     private WebElement leftMenuBtn;
+    @FindBy(xpath = "//input[@value='Approve']")
+    private WebElement approveBtn;
+    @FindBy(xpath = "//button[@class='swal2-confirm swal2-styled' and contains(text(), 'OK')]")
+    private List<WebElement> okButton;
 
     public void findProgram(String programName) throws InterruptedException {
 
@@ -105,13 +117,14 @@ public class PCActions {
 
         getYesBtn().get(0).click();
 
-
+//        ActionsHelper.waitForListExistance(getOkButton(), 30);
+//       getOkButton().get(0).click();
     }
 
     public void sendTechnicalReport() throws InterruptedException {
 
-        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
-        getSelectFirstRecord().click();
+        //ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
+        //getSelectFirstRecord().click();
 
 
         Thread.sleep(5000);
@@ -126,7 +139,7 @@ public class PCActions {
     }
 
 
-    public void selectERList(String sheetName ,String columnName ) throws InterruptedException {
+    public void selectERList(String sheetName, String columnName) throws InterruptedException {
 
         ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
         getSelectFirstRecord().click();
@@ -169,7 +182,7 @@ public class PCActions {
             }
         }// end for j
 
-        ActionsHelper.waitForExistance(getSubmitERList(),50);
+        ActionsHelper.waitForExistance(getSubmitERList(), 50);
         getSubmitERList().click();
         ActionsHelper.waitForExistance(getYetBtnYesNew(), 30);
         getYetBtnYesNew().click();
@@ -192,8 +205,43 @@ public class PCActions {
 
     }
 
-    public void fullAccessGivenToPC() throws InterruptedException {
-        getLeftMenuBtn().click();
+    public void fullAccessGivenToPC() throws Exception {
+
+
+        final String ER_numbers = ReadWriteHelper.readFromExcel
+                ("ERHireEducation", "ER", "Number of ER");
+        int numberOfER = Integer.parseInt(ER_numbers);
+        System.out.println(numberOfER);
+
+        //  HashMap table = ActionsHelper.getWebColumnIndex("externalReviewersTable", 0);
+        for (int j = 1; j <= numberOfER; j++) {
+            ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
+            getSelectFirstRecord().click();
+            Thread.sleep(3000);
+            getExpandButton().get(j - 1).click();
+            //getExpandButton().get(1).click();
+            Thread.sleep(3000);
+
+//            if (getCloseBtn().isDisplayed()) {
+//                getCloseBtn().click();
+//            }
+            ActionsHelper.waitForListExistance(getFullAccessBtn(), 50);
+            getFullAccessBtn().get(1).click();
+            getYetBtnYesNew().click();
+            Thread.sleep(3000);
+            ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
+            //getSelectFirstRecord().click();
+            Thread.sleep(3000);
+        }
+
+
+//        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
+//        getSelectFirstRecord().click();
+//        Thread.sleep(5000);
+    }
+
+    public void fullAccessGivenToPC1() throws Exception {
+
         ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
         getSelectFirstRecord().click();
         Thread.sleep(5000);
@@ -201,23 +249,24 @@ public class PCActions {
         HashMap table = ActionsHelper.getWebColumnIndex("viewSelectedExternalReviewersTable", 0);
 
         for (int i = 1; i <= table.size(); i++) {
+            //getLeftMenuBtn().click();
+            Thread.sleep(6000);
+            getExpandButton().get(i - 1).click();
+            Thread.sleep(20000);
 
-            Thread.sleep(3000);
-//            if (i == 1) {
-//                getExpandButton().click();
-//            }else
-//            {
-//                getExpandButton2().click();
-//            }
-           // Thread.sleep(3000);
-            ActionsHelper.waitForExistance(getFullAccessBtn(), 50);
-            getFullAccessBtn().click();
+//            if (getCloseBtn().isDisplayed()) {
+//                getCloseBtn().click();
+//            }else {
+            //Thread.sleep(3000);
+            // ActionsHelper.waitForListExistance(getFullAccessBtn(), 50);
+            //getFullAccessBtn().get(1).click();
             System.out.println("i = " + i + "new i = " + (i));
             getYetBtnYesNew().click();
             Thread.sleep(5000);
+            //}
             ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
             getSelectFirstRecord().click();
-           // Thread.sleep(5000);
+            Thread.sleep(5000);
         }
 
 
@@ -238,6 +287,7 @@ public class PCActions {
     }
 
     public void reviewAndSendInvoice() throws InterruptedException {
+
         ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
         getSelectFirstRecord().click();
         ActionsHelper.waitForExistance(getReviewSendInvoiceBtn(), 50);
@@ -264,6 +314,18 @@ public class PCActions {
 
         getRequestForJointBtn().click();
 
+        getYetBtnYesNew().click();
+
+    }
+
+
+    public void approveJointReport() {
+
+
+        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
+        getSelectFirstRecord().click();
+        ActionsHelper.waitForExistance(getApproveBtn(), 40);
+        getApproveBtn().click();
         getYetBtnYesNew().click();
 
 

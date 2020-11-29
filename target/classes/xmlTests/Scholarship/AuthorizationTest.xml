@@ -4,7 +4,7 @@
 
 
 
-<suite name=" Sholarship Test" parallel="tests" thread-count="2">
+<suite name=" Sholarship Test" >
 
 
     <test name="Authorization Test - Chrome">
@@ -13,10 +13,13 @@
             <class name="com.qpros.authorization.LoginTest"/>
         </classes>
     </test>
-    <test name="Authorization Test - Firefox">
-        <parameter name="browserType" value="Firefox"></parameter>
-        <classes>
-            <class name="com.qpros.authorization.LoginTest"/>
-        </classes>
-    </test>
+
+<!--    <test name="Authorization Test - Firefox">-->
+<!--        <parameter name="browserType" value="Firefox"></parameter>-->
+
+<!--        <classes>-->
+<!--            <class name="com.qpros.authorization.LoginTest"/>-->
+<!--        </classes>-->
+
+<!--    </test>-->
 </suite>

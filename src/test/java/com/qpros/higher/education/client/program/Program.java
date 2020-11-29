@@ -24,6 +24,7 @@ public class Program extends Base {
         //Create program and set configurations and team
         myProgram = new HEProgram(driver);
         myProgram.applyForProgram();
+        myProgram.addProgramToFile();
         //provider = new Providers(driver);
         //provider.createFullProvider();
 

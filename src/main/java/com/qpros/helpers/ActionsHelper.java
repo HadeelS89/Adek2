@@ -371,7 +371,7 @@ public class ActionsHelper extends Base {
         List<WebElement> TotalRowCount=Webtable.findElements
                 (By.xpath("//*[@id='"+tableId+"']/tbody/tr"));
 
-      //  System.out.println("No. of Rows in the WebTable: "+TotalRowCount.size());
+        System.out.println("No. of Rows in the WebTable: "+TotalRowCount.size());
         // Now we will Iterate the Table and print the Values
 
         int RowIndex=1;
@@ -388,7 +388,6 @@ public class ActionsHelper extends Base {
             webMap.put(RowIndex,TotalColumnCount.get(columnIndex).getText() );
            // System.out.println("test map  "+ webMap);
         }
-
 
         return webMap;
     }
