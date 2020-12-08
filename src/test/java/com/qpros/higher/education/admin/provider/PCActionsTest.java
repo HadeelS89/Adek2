@@ -122,6 +122,7 @@ public class PCActionsTest extends Base {
         pcActions.acceptAllIndividualReports();
 
     }
+
     @Test(description = " Send invoice by PC ",
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
     public void sendInvoice() throws Exception {
@@ -154,6 +155,7 @@ public class PCActionsTest extends Base {
 
 
     }
+
     @Test(description = "approve joint report By ER ",
             retryAnalyzer = RetryAnalyzer.class)
     public void approveJointReport() throws Exception {
@@ -173,6 +175,28 @@ public class PCActionsTest extends Base {
 
     }
 
+    @Test(description = "Send NOL without payment by PC",
+            retryAnalyzer = RetryAnalyzer.class)
+    public void sendNOLWithoutPayment() throws Exception {
 
+        loginPage = new LoginPage(driver);
+
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("ProvisionCoord1",
+                "username"),
+                ReadWriteHelper.readCredentialsXMLFile("ProvisionCoord1", "password"), "HigherAdminURL");
+
+        //Create program and set configurations and team
+        pcActions = new PCActions(driver);
+        pcActions.findProgram(ReadWriteHelper.getHEApplication());
+        pcActions.requestForPayment();
+        Thread.sleep(3000);
+        pcActions.getOkButton().get(0).click();
+        Thread.sleep(2000);
+        pcActions.findProgram(ReadWriteHelper.getHEApplication());
+        pcActions.sendNOLWithoutPayment();
+
+        // Assert.assertTrue(erActions.getSuccessLabel().isDisplayed());
+
+    }
 
 }

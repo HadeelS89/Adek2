@@ -54,14 +54,14 @@ public class PCActions {
     private List<WebElement> selectBtn;
     @FindBy(xpath = "//input[@value='Submit ER List']")
     private WebElement submitERList;
-    //      @FindBy(xpath = "//td[@class='child' and (@value= 'Full Access')]")
-//    private List <WebElement> fullAccessBtn;
-    @FindBy(css = "input[value='Full Access']")
-    private List<WebElement> fullAccessBtn;
-    //@FindBy(xpath = "//input[starts-with(@class,'btn btn-sm btn-primary')]")
-//   private List<WebElement> fullAccessBtn;
-//@FindBy(xpath = "//tr[@class='child']")
-//   private List<WebElement> fullAccessBtn;
+    //    @FindBy(css = "input[value='Full Access']")
+//    private List<WebElement> fullAccessBtn;//this locator been used
+//    @FindBy(xpath = "//input[starts-with(@class,'btn btn-sm btn-primary')]")
+//    private List<WebElement> fullAccessBtn;
+    @FindBy(css = "input[value='Give Full Access']")
+    private List<WebElement> fullAccessBtn;//this locator been used
+    @FindBy(xpath = "//input[@value='Give Full Access']")
+    private WebElement fullAccessBtn2;
     @FindBy(xpath = "//td[@class='sorting_1']")
     private List<WebElement> expandButton;
     @FindBy(css = "css=.close > span")
@@ -76,6 +76,8 @@ public class PCActions {
     private WebElement createInvoiceBtn;
     @FindBy(css = ".adek-upload-div")
     private WebElement uploadInternalMemo;
+    @FindBy(css = ".adek-upload-div")
+    private List<WebElement> uploadLetter;
     @FindBy(css = ".adek-upload-popup-btn")
     private WebElement uploadBtn;
     @FindBy(css = "input[type='file']")
@@ -90,6 +92,15 @@ public class PCActions {
     private WebElement approveBtn;
     @FindBy(xpath = "//button[@class='swal2-confirm swal2-styled' and contains(text(), 'OK')]")
     private List<WebElement> okButton;
+    @FindBy(xpath = "//input[starts-with(@class,'btn btn-sm')]")
+    private List<WebElement> requestForPaymentBtn;
+    @FindBy(id = "Comment")
+    private WebElement commentArea;
+    @FindBy(css = ".row > .form-control")
+    private WebElement uploadDescription; //Test123
+    @FindBy(xpath = "//input[starts-with(@class,'btn btn-sm')]")
+    private List<WebElement> sendNOLWithoutPayBtn;
+
 
     public void findProgram(String programName) throws InterruptedException {
 
@@ -218,15 +229,17 @@ public class PCActions {
             ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
             getSelectFirstRecord().click();
             Thread.sleep(3000);
-            getExpandButton().get(j - 1).click();
-            //getExpandButton().get(1).click();
-            Thread.sleep(3000);
+            if (!ReadWriteHelper.ReadData("headless").equalsIgnoreCase("true")) {
+                getExpandButton().get(j - 1).click();
+                Thread.sleep(3000);
+                ActionsHelper.waitForListExistance(getFullAccessBtn(), 50);
+                getFullAccessBtn().get(1).click();
+            } else {
 
-//            if (getCloseBtn().isDisplayed()) {
-//                getCloseBtn().click();
-//            }
-            ActionsHelper.waitForListExistance(getFullAccessBtn(), 50);
-            getFullAccessBtn().get(1).click();
+                getFullAccessBtn2().click();
+            }
+
+            Thread.sleep(3000);
             getYetBtnYesNew().click();
             Thread.sleep(3000);
             ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
@@ -235,45 +248,8 @@ public class PCActions {
         }
 
 
-//        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
-//        getSelectFirstRecord().click();
-//        Thread.sleep(5000);
     }
 
-    public void fullAccessGivenToPC1() throws Exception {
-
-        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
-        getSelectFirstRecord().click();
-        Thread.sleep(5000);
-
-        HashMap table = ActionsHelper.getWebColumnIndex("viewSelectedExternalReviewersTable", 0);
-
-        for (int i = 1; i <= table.size(); i++) {
-            //getLeftMenuBtn().click();
-            Thread.sleep(6000);
-            getExpandButton().get(i - 1).click();
-            Thread.sleep(20000);
-
-//            if (getCloseBtn().isDisplayed()) {
-//                getCloseBtn().click();
-//            }else {
-            //Thread.sleep(3000);
-            // ActionsHelper.waitForListExistance(getFullAccessBtn(), 50);
-            //getFullAccessBtn().get(1).click();
-            System.out.println("i = " + i + "new i = " + (i));
-            getYetBtnYesNew().click();
-            Thread.sleep(5000);
-            //}
-            ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
-            getSelectFirstRecord().click();
-            Thread.sleep(5000);
-        }
-
-
-//        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
-//        getSelectFirstRecord().click();
-//        Thread.sleep(5000);
-    }
 
     public void acceptAllIndividualReports() throws InterruptedException {
         ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
@@ -297,7 +273,7 @@ public class PCActions {
         getCreateInvoiceBtn().click();
         ActionsHelper.waitForExistance(getYetBtnYesNew(), 40);
         getYetBtnYesNew().click();
-
+        Thread.sleep(2000);
     }
 
 
@@ -331,6 +307,39 @@ public class PCActions {
 
     }
 
+    public void requestForPayment() throws InterruptedException {
+
+
+        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
+        getSelectFirstRecord().click();
+        ActionsHelper.waitForListExistance(getRequestForPaymentBtn(), 40);
+        getRequestForPaymentBtn().get(0).click();
+        ActionsHelper.waitForExistance(getCreateInvoiceBtn(), 40);
+        getCreateInvoiceBtn().click();
+        ActionsHelper.waitForExistance(getYetBtnYesNew(), 40);
+        getYetBtnYesNew().click();
+        Thread.sleep(2000);
+
+
+    }
+
+    public void sendNOLWithoutPayment() throws InterruptedException {
+        ActionsHelper.waitForExistance(getSelectFirstRecord(), 100);
+        getSelectFirstRecord().click();
+        ActionsHelper.waitForExistance(getCommentArea(), 40);
+        getCommentArea().sendKeys("Send Nol without payment to PC");
+        ActionsHelper.waitForExistance(getUploadInternalMemo(), 100);
+        getUploadLetter().get(1).click();
+        getUploadPdf().get(0).sendKeys(ActionsHelper.getImagePath("Amending.pdf"));
+        Thread.sleep(2000);
+        getUploadDescription().sendKeys("MyDescription");
+        Thread.sleep(1000);
+        getUploadBtn().click();
+        ActionsHelper.waitForListExistance(getSendNOLWithoutPayBtn(), 40);
+        getSendNOLWithoutPayBtn().get(1).click();
+
+        getYetBtnYesNew().click();
+    }
 
     @Test
     public static void main() {

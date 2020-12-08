@@ -72,6 +72,8 @@ public class HEProgram {
     private WebElement programId;
     @FindBy(xpath = "//button[@class='swal2-confirm swal2-styled' and contains(text(), 'OK')]")
     private List<WebElement> okButton;
+    @FindBy(xpath = "//td[6]")
+    private WebElement programStatusField;
 
 
 //css=.swal2-confirm
@@ -134,5 +136,15 @@ getOkButton().get(0).click();
         ActionsHelper.selectElementFromList(getNewApplicationTab(), "Current and Previous Applications");
         Thread.sleep(5000);
         ReadWriteHelper.writeIntoXMLFileHEApplication(getProgramId().getText());
+    }
+
+    public void getProgramStatus() throws InterruptedException {
+
+        //getXBtn().click();
+        Thread.sleep(10000);
+
+        ActionsHelper.waitForListExistance(getNewApplicationTab(), 100);
+        ActionsHelper.selectElementFromList(getNewApplicationTab(), "Current and Previous Applications");
+        Thread.sleep(5000);
     }
 }

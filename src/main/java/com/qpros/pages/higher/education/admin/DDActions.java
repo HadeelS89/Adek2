@@ -70,12 +70,20 @@ public class DDActions {
     private WebElement yetBtnYesNew;
     @FindBy(xpath = "//button[starts-with(@class,'btn btn-primary')]")
     private List<WebElement> assignBtn;
+    @FindBy(xpath = "//button[@class='swal2-confirm swal2-styled' and contains(text(), 'OK')]")
+    private List<WebElement> okButton;
     @FindBy(css = "input[class='rdorequestochangeClass']")
     private List<WebElement> requestForChangeBtn;
     @FindBy(id = "Comment")
     private WebElement commentChange;
     @FindBy(id = "btnRequestForChange")
     private WebElement requestMainChangeBtn;
+    @FindBy(css = ".adek-upload-div")
+    private WebElement uploadInternalMemo;
+    @FindBy(css = ".row > .form-control")
+    private WebElement uploadDescription; //Test123
+    @FindBy(xpath = "//input[starts-with(@class,'btn btn-sm')]")
+    private List<WebElement> aQACWFButtons;
 
 
     public void findProgram(String programName) throws InterruptedException {
@@ -186,6 +194,21 @@ public class DDActions {
         ActionsHelper.waitForExistance(getRequestMainChangeBtn(), 30);
         getRequestMainChangeBtn().click();
         getYetBtnYesNew().click();
+
+    }
+
+    public void proceedToAQAC() throws InterruptedException {
+ActionsHelper.waitForExistance(getUploadInternalMemo(),40);
+        getUploadInternalMemo().click();
+        getUploadPdf().get(0).sendKeys(ActionsHelper.getImagePath("Amending.pdf"));
+        Thread.sleep(2000);
+        getUploadDescription().sendKeys("MyDescription");
+        Thread.sleep(1000);
+        getUploadBtn().click();
+        ActionsHelper.waitForListExistance(getAQACWFButtons(),40);
+        getAQACWFButtons().get(0).click();
+        getYetBtnYesNew().click();
+
 
     }
 }

@@ -51,6 +51,7 @@ public class Base {
                     options.setAcceptInsecureCerts( true );
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
                         options.addArguments("--headless");
+
                     }
                     driver = new FirefoxDriver(options);
                 } catch (Throwable e) {
@@ -75,6 +76,7 @@ public class Base {
                     options.addArguments("--no-sandbox");
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){
                         options.addArguments("--headless");
+                        options.addArguments("window-size=1920x1080");
                     }
                     driver = new ChromeDriver(options);
                     if (ReadWriteHelper.ReadData( "headless" ).equalsIgnoreCase( "true" )){

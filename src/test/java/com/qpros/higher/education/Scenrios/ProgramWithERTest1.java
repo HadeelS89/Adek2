@@ -252,7 +252,7 @@ public class ProgramWithERTest1 extends Base {
 
     }
 
-    @Test(description = " Accept all Individual reports by PC ",
+    @Test(description = " Accept individual report , send invoice and request for joint report by PC  ",
             retryAnalyzer = RetryAnalyzer.class,priority = 10)
     public void acceptIndividualReport() throws Exception {
         //Login as Program Manager
@@ -266,7 +266,10 @@ public class ProgramWithERTest1 extends Base {
         pcActions.findProgram(ReadWriteHelper.getHEApplication());
         pcActions.acceptAllIndividualReports();
         Thread.sleep(2000);
+        pcActions.getSearchField().clear();
+        pcActions.findProgram(ReadWriteHelper.getHEApplication());
         pcActions.reviewAndSendInvoice();
+        ActionsHelper.waitForListExistance(pcActions.getOkButton(),50);
         pcActions.getOkButton().get(0).click();
         Thread.sleep(2000);
         pcActions.findProgram(ReadWriteHelper.getHEApplication());
