@@ -51,6 +51,8 @@ public class SubstantiveChangePage {
     private WebElement uploadButton; //Test123
     @FindBy(xpath = "//button[contains(.,'Yes')]")
     private WebElement yetBtnYesNew;
+    @FindBy(xpath = "//button[@class='swal2-confirm swal2-styled' and contains(text(), 'OK')]")
+    private List<WebElement> okButton;
     @FindBy(css = ".ml-1")
     private WebElement submitButton; //Test123
     @FindBy(css = ".swal2-confirm")
@@ -91,6 +93,7 @@ public class SubstantiveChangePage {
         ActionsHelper.selectElementFromList(getNewApplicationTab(), "Substantive Changes");
 
         Thread.sleep(4000);
+
         getCheckBoxSubChange().get(0).click();
 
         ActionsHelper.waitForListExistance(getProgramNameEnglish(), 60);
@@ -225,7 +228,8 @@ public class SubstantiveChangePage {
         getProgramNameEnglish().get(2).sendKeys("عربي اسم Automation " + System.currentTimeMillis() % 100000);
         getProgramNameEnglish().get(3).sendKeys("عربي اسمAutomation  " + System.currentTimeMillis() % 100000);
         ActionsHelper.safeJavaScriptClick(getNextButton());
-        Thread.sleep(8000);
+        Thread.sleep(3000);
+        ActionsHelper.scrollTo(getUploadDiv());
         ActionsHelper.safeJavaScriptClick(getUploadDiv());
 
 
@@ -239,7 +243,8 @@ public class SubstantiveChangePage {
         Thread.sleep(3000);
         ActionsHelper.safeJavaScriptClick(getSubmitButton());
         getYetBtnYesNew().click();
-
+        ActionsHelper.waitForListExistance(getOkButton(),40);
+        getOkButton().get(0).click();
     }
 
 

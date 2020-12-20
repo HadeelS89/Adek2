@@ -116,14 +116,14 @@ public class AQACSecretary {
 
     public void scheduleMeeting(String programName) throws InterruptedException {
 
-        ActionsHelper.waitForListExistance(getApplicationTab(), 50);
-        ActionsHelper.selectElementFromList(getApplicationTab(), "AQAC Meeting");
+        ActionsHelper.waitForListExistance(getApplicationTab(), 70);
+        ActionsHelper.selectElementFromList(getApplicationTab(), "AQAC Meetings");
         getScheduleMeetingBtn().get(1).click();
 
         HashMap table = ActionsHelper.getWebColumnIndex("tblAQACApplicationList",
                 2);
         String programId = "";
-        for (int i = 1; i <= table.size(); i++) {
+        for (int i = 1; i <= table.size()+1; i++) {
             programId = (String) table.get(i);
             System.out.println(programId);
             System.out.println("i = " + i);

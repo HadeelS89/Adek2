@@ -54,10 +54,7 @@ public class PCActions {
     private List<WebElement> selectBtn;
     @FindBy(xpath = "//input[@value='Submit ER List']")
     private WebElement submitERList;
-    //    @FindBy(css = "input[value='Full Access']")
-//    private List<WebElement> fullAccessBtn;//this locator been used
-//    @FindBy(xpath = "//input[starts-with(@class,'btn btn-sm btn-primary')]")
-//    private List<WebElement> fullAccessBtn;
+
     @FindBy(css = "input[value='Give Full Access']")
     private List<WebElement> fullAccessBtn;//this locator been used
     @FindBy(xpath = "//input[@value='Give Full Access']")
@@ -100,6 +97,9 @@ public class PCActions {
     private WebElement uploadDescription; //Test123
     @FindBy(xpath = "//input[starts-with(@class,'btn btn-sm')]")
     private List<WebElement> sendNOLWithoutPayBtn;
+    @FindBy(css = "#externalReviewersTable_length .custom-select")
+  //  @FindBy(css="#externalReviewersTable_paginate .paginate_button:nth-child(3) > .page-link")
+    private WebElement maximizeListDDl;
 
 
     public void findProgram(String programName) throws InterruptedException {
@@ -164,8 +164,12 @@ public class PCActions {
         int numberOfER = Integer.parseInt(ER_numbers);
         System.out.println(numberOfER);
 
-
+        getMaximizeListDDl().sendKeys("25");
         HashMap table = ActionsHelper.getWebColumnIndex("externalReviewersTable", 0);
+
+
+        Thread.sleep(3000);
+
         for (int j = 1; j <= numberOfER; j++) {
             //read from excel the ER list
             final String ER_List_names = ReadWriteHelper.readFromExcel
@@ -185,7 +189,7 @@ public class PCActions {
                     ActionsHelper.waitForListExistance(getSelectBtn(), 40);
                     getSelectBtn().get(i - 2).click();
                     System.out.println("i = " + i + "new i = " + (i - 2));
-
+                    getMaximizeListDDl().sendKeys("25");
                     break;
                 }
 

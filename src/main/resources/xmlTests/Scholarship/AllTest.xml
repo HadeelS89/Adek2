@@ -16,7 +16,7 @@
 <!--        <suite-file path="BookInterview.xml"></suite-file>-->
         <suite-file path="FillInterviewScore.xml"></suite-file>
         <suite-file path="MarkApplicantAsAbsent.xml"></suite-file>
-<!--        <suite-file path="ResubmitAfterChange.xml"></suite-file>-->
+      <suite-file path="ResubmitAfterChange.xml"></suite-file>
         <suite-file path="Withdraw.xml"></suite-file>
 <!--        <suite-file path="ActivateProgram.xml"></suite-file>-->
         <suite-file path="ScholarShipBank.xml"></suite-file>

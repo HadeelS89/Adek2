@@ -87,7 +87,7 @@ public class HEProgram {
         ActionsHelper.selectElementFromList(getNewApplicationTab(), "New Applications");
         ActionsHelper.waitForListExistance(getNewApplicationTab(), 100);
         ActionsHelper.selectElementFromList(getNewApplicationTab(), "Program");
-
+Thread.sleep(5000);
 
         ActionsHelper.waitVisibility(getProgramNameEnglish(), 60);
         getProgramNameEnglish().sendKeys("Testapp d" + System.currentTimeMillis() % 100000);
