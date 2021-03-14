@@ -2,10 +2,8 @@ package com.qpros.helpers;
 
 
 import org.testng.Assert;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -129,7 +127,8 @@ public class ReadWriteHelper {
                     Element eElement = (Element) node;
                     switch (tag) {
                         case "username":
-                            value = eElement.getElementsByTagName("username").item(0).getTextContent();
+                            value = eElement.getElementsByTagName("username").
+                                    item(0).getTextContent();
                             break;
                         case "password":
                             value = eElement.getElementsByTagName("password").item(0).getTextContent();
@@ -145,6 +144,7 @@ public class ReadWriteHelper {
 
         return value;
     }
+
 
     public static String readProgramsXMLFile(String programNumber, String tag) {
 
@@ -260,7 +260,7 @@ public class ReadWriteHelper {
             StreamResult streamResult = new StreamResult(new File(xmlFilePath));
 
             // If you use
-            // StreamResult result = new StreamResult(System.out);
+            //StreamResult result = new StreamResult(System.out);
             // the output will be pushed to the standard output ...
             // You can use that for debugging
 
@@ -378,6 +378,57 @@ public class ReadWriteHelper {
 
 
 
+    public static void writeIntoXMLFileCreatedRequest(String tagName, String requestID) {
+        String xmlFilePath = System.getProperty("user.dir") +
+                "/src/main/resources/DataProvider/CreatedRequest.xml";
+
+        try {
+
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.parse(xmlFilePath);
+
+
+            Node class1 = doc.getFirstChild();
+
+            NodeList list = class1.getChildNodes();
+            for(int i = 0; i < list.getLength(); i++) {
+                Node node = list.item(i);
+                 if (tagName.equalsIgnoreCase(node.getNodeName())) {
+
+
+                    node.setTextContent(requestID);
+
+                }
+
+
+            }
+            // create the xml file
+            //transform the DOM Object to an XML File
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource domSource = new DOMSource(doc);
+            StreamResult streamResult = new StreamResult(new File(xmlFilePath));
+
+
+            transformer.transform(domSource, streamResult);
+
+            System.out.println("Done creating XML File");
+
+        } catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
     public static String getCreatedProgram() {
 
         String value = "";
@@ -421,6 +472,74 @@ public class ReadWriteHelper {
             //creating a constructor of file class and parsing an XML file
             File file = new File(System.getProperty("user.dir") +
                     "/src/main/resources/DataProvider/HEApplications.xml");
+            //an instance of factory that gives a document builder
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            //an instance of builder to parse the specified xml file
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(file);
+            doc.getDocumentElement().normalize();
+            //System.out.println( "Root element: " + doc.getDocumentElement().getNodeName() );
+            NodeList nodeList = doc.getElementsByTagName("createdProgram");
+            // nodeList is not iterable, so we are using for loop
+            for (int itr = 0; itr < nodeList.getLength(); itr++) {
+                Node node = nodeList.item(itr);
+                //System.out.println( "\nNode Name :" + node.getNodeName() );
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) node;
+                    value = eElement.getElementsByTagName("title").item(0).getTextContent();
+                    break;
+                }
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return value;
+    }
+    public static String readCreatedRequest1(String requestName) {
+
+        String value = "";
+
+        try {
+            //creating a constructor of file class and parsing an XML file
+            File file = new File(System.getProperty("user.dir") +
+                    "/src/main/resources/DataProvider/CreatedRequest.xml");
+            //an instance of factory that gives a document builder
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            //an instance of builder to parse the specified xml file
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(file);
+            doc.getDocumentElement().normalize();
+            //System.out.println( "Root element: " + doc.getDocumentElement().getNodeName() );
+            NodeList nodeList = doc.getElementsByTagName(requestName);
+            // nodeList is not iterable, so we are using for loop
+            for (int itr = 0; itr < nodeList.getLength(); itr++) {
+                Node node = nodeList.item(itr);
+                //System.out.println( "\nNode Name :" + node.getNodeName() );
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) node;
+                    value = eElement.getTextContent();
+                    break;
+                }
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return value;
+    }
+    public static String readCreatedRequest() {
+
+        String value = "";
+
+        try {
+            //creating a constructor of file class and parsing an XML file
+            File file = new File(System.getProperty("user.dir") +
+                    "/src/main/resources/DataProvider/CreatedRequest.xml");
             //an instance of factory that gives a document builder
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             //an instance of builder to parse the specified xml file

@@ -5,6 +5,7 @@ import com.qpros.helpers.ActionsHelper;
 import com.qpros.helpers.ReadWriteHelper;
 import com.qpros.model.programModel;
 import lombok.Getter;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -212,6 +213,7 @@ public class ProgramsPage extends Base {
 
     public void setProgramConfig() throws InterruptedException {
         //Select configurations tab
+        Thread.sleep(3000);
         ActionsHelper.waitForExistance(getMainInfoLabels(), 50);
         ActionsHelper.waitForListExistance(getProgramOptions(), 50);
         ActionsHelper.selectElementFromList(getProgramOptions(), "Configuration");
@@ -355,26 +357,32 @@ public class ProgramsPage extends Base {
 
     public void setProgramTeam() throws Exception {
         //select Program Team tab
+        Thread.sleep(3000);
         ActionsHelper.waitForListExistance(getProgramOptions(), 50);
         ActionsHelper.selectElementFromList(getProgramOptions(), "Program Team");
         //getProgramOptions().get( 8 ).click();
 
         //User Type
         ActionsHelper.waitForListExistance(getUserType(), 50);
-        ActionsHelper.selectElementFromList(getUserEmail(), "ADEK User");
+        Thread.sleep(3000);
+        ActionsHelper.selectElementFromList(getUserEmail(), "ADEK User"+ Keys.ENTER);
         //getUserType().get( 0 ).click();
         Thread.sleep(2000);
         ActionsHelper.waitForExistance(getChooseUserField(), 30);
         getChooseUserField().click();
         ActionsHelper.waitForListExistance(getUserSearchField(), 20);
-        getUserSearchField().get(0).sendKeys(ReadWriteHelper.readCredentialsXMLFile("recruiterCredentials3",
-                "username"));
-        ActionsHelper.waitForListExistance(getUserEmail(), 20);
-        ActionsHelper.selectElementFromList(getUserEmail(),
-                ReadWriteHelper.readCredentialsXMLFile("interviewer1", "username"));
+        getUserSearchField().
+                get(0).sendKeys(ReadWriteHelper.readCredentialsXMLFile
+                ("recruiterCredentials4",
+                "username")+Keys.ENTER);
+       // ActionsHelper.waitForListExistance(getUserEmail(), 20);
+//        ActionsHelper.selectElementFromList(getUserEmail(),
+//                ReadWriteHelper.
+//                        readCredentialsXMLFile("interviewer1", "username"));
         ActionsHelper.waitForListExistance(getRuleCheckbox(), 20);
-        getRuleCheckbox().get(1).click();
-        getRuleCheckbox().get(2).click();
+        getRuleCheckbox().get(1).click();//Recruiter
+        // if you need interviewer select get(2)
+       // getRuleCheckbox().get(3).click();//Advisor
         getProgramSubmitButton().click();
         Thread.sleep(1000);
         ActionsHelper.waitForListExistance(getProgramOkButton(), 50);
@@ -382,7 +390,14 @@ public class ProgramsPage extends Base {
         getProgramOkButton().get(0).click();
 
     }
-
+    public void getCreatedProgram1(String program) {
+        ActionsHelper.waitForListExistance(getProgramsTab(), 50);
+        ActionsHelper.selectElementFromList(getProgramsTab(), "Programs");
+        ActionsHelper.waitForExistance(getSearchField(), 30);
+        getSearchField().sendKeys(program);
+        ActionsHelper.waitForExistance(getSearchButton(), 30);
+        getSearchButton().click();
+    }
     public void getCreatedProgram() {
         ActionsHelper.waitForExistance(getSearchField(), 30);
         getSearchField().sendKeys(randomName);

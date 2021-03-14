@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Base {
-
+public static boolean isBase=false;
     protected static WebDriver driver;
 
 
@@ -29,17 +29,22 @@ public class Base {
     @Parameters({"browserType"})
     @BeforeMethod(enabled = true)
     public void setUpBrowser(@Optional("optional") String browserType) {
-        //DriverType browser = getBrowser();
-        if (!browserType.equals( "optional" )){
-            initiateDriver(OsValidator.getDeviceOs(), browserType);
-        }else {
-            initiateDriver(OsValidator.getDeviceOs(), ReadWriteHelper.ReadData( "browser" ) );
+        if(!isBase){
+
+            //DriverType browser = getBrowser();
+            if (!browserType.equals( "optional" )){
+                initiateDriver(OsValidator.getDeviceOs(), browserType);
+            }else {
+                initiateDriver(OsValidator.getDeviceOs(), ReadWriteHelper.ReadData( "browser" ) );
+            }
+
         }
+
 
     }
 
 
-    private WebDriver initiateDriver(String deviceOsType, String driverType) {
+    public WebDriver initiateDriver(String deviceOsType, String driverType) {
         String browser = driverType.toLowerCase();
 
         switch (browser) {

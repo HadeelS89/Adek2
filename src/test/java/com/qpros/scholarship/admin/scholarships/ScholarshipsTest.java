@@ -24,7 +24,8 @@ public class ScholarshipsTest extends Base {
 
         //Login as Program Manager
         loginPage = new LoginPage(driver);
-        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("interviewer1",
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.
+                        readCredentialsXMLFile("interviewer1",
                 "username"),
                 ReadWriteHelper.readCredentialsXMLFile("interviewer1", "password"));
         scholarshipsPage = new ScholarshipsPage(driver);

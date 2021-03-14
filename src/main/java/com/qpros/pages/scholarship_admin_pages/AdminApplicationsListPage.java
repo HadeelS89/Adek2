@@ -117,7 +117,8 @@ public class AdminApplicationsListPage extends Base {
     private List<WebElement> areYouSureLabel;
     @FindBy(xpath = "//p[starts-with(@class,'lead ')]")
     private List<WebElement> sucessLabel;
-
+    @FindBy(id = "toggle-filter")
+    private WebElement filterSelection;
 
     //TODO: Locators for activation form
     @FindBy(id = "UniversityStartDate")
@@ -145,12 +146,43 @@ public class AdminApplicationsListPage extends Base {
     private WebElement success;
     @FindBy(xpath = "//button[contains(.,'OK')]")
     private WebElement btnOK;
-    @FindBy(xpath = "//input[@type='search']")
+    @FindBy(id = "searchbox")
     private WebElement programNameInput;
     @FindBy(css = ".row:nth-child(1) > .col-md-8 > .row:nth-child(4) > .col-md-auto:nth-child(2)")
     private WebElement emailField;
     @FindBy(xpath = "//li[contains(.,'Active Scholarships')]")
     private WebElement activateScholarshipLabel;
+    @FindBy(css = "a[class='air__menuLeft__link']")
+    private List<WebElement> scholarshipsTab;
+    @FindBy(css = "span[class='select2-selection__rendered']")
+    private WebElement applicantIDSearchBox;
+    @FindBy(css = "input[class='select2-search__field']")
+    private WebElement programIdSearch;
+    @FindBy(css = "label[class='custom-control-label']")
+    private WebElement allStudentFlag;
+    @FindBy(id = "btnApply")
+    private WebElement applyBtn;
+
+    public void findProgram(String programName) throws InterruptedException {
+        ActionsHelper.waitForListExistance(getScholarshipsTab(), waitTime);
+      //  ActionsHelper.waitForExistance(getApplicantIDSearchBox(), waitTime);
+       // ActionsHelper.selectElementFromList(getScholarshipsTab(), "Applications");
+
+        ActionsHelper.waitForExistance(getFilterSelection(), waitTime);
+        getFilterSelection().click();
+        Thread.sleep(1000);
+        ActionsHelper.waitForExistance(getAllStudentFlag(), waitTime);
+       // getAllStudentFlag().click();
+        ActionsHelper.waitForExistance(getApplicantIDSearchBox(), waitTime);
+        getApplicantIDSearchBox().click();
+        getProgramIdSearch().sendKeys(programName + Keys.ENTER);
+
+        getApplyBtn().click();
+        Thread.sleep(1000);
+
+//        ActionsHelper.waitForListExistance(getFirstRecord(), waitTime);
+//        getFirstRecord().get(0).click();
+    }
 
 
     public enum ButtonsList {
@@ -480,11 +512,11 @@ public class AdminApplicationsListPage extends Base {
         ActionsHelper.waitForExistance(getWorkflowArea(), waitTime);
     }
 
-    public void findProgram(String programName) throws InterruptedException {
+    public void findProgram1(String programName) throws InterruptedException {
         ActionsHelper.waitForExistance(getProgramsLabel(), waitTime);
         //Thread.sleep( 3000 );
-        ActionsHelper.waitForListExistance(getProgramsList1(), waitTime);
-        getProgramsList1().get(0).click();
+        //ActionsHelper.waitForListExistance(getProgramsList1(), waitTime);
+       // getProgramsList1().get(0).click();
         getProgramNameInput().sendKeys(programName);
         getProgramNameInput().sendKeys(Keys.ENTER);
         ActionsHelper.waitForExistance(getBtnApply(), 100);

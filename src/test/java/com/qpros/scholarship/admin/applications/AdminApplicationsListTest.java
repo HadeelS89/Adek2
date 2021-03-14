@@ -73,11 +73,11 @@ public class AdminApplicationsListTest extends Base {
             retryAnalyzer = com.qpros.helpers.RetryAnalyzer.class)
     public void approveNewApplicationWithAck() throws Exception {
         loginPage = new LoginPage(driver);
-        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("recruiterCredentials3", "username"),
-                ReadWriteHelper.readCredentialsXMLFile("recruiterCredentials3", "password"));
+        loginPage.signInAsADEKEmployee(ReadWriteHelper.readCredentialsXMLFile("recruiterCredentials4", "username"),
+                ReadWriteHelper.readCredentialsXMLFile("recruiterCredentials4", "password"));
 
         adminApplicationsListPage = new AdminApplicationsListPage(driver);
-        adminApplicationsListPage.clearFilters();
+       // adminApplicationsListPage.clearFilters();
         adminApplicationsListPage.findProgram(ReadWriteHelper.getCreatedProgram());
         adminApplicationsListPage.selectFirstResult();
         adminApplicationsListPage.clickApplicationButton(AdminApplicationsListPage.ButtonsList.StartReview);

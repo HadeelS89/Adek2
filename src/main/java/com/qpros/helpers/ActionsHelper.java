@@ -391,6 +391,33 @@ public class ActionsHelper extends Base {
 
         return webMap;
     }
+    public static HashMap<Integer,String > getWebColumnIndex(String tableId, int columnIndex, int RowIndex) throws InterruptedException {
+        Thread.sleep(2000);
+        WebElement Webtable=driver.findElement(By.id(tableId)); // Replace TableID with Actual Table ID or Xpath
+
+        List<WebElement> TotalRowCount=Webtable.findElements
+                (By.xpath("//*[@id='"+tableId+"']/tbody/tr"));
+
+        System.out.println("No. of Rows in the WebTable: "+TotalRowCount.size());
+        // Now we will Iterate the Table and print the Values
+
+
+        HashMap<Integer, String> webMap
+                = new HashMap<>();
+
+        for(WebElement rowElement:TotalRowCount)
+        {
+            List<WebElement> TotalColumnCount=rowElement.findElements(By.xpath("td"));
+            System.out.println("Row "+RowIndex+" Column "+columnIndex+" Data "
+                    +TotalColumnCount.get(columnIndex).getText());
+
+            RowIndex=RowIndex+1;
+            webMap.put(RowIndex,TotalColumnCount.get(columnIndex).getText() );
+            System.out.println("test map  "+ webMap);
+        }
+
+        return webMap;
+    }
 
     public static int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
